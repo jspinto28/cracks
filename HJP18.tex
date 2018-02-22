@@ -1,0 +1,191 @@
+%Typeset with LaTeX
+%\documentclass{owrart}
+\documentclass[10pt,reqno]{amsart}
+% \usepackage[a4paper, total={6in,10in}]{geometry}
+\usepackage[letterpaper, margin=1in]{geometry}
+%% -------------------------------------------------------------------------------
+%% Enter additionally required packages below this comment.
+
+\usepackage{amsmath}
+%\usepackage[a4paper]{geometry}
+%\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+% \usepackage{amscd}
+% \usepackage{latexsym}
+% \usepackage{nicefrac} 
+% \usepackage{cite}
+ %\usepackage{epic}
+% \usepackage{eepic}
+% \usepackage{fancybox}
+\usepackage{graphicx} 
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=bottom}
+% \usepackage{caption} \captionsetup[table]{skip=50pt}
+
+\renewcommand{\thesubfigure}{\roman{subfigure}}
+\captionsetup[subfigure]{labelfont=rm}
+
+%Standard operators
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\grad}{\operatorname{\mathbf{grad}}}
+\newcommand{\curl}{\operatorname{\mathbf{curl}}}
+\renewcommand{\div}{\operatorname{div}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\sgn}{\operatorname{sign}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\meas}{\operatorname{\mathsf{meas}}}
+\newcommand{\card}{\operatorname{\mathsf{card}}}
+\newcommand{\sign}{\operatorname{\mathsf{sig}}}
+
+%fields, mathbb operators
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\IZ}{\mathbb{Z}}
+%\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\IN}{\mathbb{N}}
+%\newcommand{\T}{\mathbb{T}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assum}[theorem]{Assumption}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\snorm}[1]{\left| #1 \right|}
+\newcommand{\dotp}[2]{\left(#1 ,#2 \right)} 
+\newcommand{\dual}[2]{\left\langle #1 ,#2 \right\rangle}
+\newcommand{\Vx}{\boldsymbol{x}}
+\newcommand{\Vy}{\boldsymbol{y}}
+\newcommand{\Id}{\mathsf{I}}
+\newcommand{\OK}{\mathsf{K}}
+\newcommand{\OW}{\mathsf{W}}
+\newcommand{\OV}{\mathsf{V}}
+\newcommand{\OA}{\mathsf{A}}
+\newcommand{\OC}{\mathsf{C}}
+\newcommand{\OP}{\mathsf{P}}
+\newcommand{\OT}{\mathsf{T}}
+\newcommand{\OX}{\mathsf{X}}
+\newcommand{\Vm}{\mathcal{V}}
+\newcommand{\Ns}{\mathcal{N}}
+\newcommand{\ce}{\mathsf{c}}
+
+\newcommand{\OZ}{\mathsf{Z}}
+
+\newcommand{\D}{\text{D}}
+\newcommand{\N}{\text{N}}
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\E}{\mathfrak{E}}
+\newcommand{\SL}[1]{\mathcal{S}_{#1}}
+\newcommand{\DL}[1]{\mathcal{D}_{#1}}
+\newcommand{\Pt}[1]{\Psi_{#1}}
+\newcommand{\Ps}{\mathsf{P}_\sigma}
+\newcommand{\Jp}[1]{\left [#1\right]}
+\newcommand{\Av}[1]{\left\{#1\right\}}
+\newcommand{\spV}{{\bf V}}
+\newcommand{\spH}{\mathbb{H}}
+\newcommand{\spL}{\mathbb{L}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\bgamma}{\boldsymbol\gamma}
+\newcommand{\blambda}{\boldsymbol\lambda}
+
+\newcommand{\com}[1]{{{\color{red} [#1]}}}
+\newcommand{\cj}[1]{{\color{blue} #1}}
+\newcommand{\fh}[1]{{\color{magenta} #1}}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title[]{Bayesian Inversion for Acoustic Scattering by Multiple Open Arcs in 2D}
+\author[Fernando Henr\'iquez]{Fernando Henr\'iquez} \address{Seminar for Applied Mathematics, ETH Z$\ddot{\mbox{u}}$rich, CH-8092
+  Z$\ddot{\mbox{u}}$rich, Switzerland} \email{fernando.henriquez@sam.math.ethz.ch}
+\author[Jos\'e Pinto]{Jos\'e Pinto} \address{School of Engineering, Pontificia
+  Universidad Cat\'olica de Chile, Santiago, Chile} \email{jspinto@uc.cl}
+\author[Carlos Jerez-Hanckes]{Carlos Jerez-Hanckes} \address{School of Engineering, Pontificia
+  Universidad Cat\'olica de Chile, Santiago, Chile} \email{cjerez@ing.puc.cl}
+  
+\thanks{This work was partially funded by \com{CJ}}
+
+\maketitle
+
+\begin{abstract}
+\com{CJ}
+
+
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\com{CJ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Boundary Integral Formulation for Multiple Open Arcs in 2D}
+\label{sec:BIF_2D}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\com{JP y CJ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shape Holomorphy of the Boundary Integral Formulation for Multiple Open Arcs in 2D {\com{FH y CJ}}}
+\label{ssec:shape_hol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bayesian Inversion}
+\label{sec:bi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\com{JP y FH}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Bayesian Framework}
+\label{ssec:bayesian_frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parametric Regularity of the Posterior}
+\label{ssec:parametric_posterior}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\com{JP y FH}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions and Outlook}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\com{CJ}
+
+
+
+
+
+\end{document}
