@@ -1,8 +1,10 @@
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
-#include "IntegrationRules.h" 
+#include "IntegrationRules.h"
+#include "mex.h"
 
 #include "geo.h"
+#include "prods.h"
 #include <vector>
 
 using namespace std;
@@ -27,10 +29,22 @@ protected:
     
     double m_distance;
     
+    int m_RegOrder;
+    
+    double* m_bgeo; 
+    
+    int m_Nb; 
+    
+    double m_delta;
+       
 public:
 
-    GreenFunctionBase(dcomp k):
-    m_WaveNumber(k)
+    GreenFunctionBase(dcomp k, double* bgeo, int Nb,double delta):
+    m_WaveNumber(k),
+    m_RegOrder(0),
+    m_bgeo(bgeo),
+    m_Nb(Nb), 
+    m_delta(delta)        
     {
         m_x.resize(2,0.0);
         m_y.resize(2,0.0);
@@ -38,7 +52,11 @@ public:
         m_yNormal.resize(2,0.0);
     }               
         
-    GreenFunctionBase(double k)  
+    GreenFunctionBase(double k, double* bgeo, int Nb,double delta):
+    m_RegOrder(0),             
+    m_bgeo(bgeo),
+    m_Nb(Nb),
+    m_delta(delta)        
     {
         m_WaveNumber.real(k); 
         m_WaveNumber.imag(0); 
@@ -99,8 +117,8 @@ public:
     virtual void SetXFromGeo(double t, int domt, int dom_op) 
     {   
         double x1,x2; 
-        
-        geom(&x1, &x2, t,domt,dom_op); 
+
+        geom(&x1, &x2, t,m_bgeo,m_Nb,m_delta); 
         
         setXpoint(x1,x2); 
         
@@ -110,36 +128,43 @@ public:
     {   
         double y1,y2; 
         
-        geom(&y1, &y2, s,doms,dom_op); 
+        geom(&y1, &y2, s,m_bgeo,m_Nb,m_delta); 
         
         setYpoint(y1,y2); 
         
     }
     
-    virtual void SetXNormalFromGeo(double t, int domt, int dom_op) 
-    {
-        double nx1,nx2;
-        
-        normal(&nx1,&nx2,t,domt,dom_op);
-        
-        setXNormal(nx1,nx2);
-
-    }
-    
-    virtual void SetYNormalFromGeo(double s, int doms, int dom_op) 
-    {
-        double ny1,ny2; 
-        
-        normal(&ny1,&ny2,s,doms,dom_op);
-        
-        setYNormal(ny1,ny2);
-
-    }
+//     virtual void SetXNormalFromGeo(double t, int domt, int dom_op) 
+//     {
+//         double nx1,nx2;
+//         
+//         normal(&nx1,&nx2,t,domt,dom_op);
+//         
+//         setXNormal(nx1,nx2);
+// 
+//     }
+//     
+//     virtual void SetYNormalFromGeo(double s, int doms, int dom_op) 
+//     {
+//         double ny1,ny2; 
+//         
+//         normal(&ny1,&ny2,s,doms,dom_op);
+//         
+//         setYNormal(ny1,ny2);
+// 
+//     }
     
     void ComputeDistance()
     {
         m_distance = sqrt(pow(m_x[0]-m_y[0],2)+
                 pow(m_x[1]-m_y[1],2));
+        
+        if(m_distance < 1e-12)
+        {
+            m_distance = 1e-12;        
+        
+        } 
+           
     }
     
     void SetPoints(double x1,double x2,double y1,double y2)
@@ -178,27 +203,26 @@ public:
 //     = 0;
     
     
-     virtual dcomp evaluateRegularizator(double t, double s);    
+     virtual dcomp IntegralKernel()=0;   
+     
+     virtual dcomp evaluateRegularizator2(double t, double s, int doms)=0;   
+     
+     virtual dcomp LimitRegularized(double t, double s, int doms )=0; 
+     
+     virtual dcomp Jpart(double t, double s, int doms)=0; 
 
      virtual dcomp evaluateGF( double t, double s, int domt, int doms,
            int dom_op)=0;
-
-     virtual dcomp evaluateGFDetNx(double t, double s, int domt, int doms,
-           int dom_op)=0;
-
-     virtual dcomp evaluateGFDetNy(double t, double s, int domt, int doms,
-           int dom_op)=0;   
-     
-     virtual dcomp evaluateGFDevy(double t, double s, int domt, int doms,
-           int dom_op) =0; 
-     
-     virtual double GetAlpha()=0; 
-     
-     virtual double GetPeriod()=0; 
      
      virtual dcomp evaluatePotential(double t, int domt,
              double y1, double y2, int dom_op)=0;
-    
+     
+     void SetRegOrder(int p)
+     {
+         m_RegOrder = p; 
+     }
+     
+   
 //     virtual dcomp evaluateNderX() = 0; 
 //     
 //     virtual dcomp evaluateNderY() = 0; 
@@ -213,139 +237,84 @@ public:
 
 class FreeSpace : public GreenFunctionBase
 {
-    protected: 
-            
-        vector<double> m_gradDistance; 
-          
-        dcomp IntegralKernel();    
-            
-        dcomp IntegralKernelDev();     
-        
-        void ComputeGradDistance(); 
- 
+              
     public:
         
-        FreeSpace(double k)
-            :GreenFunctionBase(k)
-            {
-                m_gradDistance.resize(2,0.0); 
-            }     
-                
-//         double XnormalDevGrad(); 
-//         
-//         double XnormalDevGrad(); 
-        
-//         virtual dcomp evaluate(); 
-//     
-//         virtual dcomp evaluate(vector<double> dataX, vector<double>
-//                 dataY);
-            
-     virtual dcomp evaluateGF( double t, double s, int domt, int doms,
-           int dom_op);
-
-     virtual dcomp evaluateGFDetNx(double t, double s, int domt, int doms,
-           int dom_op);
-
-     virtual dcomp evaluateGFDetNy(double t, double s, int domt, int doms,
-           int dom_op);     
-     
-      dcomp evaluateGFDevy(double t, double s, int domt, int doms,
-           int dom_op){return 0;} 
-     
-     double GetAlpha()
-     {
-         return 0; 
-     }
-     
-     double GetPeriod()
-     {
-         return 0; 
-     }
-     
-     virtual dcomp evaluatePotential(double t, int domt,
-             double y1, double y2, int dom_op);
+     FreeSpace(double k,double* bgeo, int Nb, double delta):
+         GreenFunctionBase(k,bgeo,Nb,delta) {} 
          
+      dcomp IntegralKernel();   
+     
+      dcomp evaluateRegularizator2(double t, double s, int doms);   
+     
+      dcomp LimitRegularized(double t, double s, int doms ); 
+     
+      dcomp Jpart(double t, double s, int doms); 
 
-//         virtual dcomp evaluateNderX(); 
-// 
-//         virtual dcomp evaluateNderY(); 
-
-//         virtual dcomp evaluateNderX( double t, double s, int domt,
-//                 int doms, int dom_op); 
-// 
-//         virtual dcomp evaluateNderY( double t, double s, int domt,
-//                 int doms, int dom_op); 
-    
-
-
+      dcomp evaluateGF( double t, double s, int domt, int doms,
+           int dom_op);
+     
+      dcomp evaluatePotential(double t, int domt,
+             double y1, double y2, int dom_op);
 
 };
 
-class FreeSpacePer: public FreeSpace
-{        
-        protected: 
+class FreeDerivativeSpace : public GreenFunctionBase
+{
+    protected: 
+        
+     int m_p;   
+             
+     double m_DeltaTp; 
+     
+      double ChebT(double t);
+
+      void ComputeDeltaT(double t, double s); 
+    
+     vector<double> m_DeltaR; 
+             
+     void ComputeDeltaR(double t,int domt,double s, int doms)
+     {
+        SetXFromGeo( t, domt, 0); 
+        
+        SetYFromGeo( s, doms, 0); 
+        
+        m_DeltaR[0] = m_x[0] - m_y[0];
+        
+        m_DeltaR[1] = m_x[1] - m_y[1];
+         
+     }
+     
+     int m_component; //0 o 1!!!
+              
+    public:
+        
+     FreeDerivativeSpace(double k,double* bgeo, int Nb, double delta
+             , int p, int component):
+         GreenFunctionBase(k,bgeo,Nb,delta),
+         m_component(component),
+         m_p(p)
+         {
+             m_DeltaR.resize(2,0.0);
+         }
+         
+    dcomp evaluatePotential(double t, int domt,
+             double y1, double y2, int dom_op);
+    
+      dcomp IntegralKernel();   
+     
+      dcomp evaluateRegularizator2(double t, double s, int doms);   
+     
+      dcomp LimitRegularized(double t, double s, int doms ); 
+      
+      dcomp Jpart(double t, double s, int doms); 
+
+      dcomp evaluateGF( double t, double s, int domt, int doms,
+           int dom_op);
             
-            int m_S; 
-            
-            double* m_Y1; 
-            
-            double* m_Y2;
-            
-            double m_delta;
-            
-        public:                
-            
-            FreeSpacePer(double k, int S,double* Y1, double* Y2,
-                    double delta):
-                        FreeSpace(k),
-                        m_S(S),
-                        m_Y1(Y1),
-                        m_Y2(Y2),
-                        m_delta(delta)
-                        {
-                        }   
-            
-           virtual void SetXFromGeo(double t, int domt, int dom_op) 
-            {   
-                double x1,x2; 
+   
+    
+};
 
-                geomPer(&x1, &x2, t,domt,m_Y1,m_Y2,m_delta,m_S); 
-
-                setXpoint(x1,x2); 
-
-
-            }
-
-            virtual void SetYFromGeo(double s, int doms, int dom_op) 
-            {   
-                double y1,y2; 
-
-                geomPer(&y1, &y2, s,doms,m_Y1,m_Y2,m_delta,m_S); 
-
-                setYpoint(y1,y2); 
-
-            }
-
-//             virtual void SetXNormalFromGeo(double t, int domt, int dom_op) 
-//             {
-//                 double nx1,nx2;
-// 
-//                 normalPer(&nx1,&nx2,t,dom_op,m_an,m_bn,m_NPer);
-// 
-//                 setXNormal(nx1,nx2);
-// 
-//             }
-// 
-//             virtual void SetYNormalFromGeo(double s, int doms, int dom_op) 
-//             {
-//                 double ny1,ny2; 
-// 
-//                 normalPer(&ny1,&ny2,s,dom_op,m_an,m_bn,m_NPer);
-// 
-//                 setYNormal(ny1,ny2);
-// 
-//             }
-                        
-};           
 
 #endif

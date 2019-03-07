@@ -1,6 +1,7 @@
 #include <complex>
 #include <fftw3.h>
 #include "tchv_cof.h"
+#include "mex.h"
 using namespace std;
 typedef complex<double> dcomp;
 const dcomp i(0.0,1.0);
@@ -19,6 +20,13 @@ void *Tchv_cof(int n, dcomp* fxc,fftw_plan p){
         vec[j]=fxc[n-1-j];
         vec[j+n-1]=fxc[j];
     }          
+//     
+//     for(int ii(0); ii<n;++ii)
+//     {
+//         mexPrintf("%f %f\n",fxc[ii].real(), fxc[ii].imag()); 
+//     }
+//     
+//     mexPrintf("------------------------\n");
     
 
     fftw_execute_dft(p, reinterpret_cast<fftw_complex*>(vec),reinterpret_cast<fftw_complex*>(vec));   

@@ -1,27 +1,9 @@
-function u=Un(n,t)
+function u= Un(n,t) 
 
-if(abs(t)==1)
-   
-    u=(n+1)*t^n;
-    
-    return;  
-    
-end
+u = sin((n+1)*acos(t))./sqrt(1-t.*t);
 
-if(n == 0)
-    
-    u=1;
-    
-    return; 
-    
-else if(n==1) 
-        
-    u=2.*t; 
+ind = (sqrt(1-t.*t) == 0);  
 
-    return; 
+u(ind) = ((-1)^n)*(n+1); 
+
 end 
-
-    u = 2*Un(n-1,t)-Un(n-2,t); 
-    
-
-end
