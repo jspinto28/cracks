@@ -1,0 +1,1378 @@
+	 %%%%%%%%%%%%%%%%%%%%%
+%\documentclass[draft]{amsart}
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{bm}
+\usepackage{psfrag}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{xcolor}
+\usepackage[all,cmtip,line]{xy}
+\usepackage[normalem]{ulem}
+\usepackage{tikz} 
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+%\usepackage{subfig}
+\usepackage{scalerel}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage[]{algorithm2e}
+
+
+% Inverted breve
+\usepackage[T3,T1]{fontenc}
+\DeclareSymbolFont{tipa}{T3}{cmr}{m}{n}
+\DeclareMathAccent{\invbreve}{\mathalpha}{tipa}{16}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+%CS Macros 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition} 
+
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assumption}[theorem]{Assumption}
+\newcommand{\dc}{downward closed }
+%CJ Macros
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+
+\newtheorem{obs}{Observation}[section]
+\newtheorem{prop}{Property}[section]
+%\newcommand{\norm}[2]{\left\lVert #1\right\rVert_{#2}}
+\newcommand{\seminorm}[2]{| #1 |_{#2}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vx}{\bm{x}}
+\newcommand{\curl}{\operatorname{\bm{curl}}}
+\renewcommand{\div}{\operatorname{div}}
+%\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\p}[1]{\langle #1\rangle}
+\newcommand{\pr}[1]{\left( #1\right)}
+\newcommand{\bil}[1]{\kappa\left( #1 \right)}
+\newcommand{\modulo}[1]{\left\vert #1\right\vert}
+\newcommand{\dv}[1]{{\rm div}\left( #1\right)}
+\newcommand{\epep}[1]{\epsilon \left( #1 \right):\epsilon\left( #1\right)}
+\newcommand{\hcurl}[1]{\bm{H}\left( \curl; #1 \right)}
+\newcommand{\hocurl}[1]{\bm{H}_0(\curl; #1 )}
+\newcommand{\hdiv}[1]{\bm{H}(\div;#1)}
+\newcommand{\hodiv}[1]{\bm{H}_0(\div;#1)}
+\newcommand{\Hsob}[2]{\bm{H}^{#1}( #2 )}
+\newcommand{\hsob}[2]{{H}^{#1}( #2 )}
+\newcommand{\Hosob}[2]{\bm{H}_0^{#1}( #2 )}
+\newcommand{\hosob}[2]{{H}_0^{#1}( #2 )}
+\newcommand{\Lp}[2]{\bm{L}^{#1}( #2 )}
+\newcommand{\lp}[2]{{L}^{#1}( #2 )}
+\newcommand{\hil}[1]{\mathcal{#1}}
+
+\hyphenation{pa-ra-me-tri-zed}
+
+%cs color for changes by CJH
+\newcommand{\cj}[1]{{\color{magenta}{#1}}}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\newcommand{\ra}[1]{{\color{forestgreen}#1}}
+\newcommand{\ras}[1]{{\color{forestgreen}{\sout{#1}}}}
+
+\newcommand{\jp}[1]{{\color{blue}#1}}
+
+\newcommand{\todo}[1]{{\color{red}[#1]}}
+
+
+\newcommand{\KK}{{\rm K}}
+\newcommand{\LL}{{\rm L}}
+\newcommand{\HH}{{\rm H}}
+%\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\rm C}
+\newcommand{\KL}{\mbox{Karh\'{u}nen-Lo\`{e}ve }}
+\newcommand{\Hol}{\mbox{Hol}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+%color for changes by CJ
+%\definecolor{forest}{rgb}{0.3,0.4,0.1}
+%\definecolor{Ora}{cmyk}{0.2, 0.6, 0.8, 0}
+% definitions
+\newcommand{\eps}{{\varepsilon}}
+\renewcommand{\c}{{\boldsymbol c}}
+\newcommand{\bmb}{{\boldsymbol b}}
+\newcommand{\set}[2]{\{#1\,:\,#2\}}
+% cal letters
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\C}{\mathcal C}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\E}{\mathcal E}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\e}{{\bm e}}
+\newcommand{\f}{{\bm f}}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cO}{\mathcal O}
+\renewcommand{\S}{\mathsf S}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\cl}{\mathcal l}
+\newcommand{\cG}{\mathcal G}
+% frak letters
+\newcommand{\fa}{{\mathsf{a}}}
+\newcommand{\fp}{{\mathfrak p}\,} %frak p as index for patches
+\newcommand{\frakT} {{\mathfrak T}} % set of admissible domain transformations
+%boldface symbols
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\bmf} {\bm f}
+\newcommand{\ba} {\bm a}
+\newcommand{\bi} {\bm i}
+\newcommand{\blm} {\bm m}
+\newcommand{\bmj} {\bm j}
+\newcommand{\bme} {\bm e}
+\newcommand{\bnul}{{\boldsymbol 0}}
+\newcommand{\bsnu}{{\boldsymbol \nu}}
+\newcommand{\bsmu}{{\boldsymbol \mu}}
+\newcommand{\bsrho}{{\boldsymbol \rho}}
+\newcommand{\bseta}{{\boldsymbol \eta}}
+\newcommand{\bszeta}{{\boldsymbol \eta}}
+%boldsymbols
+\newcommand{\bsb}{{\boldsymbol b}}
+\newcommand{\bsx}{{\boldsymbol x}}
+\newcommand{\bsy}{{\boldsymbol y}}
+\newcommand{\bsw}{{\boldsymbol w}}
+\newcommand{\bsz}{{\boldsymbol z}}
+%\newcommand{\br} {\bm r}
+\newcommand{\bM} {\bm{M}}
+\newcommand{\bR} {\mathsf{R}}
+\newcommand{\bT} {\bm{T}}
+%
+\newcommand{\ce}{{\bm c\bm e}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\N}{\mathrm{N}}
+\renewcommand{\L}{\mathsf{L}}
+\newcommand{\A}{{\mathcal A}}
+\newcommand{\V}{{\mathsf V}}
+\newcommand{\W}{{\mathsf W}}
+\newcommand{\Kk}{{\mathsf K}}
+\newcommand{\B}{{\mathcal A}_{S}}
+\newcommand{\dd}{\,{\rm d}}
+\newcommand{\ddx}{\dd\bm x}
+\newcommand{\ds}{\dd s}
+\newcommand{\bg}{\bm{g}}
+\newcommand{\bff}{\bm{f}}
+\newcommand{\ddd}{\mbox{\,\em{d}}}
+\newcommand{\Rd}{{\mathbb R}^d}
+\newcommand{\nno}{\nonumber}
+\newcommand{\jl}{[\![}
+\newcommand{\jr}{]\!]}
+\newcommand{\jmp}[1]{\jl#1\jr}
+% % dual products
+\newcommand{\dual}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\dup}[2]{\langle #1, #2\rangle}
+
+\newcommand{\ujmp}[1]{\bm\jl#1\bm\jr}
+\newcommand{\al}{\langle\!\langle}
+%\newcommand{\ar}{\rangle\!\rangle}
+\newcommand{\avg}[1]{\al#1\ar}
+\newcommand{\uavg}[1]{\bm\al#1\bm\ar}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\wT}{{\widetilde{\mathcal T}_h}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wS}{S^{\widetilde{\bf p}}(\Omega,\wT,\widetilde{\bf F})}
+\newcommand{\St}{\wt S^{{\bf p}}(\Omega,{{\mathcal T}_h},{\bf F})}
+\renewcommand{\bar}[1]{\overline#1}
+\renewcommand{\div}{{\rm div}}
+\newcommand{\dx}{\dd\uu x}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\NNN}[1]{|\!|\!|#1|\!|\!|_{H^1(\O)}}
+%\newcommand{\s}{\alpha}
+\newcommand{\calP}{{\mathcal P}}
+\newcommand{\QT}{{\mathcal Q}_T}
+\newcommand{\R}{{\mathcal R}}
+\newcommand{\wR}{\widetilde\R}
+\newcommand{\M}{{\mathcal M}}
+%macros for mathbb symbols
+\newcommand{\IC}{{\mathbb C}}
+\newcommand{\IE}{{\mathbb E}}
+\newcommand{\IL}{{\mathbb L}}
+\newcommand{\IN}{{\mathbb N}}
+\newcommand{\IK}{{\mathbb K}}
+\newcommand{\IR}{{\mathbb R}}
+\newcommand{\IU}{{\mathbb U}}
+\newcommand{\IP}{{\mathbb P}}
+\newcommand{\IQ}{{\mathbb Q}}
+\newcommand{\IZ}{{\mathbb Z}}
+% dislaystyle 
+\def\dis{\displaystyle}
+\newcommand{\dsl}{\displaystyle\sum\limits}
+\newcommand{\dil}{\displaystyle\int\limits}
+%
+%\newcommand{\matr}[1]{\bm#1}
+\def\n{\noindent}
+\newcommand{\hf}{h_{K,f}^\perp}
+%\newcommand{\p}{\check{\bm p}}
+\newcommand{\bp}{{\bm p}}
+\newcommand{\bq}{{\bm q}}
+\newcommand{\Vl}{V(\Ml,\bm \psi(\Ml), \uu p)}
+\renewcommand{\ss}{\bm\iota}
+\newcommand{\K}{\mathfrak{K}}
+%norms
+\newcommand{\norm}[2]{\left\lVert #1\right\rVert_{#2}}
+\newcommand{\normz}[2][]{\| #2 \|_{#1}}
+%
+\newcommand{\cald}{\Lambda}
+% domain
+\newcommand{\dom}{D}
+%\newcommand{\dom}{\mathrm{D}}
+\newcommand{\Dy}{\dom_\bsy} 
+\newcommand{\Dscat}{\dom_{\mathrm{scat}}}
+%\newcommand{\Dnul}{{\dom_\bnul}} 
+\newcommand{\Dnul}{{\hat{\dom}}} 
+\newcommand{\Onul}{\Omega_\bnul}
+
+% Operators
+\newcommand{\OB}{\operatorname{\mathsf{B}}}
+\newcommand{\OA}{\operatorname{\mathsf{A}}}
+\newcommand{\OM}{\operatorname{\mathsf{M}}}
+\newcommand{\OC}{\operatorname{\mathsf{C}}}
+\newcommand{\OT}{\operatorname{\mathsf{T}}}
+\newcommand{\OP}{\operatorname{\mathsf{P}}}
+\newcommand{\OQ}{\operatorname{\mathsf{Q}}}
+\newcommand{\Id}{\operatorname{\mathsf{I}}}
+\providecommand{\Cm}{{\mathcal M}}
+\renewcommand{\d}{\!\!\operatorname{d}}
+% imaginary unit
+\newcommand{\ii}{\mathrm i}
+% Bilinear forms 
+\newcommand{\bb}[2]{\operatorname{\mathsf{b}}\left(#1,#2\right)}
+\newcommand{\bs}[4]{\operatorname{\mathsf{s}}_{#1}^{#2}\left(#3,#4\right)}
+\newcommand{\bt}[2]{\operatorname{\mathsf{r}}_{\bsz}^{#1}\left(#2\right)}
+\newcommand{\bacav}[2]{\operatorname{\mathsf{a}\cav}\left(#1,#2\right)}
+\newcommand{\bbacav}[2]{\operatorname{\hat{\mathsf{a}}_T\cav}\left(#1,#2\right)}
+\newcommand{\bbacavn}[2]{\operatorname{\hat{\mathsf{a}}\cav_{0}}\left(#1,#2\right)}
+\newcommand{\bapc}[2]{\operatorname{\mathsf{a}\pc}\left(#1,#2\right)}
+\newcommand{\bbpc}[2]{\operatorname{\mathsf{b}\pc}\left(#1,#2\right)}
+\newcommand{\fpc}[1]{\operatorname{\mathsf{f}\pc}\left(#1\right)}
+\newcommand{\fpcs}[1]{\operatorname{\mathsf{f}\pc}}
+% \newcommand{\fde}[1]{\operatorname{\mathsf{f}\de_T}\left(#1\right)}
+% \newcommand{\fdes}{\operatorname{\mathsf{f}\de_T}}
+\newcommand{\fde}[1]{{\mathsf{f}\de}\left(#1\right)}
+\newcommand{\fdes}{{\mathsf{f}\de_T}}
+\newcommand{\fcav}[1]{\operatorname{\mathsf{f}\cav}\left(#1\right)}
+\newcommand{\fcavs}{\operatorname{\mathsf{f}\cav}}
+\newcommand{\bbapc}[2]{\operatorname{\breve{\mathsf{a}}\pc}\left(#1,#2\right)}
+\newcommand{\bbapcn}[2]{\operatorname{\breve{\mathsf{a}}\pc_{0}}\left(#1,#2\right)}
+\newcommand{\bbbpc}[2]{\operatorname{\breve{\mathsf{b}}\pc}\left(#1,#2\right)}
+\newcommand{\bbbpcn}[2]{\operatorname{\breve{\mathsf{b}}\pc_{0}}\left(#1,#2\right)}
+% \newcommand{\badiel}[2]{\operatorname{\mathsf{a}\de_T}\left(#1,#2\right)}
+% \newcommand{\fdiel}[1]{\operatorname{\mathsf{f}\de_T}\left(#1\right)}
+\newcommand{\badiel}[2]{{\mathsf{a}\de}\left(#1,#2\right)}
+\newcommand{\fdiel}[1]{{\mathsf{f}\de}\left(#1\right)}
+\newcommand{\apch}{\hat{\mathsf{a}}}
+\newcommand{\apc}{{\mathsf{a}}}
+\newcommand{\adeh}{\hat{\mathsf{a}}^{\mathrm{de}}}
+\newcommand{\ade}{{\mathsf{a}}^{\mathrm{de}}}
+\newcommand{\acavh}{\hat{\mathsf{a}}^{\mathrm{cav}}}
+\newcommand{\acav}{{\mathsf{a}}^{\mathrm{cav}}}
+\newcommand{\fpch}{\hat{\mathsf{f}}}
+\newcommand{\fdeh}{\hat{\mathsf{f}}^{\mathrm{de}}}
+\newcommand{\fcavh}{\hat{\mathsf{f}}^{\mathrm{cav}}}
+% Right-hand sides for Fr\'echet derivatives
+\newcommand{\dfpch}{\hat{\mathsf{k}}}
+\newcommand{\dfdeh}{\hat{\mathsf{k}}^{\mathrm{de}}}
+\newcommand{\dfcavh}{\hat{\mathsf{k}}^{\mathrm{cav}}}
+
+% spaces
+% \newcommand{\hcurlbf}[2][]{{\bf H}_{#1}(\mathrm{curl}; #2)}
+
+\newcommand{\hcurlbf}[2][]{{{\bH}_{#1}}(\curl, #2)}
+\newcommand{\hncurlbf}[2][]{{{\bH}_0^{#1}}(\curl, #2)}
+\newcommand{\hncurlbfs}[1]{\bH_ S(\curl,#1)}
+
+% BEM Macros
+%
+\newcommand{\supp}{\operatorname{supp}}
+%\newcommand{\curl}{\operatorname{\bm{curl}}}
+
+\renewcommand{\div}{\operatorname{div}}  
+\renewcommand{\Re}{\operatorname{Re}}
+
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+
+\newcommand{\bN}[1]{\bigl\|#1\bigr\|}  
+\newcommand{\ang}[1]{\left<#1\right>}  % angular brackets for duality 
+\newcommand{\rst}[1]{\left.#1\right|}  % restriction
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\smo}{\mathcal{o}}
+\newcommand{\pc}{}%}}
+\newcommand{\de}{^{\mathrm{de}}}
+\newcommand{\cav}{^{\mathrm{cav}}}
+\newcommand{\die}{^{\mathrm{de}}}
+\newcommand{\Dir}{_{\mathrm{Dir}}}
+\newcommand{\loc}{{\mathrm{loc}}}
+\newcommand{\inc}{^{\mathrm{inc}}}
+\newcommand{\matr}[1]{\begin{pmatrix} #1 \end{pmatrix}}  % array with parentheses
+\renewcommand{\j}{{\boldsymbol \jmath}}  % dotless j in math mode
+\newcommand{\ovl}{\overline}
+
+\newcommand{\vphi}{\varphi}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\bvphi}{\boldsymbol \varphi}
+\newcommand{\bla}{\boldsymbol \lambda}
+\newcommand{\bpsi}{\boldsymbol \psi}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\bmu}{{\boldsymbol \mu}}
+\newcommand{\bxi}{{\boldsymbol \xi}}
+\newcommand{\bPsi}{{\boldsymbol \Psi}}
+\newcommand{\bPhi}{{\boldsymbol \psi}}   
+\newcommand{\bchi}{{\boldsymbol \chi}}    
+
+\newcommand{\divG}{\operatorname{div_S}}
+\newcommand{\scurl}{\operatorname{curl}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bB}{\bm{B}}
+\newcommand{\bC}{\bm{C}}
+\newcommand{\bE}{\bm{E}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\VH}{\bm{H}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bn}{\bm{n}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bz}{\bm{z}}
+\newcommand{\bv}{\bm{v}}
+\newcommand{\bj}{\bm{j}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bU}{\bm{U}}
+\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\sbV}{\boldsymbol{V}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\J}{\mathcal{J}}
+
+%fields
+\newcommand{\einc}{\bE^{\mathrm{inc}}}
+\newcommand{\escat}{\bE^{\mathrm{scat}}}
+\newcommand{\eref}{\bE^{\mathrm{ref}}}
+% \newcommand{\etot}{\bU^{\mathrm{tot}}}
+\newcommand{\etot}{\bE}
+
+\newcommand{\hinc}{\VH^{\mathrm{inc}}}
+\newcommand{\hscat}{\VH^{\mathrm{scat}}}
+\newcommand{\href}{\VH^{\mathrm{ref}}}
+%\newcommand{\htot}{\VH^{\mathrm{tot}}}
+\newcommand{\htot}{\VH}
+
+\newcommand{\half}{\frac{1}{2}}
+
+%traces
+\newcommand{\tD}{\gamma_{\mathrm{D}}}
+\newcommand{\tN}{\gamma_{\mathrm{N}}}
+\newcommand{\jD}{[\tD]}
+\newcommand{\jN}{[\tN]}
+\newcommand{\mD}{\{ \tD \}}
+\newcommand{\mN}{\{ \tN \}}
+%\newcounter{cont}
+\title{Uncertainty Quantification for Elastic Waves on Multiples Cracks}
+
+\DeclareMathOperator{\spn}{span}
+
+%----------Author 1
+\author{Jos\'e Pinto}
+
+
+
+\usepackage{cleveref}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+In recent years, the scattering of of elastic waves has found multiples applications on engineering. 
+In particular, one of the most important applications is the detection of structural defects by processing the far fields produced by the scattered waves, see  \todo{ref} for example and references therein for detail.
+
+Typically structural defects can take any form, but is fairly common to consider them as cracks placed anywhere in the underlying structure \todo{ref maybe}. For this work we will restrict our-self to two-dimensional problems, so the cracks are represent as open arcs. Furthermore, we will assume that the underlying structure is an unbounded homogeneous medium. 
+%We remark that in contrast to acoustic or electromagnetic-waves radiation conditions for elastic wave implies that the amplitude of the wave decay far from the scatters, hence the assumption of unbounded medium is not as relevant as it is for problems of different nature. 
+
+In this work we will analyze the direct scattering problem in which a fixed number of cracks (of random shape) are illuminated by a elastic plane wave. Our objective is to present an efficient algorithm for  computation of the statistical moments of the far fields, considering the shape and position of the cracks as random variables. 
+
+The most common approach for the approximation of statistical moment are Monte-Carlo simulations. While this approach is simple and not modifications to the direct solver are needed, the convergence rate is limited. 
+
+Alternatively a family of equally simple methos are the Quasi-Montecarlo methods. These methods resemble the conventional finite-dimension quadrature rules in regards to two key proprieties: 
+\begin{enumerate} 
+\item 
+The quadrature points are deterministic. \todo{ dependen de propiedades del problema?}
+\item 
+Better convergence rate are achieved whenever the integrand function is smoother.  
+\end{enumerate}
+The second point is the key propriety to obtain an efficient algorithm. The smoothnes is refer to the integrand function (in our case the far-fields) with respect to the quadrature variables (shape and location of the cracks).
+
+The precise definition of smoothness will be given in \todo{SEC}. We will follow (ref henriquez) showing that we can extend the domain of the far-field to complex shape and locations of cracks, and this extension is differentiable (in a Frechet sense) on some carefully chosen open neighborhood of the real domain, hence by complex value theory we will obtain the desire smoothness for the far-fields. 
+
+We remark that applications of the smoothness proprieties are not restricted to the fast convergence in the computation of statics moments but other methods such as T-matrix, or infinite-dimension interpolation. 
+
+\todo{outline}
+
+\section{Mathematical preliminars }
+\subsection{General Notations}
+
+Vectors are indicated by boldface symbols with Euclidean norm written as $\| \cdot \|_2$, and the scalar product is defined as $\mathbf{x} \cdot \mathbf{y} = \sum_{i=1}^d x_i y_i$, for $\mathbf{x}, \mathbf{y} \in \mathbb{R}^d$, $d \in \mathbf{N}$. Quantities defined volume domains will be written in capital case whereas those on boundaries
+in normal one, e.g., $U : G \rightarrow \mathbb{C}$ while $u:\partial G \rightarrow \mathbb{C}$, for any $G \subset \mathbb{R}^2$.
+
+Let us consider an open domain $G \in \mathbb{R}^d$ for $d \in \{1,2\}$. The space of $p-$integrable functions is denoted $L^p(G)$, for any $p > 1$. Given  $n \in \mathbb{N}$ we denote $\mathcal{C}^n(G)$ the set of $n-$times continuously differentiable functions, and its corresponding subsets $\mathcal{C}^n_0(G)$ of functions with compact support in $G$. 
+
+Of special interest are function with domain in $(-1,1)$ in this case we will omit the mention of the domain $G$ for the definition of the corresponding functional spaces. Furthermore, for $n \in \mathbb{N}$ we define $\mathcal{C}^n_v$ the subspace of $\mathcal{C}^n$ whose $n+1$ derivative is in $L^1$. Finally we refer as $\rho-$analytic to any function in $(-1,1)$ which has an analytic extension to a the Bernstein ellipse of parameter $\rho>1$. \todo{ref}
+
+All the previously defined spaces (as well as other that will be defined throughout the article) are extended to vector values functions  by imposing that each component is in the corresponding scalar space, and the space of vector value is denoted in bold fonts, e.g, for two dimensions $\mathbf{f} \in \mathbf{\mathcal{C}}^n $ iff, $f_1, f_2 \in  \mathcal{C}^n$. 
+
+Open arcs would be defined by a parametrization, to be more precise given 
+
+\subsection{Functional Framework}
+
+For any Banach space of functions, its corresponding dual is denoted with the same symbol with an extra $*$ as super-index. The corresponding evaluation (or dual paring is denoted as) $\langle \cdot , \cdot \rangle$, and an extra sub-index with the domain involved. In the particular case of Hilbert spaces the inner product is denoted $\left( \cdot, \cdot \right)$, again with a sub-index denoting the underlying domain of the function involved. 
+
+Let us consider an open connected domain $G \subset \mathbb{R}^d$, $d \in \{1,2\}$. For $s \in \mathbb{R}$ we denote $H^s(G)$ the standard Sobolev spaces, with $H^0(G) = L^2(G)$. \todo{add ref} 
+
+\todo{spaces on arcs  traces, jumps}
+
+
+
+  
+
+\section{Scattering Deterministic Problem}
+
+\subsection{Geometry}
+\subsection{Scattering Problem}
+
+
+
+The scattering problem for elastic waves for a collection of open arcs $\Gamma$ can be written as follows: 
+
+\begin{problem}
+\label{prob:VolProb}
+Given $j \in \{p,s\}$, we seek $ \mathbf{U} \in \mathbb{\mathbf{H}}^1_\text{loc}(\mathbb{R}^2\setminus \Gamma)$ such that  
+\begin{align*}
+\mu \Delta \mathbf{U}+ (\lambda +\mu) \nabla \nabla \cdot \mathbf{U} + \omega^2 \mathbf{U} &= 0, \quad \text{in } \mathbb{R}^2\setminus \Gamma, \\
+\gamma^k_d \mathbf{U} &= -\gamma^k_d \mathbf{U}^\text{inc}_j, \quad \text{on } \Gamma_k, k \in \{1,2,\hdots, M\} \\
+&\text{+ Radiation Conditions} 
+\end{align*}
+where $\omega$ is the frequency parameter, $\lambda , \mu $ are the lame parameter of the medium $\mathbb{R}^2\setminus \Gamma$, with $\mu >0$, $\lambda > -\mu$. The incident wave could be any of the following two, 
+\begin{align*}
+\mathbf{U}^\text{inc}_p(\mathbf{x}) = \mathbf{d} e^{i k_p \mathbf{x} \cdot \mathbf{d}}, \\
+\mathbf{U}^\text{inc}_s(\mathbf{x}) = \mathbf{d}^\perp e^{i k_s \mathbf{x} \cdot \mathbf{d}},
+\end{align*}
+where $\mathbf{d}$ is a unitary vector in $\IR^2$, $\mathbf{d}^\perp$ is the 90-degrees counterclockwise rotation of $\mathbf{d}$, and $k_p, k_s$ are the wave-numbers given by 
+\begin{align*}
+k_p^2 = \frac{\omega^2}{\lambda+2\mu}, \\
+k_s^2 = \frac{\omega^2}{\mu}.   
+\end{align*}
+Regardless of the right hand side we can use the Helmholtz decomposition to split $\mathbf{U}$ as, 
+\begin{align*}
+\mathbf{U}_p := \frac{-1}{k^2_p}\nabla \nabla \cdot \mathbf{U}, \\
+\mathbf{U}_s := \mathbf{U} - \mathbf{U}_p,
+\end{align*} 
+this decomposition is used to write the radiations conditions: 
+\begin{align*}
+\lim_{r \rightarrow 0}\sqrt{r} \left(   
+\frac{\partial \mathbf{U}_j }{\partial r}- i k_j \mathbf{U}_j
+\right) = 0 ,\quad j = p,s
+\end{align*}
+where $r = \|\vx\|_2$. 
+\end{problem} 
+
+For uniqueness of Problem \ref{prob:VolProb} see kress1996 Theorem 2.1. The existence is consecuence of the boundary integral formulation that is presented in the next section. 
+
+\subsubsection{Boundary Integral Formulation}
+
+The fundamental solution for Problem \ref{prob:VolProb} is given by,  
+\begin{align*}
+\mathbf{G}_{\omega,\lambda, \mu} (\mathbf{x}, \mathbf{y}) := 
+\frac{i}{4 \mu} H^{(1)}_0(k_s d)\mathbf{I}+ \frac{i}{4\omega^2} \nabla_\mathbf{x} 
+\nabla_\mathbf{x} \cdot \left( 
+H^{(1)}_0(k_sd ) - H^{(1)}_0(k_p d)
+\right),
+\end{align*}
+where $d = \|\mathbf{x} -\mathbf{y}\|_2$, $\mathbf{I}$ is the identity matrix, and $H^{(1)}_n$ denote the Hankel function of orden $n$ of first kind. We seek solutions of Problem \ref{prob:VolProb} of the form, 
+\begin{align}
+\label{eq:volrepresentation}
+\mathbf{U}(\vx) = \sum_{q=1}^M \mathbf{SL}^q_{\omega,\lambda, \mu} \mathbf{u}^q (\vx) , 
+\end{align}
+where $\mathbf{SL}^q_{\omega,\lambda, \mu}\mathbf{u}^q(\vx) := \int_{\Gamma_q} \mathbf{G}_{\omega,\lambda, \mu} (\mathbf{x}, \mathbf{y}) \mathbf{u}^q(\mathbf{y})d\mathbf{y}$ denote the Single-layer potential, for the vectorial densities $\mathbf{u}^q$ whose components are denoted $u^{q,1},u^{q,2}$, for every $q = 1,..,M$. Taking traces to \eqref{eq:volrepresentation} we arrive to our boundary integral formulation, that is written as  
+\begin{align}
+\label{eq:bieformulation}
+\gamma^k_d \mathbf{U} = \sum_{q=1}^M \mathbf{V}^{k,q}_{\lambda,\mu} \mathbf{u}^q = -\gamma^k_d \mathbf{U}^{inc}_j, \quad k =1,\hdots,M,
+\end{align}
+for $j = p $ or $j =s $, where $ \mathbf{V}^{k,q}_{\lambda,\mu} = \gamma_d^k  \mathbf{SL}^q_{\lambda,\mu }$ is the weakly-singular operator.
+Notice that we have omitted any mention $j$ on $\mathbf{u^q}$ even though it depends of the right-hand side. Throughout the rest we will continue with this notation, omitting the index $j$ in every quantity, understanding that every result holds for both cases ($j = s$ and $j=p$). Furthermore, we will also omit the sub-indices $\omega, \lambda, \mu$.
+ The representation \eqref{eq:volrepresentation} is ensured to solve the elastic wave equation, and also exhibits the correct behave at infinity regardless the selection of the densities $\mathbf{u}^q$, $q=1,..,M$. To simplify the notation we will define 
+\begin{align*}
+V := \left(
+\begin{matrix}
+ \mathbf{V}^{1,1} &\mathbf{V}^{1,2}& \hdots& \mathbf{V}^{1,M}\\
+\mathbf{V}^{2,1} &\mathbf{V}^{2,2}& \hdots& \mathbf{V}^{2,M}\\
+ & \vdots & \\
+\mathbf{V}^{M,1} &\mathbf{V}^{M,2}& \hdots& \mathbf{V}^{M,M}
+\end{matrix}
+\right), \
+\mathbf{u} := 
+\left(
+\begin{matrix}\mathbf{u}^1 \\
+\mathbf{u}^2 \\
+\vdots \\
+\mathbf{u}^M \end{matrix}
+\right), \ 
+\mathbf{g} := 
+\left(
+\begin{matrix}
+ -\gamma^1_d \mathbf{U}^{inc} \\
+ -\gamma^2_d \mathbf{U}^{inc}\\
+\vdots \\
+ -\gamma^M_d \mathbf{U}^{inc} \end{matrix}
+\right).
+\end{align*}
+The density $\mathbf{u}^q(\vx)$ correspond to the negative of the co-normal jump of $\mathbf{U}$ over $\Gamma_q$ for $q =1,..M$,  the latter defined as
+\begin{align*}
+\mathcal{B}^q \mathbf{U} =
+\lambda \mathbf{n}_q \gamma_d^q(\div(\mathbf{U}))
++ 2 \mu \partial_{\mathbf{n}_q} \mathbf{U}+
+\mu \mathbf{n}_q^\perp \gamma_d^q(\div(\mathbf{U}^\perp))
+\end{align*}
+where the $\mathbf{v}^\perp  = (v_2,-v_1)$, and $\partial_{\mathbf{n}_q}$ is the neumann trace over $\Gamma_q$.  The co-normal derivative represent the traction. 
+\todo{delete this}
+
+\begin{remark}
+The boundary integral formulation can be recasted as a problem to seek multiples functions defined on $(-1,1)$. To see this define $\widehat{\mathbf{u}}^q := \| \mathbf{r'}_q \|^{-1} (\mathbf{u}^q \circ \mathbf{r}_q)$, $\widehat{\mathbf{g}}^q :=\mathbf{g}^q \circ \mathbf{r}_q$, and the integral operators, 
+\begin{align*}
+\widehat{V}^{k,q} \mathbf{f} (t) = 
+\int_{-1}^1 \mathbf{G}(\mathbf{r}_k(t), \mathbf{r}_q(s)) \mathbf{f}(s) ds ,
+\end{align*}
+hence the boundary integral formulation can be recasted as 
+\begin{align}
+\label{eq:harform}
+\widehat{V} \widehat{\mathbf{u}} = \widehat{\mathbf{g}}.
+\end{align}
+In what follows we will only use this recasted version of the boundary integral formulation. 
+\end{remark}
+
+A final point that we want to address in this section is the regularity of $\mathbf{u}^q$. It is well known that $\mathbf{U}$ exhibits singular behavior near the end points of every arc $\Gamma_q$, $q=1,..M$, and hence since $\mathbf{u}^q$ represent the jump of the co-normal trace, we deduce that also show singular behavior at the tip of the edges. For details we refer to \todo{ref costabel}, but we will use the following form of the result.
+
+ Assuming again that every arc is $\rho$-analytic, following \todo{ref costabel} we have that
+$\widehat{\mathbf{u}}^q(t) \sqrt{1-t^2}$ is a $\mathcal{C}^\infty((-1,1))$ function, for $q = 1,\hdots,M$. 
+
+An equivalent conclusion was obtained in our work  \todo{ref arcs} for acoustic waves. There, we did not show the regularity of the densities directly but instead we showed the decay of the coefficients of its Fourier-Chebishev series. For the $\rho-$analytic case this implies $\widehat{\mathbf{u}}^q(t) \sqrt{1-t^2}$ is also $\rho-analityc$, for less regular cases we obtain some form decay of the coefficients which is harder to be linked with a specific form of regularity of $\widehat{\mathbf{u}}^q(t) \sqrt{1-t^2}$, see Lemma \ref{lemma:tsprops} and Remark \ref{rem:regts} bellow for more details.  
+
+\subsection{Discrete Approximation}
+
+We approximate the solutions $\widehat{\mathbf{u}}$ of the Formulation  \eqref{eq:harform}, by a spectral-Galerkin method constructed with the following basis: 
+\begin{align*}
+p_n^j(t) = \frac{T_n(t)}{\sqrt{1-t^2}}\mathbf{e}_j, \quad j \in \{1,2\}
+\end{align*}
+where $n \in \mathbb{N}$, $T_n$ denotes the $n-$order Chebysev polynomial normalized, such that $$ \int_{-1}^1 T_n(t) \frac{T_l(t)}{\sqrt{1-t^2}}dt = \delta_{n,l},$$
+ and $\mathbf{e}_1 = (1,0)$, $\mathbf{e}_2 = (0,1)$. The corresponding vectorial spaces are denoted as 
+\begin{align*}
+P^N  =  \underset{n = 0,..,N \atop j = 1,2}{\spn} {p}^j_n, \quad N \in \mathbb{N},
+\end{align*}
+finally the discretization of $\mathbf{\mathbb{H}}^{-1/2}((-1,1))$ is given by the space $\mathbb{P}^N  := \prod_{q=1}^M Q^N$, whose basis are denoted $p^{j,q}_n$. The discrete formulation reads as, given $N \in \mathbb{N}$ seek $\mathbf{u}^N \in \mathbb{P}^N$ such that, 
+\begin{align}
+\label{eq:discrtetbie}
+\langle \widehat{V} \mathbf{u}^N, p^{j,q}_n\rangle = \langle \widehat{\mathbf{g}} , p^{j,q}_n\rangle, \quad \forall j = 1,2, \ q = 1,..,M, \ n = 0,..,M.  
+\end{align}
+Notice that we do not use a "hat" for the discretization of $\widehat{\mathbf{u}}$ because we will only consider the discrete version of the pulled back problem. Alternatively we can explicitly expand the solution \begin{align}
+\label{eq:densityrec}
+\mathbf{u}^N = \sum_{n = 0,..,N \atop j = 1,2 ; q = 1,..,M} \mathbf{\mathfrak{u}}_n^{j,q}p^{j,q}_n,
+\end{align}
+where $\mathfrak{u} \in \mathbb{C}^{2(N+1)M}$ hence the linear system for the latter is denoted as 
+\begin{align}
+\label{eq:linearsystem}
+\mathbb{V} \mathbf{\mathfrak{u}} = \mathbf{\mathfrak{g}},
+\end{align} 
+where the matrix  $\mathbb{V}$, is defined as 
+\begin{align*}
+\mathbb{V}^{(\tilde{j},k),(j,q)}_{l,m} = \int_{-1}^1 \int_{-1}^1 
+\mathbf{G}(\mathbf{r}_k(t),
+\mathbf{r}_q(s)) p^j_m(s) p^{\tilde{j}}_l(t)
+ds dt,
+\end{align*}
+and the right-hand side is given by 
+${\mathfrak{g}}^{\tilde{j},k}_l := -\int_{-1}^1 \mathbf{U}^{inc} \circ \mathbf{r}_k(t)  p^{\tilde{j}}_l(t) dt$. From classical coercivity we obtain, 
+
+\subsection{Auxiliary Spaces}
+To facilitate the convergence analysis of the spectral-Galerkin method we introduce a family of functional spaces on $(-1,1)$. This section introduce these spaces and give some of their propieties, for a more detailed discussion we refer to \todo{martin a}, we will make use of these spaces and some intermidate tools in \todo{...}. At the end of this section we present the convergence rate for the discrete formulation approximation
+
+First let us recall the classical periodic Sobolev spaces, for $s \geq 0$ these are  defined as 
+\begin{align*}
+H^s_{per}(0,2\pi) = \left\lbrace f \in L^2(0,2\pi) : \| f \|_{H^s_{per}(0,2\pi)} = \left( \sum_{n = -\infty}^{\infty} (1+n^2)^s | f^p_n|^2 \right)^{1/2} < \infty \right\rbrace,  
+\end{align*}
+where $f^p_n = \int_{-\pi}^{\pi}f(\theta) e^{i n \theta} d\theta$. The definition is extended for negative values of $s$ by means of extension of the Fourier transform for distributions \todo{mclean Chapter 3}, so the structure of the norm is the same for all $s \in \IR$.
+
+For a function $f$ on $[-1,1]$ we define two even periodic lifting as the even periodic function function in $[-\pi,\pi]$ given by
+\begin{align*}
+(\mathcal{L}f)(\theta) &= f(\cos \theta) | \sin \theta|,\\
+(\widetilde{\mathcal{L}}f)(\theta) &= f(\cos \theta), 
+\end{align*}
+this definition can be extended to distributions, and motivate the definition of the following spaces, for $s \in \IR$,  
+\begin{align*}
+T^s = \left\lbrace f \in \mathcal{D}^*(-1,1) : \mathcal{L}f \in H^s_{per}(0,2\pi) \right\rbrace,\\
+W^s = \left\lbrace f \in \mathcal{D}^*(-1,1) : \widetilde{\mathcal{L}}f \in H^s_{per}(0,2\pi) \right\rbrace,  
+\end{align*}
+with norms $\|f \|_{T^s} = \| \mathcal{L} f \|_{H^s_{per}(0,2\pi)}$, $\|f \|_{W^s} = \| \widetilde{\mathcal{L}} f \|_{H^s_{per}(0,2\pi)}$ which can also be written explicitly as \begin{align*}
+\|f \|_{T^s} = \left( \sum_{n=0}^\infty (1+n^2)^s |f_n|^2 \right)^{1/2} \\
+\|f \|_{W^s} = \left( \sum_{n=0}^\infty (1+n^2)^s |\widetilde{f}_n|^2 \right)^{1/2}
+\end{align*}
+where  \begin{align*}
+f_n &= \int_{-1}^1 f(t) T_n(t) dt,\\
+\widetilde{f_n} &= \int_{-1}^1 f(t) T_n(t) (1-t^2)^{-1/2} dt,\\
+\end{align*} 
+and the $T_n$ denote the $n-$order normalized Chebishev polynomial. 
+ Now we make the connection with the classical Sobolev spaces in $(-1,1)$
+
+\todo{duality of Ts and Ws}
+\begin{lemma}
+\label{lemma:tsprops}
+The norm of $T^{-1/2}$ is equivalent to the one of $H^{-1/2}((-1,1))$, thus they can be identified as the same space. Same holds for $W^{1/2}$ with $H^{1/2}((-1,1))$.
+
+Moreover, $T^s$ and $W^s$ are related by the isomorphism $f(t) \in T^s \mapsto \sqrt{1-t^2}f(t) \in W^s$. 
+
+Furthermore,  for $s  \geq \frac{1}{2}$, and $k \in \IN$ such that $k>s-\frac{1}{2}$ then if $f \in \mathcal{C}^{k-1}$ and $f^{(k)} \in L^1(-1,1)$ we have that $\frac{f}{\sqrt{1-t^2}} \in T^s$, and $f \in W^s$.Conversely if $f \in T^s$ for $s>\frac{1}{2}$, then $\sqrt{1-t^2}f \in \mathcal{C}^0$. 
+\end{lemma}
+
+\begin{proof}
+First part is direct consequence of \todo{ref Averseng}. Second part is obtained by expressing $\frac{f}{\sqrt{1-t^2}} = \sum_{n\geq 0} f_n T_n$, and the behavior of the Fourier-Chebishev coefficients for differential function, see \todo{trefetten chapter 7}. The converse use this expansion and the dominated convergence theorem. 
+\end{proof}
+
+\begin{remark}
+\label{rem:regts}
+The converse in the previous lemma can be expanded for the continuity of the derivatives by bounding the derivative of the Chebyshev polynomials recursivly, for example is easy to see that for $f \in T^s$ with $s>\frac{3}{2}$ then $\sqrt{1-t^2}f  \in \mathcal{C}^1$. However, further bounds are tedious to obtain and not of particular interest for the present work. 
+\end{remark}
+
+The following theorem characterize the action of the operator $\widehat{V}$ in the spaces $\mathbf{T}^s := \prod_{q=1}^M T^s$, and $\mathbf{W}^s  := \prod_{q=1}^M W^s$. 
+
+\begin{theorem} 
+\label{theorm:wellpossed}
+The operator $\widehat{V} : \mathbf{T}^s \rightarrow \mathbf{W}^{s+1}$ is an isomorphism. 
+\end{theorem}
+\begin{proof}
+The proof is based on Fredholm-alternative, and follows same arguments of the \todo{ref saranen 6.3.1}, using the kernel split done in Appendix \ref{ap:kernelsplit}, and the compactness of cross interactions follows from the compact embedding $W^{s_1} \rightarrow W^{s_2}$ for $s_1 > s_2$ which is easily proved by making finite dimensional approximation to the embedding operator.
+Finally the injective is proven using the same ideas that in \todo{ref arcs}.
+\end{proof}
+
+A classical result \todo{see sauter...} is that for well-posed problems any Garlerkin discretization lead to asymptotic quasi-optimal error bounds, in particular we the following result.
+
+\begin{proposition}
+\label{prop:quasiopti}
+There exist $N_0 \in \IN$ (depending on $\Gamma, \lambda, \mu$) such that for $N \geq N_0$ there exist a unique $\mathbf{u}^N$, and we have the quasi-optimality estimation
+\begin{align*}
+\| \widehat{\mathbf{u}} - \mathbf{u}^N \|_{\mathbf{T}^s}  \leq C(s,\Gamma,\omega, \lambda, \mu) \inf_{\mathbf{v}^N \in \mathbb{P}^N} \| \widehat{\mathbf{u}} - \mathbf{v}^N \|_{\mathbf{T}^s} .
+\end{align*}
+for any $s \in \IR$. 
+\end{proposition}
+
+\begin{remark}
+\label{rem:directconrg}
+The value of $N_0$ in the previous Proposition also depends of the parameter of the problem, ($s,\Gamma,\omega, \lambda, \mu$). Furthermore the values of $N_0$ and the constant $C$ of the previous result can be characterized as follows. 
+
+For a given $s\in IR$ Let us define the following functions, 
+\begin{align*}
+A(N)  := \inf_{\mathbf{u} \in \mathbb{P}^N} \sup_{\mathbf{v} \in\mathbb{P}^N } \frac{|\langle \widehat{V} \mathbf{u} , \mathbf{v} \rangle|}{ \| \mathbf{u} \|_{\mathbf{T}^s}
+\|\mathbf{v} \|_{\mathbf{T}^{-s-1} }} \\ 
+B(N)  := \inf_{\mathbf{v} \in \mathbb{P}^N} \sup_{\mathbf{u} \in\mathbb{P}^N } \frac{|\langle \widehat{V} \mathbf{u} , \mathbf{v} \rangle|}{ \| \mathbf{u} \|_{\mathbf{T}^s}
+\|\mathbf{v} \|_{\mathbf{T}^{-s-1} }} 
+\end{align*}
+The value of $N_0$ is the infimum over $\IN$ such that $A(N)$ and $B(N)$ are uniformly bounded by bellow away from 0 for every $N\geq N_0$. On the other hand the value of the constant is 
+\begin{align}
+\label{constant:infsup}
+C (s,\Gamma, \omega,\lambda,\omega) = \left( 1+ \frac{\|\widehat{V}\|_{\mathcal{L}(\mathbf{T}^s,\mathbf{W}^{s+1})}}{\gamma} \right),
+\end{align}
+where $\gamma = \inf_{N \geq N_0} A(N)
+$.
+
+\end{remark}
+
+Now we present the convergence rate for the approximation $\mathbf{u}^N$ defined as the solution of the discrete boundary integral Formulation \eqref{eq:discrtetbie}. 
+
+\begin{proposition}
+\label{prop:demidisconv}
+For $N \in \IN$ as in Proposition \ref{prop:quasiopti}, $s_0, s \in \IR$ such that $s>0$, 
+\begin{align}
+\| \widehat{\mathbf{u}} - \mathbf{u}^N \|_{\mathbf{T}^{s_0}}  \leq C(s_0, \Gamma,\omega, \lambda, \mu) N^{-s} \| \widehat{\mathbf{u}}\|_{\mathbf{T}^{s+s_0}}.
+\end{align}
+\end{proposition}
+\begin{proof}
+From the quasi-optimality, and Lemma \ref{lemma:tsprops} we have that 
+\begin{align*}
+\| \widehat{\mathbf{u}} - \mathbf{u}^N \|_{\mathbf{T}^{s_0}}^2  \leq C(s_0,\Gamma, \omega, \lambda, \mu) \sum_{ j = 1,2 \atop q = 1,..,M} \inf_{v^N \in (1-t^2)^{-1/2}\spn T_n} \| \widehat{u}^{j,q} - v^N \|^2_{T^{s_0}}
+\end{align*}
+we can expand $\widehat{u}^{j,q} = \sum_{n \geq  0 } \widehat{u}^{j,q}_n \frac{T_n}{\sqrt{1-t^2}}$, and then for every $j,q$ select $v^N$ as the first $N+1$ terms of the expansion hence 
+\begin{align*}
+\| \widehat{\mathbf{u}}^{j,q} - v^N \|^2_{T^{s_0}}  = \sum_{n > N} (1+n^2)^{s_0} |\widehat{u}^{j,q}_n|^2 \leq C N^{-2s} \sum_{n \geq 0} (1+n^2)^{s_0+s} |\widehat{u}^{j,q}_n|^2
+\end{align*}
+from this last equation the result follows directly. 
+\end{proof}
+
+\begin{remark}
+\label{rem:utsnorm}
+We can further bound the error using that 
+\begin{align*}
+\| \widehat{\mathbf{u}}\|_{\mathbf{T}^{s+s_0}} \leq \| (\widehat{V})\|_{\mathcal{L}(\mathbf{W}^{s+s_0+1},\mathbf{T}^{s+s_0})} \| \widehat{\mathbf{g}} \|_{\mathbf{W}^{s+s_0+1}}
+\end{align*}
+ which is consequence of Theorem \ref{theorm:wellpossed}.
+\end{remark}
+
+\subsection{Integral Approximation}
+
+In this section we briefly detail how the matrix and right-hand side terms in \eqref{eq:linearsystem} are approximated.
+
+Let us star with the right hand side assiciated integrals, which are of the canonical form 
+\begin{align*}
+\mathbf{g}^{q}_l = \int _{-1}^1 \widehat{\mathbf{g}}^q\frac{T_l}{\sqrt{1-t^2}}dt, \quad l=0,..,N,
+\end{align*}
+where $N \in \IN$. Integration of this form are computed by finding the Chebyshev expansion $\widehat{\mathbf{g}}^q$ by interpolation and using the orthogonality of Chebishev polynomials. If the interpolation is done using $L$-points and we denote $\mathbf{g}^{q,L}_l$ the approximation, from \todo{ref treffeten alliasing} we obtain the error bound 
+\begin{align*}
+|\mathbf{g}^{q}_l -\mathbf{g}^{q,L}_l| \leq C( \widehat{\mathbf{g}}^q) \rho^{-L}, \quad L> N.
+\end{align*} 
+For the matrix term we use a decomposition of the fundamental solution of the form
+\begin{align}
+\label{eq:gfdecomp}
+\mathbf{G}(\mathbf{r}_k(t),
+\mathbf{r}_q(s))  = \mathbf{G}^R_{k,q}(t,s) - \frac{1}{2\pi} \log |t-s| \mathbf{J}_{k,q}(t,s).
+\end{align}
+where $\mathbf{G}^R_{k,q}(t,s)$ is $\rho-$analityc in both variables, thus the integration and the error are similar to the right-hand side. The second part is done by a product rule. In detail, we can construct the following approximation which converge exponentially in the number of terms used, 
+\begin{align*}
+\mathbf{J}_{k,q}(t,s) \approx \sum_{n=0}^N\sum_{\widetilde{n}=0}^{\widetilde{N}} \mathbf{j}^{k,q}_{n,\widetilde{n}} T_n(s) T_{\widetilde{n}}(t),
+\end{align*}
+on the other hand, the  coefficients for the expansion of the logarithm term have an analytic expression hence we 
+\begin{align*}
+\log |t-s|  = \sum_{n=0}^\infty d_n T_n(t) T_n(s),
+\end{align*}
+with known coefficients $d$, the matrix term $m,l$ are then exponentially approximated as 
+\begin{align*}
+\sum_{n=0}^N\sum_{\widetilde{n}=0}^{\widetilde{N}} \frac{\mathbf{j}^{k,q}_{n,\widetilde{n}}}{4}(d_{n+m} - d_{|n-m|}+d_{l+\widetilde{n}}-d_{|l-\widetilde{n}|})
+\end{align*}
+the exact expressions for the decomposition of the fundamental solution are given in Appendix \todo{add}
+
+%\subsection{Compression Algorithm}
+%
+%Following the ideas presented in \todo{ref arcs}, the matrices coming from the discretization of cross interactions \footnote{cross interacitions are the action of the operator $\mathbf{V}^{k,q}$ for pairs $k \neq q$.} can bee approximated effectively by sparse matrices. 
+%
+%The detailed analysis and implementation are given again in \todo{ref arcs}, but in short the compression algorthm works by a given tolerance level $\epsilon$, it try to eliminate (in a fast manner) all the entries that are ensured to be lower than the tolerance. 
+%
+%If we denote by $\mathbf{u}^{N,\epsilon}$ the discrete solution obtained as in \eqref{eq:densityrec}, but with vector coefficients $\mathbf{\mathfrak{u}}^\epsilon$ obtained from the solution of the compressed linear system we have the following result. 
+%
+%\begin{theorem}
+%Under the hypothesis of Proposition \ref{prop:demidisconv} we have that 
+%$$
+%\| \widehat{\mathbf{u}} - \mathbf{u}^{N,\epsilon} \|_{\widetilde{\mathbb{H}}^{-1/2}((-1,1))}  \leq C(\Gamma,\omega, \lambda, \mu) ( N^{-s} \| \widehat{\mathbf{u}}\|_{T^{s-1/2}} + \epsilon N^{3/2} \| \widehat{\mathbf{g}} \|_{\mathbf{\mathbb{H}}^{1/2}((-1,1))}).
+%$$
+%\end{theorem}
+%\begin{remark}
+%The constant in the previous Theorem is the same than in Proposition \ref{prop:demidisconv}.
+%\end{remark}
+	\section{Uncertainty Quantification Problem}
+
+In the previous section we have limited to analyses the direct elastic-wave problem on a fixed configuration of open arcs $\Gamma$. Our interest now is to extend the analysis on configurations which depends on a stochastic parameter. 
+
+The main objective is to provide the convergence rate for the computation of the first statistical moment, in terms of the number of simulations, when this are approximated with a quasi-montecarlo method. 
+
+Let us begin by introducing the now stochastic configuration and the corresponding problem.  
+
+Let us consider the $Y = \left[\frac{-1}{2}, \frac{1}{2}\right]^{\IN} \subset \ell^\infty$ with Lebesgue measure as our probablity space and sequence of $\rho-$analytic functions $\mathbf{b}_j : (-1,1) \rightarrow \IR^2$. For any $\mathbf{y} \in Y^M:= \prod_{q =1}^M Y$ and a configuration $\Gamma$ given by the parametrizations $\{\mathbf{r}_q\}_{q=1}^M$, we define the configuration $\Gamma(\mathbf{y})$ as the arcs given by the following parametrizations: 
+\begin{align*}
+\mathbf{r}_q(y^q) =  \mathbf{r}_q+ 
+\sum_{j=1}^{\infty} y^q_j \mathbf{b}_j,  \quad q= 1,..,M.
+\end{align*}
+We remark that this is a fairly standard form for the uncertainty parametrization \todo{refs for details}. 
+
+The boundary integral equation reads as to seek $\widehat{\mathbf{u}}(\mathbf{y}) \in \widetilde{\mathbb{H}}^{-1/2}((-1,1))$ such that 
+\begin{align}
+\label{eq:stcsbie}
+\widehat{V}(\mathbf{y})\widehat{\mathbf{u}}(\mathbf{y})  = \widehat{\mathbf{g}}(\mathbf{y}), 
+\end{align}
+for a initial configuration $\Gamma$ and every $\mathbf{y} = (y^1,y^2,..,y^M) \in Y^M$. To ensure that the problem is well-posed for every $\mathbf{y}$ we need some assumptions on the family of the functions $\mathbf{b}_j$, $j \in \IN$, that ensure that not self or cross crossing between the arcs occurs for any possibility of $\mathbf{y} \in Y^M$.  To achive this and state some other proprieties that will be needed later on, we will work under the following conditions:  
+
+\begin{assumption}
+\label{ass:nocross} The family of functions $\mathbf{b}_j : [-1,1] \rightarrow \IR^2$ are $\rho$-analityc for every $j \in \IN$, and also 
+\begin{enumerate}
+\item
+Their $\mathbf{\mathcal{C}}^2$ norms are $p$ sumable for a given $p \in (0,1)$. 
+\item (no self-crossing) 
+$\sum_{j=1}^\infty  \sup_{t \in [-1,1]}\| \mathbf{b}'_j(t) \| < \inf_{t \in [-1,1]}\| \mathbf{r}'_q(t)\|$, for every $q =1,..,M$.  
+\item 
+(no cross-crossing)
+Assumme that exist $\{\mathbf{c}_1,..,\mathbf{c}_M \} \subset \IR^2$ and $\{ \delta_1,.., \delta_M\} \subset \IR$, such that 
+$\|\mathbf{r}_q(t) - \mathbf{c}_q(t)\| < \delta_q$ for every $q =1,..,M$, and the balls centered in $\mathbf{c}_q$ with radious $2\delta_q$ are mutually disjointed for every $q$ as before. We further assume that 
+$$\sum_{j=1}^\infty \sup_{t \in [-1,1]} \| \mathbf{b}_j(t)\|  < \inf_{q=1,..,M}\delta_q,$$
+which ensure that no arcs intersect another for every possibility of $y \in Y$.  
+\item 
+\todo{check if this is really needed } the real sequence $\|\mathbf{b}_j\|_{\mathbf{\mathcal{C}}^2}$ is decreasing. 
+\item 
+The extension to the bersetin ellipse of the components of $\mathbf{b}_j$ form a sumable sequence, i.e. the sequence $n_j = \sup_{z \in E_\rho} \| \mathbf{b}_j (z) \|$ is such that $\sum_{j=1}^\infty n_j < \infty$. 
+\end{enumerate}
+\end{assumption}
+
+\begin{remark}
+One could also ensure that no self crossing occurs if we restrict our-self to the case in which the initial configuration $\Gamma$ is given by a parametrizions of the form $(t, r_q(t))$ and the functions $\mathbf{b}_j $ have  the structure  $(0, b_j(t))$. 
+\end{remark}
+
+\begin{remark}
+Last condition ensure that arcs $\mathbf{r}_q(y)$ are also $\rho-$analytic (for every $q \in \{1,..,M\}$ and $y \in Y$) as well as to bound the maximum of each component on the corresponding Berstein's ellipse. Potentially this can also be used to study the quadrature error for different values of $\mathbf{y}$. 
+\end{remark}
+The last element that we need to introduce is the quantity of interest. In general the latter will be given by a function acting on $\widehat{\mathbf{u}}(\mathbf{y})$. We will consider the posibility that the function also depends of $\mathbf{y}$, for example we will later consider the total ($p$ or $s$) \todo{mean} far-fields defined as 
+\begin{align*}
+F_s(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y})) =  \sum_{q=1}^M
+  \frac{1}{\lambda+2\mu}\frac{e^{i\frac{\pi}{4}}}{\sqrt{8 \pi k_p }} 
+  \int_{\| \mathbf{x}\| = 1}\int_{-1}^1 \mathbf{x} \cdot \widehat{\mathbf{u}}_q(\mathbf{y}) (t) \mathbf{x} e^{-i k_p \mathbf{x} \cdot \mathbf{r}_q(y^q)(t)} dt d\mathbf{x}, \\
+F_p(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y})) = \sum_{q=1}^M
+  \frac{1}{\mu}\frac{e^{i\frac{\pi}{4}}}{\sqrt{8 \pi k_s }} 
+  \int_{\| \mathbf{x}\| = 1}
+  \int_{-1}^1 \left( 
+  \widehat{\mathbf{u}}_q(\mathbf{y}) (t)-
+    \mathbf{x} \cdot \widehat{\mathbf{u}}_q(\mathbf{y}) (t) \mathbf{x} \right) e^{-i k_p \mathbf{x} \cdot \mathbf{r}_q(y^q)(t)} dt    d\mathbf{x},
+\end{align*} 
+where $k_s , k_p$ are defined as in \todo{ref}. In a more abstract setting we will denote the quantity of interest $G(\mathbf{y})$ and assume the following,
+
+\todo{introduce multiindex notation somwhere..}
+
+\begin{assumption}
+\label{ass:g}
+The funcition $G(\mathbf{y})$ is a linear bounded functional acting on $\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))$, for every $\mathbf{y} \in Y^M$. Furthermore we assume that the norms of $G$ are uniformelly bounded, i.e.
+\begin{align*}
+\sup_{\mathbf{y} \in Y^M} \| G(\mathbf{y})\|_{\left(\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))\right)^*} < \infty,
+\end{align*} 
+Moreover we will also need to bounds of how is $G$ affected by change in the geometry, in particular we will use the following bound 
+\begin{align*}
+| G(\mathbf{y})(\mathbf{u}) -G(\mathbf{x})(\mathbf{u})  | \leq C \|\mathbf{u}\|_{\widetilde{\mathbb{H}}^{-1/2}((-1,1))} \sum_{q=1}^M\| \mathbf{r}_q(y^q) - \mathbf{r}_q(x^q)\|_{\mathbf{\mathcal{C}}^2}, 
+\end{align*}
+for every $\mathbf{y},\mathbf{x} \in Y^M $, and $ \mathbf{u} \in \widetilde{\mathbb{H}}^{-1/2}((-1,1))$. Notice that  $C$ do not depends of $\mathbf{y},\mathbf{x}$, or $\mathbf{u}$.
+\end{assumption}
+
+Under Assumptions \ref{ass:nocross} and \ref{ass:g} we now formulate our uncertainty quantification problem as to compute 
+\begin{align*}
+I(G)(\widehat{\mathbf{u}}):=\int_{Y^M} G(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y}))d\mathbf{y},
+\end{align*}
+where $\widehat{\mathbf{u}}(\mathbf{y})$ is, again, the solution of the pulled-back integral equation formulation of the elastic-wave problem defined in \eqref{eq:stcsbie}.  
+
+\subsection{Convergence Analysis}
+
+Now our focus is to approximate $I(G)(\widehat{\mathbf{u}})$. Following \todo{ref} we need to make three approximations, namely
+\begin{enumerate}
+\item 
+The infinite dimension of the spaces $Y$ has to be truncated to a finite dimension $S$, the resulting space will be denoted $Y_S$. We will also make an abuse of notation and denote by $Y_S$ the subspace of $Y$ with, at most, only the first $S$-components different from 0. 
+\item 
+The function $\widehat{\mathbf{u}}(\mathbf{y})$ is approximated by $\mathbf{u}^N(\mathbf{y})$, for $N \in \IN$ and and $\mathbf{y} \in Y_S^M$. 
+\item 
+The truncated integral $I_S(G)(\widehat{\mathbf{u}}):=\int_{Y_S^M} G(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y}))d\mathbf{y}$ has to be approximated by a special quadrature rule in high-dimension. The quadrature will be denoted by $Q_S(G)(\widehat{\mathbf{u}})$, more details will be given in Section \todo{ref}.
+\end{enumerate} 
+The error analysis is done by splinting the contributions accordingly, 
+\begin{align*}
+\begin{split}
+| I(G)(\widehat{\mathbf{u}}) - Q_S(G)(\mathbf{u}^N)| \leq 
+|I(G)(\widehat{\mathbf{u}})  -I_S(G)(\widehat{\mathbf{u}})| +
+|
+I_S(G)(\widehat{\mathbf{u}})-
+I_S(G)(\mathbf{u}^N)
+| +\\
+|
+I_S(G)(\mathbf{u}^N)-
+Q_S(G)(\mathbf{u}^N)
+|.
+\end{split}
+\end{align*}
+To estimate the different errors we need to have a notion of smoothness respect to the parameters $\mathbf{y} \in Y^M$. In the literature we find two different scheme to define and utilize the smoothness of the associated maps as functions of $\mathbf{y} \in Y^M$. 
+
+The first, and more direct approach, is to recursibly show that Frechet derivatives exist and are uniformly bounded. 
+
+The second, is based on the complex-function theory for Banach-spaces. The general idea is to extend the domain $Y^M$ to a open complex domain and show that the functions can be extended to a functions with complex Frechet derivative. Following classical results of complex variable theory, the existence of only one complex derivative ensure the existence of derivatives of arbitrary order, moreover, these can be bounded directly using the cauchy integral theorem. 
+
+In this work we will use the complex-variable alternative. Now we proceed to introduce the basic concepts of smoothness in complex variable. \todo{add refs}
+
+For a sequence $\{\\rho_j\}_{j \in \IN}$ of real numbers, such that $\rho_j  >1$ we define a sequence of complex tubes by 
+\begin{align*}
+\mathcal{T}_j := \left\lbrace z \in \IZ : \text{dist}(z,[-1,1]) \leq \rho_j-1 \right\rbrace.
+\end{align*}
+Notice that for every $j \in \IN$, $\mathcal{T}_j$ is an closed domain, we will make use of the following family of tubes 
+\begin{align*}
+\mathcal{T}_{\rho} = \prod_{j \in \IN} \mathcal{T}_{\rho_j} \supseteq Y, \\
+\mathcal{T}^M_{\rho} = \prod_{k=1}^M \mathcal{T}_{\rho} \supseteq Y^M.
+\end{align*}
+now we define the class of holomorphy functions  on our complex tubes. 
+\begin{definition}
+Given $\epsilon >0$, $p \in (0,1)$, a real $p$-sumable sequence $\{b_j\}_{j \in \IN}$, and $n \in \IN$ . We say that $f:Y^n\rightarrow B$, where $B$ is a Banach space, is a ($b$,p,$\epsilon$)-holomorphy function if
+\begin{enumerate}
+\item The function $f$ is bounded in $Y^n$.
+\item 
+For any real sequence $\{\rho_j\}_{j \in \IN}$ of real numbers, such that $\rho_j  >1$ that satisfy 
+\begin{align*}
+\sum_{j \in \IN} (\rho_h -1) b_j < \epsilon, 
+\end{align*}
+The function $f$ admits a extension to a set of the form $\mathcal{O}^n_\rho = \prod_{k=1}^n \prod_{j \in \IN} \mathcal{O}_{\rho_j} \supset \mathcal{T}^n_\rho$, where each set $\mathcal{O}_{\rho_j}$ is open, and the extension is holomophic in each variable. 
+\item 
+There exist a set $\widetilde{\mathcal{O}}_\rho^n =  \prod_{k=1}^n \prod_{j \in \IN} \widetilde{\mathcal{O}}_{\rho_j}$ such that for every $j \in \IN$, $\widetilde{\mathcal{O}}_{\rho_j} \supset \overline{\mathcal{O}}_{\rho_j}$, and $\widetilde{\mathcal{O}}_{\rho_j}$ is an open subset. Futhermore, $f$ can also be exteded to $\widetilde{\mathcal{O}}_\rho^n$ and the extension is bounded as 
+\begin{align*}
+\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho^n } \| f(\mathbf{z})\|_B \leq C(\epsilon).
+\end{align*}
+\end{enumerate}
+\end{definition}
+The following results are established in Appendix \todo{todo} and are the main tools to establish the convergence rate for the approximation of $I(G)(\widehat{\mathbf{u}})$.
+\begin{proposition}
+\label{prop:convgaux}
+Under assumptions \ref{ass:g}, \ref{ass:nocross},
+\begin{enumerate}
+\item 
+The operator $\widehat{V}(\mathbf{y})$ is continuous in the $\mathbf{y}$ variable when $Y^M$ is equipped with the product topology. 
+\item
+ There exist $\epsilon >0$ such that the map $\mathbf{y} \in Y^M \mapsto \widehat{\mathbf{u}}(\mathbf{y})$ is $(\|\mathbf{b}_j\|_{\mathbf{\mathcal{C}}^2}, p, \epsilon)$-holomorphy, where, $p$ is the same than in Assumption \ref{ass:nocross}.
+\item 
+The map  $\mathbf{y} \in Y^M \mapsto \widehat{\mathbf{u}}(\mathbf{y})$ is Frechet diferentiable in $Y^M$, and 
+ for $\mathbf{y}$, $\mathbf{x} \in Y^M$ we have that 
+\begin{align*}
+\|\widehat{\mathbf{u}}(\mathbf{x}) - \widehat{\mathbf{u}}(\mathbf{y}) \| \leq C(\Gamma, \omega, \lambda, \mu) \sum_{q=1}^M \| \mathbf{r}_q(\mathbf{x}^q)-\mathbf{r}_q(\mathbf{y}^q) \|_{\mathbf{\mathcal{C}^2}}.
+\end{align*}
+\end{enumerate}
+\end{proposition}
+\begin{remark}
+One can show that using the second point in the previous proposition and some extra arguments is possible to obtain the third part\footnote{This is equivalent to say that the existence of all Gateaux on a domain implies the existence of the Frechet derivative. }. However, the proof of the $(b,p,\epsilon)-$holomorphy is done by first establishing Frechet differentiablity so we split the two points. 
+\end{remark}
+The results of the previous Proposition can be used to prove the error bounds for the first two terms on the approximation of $I(G)(\widehat{\mathbf{u}})$. The final term is also approximaed using these results, but since we need to introduce some extra notions for the high-order quadrature we will limit this section to the analysis of the first two only. Let us start with the convergence rate of the dimension truncation. 
+
+
+\begin{proposition}
+Under assumptions \ref{ass:nocross}, and \ref{ass:g} we have the following bound
+\begin{align}
+|I(G)(\widehat{\mathbf{u}})  -I_S(G)(\widehat{\mathbf{u}})| < C \frac{M}{2} \min \left( \frac{1}{1/p-1},1\right) \left( \sum_{j \in \IN} \| \mathbf{b}_j \|_{\mathbf{{\mathcal{C}}^2}}^p\right)^{1/p}S^{-(1/p-1)}, 
+\end{align}
+where $p$ is the same than in Assumption \ref{ass:nocross}. 
+\end{proposition}
+\begin{proof}
+For $\mathbf{y} \in Y^M$ and $S \in \IN$ we will denote by $\mathbf{y}^S = ( (y^S)^1,..,(y^S)^M)$, where 
+$$
+(y^S)^q_j := \begin{cases}
+y^q_j \quad \text{for }j\leq S,\\
+0 \quad \text{for }j> S,
+\end{cases}
+, \quad q =1,..,M \ j \in J. 
+$$
+Thus by definition we have
+\begin{align*}
+|I(G)(\widehat{\mathbf{u}})  -I_S(G)(\widehat{\mathbf{u}})| \leq  \frac{1}{2} |G(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y}))-G(\mathbf{y}^S)(\widehat{\mathbf{u}}(\mathbf{y}^S))|
+\end{align*}
+hence, 
+\begin{align*}
+|I(G)(\widehat{\mathbf{u}})  -I_S(G)(\widehat{\mathbf{u}})| \leq  \frac{1}{2} \left( |G(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y}))-
+G(\mathbf{y^S})(\widehat{\mathbf{u}}(\mathbf{y}))|+|
+G(\mathbf{y^S})(\widehat{\mathbf{u}}(\mathbf{y}))-G(\mathbf{y}^S)(\widehat{\mathbf{u}}(\mathbf{y}^S))|\right)
+\end{align*}
+by Assumption \ref{ass:g} we can estimate the first term of the right hand side as 
+\begin{align*}
+ |G(\mathbf{y})(\widehat{\mathbf{u}}(\mathbf{y}))-
+G(\mathbf{y^S})(\widehat{\mathbf{u}}(\mathbf{y}))| \leq C \|\widehat{\mathbf{u}}(\mathbf{y})\|_{\widetilde{\mathbb{H}}^{-1/2}((-1,1))} \sum_{q=1}^M \|\mathbf{r}_q(y^q) -
+\mathbf{r}_q((y^S)^q)\|_{\mathbf{\mathcal{C}}^2},
+\end{align*}
+and by the second point in Proposition \ref{prop:convgaux} we have that $ \|\widehat{\mathbf{u}}(\mathbf{y})\|_{\widetilde{\mathbb{H}}^{-1/2}}$ is unifomily bounded. On the other hand by the uniform bound in Assumption \ref{ass:g}, and the third point in the same proposition the second term is bounded directly as 
+\begin{align*}
+|
+G(\mathbf{y^S})(\widehat{\mathbf{u}}(\mathbf{y}))-G(\mathbf{y}^S)(\widehat{\mathbf{u}}(\mathbf{y}^S))| \leq C \sum_{q=1}^M \|\mathbf{r}_q(y^q) -
+\mathbf{r}_q((y^S)^q)\|_{\mathbf{\mathcal{C}}^2}
+\end{align*}
+the proof is finished by bounding the terms $\|\mathbf{r}_q(y^q) -
+\mathbf{r}_q((y^S)^q)\|_{\mathbf{\mathcal{C}}^2}$ as in \todo{ref 2.29 Higher Order Quasi–Monte Carlo Integration for Holomorphic, ParametricOperator Equations}.
+\end{proof}
+
+Now we focus in the convergence of the second term, this is based on the result given by Proposition \ref{prop:demidisconv}, and the characterization of the constant and the value $N_0$ presented in Remark \ref{rem:directconrg}. 
+
+\begin{lemma}
+\label{lemma:CN0}
+Under Assumption \ref{ass:nocross}, There exist $N_0$ such that for any $s>0$, and $N\geq N_0$.
+\begin{align*}
+\| \widehat{\mathbf{u}}(\mathbf{y}) - \mathbf{u}^N(\mathbf{y}) \|_{\widetilde{\mathbb{H}}^{-1/2}((-1,1))}  \leq C(\Gamma,\omega, \lambda, \mu) N^{-s} \| \widehat{\mathbf{u}}(\mathbf{y})\|_{T^{s-1/2}}, \quad \forall \mathbf{y} \in Y^M,
+\end{align*}
+where $C$ and $N_0$ are independent of $\mathbf{y}$.
+\end{lemma}
+\begin{proof}
+We need to show that we can select $N_0$ and $C$ that works for every possible $\mathbf{y}$. Following the discussion on Remark \ref{rem:directconrg} we define the following
+functions 
+\begin{align*}
+A_\mathbf{y}(N)  := \inf_{\mathbf{u} \in \mathbb{P}^N} \sup_{\mathbf{v} \in\mathbb{P}^N } \frac{|\langle \widehat{V}(\mathbf{y}) \mathbf{u} , \mathbf{v} \rangle|}{\| \mathbf{u} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})}
+\|\mathbf{v} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})} } \\ 
+B_\mathbf{y}(N)  := \inf_{\mathbf{v} \in \mathbb{P}^N} \sup_{\mathbf{u} \in\mathbb{P}^N } \frac{|\langle \widehat{V}(\mathbf{y}) \mathbf{u} , \mathbf{v} \rangle|}{\| \mathbf{u} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})}
+\|\mathbf{v} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})} } 
+\end{align*}
+and the following subsets of $Y^M$. 
+\begin{align*}
+a(N,c) = \{ \mathbf{y} \in Y^M : \inf_{n \geq N} A_\mathbf{y}(n) > c \} , \\
+b(N,c) = \{ \mathbf{y} \in Y^M : \inf_{n \geq N} B_\mathbf{y}(n) > c \} . 
+\end{align*}
+Now we will show that $a(N,c)$ and $b(N,c)$ are open subsets in the product topology. Considering $\mathbf{y} \in a(N,c)$ for some $N \in \IN$ and $c >0$, and name 
+$$D = \inf_{n\geq N}A_y(n) $$
+since $D>C$ there exist $\epsilon >0$ such that $D > C+ \epsilon$. On the other hand, by definition of the function $A_y(n)$ we have that for every $n >N$ and $\mathbf{u} \in \mathbb{P}^N$ there is a $\mathbf{v}(\mathbf{u},n) \in \mathbb{P}^N$ such that 
+\begin{align*}
+\frac{|\langle \widehat{V}(\mathbf{y}) \mathbf{u} , \mathbf{v}(\mathbf{u},n) \rangle|}{\| \mathbf{u} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))}
+\|\mathbf{v}(\mathbf{u},n) \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})} } > C + \epsilon,
+\end{align*}
+now by the continuity of $\widehat{V}(\mathbf{y})$ (in the product topology by \ref{prop:convgaux}) we know that there in a neighborhood of $\mathbf{y}$ such that for any $\mathbf{x}$ in the neighborhood  we have that 
+\begin{align*}
+\| \widehat{V}(\mathbf{y})- \widehat{V}(\mathbf{x}) \|_{\mathcal{L}(\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1)),{\mathbb{H}}^{\frac{1}{2}}((-1,1)))} < \frac{\epsilon}{2},
+\end{align*}
+hence we have 
+\begin{align*}
+\begin{split}
+\frac{|\langle \widehat{V}(\mathbf{x}) \mathbf{u} , \mathbf{v}(\mathbf{u},n) \rangle|}{\| \mathbf{u} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))}
+\|\mathbf{v}(\mathbf{u},n) \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})} } \geq  
+\frac{|\langle \widehat{V}(\mathbf{y}) \mathbf{u} , \mathbf{v}(\mathbf{u},n) \rangle|}{\| \mathbf{u} \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))}
+\|\mathbf{v}(\mathbf{u},n) \|_{\widetilde{\mathbb{H}}^{\frac{-1}{2}}(\widehat{\Gamma})} }
+-  \\ \| \widehat{V}(\mathbf{y})- \widehat{V}(\mathbf{x}) \|_{\mathcal{L}(\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1)),{\mathbb{H}}^{\frac{1}{2}}((-1,1)))}> C +\frac{\epsilon}{2},
+\end{split}
+\end{align*}
+Thus we can conclude that 
+\begin{align*}
+\inf_{n \geq N} A_{\mathbf{x}}(n) > c,
+\end{align*}
+and this implies that $\mathbf{x}$ is in $a(N,c)$, and we conclude that this set is open. Now the proofs follows by compactness, as we can consider the open covers
+\begin{align*}
+\bigcup_{N \in \IN} \bigcup_{c > 0} a(N,c),\\
+\bigcup_{N \in \IN} \bigcup_{c > 0} b(N,c).
+\end{align*}
+notice they are covers since the problem is well-posed for every $\mathbf{y} \in Y^M$. Since $Y^M$ is compact there are finite sub-covers and we can select the maximum value of $N$ and the corresponding $c$.  This ensure that we can select a single $N_0$ and $\gamma$ (in equation \eqref{constant:infsup}) for every $\mathbf{y} \in Y^M$. To finish the proof we need to show that $\widehat{V}(\mathbf{y})$ is uniformly bounded, i.e.
+\begin{align*}
+\sup_{\mathbf{y} \in Y^M} \| \widehat{V}(\mathbf{y}) \|_{\mathcal{L}(\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1)),{\mathbb{H}}^{\frac{1}{2}}((-1,1)))} < \infty . 
+\end{align*}
+but this is immediate since again $\widehat{V}$ is continuous and $Y^m$ is compact.
+\end{proof}
+
+\begin{lemma}
+\label{lemma:tsbound}
+Under Assumption \ref{ass:nocross}, For every $s \in \IR$,
+\begin{align*}
+\sup_{\mathbf{y} \in Y^M}\| \widehat{\mathbf{u}}(\mathbf{y}) \|_{T^s} < \infty.
+\end{align*}
+\end{lemma}
+
+\todo{esto no funciona, probalmente tengamos que usar las cotas del paper de multiple arcs....}
+
+\begin{proof}
+We only need to proof that $\mathbf{y} \mapsto \| \widehat{\mathbf{u}}(\mathbf{y}) \|_{T^s}$ is continuous in the product topology, to this end we consider $\mathbf{x} = \mathbf{y}$ for all except one coordinate which is characterized by $j \in \IN$, and $q \in \{1,..,M\}$, we then have
+\begin{align*}
+\|\widehat{\mathbf{u}}(\mathbf{y})  - \widehat{\mathbf{u}}(\mathbf{x})\|_{\mathbf{T}^s}  = \left\vert\left\vert \frac{d\widehat{\mathbf{u}}(\mathbf{\xi}) }{d y^q_j} (y^q_j-x^q_j) \right\vert \right\vert_{\mathbf{T}^s}
+\end{align*}
+where $\mathbf{\xi} \in Y^M$, is also equal to $\mathbf{y}$ except in the component of perturbation. Using the Cauchy formula we obtain
+\begin{align*}
+\|\widehat{\mathbf{u}}(\mathbf{y})  - \widehat{\mathbf{u}}(\mathbf{x})\|_{\mathbf{T}^s}  \leq \frac{|(y^q_j-x^q_j)|}{2 \pi |a|^2}
+\int_{|t| = a} 
+\|\widehat{\mathbf{u}}(\mathbf{\xi}+t(\mathbf{y}-\mathbf{x})\|_{T^s}
+dt,
+\end{align*}
+where $a$ is ensured to exist by the second point Proposition \ref{prop:convgaux}. We conclude that the function is continuous since for $\rho-$analytic arcs the $\mathbf{T}^s$ norm of $\widehat{\mathbf{u}}$ is finite. 
+\todo{check.... necesitaria que estubiera acotado para todo |t| =a} 
+\end{proof}
+
+The immediate conclusion of the previous lemmas, 
+is the convergence-rate for the second term of the approximation of $I(G)(\widehat{\mathbf{u}})$.
+\begin{proposition}
+Under Assumptions \ref{ass:nocross}, and \ref{ass:g}, $S \in \IN$, there exist $N_0 \in N$, such that for every $N\geq N_0$, 
+\begin{align*}
+|I_s(G)(\widehat{\mathbf{u}}) -
+I_s(G)(\mathbf{u}^N)| \leq C N^{-s},
+\end{align*} 
+where $C$, and $N_0$ depend of $G$, $\omega, \lambda,\mu$ and the initial configuration $\Gamma$.
+\end{proposition}
+\begin{proof}
+By assumption \ref{ass:g} we have 
+\begin{align*}
+|I_s(G)(\widehat{\mathbf{u}}) -
+I_s(G)(\mathbf{u}^N)| \leq \frac{1}{2} \sup_{\mathbf{y}\in Y^M}\left(\|  G(\mathbf{y})\|_{\left(\widetilde{\mathbb{H}}^{\frac{-1}{2}}((-1,1))\right)^*} 
+\|\widehat{\mathbf{u}}(\mathbf{y}) -\mathbf{u}^N(\mathbf{y})\|
+\right),
+\end{align*}
+the conclusion then follows directly from Lemmas \ref{lemma:tsbound}, and \ref{lemma:CN0}.
+\end{proof}
+
+\subsection{Quasi-Montecarlo Quadrature}
+
+\appendix
+\section{Fundamental solution decomposition}
+\label{ap:kernelsplit}
+Following \todo{ref kress} the fundamental solution can be expressed as: 
+
+\begin{align*}
+\mathbf{G}_{\omega,\lambda,  \mu}(\mathbf{x},\mathbf{y})  = G^1_{\omega,\lambda, \mu}(d) \mathbf{I} + 
+{G}^2_{\omega,\lambda, \mu}(d)\mathbf{D}(\mathbf{x}-\mathbf{y}),
+\end{align*}
+where $\mathbf{I}$ denotes the identity matrix, $d = \| \mathbf{x} - \mathbf{y}\|$, and $D(\mathbf{d}) = \frac{\mathbf{d} \mathbf{d}^t}{\|\mathbf{d}\|^2}$, and 
+\begin{align*}
+G^1_{\omega,\lambda, \mu}(d) = \frac{i}{4\mu} H_{0}^{(1)}(k_s d) - \frac{i}{4\omega^2d}(k_s H_1^{(1)}(k_s d)- k_p H_1^{(1)}(k_p d)) \\
+G^2_{\omega,\lambda, \mu}(d) = \frac{i}{4\omega^2} \left( 
+\frac{2k_s H^{(1)}_1(k_s d)-2k_p H^{(1)}_1(k_p d)}{d}+
+k_p^2H^{(1)}_0(k_p d)- k_s^2H^{(1)}_0(k_s d)  
+\right)
+\end{align*}
+we now make decompositions of the form \eqref{eq:gfdecomp} for $G^1_{\omega,\lambda, \mu}$ and $G^2_{\omega,\lambda, \mu}$. Notice that for the second we have to multiply by the matrix $\mathbf{D}$, which is not constant, but is smooth. As in the main part of the body of the article we now omit the indices $\omega,\lambda,\mu$.  The decomposition would be of the form 
+\begin{align*}
+G^j(d_{k,q}) = G^{j,R}_{k,q}(d_{k,q})- \frac{1}{2\pi} \log|t-s| J^j_{k,q}(d_{k,q}), \quad j =1,2.  
+\end{align*}
+where $d_{k,q}= \| \mathbf{r}_k(t) -\mathbf{r}_q(s)\|$ ,and the functions  $G^{j,R}_{k,p}(d_{k,q})$, and $J^j_{k,q}(d_{k,q})$ are $\rho-$analytic. Notice that is enough to specify the functions $J^j_{k,q}$ ans the regular part is obtained by difference. 
+
+For the case $k \neq q$ the distance between the arcs is positive and hence we can use $J^j_{k,q} = 0$. We now focus in the case $k=q$, we will further abuse the notation and also omit the indices $k,q$.
+The following expresions are obtained using \todo{ ref abramovish}
+\begin{align*}
+J^1(d) = \frac{J_0(k_s d)}{\mu}- \frac{1}{\omega^2 d}(k_sJ_1(k_s d) - k_p J_1(k_p d)), \\
+J^2(d) = \frac{1}{\omega^2} \left(
+\frac{2k_s J_1(k_sd)-2k_p J_1(k_p d)}{d} +k_p^2J_0(k_p d) -k_s^2J_0(k_s d),
+\right)
+\end{align*}
+where $J_n$ denotes the nth-Bessel function. We also need to evaluate the limits of $G^j,R(d), J^j(d)$ for $d \rightarrow 0$, which are the following
+\begin{align*}
+\begin{split}
+\lim_{d \rightarrow 0} G^{1,R}(d) = \frac{-1}{2\pi} \left(
+\frac{1}{\mu} (\log (\frac{k_s}{2})+\gamma)+ \frac{1}{2 \omega^2}(k_p^2\log(\frac{k_p}{2})-
+(k_s^2\log(\frac{k_s}{2}))
++\frac{1}{4 \omega^2} (k_s^2-k_p^2)(1-2\gamma)\right)\\
++\frac{i}{4}\left(
+\frac{1}{\mu}- \frac{1}{2\omega^2}(k_s^2-k_p^2)
+\right)
+-\frac{1}{2\pi} \log \| \mathbf{r}'\| \lim_{d \rightarrow 0}J^1(d),
+\end{split}
+\end{align*}
+where $\gamma$ denotes the euler-gamma constant,
+\begin{align*}
+\lim_{d \rightarrow 0} G^{2,R}(d) = \frac{1}{4\pi\omega^2}(k_s^2-k_p^2),
+\end{align*}
+\begin{align*}
+\lim_{d \rightarrow 0} J^1(d) = \frac{1}{\mu} + \frac{1}{2\omega^2}(k_p^2-k_s^2),
+\end{align*}
+\begin{align*}
+\lim_{d \rightarrow 0} J^2(d) = 0.
+\end{align*}
+Finally we also need the limit values for the matrix $\mathbf{D}$ and these are given by 
+\begin{align*}
+\lim_{d \rightarrow 0} \mathbf{D}(d) = \frac{\mathbf{r}' \mathbf{{r'}}^{t}}{\| \mathbf{r}'\|^2}.
+\end{align*} 
+
+\section{Holomorphic extension results.}
+
+In the present Appendix we will prove Proposition \ref{prop:convgaux}. To this end we follow closely \todo{ref shape holomorphy}. The plan is to extend the results concerning the single-layer operator to the setting of open arcs presented in the cited reference. 
+
+Before we deal with the results in the setting of shape configurations characterized by an element $\mathbf{y} \in Y^M$. We focus in the problem on an compact set $\mathcal{I} \subset \mathcal{C}^2((-1,1), \IR^2)$ , and how the weakly-singular operator can be extended to an holomorphic operator acting on a suitable domain $\mathcal{I}_{\mathbb{C}} \subset \mathcal{C}^2((-1,1), \IC^2)$, such that $\mathcal{I} \subset \mathcal{I}_{\mathbb{C}}$. 
+
+\subsection{Basic tools}
+
+First let us present some basic results in a abstract setting that will be latter use to show that the map $(\mathbf{r}_1,..,\mathbf{r}_M) \mapsto \widehat{V}_{\mathbf{r}_1,..,\mathbf{r}_M}$ has a holomorphic extension, where $\widehat{V}_{\mathbf{r}_1,..,\mathbf{r}_M}$ denotes the weakly-singular operator as in \todo{ref}. where we have explicited denote the dependence of the geometry. 
+
+We begin by introducing some common functions. For a pair of vectors $\mathbf{v}^1, \mathbf{v}^2 \in \mathbb{C}^2$, we define the bi-linear product, 
+\begin{align*}
+\mathbf{v}^1 \cdot \mathbf{v}^2 =
+v^1_1v^2_1+v^1_2v^2_2, 
+\end{align*}
+which is similar to the classical anti-linear inter product but we omit the conjugates as they prevent to extend the function in an holomorphic manner.  
+
+We will also will make use of the principal branch of the square root function (denoted by $\sqrt{\cdot}$), which is holomorphic in $\mathbb{C} \setminus (-\infty,0]$, and the principal branch of the logarithm (denoted by $\log$), which is holomorphic in the same domain. 
+
+Given two arcs parametrized by $\mathbf{r}_1, \mathbf{r}_2 \in \mathbf{\mathcal{C}^2}((-1,1),\mathbb{C}^2)$, we define the complex distance function 
+\begin{align}
+\label{eq:distext}
+d_{\mathbf{r}_1,\mathbf{r}_2}(t,s) =  \begin{cases}\sqrt{(\mathbf{r}_1(t)-\mathbf{r}_2(s))\cdot(\mathbf{r}_1(t)-\mathbf{r}_2(s))}  \quad \mathbf{r}_1 \neq\mathbf{r}_2 \ \text{or } t \neq s\\
+0 \quad \text{ioc}\end{cases}, 
+\end{align}
+we need to specified the domain to show that this functions is well defined. 
+\begin{lemma}
+\label{lemma:dlemma1}
+Let $K^1, K^2 \subset \mathcal{C}^2((-1,1),\mathbb{R})$ compact sets such that $K^1 = K^2$ or disjoint sets such that 
+\begin{align*}
+\inf_{(\mathbf{r},\mathbf{p}) \in K^1 \times K^2 \atop t,s \in (-1,1) } \| \mathbf{r}(t)- \mathbf{p}(s) \|  = d >0
+\end{align*}
+then there exist $\delta_1, \delta_2 >0$ depending of $K^1, K^2$  such that on the extensions
+\begin{align*}
+K^j_{\delta_j} := 
+\{
+\mathbf{r} \in \mathcal{C}^2((-1,1),\mathbb{C}): \text{dist}(\mathbf{r},\mathcal{C}^2((-1,1),\mathbb{R})  < \delta_j 
+\}, \quad j =1,2. 
+\end{align*}
+such that the function $d_{\mathbf{r},\mathbf{p}}$ is well defined and continuous for $(\mathbf{r},\mathbf{p}) \in K^1_{\delta_1}\times K^2_{\delta_s}$. Moreover, for the disjoint case the function is arbitrary smooth, and the map $\mathbf{v} \subset K^1_\delta \times K^2_\delta \mapsto d_{v_1, v_2} \in \mathbf{\mathcal{C}}^0((-1,1),\IC)$ is holomorphic. 
+\end{lemma}
+\begin{proof}
+For the case $K_1 = K_2$ we refer to \todo{ref appendix b} where the only diference is that the factor $\sin (\pi (t-s))$ has to be changes for $t-s$. For the disjoint case lets consider $\delta_1, \delta_2$ positive real number that will be fixed latter on, and $\mathbf{r} \in K^1_{\delta_1}$, $\mathbf{p} \in K^2_{\delta_2}$. Thus there exists $\widetilde{\mathbf{r}} \in K^1$, $\widetilde{\mathbf{p}} \in K^2$, such that 
+\begin{align*}
+\|\mathbf{r} - \widetilde{\mathbf{r}} \|_{\mathcal{C}^2((-1,1),\mathbb{C})} < \delta_1 \\
+\|\mathbf{p} - \widetilde{\mathbf{p}} \|_{\mathcal{C}^2((-1,1),\mathbb{C})} < \delta_2
+\end{align*}
+we can then estimate the square of the complex distance as 
+\begin{align*}
+\begin{split}
+(\mathbf{r}(t) - \mathbf{p}(s)) \cdot 
+(\mathbf{r}(t) - \mathbf{p}(s))  = \|\widetilde{\mathbf{r}}(t) - \widetilde{\mathbf{p}}(s) \|^2+ 2(\widetilde{\mathbf{r}}(t) - \widetilde{\mathbf{p}}(s) )\cdot ((\mathbf{r}-\widetilde{\mathbf{r}})(t)-(\mathbf{r}-\widetilde{\mathbf{r}})(s))\\+
+((\mathbf{r}-\widetilde{\mathbf{r}})(t)-(\mathbf{r}-\widetilde{\mathbf{r}})(s))
+\cdot 
+((\mathbf{r}-\widetilde{\mathbf{r}})(t)-(\mathbf{r}-\widetilde{\mathbf{r}})(s))
+\end{split},
+\end{align*}
+thus we have that,
+\begin{align*}
+\begin{split}
+Re((\mathbf{r}(t) - \mathbf{p}(s)) \cdot 
+(\mathbf{r}(t) - \mathbf{p}(s)) ) \geq d^2- 2d\cdot (\delta_1 +\delta_2)+
+ (\delta_1 +\delta_2)^2
+\end{split},
+\end{align*}
+and from the last part we can conclude that we can select $\delta_1, \delta_2$ such that the real part is positive, and hence 
+the square root is holomorphic, and hence the function is arbitrary smooth. 
+To show the holomorphy let us take $\mathbf{v} \in K^1_{\delta_1} \times K^2_{\delta_2}$ and define 
+\begin{align*}
+D_\mathbf{v} d_\mathbf{v} [\mathbf{h}](t,s)  =\frac{(v_1(t)-v_2(s))\cdot(h_1(t)-h_2(s)}{d_\mathbf{v}(t,s)} , \quad h_1,h_2 \in \mathcal{C}^2((-1,1),\IC).
+\end{align*} 
+We will show that $D_\mathbf{v} d_\mathbf{v} [\mathbf{h}](t,s)$ is the Frechet derivative of $d_\mathbf{v}$ in the direction of $\mathbf{h}$. First we check that $D_\mathbf{v} d_\mathbf{v} \in \mathcal{L}(\mathcal{C}^2((-1,1),\IC),\mathcal{C}^0((-1,1),\IC))$. The linearity is immediate so we need to bound the map. One can easily check that 
+\begin{align*}
+\left\vert  \frac{(v_1(t)-v_2(s))\cdot(h_1(t)-h_2(s)}{d_\mathbf{v}(t,s)} \right\vert \leq 
+\frac{\|v_1(t)-v_2(s)\|\|h_1(t)-h_2(s)\|}{d_\mathbf{v}(t,s)}
+\end{align*}
+the boundeness of the map is direct from the last inequality and having that $d_\mathbf{v}$ is no-where null. Noe wee need to check that 
+\begin{align*}
+\sup_{t,s \in (-1,1)} \left\vert 
+d_{\mathbf{v}+\mathbf{h}}(t,s)-d_\mathbf{v}(t,s) -   D_\mathbf{v} d_\mathbf{v} [\mathbf{h}]  \right \vert  = o(\| \mathbf{h}\|_{\mathcal{C}^2})
+\end{align*}
+by the differentiability of the square function (or the real inner product) we have that
+\begin{align*}
+\begin{split}
+((v_1(t) +h_1(t))- (v_2(s)+h_2(s)))\cdot ((v_1(t) +h_1(t))- (v_2(s)+h_2(s))) =\\
+ ((v_1(t)-v_2(s))\cdot(v_1(t)-v_2(s)))+ 
+2 ((v_1(t)-v_2(s)) \cdot(h_1(t) - h_2(s))+ o(|h_1(t)-h_2(s)|),
+\end{split}
+\end{align*}
+and by the differentiability of the square funciton,
+\begin{align*}
+d_{\mathbf{v}+\mathbf{h}}(t,s) = d_\mathbf{v}(t,s) + D_\mathbf{v}d_\mathbf{v}[\mathbf{h}](t,s) + o(|h_1(t)-h_2(s)|),
+\end{align*} 
+and the result is direct from this.
+\end{proof}
+Now we focus back to integral operators. We will give a  slightly more abstract  formulation of the shape-holomorpic dependence of periodic integral operators showed in \todo{ref, theorem 4.13}, to this end let us consider a real Banach space $B$, and its complexification $B^{\IC}$ that will be our parameter space. We consider a compact set $K \subset B$, and the open extension of $K$ defined as in the previous lemma, i.e. 
+$$
+K_\delta = \{ k \in B^{\IC}: \text{dist}(k, K) < \delta \}, \quad \delta >0. 
+$$ 
+As in \todo{ref} we consider integral operators of the form 
+\begin{align*}
+(P_ku)(t) = \int_{-1}^1 f(t-s) p_k(t,s) u(s) ds,\quad k \in K,
+\end{align*}
+which is assumed to be bounded between two aribitrary spaces $H_1, H_2$, such that the continuous functions are denses in $H_1$. Now we can state the result, 
+\begin{theorem}
+\label{teo:hlm}
+Based on the concept previously introduced, assume that 
+\begin{enumerate}
+\item 
+the function $f$ is weakly-singular, that is for some $\alpha \in [0,1)$, $|f(t)| \leq C |t|^{-\alpha}$, for some constant depending of $f$.    
+\item  
+There exist a $\delta>0$, such that the maps $k  \in K \mapsto p_k \in \mathcal{C}^0((-1,1),\IC)$ can be extended to a map $k \in K_\delta \mapsto p_{k,\IC}$ that satisfy, 
+\begin{itemize}
+\item 
+$p_{k,\IC} \in \mathcal{C}^0((-1,1),\IC) \quad \forall k \in K_\delta$. 
+\item 
+The map $k \in K_\delta \mapsto p_{k,\IC} \in \mathcal{C}^0((-1,1),\IC)$ is holorphic. 
+\end{itemize}
+\item 
+The corresponding extension of $k \in K \mapsto P_k \in \mathcal{L}(H_1,H_2)$ given by $(P_{k,\IC}u)(t) = \int_{-1}^1f(t-s) p_{k,\IC}(t,s) u(s) ds$ , is uniformly bounded in $K_\delta$, i.e. 
+\begin{align*}
+\sup_{k \in K_\delta} \| P_{k,\IC}\|_{\mathcal{L}(H_1,H_2)} < \infty.
+\end{align*}
+If all this conditions are satisfied we conclude that the map $k \in K_\delta \mapsto P_{k,\IC} \in \mathcal{L}(H_1,H_2)$ is holomorphic. 
+\end{enumerate}
+\end{theorem}
+The proof of this theorem follows verbatim from the one in the cited reference so we omit it.
+\begin{remark}
+We decided to present the theorem of holomprphy of integral operators in the more abstract setting not because we are dealing with open arcs instead of curves parametrized by periodic functions as in \todo{ref}, but more important, we are considering multiples arcs. in this case there are two types of operators that have to be differentiated, first the self-interaction which is differentiated with respect a single function $\mathbf{r}_q \in \mathcal{C}^2((-1,1),\IC)$, and the cross-interaction which depends of two functions, hence corresponding space $B$ is different in both cases. 
+\end{remark}  
+
+\subsection{Integral operators on arcs}
+
+\todo{introduce spaces $W^s$}
+
+The following results will be helpful to establish the third point in Theorem \ref{teo:hlm}. 
+
+We again insider a compact set $K$ in a Banach space $B$, its complexification $B^\IC$, and the corresponding extension of $K$ denoted $K_\delta$. 
+
+\begin{lemma}
+\label{lemma:smoothops}
+Consider $\delta >0$ and $p_x :(-1,1) \times (-1,1) \rightarrow \IC$, that is of $\mathcal{C}^{k-1}$, and has uniformly (respect to every $x \in K_\delta$) bounded $k-$derivative, for $k \geq 1$, in each variable. Then the integral operator $(P_x u)(t) = \int_{-1}^1 p_x(t,s) u(s) ds$ is uniformly bounded as 
+\begin{align*}
+\sup_{x \in K_\delta} \| P_\mathbf{r} \|_{\mathcal{L}(T^{a},W^{b})} < \infty.
+\end{align*}
+for $b-a < k$.
+\end{lemma} 
+\begin{proof}
+The proof is based on the results from \todo{saranen capitulo 6}. Since $p_\mathbf{r}$ is at least $\mathcal{C}^1$ we can expand it as 
+$$p_\mathbf{r} (t,s) = \sum_{j=0}^\infty \sum_{i=0}^\infty c_{j,i} T_i(s)T_j(t),$$
+where the series converge uniformly, and by \todo{treffeten theoremma 7.1} we have that 
+\begin{align}
+\label{eq:cs}
+|c_{j,i}| \leq C \min((j+1)^{-k-1},(i+1)^{-k-1}),
+\end{align}
+where $C$ is proportional  both of the $k-$ derivatives of $p_x$, and hence it can be assumed to be bounded uniformly in $x$. For $u \in \mathcal{C}^0 \cap T^\alpha$ we have
+\begin{align*}
+\|(P_x u)(t) \|^2_{W^b} = \sum_{n=0}^\infty
+(1+n^2)^b\left\vert
+\int_{-1}^1 \left(
+\int_{-1}^1 p_x(t,s) u(s) ds
+\right)\frac{T_n(t)}{\sqrt{1-t^2}}dt
+\right\vert^2
+\end{align*}
+using the expansion of $p_\mathbf{r}$, and the orthogonality of the Chebyshev polynomials we obtain 
+\begin{align*}
+\|(P_x u)(t) \|^2_{W^b} = 
+\sum_{n=0}^\infty (1+n^2)^b \left\vert \sum_{i=0}^\infty c_{n,i} u_i \right\vert^2
+\end{align*}
+where $u_n$ are the Chebishev coefficients of $u$ defined as in \todo{ref}. By Cauchy-Schwartz 
+\begin{align*}
+\|(P_x u)(t) \|^2_{W^b} \leq  \left(
+\sum_{n=0}^\infty
+\sum_{i=0}^\infty
+ (1+n^2)^b(1+i^2)^{-a} |c_{n,i}|^2 \right) \|u \|_{T^a}^2
+\end{align*}
+hence by \eqref{eq:cs} we have 
+\begin{align*}
+\|(P_x u)(t) \|^2_{W^b} \leq C \left(
+\sum_{n=0}^\infty
+\sum_{i=0}^\infty
+ (1+n^2)^b(1+i^2)^{-a} (n+1)^{2 \beta(-k-1)} (i+1)^{2 \alpha(-k-1)} \right)\|u \|_{T^a}^2,
+\end{align*}
+for any combination of $\alpha, \beta$: $\alpha+\beta = 1$. To ensure that the right hand side is finite we need that 
+\begin{align*}
+2(b-\beta k -\beta) < -1,\\
+2(a-\alpha k -\alpha) < -1,
+\end{align*}
+and this only hold if we have $b-a < k$. The result is obtained since the continuous function are denses in $T^a$. 
+\end{proof}
+
+A direct consequence of the previous lemma is the holomprphism of the map $(\mathbf{r},\mathbf{p}) \in K_\delta \subset (\mathcal{C}^2(-1,1,\IC)\times  \mathcal{C}^2(-1,1,IC)) \mapsto \widehat{V}_{\mathbf{r},\mathbf{p}} \in \mathcal{L}(T^{-1/2},W^{1/2})$, for $k,q =1,..,M$,  $k\neq q$ and suitable set $K_\delta$. The detailed result is given by the following corollary
+
+\begin{corollary}
+Lets us consider $K_1, K_2 \subset \mathcal{C}^2((-1,1),\IR$ as in Lemma \ref{lemma:dlemma1}, with $K_1 \neq K_2$, for $\delta_1, \delta_2$ given in the same lemma. Consider the weakly-singular operator 
+\begin{align*}
+(\widehat{V}_{\mathbf{r},\mathbf{p}}\mathbf{u} )(t):=\int_{-1}^{1} \mathbf{G}(\mathbf{r}(t),\mathbf{p}(s)) \mathbf{u}(s) ds
+\end{align*}
+where $G$ is the extension of the fundamental solution where the distance function is extended acording to \ref{eq:distext}, then the following operator 
+\begin{align*}
+(\mathbf{r},\mathbf{p}) \in K_1^{\delta_1} \times K_2^{\delta_2} \mapsto \widehat{V}_{\mathbf{r},\mathbf{p}} \in \mathcal{L}(\mathbf{T}^{-1/2},\mathbf{W}^{1/2})
+\end{align*} 
+is holomphorpic. 
+\end{corollary} 
+\begin{proof}
+In the notation of  Theorem \ref{teo:hlm}, we have that $f=1$, hence point 1 is fulfilled, $p_k$ are the components of  $\mathbf{G}(\mathbf{r},\mathbf{p})$, and by lemma \ref{lemma:dlemma1} second point of the theorem is fulfilled. We need to proof the third point. Notice that the second derivative of the distance function $d_{\mathbf{r},\mathbf{p}}$  is
+\begin{align*}
+\frac{\partial^2d_{\mathbf{r},\mathbf{p}}(t,s) }{\partial t ^2} = \frac{1}{4d_{\mathbf{r},\mathbf{p}}^3}(\mathbf{r}'(t) \cdot \Delta \mathbf{p} +\Delta \mathbf{r} \cdot \mathbf{p}'(t))^2-\frac{1}{2 d_{\mathbf{r},\mathbf{p}}} (\mathbf{r}''(t)\cdot \Delta \mathbf{p} + 2 \mathbf{r}'(t) \cdot \mathbf{p}'(t)+\Delta \mathbf{r} \cdot \mathbf{p}''(t))
+\end{align*}
+since $K_1^{\delta_1},K_2^{\delta_2} \subset \mathcal{C}^2((-1,1),\IC)$, the second derivatives are uniformly bounded. Hence we can use Lemma \ref{lemma:smoothops} with $k=2$, $b= \frac{1}{2}$, $a = \frac{-1}{2}$ and obtain the third point. 
+\end{proof}
+\end{document}
+
+
+
