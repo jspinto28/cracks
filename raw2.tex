@@ -1,0 +1,1026 @@
+	 %%%%%%%%%%%%%%%%%%%%%
+%\documentclass[draft]{amsart}
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{bm}
+\usepackage{psfrag}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{xcolor}
+\usepackage[all,cmtip,line]{xy}
+\usepackage[normalem]{ulem}
+\usepackage{tikz} 
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+%\usepackage{subfig}
+\usepackage{scalerel}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+\usepackage[]{algorithm2e}
+
+
+% Inverted breve
+\usepackage[T3,T1]{fontenc}
+\DeclareSymbolFont{tipa}{T3}{cmr}{m}{n}
+\DeclareMathAccent{\invbreve}{\mathalpha}{tipa}{16}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+%CS Macros 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition} 
+
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assumption}[theorem]{Assumption}
+\newcommand{\dc}{downward closed }
+%CJ Macros
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+
+\newtheorem{obs}{Observation}[section]
+\newtheorem{prop}{Property}[section]
+%\newcommand{\norm}[2]{\left\lVert #1\right\rVert_{#2}}
+\newcommand{\seminorm}[2]{| #1 |_{#2}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vx}{\bm{x}}
+\newcommand{\curl}{\operatorname{\bm{curl}}}
+\renewcommand{\div}{\operatorname{div}}
+%\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\p}[1]{\langle #1\rangle}
+\newcommand{\pr}[1]{\left( #1\right)}
+\newcommand{\bil}[1]{\kappa\left( #1 \right)}
+\newcommand{\modulo}[1]{\left\vert #1\right\vert}
+\newcommand{\dv}[1]{{\rm div}\left( #1\right)}
+\newcommand{\epep}[1]{\epsilon \left( #1 \right):\epsilon\left( #1\right)}
+\newcommand{\hcurl}[1]{\bm{H}\left( \curl; #1 \right)}
+\newcommand{\hocurl}[1]{\bm{H}_0(\curl; #1 )}
+\newcommand{\hdiv}[1]{\bm{H}(\div;#1)}
+\newcommand{\hodiv}[1]{\bm{H}_0(\div;#1)}
+\newcommand{\Hsob}[2]{\bm{H}^{#1}( #2 )}
+\newcommand{\hsob}[2]{{H}^{#1}( #2 )}
+\newcommand{\Hosob}[2]{\bm{H}_0^{#1}( #2 )}
+\newcommand{\hosob}[2]{{H}_0^{#1}( #2 )}
+\newcommand{\Lp}[2]{\bm{L}^{#1}( #2 )}
+\newcommand{\lp}[2]{{L}^{#1}( #2 )}
+\newcommand{\hil}[1]{\mathcal{#1}}
+
+\hyphenation{pa-ra-me-tri-zed}
+
+%cs color for changes by CJH
+\newcommand{\cj}[1]{{\color{magenta}{#1}}}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\newcommand{\ra}[1]{{\color{forestgreen}#1}}
+\newcommand{\ras}[1]{{\color{forestgreen}{\sout{#1}}}}
+
+\newcommand{\jp}[1]{{\color{blue}#1}}
+
+\newcommand{\todo}[1]{{\color{red}[#1]}}
+
+
+\newcommand{\KK}{{\rm K}}
+\newcommand{\LL}{{\rm L}}
+\newcommand{\HH}{{\rm H}}
+%\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\rm C}
+\newcommand{\KL}{\mbox{Karh\'{u}nen-Lo\`{e}ve }}
+\newcommand{\Hol}{\mbox{Hol}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+%color for changes by CJ
+%\definecolor{forest}{rgb}{0.3,0.4,0.1}
+%\definecolor{Ora}{cmyk}{0.2, 0.6, 0.8, 0}
+% definitions
+\newcommand{\eps}{{\varepsilon}}
+\renewcommand{\c}{{\boldsymbol c}}
+\newcommand{\bmb}{{\boldsymbol b}}
+\newcommand{\set}[2]{\{#1\,:\,#2\}}
+% cal letters
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\C}{\mathcal C}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\E}{\mathcal E}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\e}{{\bm e}}
+\newcommand{\f}{{\bm f}}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cO}{\mathcal O}
+\renewcommand{\S}{\mathsf S}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\cl}{\mathcal l}
+\newcommand{\cG}{\mathcal G}
+% frak letters
+\newcommand{\fa}{{\mathsf{a}}}
+\newcommand{\fp}{{\mathfrak p}\,} %frak p as index for patches
+\newcommand{\frakT} {{\mathfrak T}} % set of admissible domain transformations
+%boldface symbols
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\bmf} {\bm f}
+\newcommand{\ba} {\bm a}
+\newcommand{\bi} {\bm i}
+\newcommand{\blm} {\bm m}
+\newcommand{\bmj} {\bm j}
+\newcommand{\bme} {\bm e}
+\newcommand{\bnul}{{\boldsymbol 0}}
+\newcommand{\bsnu}{{\boldsymbol \nu}}
+\newcommand{\bsmu}{{\boldsymbol \mu}}
+\newcommand{\bsrho}{{\boldsymbol \rho}}
+\newcommand{\bseta}{{\boldsymbol \eta}}
+\newcommand{\bszeta}{{\boldsymbol \eta}}
+%boldsymbols
+\newcommand{\bsb}{{\boldsymbol b}}
+\newcommand{\bsx}{{\boldsymbol x}}
+\newcommand{\bsy}{{\boldsymbol y}}
+\newcommand{\bsw}{{\boldsymbol w}}
+\newcommand{\bsz}{{\boldsymbol z}}
+%\newcommand{\br} {\bm r}
+\newcommand{\bM} {\bm{M}}
+\newcommand{\bR} {\mathsf{R}}
+\newcommand{\bT} {\bm{T}}
+%
+\newcommand{\ce}{{\bm c\bm e}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\N}{\mathrm{N}}
+\renewcommand{\L}{\mathsf{L}}
+\newcommand{\A}{{\mathcal A}}
+\newcommand{\V}{{\mathsf V}}
+\newcommand{\W}{{\mathsf W}}
+\newcommand{\Kk}{{\mathsf K}}
+\newcommand{\B}{{\mathcal A}_{S}}
+\newcommand{\dd}{\,{\rm d}}
+\newcommand{\ddx}{\dd\bm x}
+\newcommand{\ds}{\dd s}
+\newcommand{\bg}{\bm{g}}
+\newcommand{\bff}{\bm{f}}
+\newcommand{\ddd}{\mbox{\,\em{d}}}
+\newcommand{\Rd}{{\mathbb R}^d}
+\newcommand{\nno}{\nonumber}
+\newcommand{\jl}{[\![}
+\newcommand{\jr}{]\!]}
+\newcommand{\jmp}[1]{\jl#1\jr}
+% % dual products
+\newcommand{\dual}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\dup}[2]{\langle #1, #2\rangle}
+
+\newcommand{\ujmp}[1]{\bm\jl#1\bm\jr}
+\newcommand{\al}{\langle\!\langle}
+%\newcommand{\ar}{\rangle\!\rangle}
+\newcommand{\avg}[1]{\al#1\ar}
+\newcommand{\uavg}[1]{\bm\al#1\bm\ar}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\wT}{{\widetilde{\mathcal T}_h}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wS}{S^{\widetilde{\bf p}}(\Omega,\wT,\widetilde{\bf F})}
+\newcommand{\St}{\wt S^{{\bf p}}(\Omega,{{\mathcal T}_h},{\bf F})}
+\renewcommand{\bar}[1]{\overline#1}
+\renewcommand{\div}{{\rm div}}
+\newcommand{\dx}{\dd\uu x}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\NNN}[1]{|\!|\!|#1|\!|\!|_{H^1(\O)}}
+%\newcommand{\s}{\alpha}
+\newcommand{\calP}{{\mathcal P}}
+\newcommand{\QT}{{\mathcal Q}_T}
+\newcommand{\R}{{\mathcal R}}
+\newcommand{\wR}{\widetilde\R}
+\newcommand{\M}{{\mathcal M}}
+%macros for mathbb symbols
+\newcommand{\IC}{{\mathbb C}}
+\newcommand{\IE}{{\mathbb E}}
+\newcommand{\IL}{{\mathbb L}}
+\newcommand{\IN}{{\mathbb N}}
+\newcommand{\IK}{{\mathbb K}}
+\newcommand{\IR}{{\mathbb R}}
+\newcommand{\IU}{{\mathbb U}}
+\newcommand{\IP}{{\mathbb P}}
+\newcommand{\IQ}{{\mathbb Q}}
+\newcommand{\IZ}{{\mathbb Z}}
+% dislaystyle 
+\def\dis{\displaystyle}
+\newcommand{\dsl}{\displaystyle\sum\limits}
+\newcommand{\dil}{\displaystyle\int\limits}
+%
+%\newcommand{\matr}[1]{\bm#1}
+\def\n{\noindent}
+\newcommand{\hf}{h_{K,f}^\perp}
+%\newcommand{\p}{\check{\bm p}}
+\newcommand{\bp}{{\bm p}}
+\newcommand{\bq}{{\bm q}}
+\newcommand{\Vl}{V(\Ml,\bm \psi(\Ml), \uu p)}
+\renewcommand{\ss}{\bm\iota}
+\newcommand{\K}{\mathfrak{K}}
+%norms
+\newcommand{\norm}[2]{\left\lVert #1\right\rVert_{#2}}
+\newcommand{\normz}[2][]{\| #2 \|_{#1}}
+%
+\newcommand{\cald}{\Lambda}
+% domain
+\newcommand{\dom}{D}
+%\newcommand{\dom}{\mathrm{D}}
+\newcommand{\Dy}{\dom_\bsy} 
+\newcommand{\Dscat}{\dom_{\mathrm{scat}}}
+%\newcommand{\Dnul}{{\dom_\bnul}} 
+\newcommand{\Dnul}{{\hat{\dom}}} 
+\newcommand{\Onul}{\Omega_\bnul}
+
+% Operators
+\newcommand{\OB}{\operatorname{\mathsf{B}}}
+\newcommand{\OA}{\operatorname{\mathsf{A}}}
+\newcommand{\OM}{\operatorname{\mathsf{M}}}
+\newcommand{\OC}{\operatorname{\mathsf{C}}}
+\newcommand{\OT}{\operatorname{\mathsf{T}}}
+\newcommand{\OP}{\operatorname{\mathsf{P}}}
+\newcommand{\OQ}{\operatorname{\mathsf{Q}}}
+\newcommand{\Id}{\operatorname{\mathsf{I}}}
+\providecommand{\Cm}{{\mathcal M}}
+\renewcommand{\d}{\!\!\operatorname{d}}
+% imaginary unit
+\newcommand{\ii}{\mathrm i}
+% Bilinear forms 
+\newcommand{\bs}[4]{\operatorname{\mathsf{s}}_{#1}^{#2}\left(#3,#4\right)}
+\newcommand{\bt}[2]{\operatorname{\mathsf{r}}_{\bsz}^{#1}\left(#2\right)}
+\newcommand{\bacav}[2]{\operatorname{\mathsf{a}\cav}\left(#1,#2\right)}
+\newcommand{\bbacav}[2]{\operatorname{\hat{\mathsf{a}}_T\cav}\left(#1,#2\right)}
+\newcommand{\bbacavn}[2]{\operatorname{\hat{\mathsf{a}}\cav_{0}}\left(#1,#2\right)}
+\newcommand{\bapc}[2]{\operatorname{\mathsf{a}\pc}\left(#1,#2\right)}
+\newcommand{\bbpc}[2]{\operatorname{\mathsf{b}\pc}\left(#1,#2\right)}
+\newcommand{\fpc}[1]{\operatorname{\mathsf{f}\pc}\left(#1\right)}
+\newcommand{\fpcs}[1]{\operatorname{\mathsf{f}\pc}}
+% \newcommand{\fde}[1]{\operatorname{\mathsf{f}\de_T}\left(#1\right)}
+% \newcommand{\fdes}{\operatorname{\mathsf{f}\de_T}}
+\newcommand{\fde}[1]{{\mathsf{f}\de}\left(#1\right)}
+\newcommand{\fdes}{{\mathsf{f}\de_T}}
+\newcommand{\fcav}[1]{\operatorname{\mathsf{f}\cav}\left(#1\right)}
+\newcommand{\fcavs}{\operatorname{\mathsf{f}\cav}}
+\newcommand{\bbapc}[2]{\operatorname{\breve{\mathsf{a}}\pc}\left(#1,#2\right)}
+\newcommand{\bbapcn}[2]{\operatorname{\breve{\mathsf{a}}\pc_{0}}\left(#1,#2\right)}
+\newcommand{\bbbpc}[2]{\operatorname{\breve{\mathsf{b}}\pc}\left(#1,#2\right)}
+\newcommand{\bbbpcn}[2]{\operatorname{\breve{\mathsf{b}}\pc_{0}}\left(#1,#2\right)}
+% \newcommand{\badiel}[2]{\operatorname{\mathsf{a}\de_T}\left(#1,#2\right)}
+% \newcommand{\fdiel}[1]{\operatorname{\mathsf{f}\de_T}\left(#1\right)}
+\newcommand{\badiel}[2]{{\mathsf{a}\de}\left(#1,#2\right)}
+\newcommand{\fdiel}[1]{{\mathsf{f}\de}\left(#1\right)}
+\newcommand{\apch}{\hat{\mathsf{a}}}
+\newcommand{\apc}{{\mathsf{a}}}
+\newcommand{\adeh}{\hat{\mathsf{a}}^{\mathrm{de}}}
+\newcommand{\ade}{{\mathsf{a}}^{\mathrm{de}}}
+\newcommand{\acavh}{\hat{\mathsf{a}}^{\mathrm{cav}}}
+\newcommand{\acav}{{\mathsf{a}}^{\mathrm{cav}}}
+\newcommand{\fpch}{\hat{\mathsf{f}}}
+\newcommand{\fdeh}{\hat{\mathsf{f}}^{\mathrm{de}}}
+\newcommand{\fcavh}{\hat{\mathsf{f}}^{\mathrm{cav}}}
+% Right-hand sides for Fr\'echet derivatives
+\newcommand{\dfpch}{\hat{\mathsf{k}}}
+\newcommand{\dfdeh}{\hat{\mathsf{k}}^{\mathrm{de}}}
+\newcommand{\dfcavh}{\hat{\mathsf{k}}^{\mathrm{cav}}}
+
+% spaces
+% \newcommand{\hcurlbf}[2][]{{\bf H}_{#1}(\mathrm{curl}; #2)}
+
+\newcommand{\hcurlbf}[2][]{{{\bH}_{#1}}(\curl, #2)}
+\newcommand{\hncurlbf}[2][]{{{\bH}_0^{#1}}(\curl, #2)}
+\newcommand{\hncurlbfs}[1]{\bH_ S(\curl,#1)}
+
+\newcommand{\cmspace}[3]{\mathcal{C}^{#1} \left( #2, #3 \right)}
+
+\newcommand{\rgeo}[1]{\mathcal{C}_b^{#1}\left( (-1,1), \IR^2 \right)}
+
+\newcommand{\cgeo}[1]{\mathcal{C}^{#1}\left( (-1,1), \IC^2 \right)}
+
+% BEM Macros
+%
+\newcommand{\supp}{\operatorname{supp}}
+%\newcommand{\curl}{\operatorname{\bm{curl}}}
+
+\renewcommand{\div}{\operatorname{div}}  
+\renewcommand{\Re}{\operatorname{Re}}
+
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+
+\newcommand{\bN}[1]{\bigl\|#1\bigr\|}  
+\newcommand{\ang}[1]{\left<#1\right>}  % angular brackets for duality 
+\newcommand{\rst}[1]{\left.#1\right|}  % restriction
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\smo}{\mathcal{o}}
+\newcommand{\pc}{}%}}
+\newcommand{\de}{^{\mathrm{de}}}
+\newcommand{\cav}{^{\mathrm{cav}}}
+\newcommand{\die}{^{\mathrm{de}}}
+\newcommand{\Dir}{_{\mathrm{Dir}}}
+\newcommand{\loc}{{\mathrm{loc}}}
+\newcommand{\inc}{^{\mathrm{inc}}}
+\newcommand{\matr}[1]{\begin{pmatrix} #1 \end{pmatrix}}  % array with parentheses
+\renewcommand{\j}{{\boldsymbol \jmath}}  % dotless j in math mode
+\newcommand{\ovl}{\overline}
+
+\newcommand{\vphi}{\varphi}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\bvphi}{\boldsymbol \varphi}
+\newcommand{\bla}{\boldsymbol \lambda}
+\newcommand{\bpsi}{\boldsymbol \psi}
+\newcommand{\btau}{{\boldsymbol \tau}}
+\newcommand{\bmu}{{\boldsymbol \mu}}
+\newcommand{\bxi}{{\boldsymbol \xi}}
+\newcommand{\bPsi}{{\boldsymbol \Psi}}
+\newcommand{\bPhi}{{\boldsymbol \psi}}   
+\newcommand{\bchi}{{\boldsymbol \chi}}    
+
+\newcommand{\divG}{\operatorname{div_S}}
+\newcommand{\scurl}{\operatorname{curl}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bB}{\bm{B}}
+\newcommand{\bC}{\bm{C}}
+\newcommand{\bE}{\bm{E}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\VH}{\bm{H}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bn}{\bm{n}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bk}{\bm{k}}
+\newcommand{\bc}{\bm{c}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bz}{\bm{z}}
+\newcommand{\bh}{\bm{h}}
+\newcommand{\bv}{\bm{v}}
+\newcommand{\br}{\bm{r}}
+\newcommand{\bj}{\bm{j}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bb}{\bm{b}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bU}{\bm{U}}
+\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\sbV}{\boldsymbol{V}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\J}{\mathcal{J}}
+
+\newcommand{\iinterv}{(-1,1)\times(-1,1)}
+
+%fields
+\newcommand{\einc}{\bE^{\mathrm{inc}}}
+\newcommand{\escat}{\bE^{\mathrm{scat}}}
+\newcommand{\eref}{\bE^{\mathrm{ref}}}
+% \newcommand{\etot}{\bU^{\mathrm{tot}}}
+\newcommand{\etot}{\bE}
+
+\newcommand{\hinc}{\VH^{\mathrm{inc}}}
+\newcommand{\hscat}{\VH^{\mathrm{scat}}}
+\newcommand{\href}{\VH^{\mathrm{ref}}}
+%\newcommand{\htot}{\VH^{\mathrm{tot}}}
+\newcommand{\htot}{\VH}
+
+\newcommand{\half}{\frac{1}{2}}
+
+%traces
+\newcommand{\tD}{\gamma_{\mathrm{D}}}
+\newcommand{\tN}{\gamma_{\mathrm{N}}}
+\newcommand{\jD}{[\tD]}
+\newcommand{\jN}{[\tN]}
+\newcommand{\mD}{\{ \tD \}}
+\newcommand{\mN}{\{ \tN \}}
+%\newcounter{cont}
+\title{Uncertainty Quantification for Elastic Waves on Multiples Cracks}
+
+\DeclareMathOperator{\spn}{span}
+
+%----------Author 1
+\author{Jos\'e Pinto}
+
+
+
+\usepackage{cleveref}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This works present a generalized analysis of the holomorphy dependence of a class of integral operators, coming from the reduction of scattering problems with Dirichlet or Neumann boundary conditions on open arcs in two dimensions,  in terms of the geometric parametrization. 
+
+We apply the mentioned result to estimate the statical moments of some quantity of interest in the context of elastic-wave scattering of cracks whose shape and position are uncertain. We show that high order quasi-Montecarlo rules can be applied (provided some assumptions on the size of the perturbations with respect to a canonical configuration), and demonstrate the results with numerical experiments on a single crack. In the case of multiple cracks, while the theory predicts similar convergence rates in practice only low order convergence is achieved, we provide an adequate analysis that justifies this behavior. 
+\end{abstract}
+
+\section{Introduction}
+\subsection{General Notations}
+\subsection{Scattering Problem on Open Arcs}
+\subsection{Boundary Integral Formulation}
+
+\section{Shape Holomorphy of Boundary Integral Operators}
+
+Let us begin this section by recalling a pair of abstract theorems that constitute the main tool to establish the holomorphic dependence of a class of integral operators. These results are not new but slightly generalization of  Theorems 4.13 and 5.21 presented in \todo{ref}. Their proofs also follows verbatim as in the reference, and as so are omitted.
+
+Consider a real Banach space $\mathcal{B}$, and its complexification denoted $\mathcal{B}^{\IC}$. Furthermore, consider a compact set $K \subset \mathcal{B}$ and its complex open extension defined as 
+\begin{align}
+\label{eq:openext}
+K_\delta :=  \left\lbrace k \in \mathcal{B}^{\IC} : \text{ dist}(k, K) < \delta \right\rbrace,
+\end{align}
+for any $\delta>0$. We then consider a family of integral operators of the form
+\begin{align*}
+(P_k u)(t) = \int_{-1}^{1} f(t-s) p_k(t,s) u(s) ds,
+\end{align*}
+with any $k \in K$. We assume that $P_k$ is a linear bounded operator between two Hilbert spaces $H_1,H_2$\footnote{As is classical, we are abusing the notation by representing $P_k$ as an integral. Is it word notice that if $u$ is a continuous function the integral representation is well defined.} and that the continuous functions are dense in $H_1$. Now we present the result that ensure that the map $k \in K_\delta \mapsto P_k \in \mathcal{L}(H_1,H_2)$ has an holomorphic extension to $K_\delta$ for some $\delta>0$. 
+
+\begin{theorem} \label{thrm:abstractholm}
+Assume that 
+\begin{enumerate}
+\item 
+The function $f$ is continuous everywhere with the sole possible  exception of 0. In a neighborhood of $0$ assume that $f$ is controlled as 
+$$|f(t)| \lesssim| t|^{-\alpha}$$
+for some $\alpha \in [0,1)$. 
+\item 
+There exist a $\delta >0$, such that the map $k \in K \mapsto p_k \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ can be extended to a map $k \in K_\delta \mapsto p_{k,\IC}$ and that extension is such that 
+the map $k \in K_\delta \mapsto p_{k,\IC } \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. 
+\item 
+For $\delta$ as before, the corresponding extension of $P_k$ defined as $(P_{k,\IC}u)(t) = \int_{-1}^{1} f(t,s) p_{k,\IC}(t,s) u(s) ds$ is uniformly bounded, i.e. 
+$$ \sup_{k \in K_\delta} \| P_{k,\IC} \|_{\mathcal{L}(H_1,H_2)}< \infty.$$
+If this three condition are satisfied, then the map $k \in K_\xi \mapsto P_{k, \IC} \in \mathcal{L}(H_1,H_2)$ is holomorphic for every $0< \xi<\delta$.  
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+\label{thrm:abtractinverse}
+Consider $A_k \in \mathcal{L}(H_1,H_2)$ such that: 
+\begin{enumerate}
+\item 
+For every $k \in K$, $A_k$ is invertible and $(A_k)^{-1} \in \mathcal{L}(H_2,H1)$. 
+\item 
+There exist a $\delta >0$ and a extension of $A_k$, denoted $A_{k,\IC}$, to $K_\delta$ such that 
+$$k \in K_\delta \mapsto A_{k,\IC} \in \mathcal{L}(H_1,H_2),$$
+ is holomorphic and uniformly bounded in $k$. 
+\end{enumerate}
+Then there exist $0<\eta<\delta$ depending of $K$, such that 
+$A_{k,\IC}$ is invertible for every $k \in K_\eta$, and the map 
+$$k \in K_\eta \mapsto (A_{k,\IC})^{-1} \in \mathcal{L}(H_2,H_1),$$ is holomorphic and uniformly bounded. 
+\end{theorem} 
+The proof of the latter is based on the holomphism of the inverse function, we refer to \todo{ref theorem 5.21} for the details.
+
+The rest of this section provide the actual framework to invoke the previous two theorems. 
+\subsection{Functional Spaces}
+
+According to the previous section, we need two family of functional spaces. First the underlying Banach real space $\mathcal{B}$ that serves as the parameters for the holomorphism. Secondly, the Hilbert spaces $H_1,H_2$ that are the natural spaces for the associated integral operators. 
+
+Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspace{m}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, for any $m \in \IN$. This space has Banach structure when is endowed with the classical norm 
+\begin{align*}
+\| f \|_{\cmspace{m}{A}{B}} := \sum_{\bk: |\bk| < m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
+\end{align*}
+where we are using the classical multi-index notation \todo{ref}. 
+
+In particular we will make use of $\cmspace{m}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspace{m}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeo{m}$. 
+
+Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n-$Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l}.$$ We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
+Given a smooth periodic function $u :[-\pi,\pi] \rightarrow \IC$, its Fourier coefficients are denoted as
+$$
+\widetilde{u}_n = \int_{-\pi}^\pi u(\theta) e_{-n}(\theta) d\theta, 
+$$
+Similarly we define two kind of Chebishev coefficients:
+\begin{align*}
+u_n = \int_{-1}^{1} u(t) T_n(t) dt, \quad \text{and,} \quad  \widehat{u}_n = \int_{-1}^1 u(t) T_n w^{-1}(t)dt.
+\end{align*}
+This definitions are extended to bi-variate functions as 
+$$\widetilde{u}_{n,l} = \int_{-\pi}^{\pi}\int_{-\pi}^\pi u(\theta,\phi) e_{-n}(\theta)e_{-l}(\phi) d\theta d\phi,$$
+for a bi-periodic function, and similarly  for Chebyshev coefficients of  bi-variate functions on $[-1,1]$. Furthermore, the definition of the coefficients are extended to distribution by duality respect to the basis. 
+
+We will make use of the traditional periodic Sobolev spaces defined as 
+$$
+H^s := \left\lbrace u : \| u\|_{H^s}^2 = \sum_{n=-\infty}^\infty (1+n^2)^s |\widetilde{u}_n|^2 < \infty \right\rbrace,
+$$
+for $s\in \IR$. We refer to \todo{ref} for a more rigorous definition. We also define two more family of spaces
+\begin{align*}
+T^s := \left\lbrace u : \| u\|_{T^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |{u}_n|^2 < \infty \right\rbrace, \\
+W^s := \left\lbrace u : \| u\|_{W^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widehat{u}_n|^2 < \infty \right\rbrace,
+\end{align*} 
+for $s \in \IR$. These two can be defined rigurously from $H^s$ by considering two periodic lifting operators defined as 
+\begin{align}
+\label{eq:liffings}
+(Ju) (\theta) = u(\cos(\theta)) | \sin \theta|, \quad \text{and,} \quad
+(\widehat{J}u)(\theta) = u (\cos(\theta)),
+\end{align}
+which again are extended to distribution by duality, and considering the equivalences 
+\begin{align*}
+u \in T^s \Leftrightarrow Ju \in H^s, \quad \text{and,} \quad u \in W^s \Leftrightarrow \widehat{J}u \in H^s.
+\end{align*}
+The spaces $T^s,W^s$ will be used as domain and range of the integral operators on open arcs mapped back to $[-1,1]$ through the corresponding particularization.
+\subsection{Holomorphic Extension of Standard Functions}
+Before we proceed with the analysis of the integral operators we recall the holomorphic extension of some common functions.
+
+The most basic functions that we will use are the square root and the logarithm function. Both of them are extended to the complex plane taking the main branch and the resulting extensions are holomorphic in $\IC \setminus (-\infty,0]$. We denote both extension with the same notation that the real functions, i.e. $\sqrt{\cdot}$, and $\log{(\cdot)}$.   
+
+We will also make use of the extension of the distance function between two points of two arcs (including the possibility that the two arcs are the same).  For real parametrizations $\br, \bp :[-1,1] \rightarrow \IR^2$ the distance function is defined as 
+$$d_{\br,\bp}(t,s) = \| \br(t) - \br(s)\|,$$
+while for complex arcs $\br, \bp :[-1,1] \rightarrow \IC^2$, the corresponding extension is 
+$$d_{\br,\bp}(t,s) =  \sqrt{(\br(t)-\bp(s))\cdot (\br(t)-\bp(s))},$$
+where $\ba \cdot \bb  = a_1 b_1 + a_2 b_2$. Notice that we do not use the conjugate function as it will prevent any possibility of obtaining holomorphic extensions.  Now we present some basic tools that will enable us to show that the distance function is well defined for complex arcs. 
+\begin{lemma}
+\label{lemma:dwelldef}
+Let $m \in \IN$, $m\geq1$, and $K \subset \rgeo{m}$ a compact sec, then 
+\begin{enumerate}
+\item 
+\begin{align*}
+\inf_{\br \in K } \inf_{t \in (-1,1)} \| \br'(t) \|>0  \quad \text{and,} \quad  \sup_{\br \in K} \sup_{t \in (-1,1)} \| \br'(t)\| < \infty.
+\end{align*}
+\item 
+There exist $\delta >0 $ such that  
+$$ 
+\inf_{\br \in K_\delta} \inf_{t \in (-1,1)}Re (\br'(t) \cdot \br'(t)) > 0 .$$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+First part follows from the continuity of $I(\br) = \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S(\br) = \sup_{t \in (-1,1)} \| \br'(t)\|$ in $\cmspace{m}{(-1,1)}{\IR^2}$, in fact if $\| \br -\bp \|_{\cmspace{m}{(-1,1)}{\IR^2}}< \epsilon$ we have that 
+$I(\bp)  < \epsilon + I(\br)$
+and symmetrically 
+$
+I(\br)  < \epsilon + I(\bp)
+$
+thus $|I(\br) - I(\bp)| < \epsilon$, and then the infimum in $K$ is achieved since $K$ is compact. The supremum case follows similarly. For the second part define $I = \inf_{\br \in K } I(\br)$, $S =\sup_{\br \in K } S(\br)$, and consider any element $\br \in K_\delta$, then there is $\bp \in K$ such that $\| \br -\bp \|_{\cmspace{m}{(-1,1)}{\IR^2}} < \delta$, and we have 
+\begin{align*}
+\br' \cdot \br' = \|\br'\|^2+ 2(\br' -\bp')\cdot \bp' +(\br'-\bp')\cdot(\br'-\bp') 
+\end{align*}
+thus we get
+\begin{align*}
+Re(\br' \cdot \br') \geq I^2 - 2S\delta -\delta^2, \end{align*}
+the result then follows by selecting $\delta < \sqrt{I^2+S^2}-S$.
+\end{proof} 
+
+Now we establish basic proprieties of the function $d_{\br,\br}$. 
+
+\begin{lemma}
+\label{lemma:dself}
+Let $m \in \IN$, $m\geq 1$, and $\br \in  \cgeo{m}$ with $\inf_{t \in (-1,1)}Re(\br'(t) \cdot \br'(t)) >0$, then the extension of the distance function 
+\begin{align*}
+d_{\br} (t,s) = \begin{cases} d_{\br,\br}(t,s) \quad t\neq s \\ 
+0 \quad t=s \end{cases},
+\end{align*} 
+is a continuous function. Moreover, for a compact set $K \in \rgeo{m}$ and delta as in Lemma \ref{lemma:dwelldef}, the map $\br \in K_\delta \mapsto d_{\br}^2 \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomporphic, and uniformly bounded.   
+\end{lemma}
+\begin{proof}
+For $t \neq s$ we have that
+\begin{align*}
+d_{\br}^2(t,s) = (\br(t)-\br(s))\cdot (\br(t) -\br(s)),
+\end{align*}
+using the Taylor expansion of $\br$ we have 
+\begin{align}
+\label{eq:expdr}
+d_{\br}^2(t,s) = (t-s)^2 \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)
+\end{align}
+Using mean value theorem we obtain 
+\begin{align*}
+Re ( d_{\br}^2(t,s)  )  \geq (t-s)^2 \inf_{t \in (-1,1)} Re(\br'(t) \cdot \br'(t)) >0.
+\end{align*}
+thus $d_{\br}$ is well defined. The continuity is obtained directly from \eqref{eq:expdr}. For the second part let us define 
+$$
+D d_{\br}^2[\bh](t,s) = 2 (\br(t)-\br(s))\cdot (\bh(t) - \bh(s)),
+$$
+is clear that this function is linear in the $\bh$ variable, and we also have $D d_{\br}^2[\bh] \in \cmspace{m}{\iinterv}{\IC}$ for $\br,\bh \in \cmspace{m}{(-1,1)}{\IC^2}$. We also have 
+\begin{align*}
+d^2_{\br+\bh}(t,s) -d^2_{\br}(t,s) =  D d_{\br}^2[\bh](t,s) + d^2_{\bh}(t,s).
+\end{align*}
+Consider $\alpha, \beta \in \IN$ such that $0 \leq \alpha +\beta \leq m$, by the product rule for derivatives we have that 
+\begin{align*}
+ \left\vert\partial_s^\beta \partial_t^\alpha d^2_{\bh}(t,s) \right\vert= \left\vert\sum_{k=1}^{\alpha-1} \begin{pmatrix} \alpha \\ k \end{pmatrix} \partial_t^k \bh(t) \cdot \partial^{\alpha-k}_t \bh(t) - 2\partial_s^\beta \bh(s) \cdot \partial^\alpha_t \bh(t)\right\vert \lesssim \| \bh\|^2_{\cmspace{m}{(-1,1)}{\IC}},
+\end{align*} 
+thus we conclude that $D d_{\br}^2[\bh]$ is in fact the Frechet derivative of $d^2_{\br}$ (in the direction $\bh$), in $\cmspace{m}{\iinterv}{\IC}$, and the map $\br  \mapsto d_{\br}^2 \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. Finally we have that given $\br \in K_\delta$, there is $\widetilde{\br} \in K$ such that $\| \br - \widetilde{\br}\|_{\cmspace{m}{(-1,1)}{\IC^2}} < \delta$, then 
+\begin{align*}
+\| d^2_{\br} \|_{\cmspace{m}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}
+\end{align*}
+the seccond term of the right hand side is uniformly bounded as $K$ is compact. For the first term we have
+$$\| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}} \leq 
+\|D d^2_{\widetilde{\br}}[\br - \widetilde{\br}]\|_{\cmspace{m}{\iinterv}{\IC}} + \| d^2_{\br -\widetilde{\br}}\|_{\cmspace{m}{\iinterv}{\IC}},$$
+ using the explicit expresion of the derivative and the product rule for derivatives we get
+\begin{align*}
+\| d^2_{\br}  - d_{\widetilde{\br}}^2 \| \lesssim 
+\|\widetilde{\br}\|_{\cmspace{m}{\iinterv}{\IC}} \delta  + \delta^2,
+\end{align*}
+where the unspecified constant do not depends of $\br$. Since $\widetilde{\br} \in K$ we obtain he the uniform bound. 
+\end{proof}
+
+Now we focus in the distance for two different disjoint arcs. 
+\begin{lemma}
+\label{lemma:dcross}
+Consider $K^1,K^2$ two disjoint compact subsets of $\rgeo{m}$, with  $m \in \IN$
+then, there exist $\delta_1 >0 , \delta_2 >0$ such that the map $(\br, \bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto d_{\br, \bp} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded. 
+\end{lemma}
+\begin{proof}
+First notice that since we are considering compact sets in a metric space we have that
+\begin{align*}
+\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+ \| \br(t) - \bp(s) \| = I > 0,
+\end{align*}
+and from this we can see that
+$$
+Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_2)^2,$$
+where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| r'(t)\| +
+\sup_{\br \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| r'(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the distance is well defined and then $d_{\br, \bp } \in \cmspace{m}{(-1,1)\times (-1,1)}{\IC}$ since we are in the holomorpy domain of the square root function. We left to show the holomorpy of the map from arcs to the distance. Consider 
+\begin{align*}
+D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)} 
+\end{align*}
+we will show that this map is in fact the Frechet derivative of $d_{\br,\bp}$ in the direction $\bh^1,\bh^2$. Is clear from the definition that $D d_{\br,\bp}$ is a linear map in the $\bh^1,\bh^2$ direction, moreover since, 
+$$\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+d_{\br,\bp}(t,s) \geq \sqrt{I^2 -2S (\delta_1 +\delta^2)-(\delta_1 +\delta_2)^2}>0,$$
+and using the product rule for derivatives we conclude that $$D d_{\br,\bp}\in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}^2,
+\cmspace{m}{(-1,1) \times (-1,1)}{\IC}).$$ To proof the approximation propriety we first notice that 
+$$d_{\br+ \bh^1, \bp+\bh^2}(t,s)^2 - d_{\br,\bp}(t,s)^2 = 2 (\br(t)-\bp(s))\cdot (\bh^1(t)- \bh^2(s)) + O(\| \bh^1(t)- \bh^2(s)\|^2),$$
+hence by the diferiantiability of the square root function we get 
+$$
+d_{\br+ \bh^1, \bp+\bh^2}(t,s) - d_{\br,\bp}(t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)}  + O( \| \bh^1(t)- \bh^2(s)\|^2).
+$$
+To finish the proof we need to show that for $\alpha, \beta \in \IN$ such that $0 \leq \alpha + \beta \leq m$ we have,  
+\begin{align*}
+\lim_{\bh^1 \rightarrow 0 \atop \bh^2 \rightarrow 0 }\frac{\partial^\beta_s\partial^\alpha_t \| \bh^1(t)- \bh^2(s)\|^2}{\| \bh^1 \|_{\cmspace{m}{(-1,1)}{\IC^2}} + \|\bh^2\|_{\cmspace{m}{(-1,1)}{\IC^2}}} = 0 ,
+\end{align*}
+the proof is the same as in the differentiability part of the Lemma \ref{lemma:dself}. Similarly the uniform bound follows by bounding $d^2_{\br,\bp}$ as in the previous lemma and the fact that the distance has strictly positive real part. 
+\end{proof}
+
+An additional function that is crucial for the analysis of integrals kernels is presented now. 
+
+\begin{lemma}
+\label{lemma:Qfun}
+For an arc $\br$ consider the function 
+$$
+Q_{\br}(t,s) = \begin{cases}
+\frac{d^2_{\br}(t,s)}{(t-s)^2}, \quad t\neq s \\
+\br '(t) \cdot \br '(t), \quad t =s 
+\end{cases}.
+$$
+Then for a compact set $K \subset \rgeo{m}$, and $\delta$ as in Lemma \ref{lemma:dwelldef} the maps, 
+\begin{align*}
+\br \in K_\delta \mapsto Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, \\
+\br \in K_\delta \mapsto 1/Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, 
+\end{align*} 
+are both holomorphic, uniformly bounded, and we also have  
+\begin{align*}
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
+\end{align*}
+\end{lemma}
+\begin{proof}
+Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$$. For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
+\begin{align*}
+DQ_{\br}[\bh](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bh(t)-\bh(s))}{(t-s)^2}, \\
+D1/Q_{\br}[\bh](t,s) = -\frac{DQ_{\br}[\bh](t,s)}{(Q_{\br}(t,s))^2} 
+\end{align*}
+with the continious extension for $t=s$. These two are linear maps in the $\bh$ variable, and again by Taylor expansion we have that for $\alpha, \beta \in \IN$, 
+\begin{align}
+\label{eq:ddbound}
+\left\vert \left\vert \partial_s^\beta \partial_t^\alpha \frac{\br(t)-\br(s)}{t-s} \right \vert  \right \vert\leq \| \br \|_{\cmspace{\alpha+\beta+1}{(-1,1)}{\IC}}
+\end{align}
+%\begin{align}
+%\label{eq:DQbound}
+%DQ_{\br}[\bh](t,s)| \leq 2 \|\br\|_{\cmspace{1}{(-1,1)}{\IC^2}} \| \bh\|_{\cmspace{1}{(-1,1)}{\IC^2}}
+%\end{align}
+hence, $DQ_{\br}$, $D1/Q_{\br} \in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}
+  , \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$.
+We also have that 
+\begin{align*}
+d_{\br +\bh}^2(t,s) = d^2_{\br}(t,s) + 2 (\br(t) -\br(s))\cdot (\bh(t)-\bh(s)) + d_{\bh}^2(t,s),
+\end{align*}
+thus, 
+\begin{align*}
+Q_{\br +\bh}(t,s) = Q_{\br}(t,s) + DQ_{\br}[h](t,s) + Q_{\bh}(t,s).
+\end{align*}
+By \eqref{eq:ddbound} we have that $\| Q_{\bh}\|_{\cmspace{m-1}{\iinterv}{\IC^2}} \lesssim \| \bh\|_{\cmspace{m}{\iinterv}{\IC^2}}^2$, so we get the differentiability of $Q_{\br}$. On the other hand from the differentiability of the function $1/z$ for $z$ away from $0$ we get, 
+\begin{align*}
+1/Q_{\br+\bh} = 1/Q_{\br} - (Q_{\br})^{-2} (Q_{\br+\bh}-Q_{\br}) + o(|Q_{\br+\bh}-Q_{\br}|),
+\end{align*}
+the result then follows from the diffentiability of $Q_{\br}$.
+
+The uniform bound of $Q_{\br}$ follows directly from the one of $d^2_{\br}$ in Lemma \ref{lemma:dself}. On the other hand, for $1/Q_{\br}$ need the last part of this lemma, which is obtained using the Taylor expansion of $\br$ and Lemma \ref{lemma:dwelldef}.
+\end{proof}
+
+The last function that will be covered in this section is very similar to the previous function, and appears explicitly in the fundamental solution for the elastic scattering.
+
+\begin{lemma}
+\label{lemma:Dmatrix}
+Consider two arcs $\br$, and $\bp$ and define the matrix function $\mathbf{D}_{\br,\bp}$, with components
+\begin{align*}
+(D_{\br,\bp}(t,s))_{j,k} :=  \begin{cases}
+\frac{(r_j(t)-p_j(s))\cdot (r_k(t)-p_k(s))}{d_{\br,\bp}^2(t,s)} \quad \br \neq \bp\text{, or, } t \neq s \\
+\frac{r_j(t) r_k(s)}{\br'(t)\cdot \br'(s)} \quad \text{i.o.c.} 
+\end{cases} \quad j,k=1,2,
+\end{align*} 
+and also two compact sets $K^1,K^2 \subset \rgeo{m}$ for some $m \in \IN$. 
+\begin{enumerate}
+\item
+If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Lemma \ref{lemma:dwelldef} then 
+\begin{align*}
+\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\end{align*} 
+is holomorphic and uniformly bounded.
+\item 
+If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross}, then 
+\begin{align*}
+(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\end{align*} 
+is holomorphic and uniformly bounded.
+\end{enumerate}
+\end{lemma} 
+\begin{proof}
+For the first part, if $t \neq s$ we have, 
+\begin{align*}
+(D_{\br,\br}(t,s))_{j,k} = 1/Q_{\br}(t,s) \left( \frac{r_j(t)-r_j(s)}{t-s} \right) \cdot \left( \frac{r_k(t)-r_k(s)}{t-s} \right)
+\end{align*}
+and the results follows as in the proof of Lemma \ref{lemma:Qfun}.
+
+The second part is direct from Lemma \ref{lemma:dcross} and elementary results of complex variable. 
+\end{proof}
+\subsection{Integral Kernels}
+In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
+
+The following result is a basic consequence of the composition of holomorphic functions. 
+
+\begin{lemma}
+\label{lemma:Fcircq}
+Let $F :\IC \rightarrow \IC$ holomorphic in $\IC \setminus (-\infty,0]$. Consider $K^1, K^2$ compact subsets of $\cmspace{m}{(-1,1)}{\IR^2}$, for some $m \in \IN$, with their corresponding complex extensions $K^1_{\delta_1}$, $K^2_{\delta_2}$, for a pair $\delta_1 >0$, $\delta_2>0$. We also consider a function $q_{\br,\bp} :(-1,1)\times (-1,1) \rightarrow \IC$ with $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$, such that  
+\begin{enumerate}
+\item 
+The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspace{m-j}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
+\item we have the uniform bound: 
+$$
+\inf_{(\br,\bp) \in K_{\delta_1}^1 \times K_{\delta_2}^2} \inf_{(t,s) \in (-1,1)\times(-1,1)} Re( q_{\br,\bp}(t,s))>0.
+$$
+\end{enumerate}
+Then 
+$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded.
+\end{lemma} 
+From the latter result we obtain two important consequences. 
+
+\begin{corollary}
+\label{cor:smoothcomp}
+Let $F$ as in the previous lemma and $m \in \IN$: 
+\begin{enumerate}
+\item 
+For a compact $K \subset \rgeo{m}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
+$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded. 
+\item 
+For compact disjoint sets $K_1,K_2 \subset  \rgeo{m}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
+$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+The proof is direct from previous Lemma, using Lemmas \ref{lemma:Qfun}, and \ref{lemma:dcross} to verify the hipotesis. The only point that was not not explicitly given is that the real parts of $d_{\br,\bp}$ is strictly positive, but this is a condition for the function to be well defined and was also showed in the proof of Lemma \ref{lemma:dcross}.
+\end{proof}
+Finally we need to analyze the case of smooth functions acting on the function $d_{\br}$ (defined as in Lemma \ref{lemma:dself}). The result is not direct as the distance in this case is only continuous regardless of the regularity of the arcs. To establish the regularity we need special conditions on the kernel function. 
+\begin{lemma}
+\label{lemma:selfkernell}
+Consider $F :\IC \rightarrow \IC$ holomorphic, and assume there is $f : \IC \rightarrow \IC$ also holomorphic such that
+$$F(z) = f(z^2).$$ 
+We consider again a compact set $K \subset \rgeo{m}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
+$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorhic and uniformly bounded. 
+\end{lemma}
+\begin{proof}
+The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)) \cdot (\br(t)-\br(s)))$$ the smoothness of $f$, and Lemma \ref{lemma:dself}. 
+\end{proof}
+
+\subsection{Abstract Integral Operators}
+
+In this section we study the mapping properties of two kind of integral operators: 
+\begin{align*}
+(R_f u)(t) = \int_{-1}^1f(t,s) u(s) ds,\\
+(L_fu)(t) = \int_{-1}^1 \log|t-s| f(t,s) u(s) ds,
+\end{align*}
+where $f \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
+
+Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, and $L_f$. The following result give a first insight regarding this relation. 
+
+\begin{lemma}
+\label{lemma:cmdecay}
+Let $m \in \IN$, with $m\geq 1$. Consider $f \in \cmspace{m}{\iinterv}{\IC}$, then 
+$$|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1})$$
+for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$. Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
+$$ |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}  .$$
+\end{lemma}
+\begin{proof}
+The result follows similarly to the uni-variate case, see \todo{red treffeten chapter 7}. 
+\end{proof}
+Now we can establish the mapping properties of $R_f$ directly. 
+\begin{lemma}
+\label{lemma:Rfoperator}
+Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then $R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$.  Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ is continuous for $s_1, s_2$ as before, and we have the bound 
+$$
+\| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}
+$$
+\end{lemma}
+\begin{proof}
+We have that 
+\begin{align*}
+\|R_fu\|_{W^{s_2}}^2  &= \sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert 
+\int_{-1}^1 \left( \int_{-1}^1 f(t,s) u(s) ds\right) T_n w^{-1}(t) dt\right\vert^2\\
+& = 
+\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert  \sum_{p=0}^\infty \sum_{q=0}^\infty \widehat{f}_{p,q} u_q
+\int_{-1}^1 T_p   T_n w^{-1}(t) dt \right\vert^2
+\end{align*} 
+by the orthogonality of the Chebishev polynomials,
+ \begin{align*}
+\|R_fu\|_{W^{s_2}}^2  &=
+\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert   \sum_{q=0}^\infty \widehat{f}_{n,q} u_q
+ \right\vert^2 
+ \\
+ &= 
+\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert   \sum_{q=0}^\infty (1+q^2)^{-s_1/2}\widehat{f}_{n,q} (1 +q^2)^{s_1/2}u_q
+ \right\vert^2  
+\end{align*} 
+by the cauchy-schawrz inequality 
+\begin{align}
+\label{eq:rfbound}
+\|R_fu\|_{W^{s_2}}^2  \leq 
+\sum_{n=0}^\infty \sum_{q=0}^\infty (1+n^2)^{s_2}     (1+q^2)^{-s_1}|\widehat{f}_{n,q}|^2  \| u\|^2_{T^{s_1}},
+\end{align}
+using Lemma \ref{lemma:cmdecay}, the sum of the right hand side would converge iff
+\begin{align*}
+\sum_{n=1}^\infty \sum_{q=1}^\infty (1+n^2)^{s_2}     (1+q^2)^{-s_1} n^{-2(m+1)\alpha} q^{-2(m+1)\beta} < \infty
+\end{align*}
+for some combination of $\alpha,\beta$, such that $\alpha + \beta = 1$. This is equivalent to 
+$$2s_2 -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s_1 -2(m+1)\beta < -1. $$
+replacing $\beta = 1 - \alpha$ and summing both inequalities we arrive to the condition $s_2-s_1 < m$.  The continuity respect to $f$ follows from   \eqref{eq:rfbound} and the bounds on Lemma \ref{lemma:cmdecay}.
+\end{proof}
+
+\todo{comentario de lo que viene }
+
+\begin{lemma}
+\label{lemma:Lfoperator}
+Let $m \in \IN$, with $m\geq 2$ and $f \in \cmspace{m}{\iinterv}{\IC}$, then $L_f \in \mathcal{L}(T^s,W^{s+1})$, for \todo{not needed=???} $|s+1| +|s| <m$. \\Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto L_f \in \mathcal{L}(T^s,W^{s+1})$ is continuous, and we have 
+$$
+\|L_f\|_{\mathcal{L}(T^s,W^{s+1})} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
+$$
+\end{lemma}
+
+\begin{proof}
+We recall that $\log |t-s|  = \sum_{n \geq 0} d_n T_n(t) T_n(s)$, where $d_n \sim n^{-1}$, \todo{add ref}, thus we have  \todo{este cambio de suma con integral no es directo}
+\begin{align*}
+\begin{split}
+L_f u &= \sum_{n=0}^\infty d_n \int_{-1}^1 f(t,s) T_n(t) T_n(s) u(s) ds \\ &=  \sum_{n=0}^\infty \sum_{p=0}^\infty
+\sum_{q=0}^\infty d_n \widehat{f}_{p,q} \int_{-1}^1 T_nT_p(t) T_nT_q(s) u(s) ds
+\end{split}
+\end{align*}
+Since \todo{esto no se cumple par alos normalizados}$T_n T_m (t)= \frac{1}{2} (T_{n+m}(t) + T_{|n-m|}(t))$, for every pair of integers $n,m$, we get 
+\begin{align*}
+L_f u = \sum_{n=0}^\infty \sum_{p=0}^\infty
+\sum_{q=0}^\infty \frac{d_n}{2} T_nT_p(t) \widehat{f}_{p,q} ( u_{n+q}+u_{|n-q|})
+\end{align*} 
+we do the changes of variables $n+q = r$, $n-q= r$ for $n>q$ and $q-n = r$ for $n \leq q$, thus the above expression is reduced to  \todo{faltan pequeños ajustes...}
+\begin{align}
+\label{eq:Lfexp}
+L_f u =\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
+\frac{d_n}{2} T_nT_p(t)  ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}),
+\end{align}
+to obtain the norm of $L_fu$ in $W^{s+1}$ we need to compute its Chebishev coefficients which are given by 
+\begin{align*}
+(L_f u)_l = \int_{-1}^1 L_fu T_l w^{-1}(t) dt 
+\end{align*} 
+using \eqref{eq:Lfexp}, and the expresion for the product of Chebyshev polynomials we obtain, 
+\begin{align*}
+(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
+\frac{d_n}{4} ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}) \int_{-1}^1 (T_{n+p}+ T_{|n-p|})T_lw^{-1}(t) dt
+\end{align*}
+we can now use the orthogonality of the Chebishev polynomials and after some variable changes in the $p$ variable we get: 
+\begin{align*}
+(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
+\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+\right) ,
+\end{align*}
+using the last expression we get 
+\begin{align*}
+&\| L_f u\|_{W^{s+1}}^2 = \sum_{l= 0}^\infty (1+l^2)^{s+1} | (L_f u)_l| ^2 = \\
+&\sum_{l= 0}^\infty (1+l^2)^{s+1} \left\vert 
+\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
+\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+\right)
+\right\vert^2
+\end{align*} 
+we use the cauchy-schawrz inequality so we obtain 
+\begin{align}
+\label{eq:fourdsum}
+\begin{split}
+\| L_f u\|_{W^{s+1}}^2 \leq \| u\|_{T^s}^2  \sum_{l= 0}^\infty \sum_{r=0}^\infty (1+l^2)^{s+1} (1+r^2)^{-s} \\ \left\vert \sum_{n=0}^\infty
+\frac{d_n}{4} \left( 
+\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+\right)
+\right\vert^2 
+\end{split}
+\end{align}
+We now estimate the sums on the right hand side of the last equation, since $f \in \cmspace{m}{\iinterv}{\IC}$ we can use Lemma \ref{lemma:cmdecay}, thus for the first sum we get  
+\begin{align*}
+\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
+\sum_{n=1}^\infty  n^{-1} (|l-n|+1)^{-(m+1)},
+\end{align*}
+we then split the sum in three parts \footnote{we assume that $l$ is even, the odd case is similar}
+\begin{align*}
+\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} \\
+\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)}+ \sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)} + \sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} ,
+\end{align*}
+each of them is estimated using integrals interpolants so we obtain:  \todo{la segunda esta mal!, esta suma no decae asi...decae con orden 1 solamente creo.....}
+\begin{align*}
+\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)} \lesssim \int_{1}^{l/2} x^{-1} (l-x)^{-m-1} dx  \leq \left(\frac{l}{2}\right)^{-m-1}\log{\frac{l}{2}} \lesssim l^{-m-1}\log l \\
+\sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)}  \lesssim \int_{l/2}^{3l/2} x^{-1}(|l-x|+1)^{-m-1} dx\leq \left(\frac{l}{2}\right)^{-m-1} \log 3  \lesssim l^{-m-1}\\
+\sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} \lesssim \int_{3l/2}^\infty x^{-1}(x-l)^{-m-1} \leq \frac{2}{3l} \left( \frac{2}{3l} \right)^{m} \lesssim l^{-m-1},
+\end{align*}
+thus we obtain
+$$
+\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} l^{-m-1} \log l
+$$ 
+similarly using Lemma \ref{lemma:cmdecay} to bound the coefficients of $f$ in terms of the $r$ variable we can find the following estimation 
+$$
+\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-m-1} \log r,
+$$ 
+and combining these two bounds we have that for $\alpha, \beta \in \IR$ such that $\alpha + \beta =1 $, 
+$$
+\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-\beta(m+1)} l^{-\alpha(m+1)} (\log r)^\beta (\log l)^\alpha,
+$$ 
+for other three terms in \eqref{eq:fourdsum} we can apply the same ideas so we get, 
+\begin{align*}
+\| L_f u\|_{W^{s+1}}^2  \lesssim \| u\|_{T^s}^2 \|f\|_{\cmspace{m}{\iinterv}{\IC}}^2 \sum_{l= 1}^\infty \sum_{r=1}^\infty \\(1+l^2)^{s+1} (1+r^2)^{-s} r^{-2\beta(m+1)} l^{-2\alpha(m+1)} (\log r)^{2\beta} (\log l)^{2\alpha},
+\end{align*}
+notice that the terms $r=l=0$ are omitted as they don't play any role in the convergence. Now the proof is finished by noticing that a equivalent condition for the last sum to converge is 
+$$2(s+1) -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s -2(m+1)\beta < -1. $$
+we replace $\beta = 1 - \alpha$ sum both inequalities and obtain the condition $1<m$. 
+\end{proof}
+\begin{remark}
+One can conclude that in fact the conditions for the continuity of $L_f$ and $R_f$ are the same, so the inclusion of the extra weakly singular factor makes no difference in this context. The reason for this is based in that $m$ could only take discrete values so the extra logaritmic factor plays no role in the convergence of the series. 
+\end{remark}
+\todo{si dejo la demostracion anterior no necesito nada de fourier.}
+\begin{proof}
+By the definitions of the functional spaces we have that 
+\begin{align*}
+\| \widehat{J} L_f u \|_{H^s} = \|L_f u  \|_{W^s},
+\end{align*}
+The regular part of $\widehat{J} L_f u$, can me mapped back to $[-1,1]$ and we obtain the following operator
+$$
+\left\vert \frac{log{2}}{2}
+\right\vert  
+\left\vert \left \vert
+ \int_{-1}^{1} f(t , s) u(s) ds 
+ \right\vert\right\vert_{W^{s+1}}.
+$$
+Since $m>1$ from Lemma \ref{lemma:Rfoperator} the later operator is bounded  from $T^s$ to $W^{s+1}$ for every $s \in \IR$. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1}, but the function $f$ is not arbitrary smooth, hence we need that for a $\nu >\frac{1}{2}$,
+\begin{align}
+\label{eq:condS}
+\sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2 < \infty,
+\end{align}
+where $\widetilde{f}_{p,q}$ are the Fourier coefficients of the bi-variate function $f(\cos \theta, \cos \phi)$. We notice that, 
+\begin{align*}
+\widetilde{f}_{p,q} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-q}(\phi) e_{-p}(\theta) d\phi d\theta\\
+&= \int_{-1}^{1} \frac{(e_{-p}(\arccos t)+e_{-p}(-\arccos t))}{\sqrt{1-t^2}} \int_{-\pi} ^\pi f(t, \cos \phi)  e_{-q}(\phi) d\phi dt \\
+&= \int_{-1}^{1} \frac{1}{2}T_n\omega^{-1}(t) \int_{-\pi} ^\pi f(t, \cos \phi)  e_{-q}(\phi) d\phi dt,
+\end{align*}
+thus, 
+\begin{align}
+\label{eq:Fouerier2Cheb}
+\widetilde{f}_{p,q} = \frac{1}{4} \widehat{f}_{p,q},
+\end{align}
+ hence by Lemma \ref{lemma:cmdecay}  we have that an equivalent condition to \eqref{eq:condS} is 
+\begin{align*}
+2 \max(|s+1|, \nu ) - 2(m+1) \alpha < -1 \\ 
+2 \max(|s|, \nu ) - 2(m+1) \beta < -1 
+\end{align*}
+for any $\alpha, \beta$ such that $\alpha + \beta =1$. We again replace $\beta$ and sum both inequalities and obtain the condition 
+\begin{align*}
+\max(|s+1|, \nu ) +\max(|s|, \nu )  < m ,
+\end{align*}
+since we can select $\nu$ close to $\frac{1}{2}$ as we want and we already have that $m > 1$, we only need that 
+$$|s+1| + |s| < m. $$
+The continuity in terms of $f$ follows also from Saranen as,
+$$\|L_f\|^2_{\mathcal{L}(T^s,W^{s+1})} \leq \sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2$$
+and then we use \eqref{eq:Fouerier2Cheb}, and Lemma \ref{lemma:cmdecay}.
+\end{proof}
+
+
+\subsection{Weakly-singular and Hyper-singular operators Holomorphic Extensions}
+
+
+\section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
+\subsection{Direct Problem Discretization and Error Bounds}
+\subsection{Uncertenty Parametrization}
+\subsection{Parameter Holomorphy}
+\subsection{Full error analysis}
+
+\section{Numerical Results}
+\subsection{Single Crack}
+\subsection{Multiples Cracks}
+\end{document}
+
+
+
