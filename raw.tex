@@ -388,10 +388,11 @@
 \newcommand{\jN}{[\tN]}
 \newcommand{\mD}{\{ \tD \}}
 \newcommand{\mN}{\{ \tN \}}
+
+\DeclareMathOperator{\spn}{span}
 %\newcounter{cont}
 \title{Uncertainty Quantification for Elastic Waves on Multiples Cracks}
 
-\DeclareMathOperator{\spn}{span}
 
 %----------Author 1
 \author{Jos\'e Pinto}
@@ -402,6 +403,13 @@
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+This works present a generalized analysis of the holomorphy dependence of a class of integral operators, coming from the reduction of scattering problems with Dirichlet or Neumann boundary conditions on open arcs in two dimensions,  in terms of the geometric parametrization. 
+
+We apply the mentioned result to estimate the statical moments of some quantity of interest in the context of elastic-wave scattering of cracks, whose shape and position are uncertain. We show that high order quasi-Montecarlo rules can be applied (provided some assumptions on the size of the perturbations with respect to a canonical configuration), and demonstrate the results with numerical experiments on a single crack. In the case of multiple cracks, while the theory predicts similar convergence rates in practice only low order convergence is achieved, we provide an adequate analysis that justifies this behavior. 
+\end{abstract}
+
 \section{Introduction}
 In recent years, the scattering of of elastic waves has found multiples applications on engineering. 
 In particular, one of the most important applications is the detection of structural defects by processing the far fields produced by the scattered waves, see  \todo{ref} for example and references therein for detail.
