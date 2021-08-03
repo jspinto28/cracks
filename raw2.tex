@@ -149,6 +149,7 @@
 \newcommand{\bsy}{{\boldsymbol y}}
 \newcommand{\bsw}{{\boldsymbol w}}
 \newcommand{\bsz}{{\boldsymbol z}}
+\newcommand{\bmu} {\bm{\mu}}
 %\newcommand{\br} {\bm r}
 \newcommand{\bM} {\bm{M}}
 \newcommand{\bR} {\mathsf{R}}
@@ -338,7 +339,6 @@
 \newcommand{\bla}{\boldsymbol \lambda}
 \newcommand{\bpsi}{\boldsymbol \psi}
 \newcommand{\btau}{{\boldsymbol \tau}}
-\newcommand{\bmu}{{\boldsymbol \mu}}
 \newcommand{\bxi}{{\boldsymbol \xi}}
 \newcommand{\bPsi}{{\boldsymbol \Psi}}
 \newcommand{\bPhi}{{\boldsymbol \psi}}   
@@ -426,6 +426,47 @@ We apply the mentioned result to estimate the statical moments of some quantity 
 \subsection{Scattering Problem on Open Arcs}
 \subsection{Boundary Integral Formulation}
 
+As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results.
+
+Given two arcs $\Gamma_1, \Gamma_2$ parametrized by $\br_1, \br_2$ respectively we assume that the fundamental solution evaluated in the parametrizations can be expressed as
+\begin{align}
+\label{eq:funsolgen}
+G(\br_1(t), \br_2(s) )  =
+\log \|\br_1(t) -\br_2(s) \| F_1(\|\br_1(t) -\br_2(s) \| ^2)+F_2(\|\br_1(t) -\br_2(s) \| ^2),
+\end{align}
+where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ functions. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
+\begin{align*}
+SL_\Gamma \lambda(\bx) = \int_\Gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\Gamma \mu(\bx) = \int_\Gamma \mathcal{B}_{\bn,\by} G(\bx,\by) \mu(\by) d\by,
+\end{align*} 
+where $\mathcal{B}_{\bn,\by}$ denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
+
+We will consider the pulled back versions of the potentials, let us consider the transformed densities 
+\begin{align*}
+\widehat{\lambda} (s) = \lambda \circ \br(s)  \| \br'(s) \|, \quad 
+\widehat{\mu} (s) = \mu \circ \br(s),
+\end{align*}
+and the pulled back potentials 
+\begin{align*}
+\widehat{SL}_{\Gamma} u := \int_{-1}^1 
+ G(\bx,\br(s))  u(s) ds, \quad 
+ \widehat{DL}_{\Gamma} u := \int_{-1}^1 
+ \mathcal{B}_{\bn,\by}G(\bx,\br(s))  u(s) \|\br'(s)\|ds,
+\end{align*}
+defined for an arbitrary function $u$, thus we have $SL_\Gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. In what follows we will omit the hat notations, as we will only use the pulled back potentials. 
+
+Now we reformulate Problem \todo{ref}, as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. In particular working on the geometry setting of Problem \todo{ref} we seek densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $(-1,1)$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $(-1,1)$, such that
+\begin{align*}
+\sum_{j=1}^M (SL_{\Gamma_j} \lambda_j )\circ \br_i = g\circ \br_i, \quad i = 1,\hdots,M \\
+\sum_{j=1}^M (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} \mu_j )\circ \br_i = f\circ \br_i, \quad i = 1,\hdots,M,
+\end{align*}
+ thus $u = \sum_{j=1}^M SL_{\Gamma_j} \lambda_j $ is a solution for the Dirichlet Problem, and  $u = \sum_{j=1}^M DL_{\Gamma_j} \mu_j $ solves the Neumann Problem. We can rewrite the boundary integral equations in matrix form as 
+\begin{align}
+\label{eq:bios}
+\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla = \bg_{\Gamma_1,\hdots,\Gamma_M}, \quad \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu = \mathbf{f}_{\Gamma_1,\hdots,\Gamma_M},
+\end{align}
+where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(g_{\Gamma_1,\hdots,\Gamma_M})_i = g \circ \br_i$, $(f_{\Gamma_1,\hdots,\Gamma_M})_i = f \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$.
+
+To finalize this sections, let us comment on the uniqueness of the solution of the boundary integral formulation. As we pointed out in \todo{ref arcs}, the uniqueness of the boundary integral formulation is equivalent to the solution of \todo{ref strong form}. For some examples of the uniqness of the strong formulation we refer to \todo{ref sthepane} for the Helmholtz problem, and \todo{ref kres} for the Elastic-wave problem.
 \section{Shape Holomorphy of Boundary Integral Operators}
 
 Let us begin this section by recalling a pair of abstract theorems that constitute the main tool to establish the holomorphic dependence of a class of integral operators. These results are not new but slightly generalization of  Theorems 4.13 and 5.21 presented in \todo{ref}. Their proofs also follows verbatim as in the reference, and as so are omitted.
@@ -601,7 +642,7 @@ Consider $\alpha, \beta \in \IN$ such that $0 \leq \alpha +\beta \leq m$, by the
 \end{align*} 
 thus we conclude that $D d_{\br}^2[\bh]$ is in fact the Frechet derivative of $d^2_{\br}$ (in the direction $\bh$), in $\cmspace{m}{\iinterv}{\IC}$, and the map $\br  \mapsto d_{\br}^2 \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. Finally we have that given $\br \in K_\delta$, there is $\widetilde{\br} \in K$ such that $\| \br - \widetilde{\br}\|_{\cmspace{m}{(-1,1)}{\IC^2}} < \delta$, then 
 \begin{align*}
-\| d^2_{\br} \|_{\cmspace{m}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}
+\| d^2_{\br} \|_{\cmspace{m}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}},
 \end{align*}
 the seccond term of the right hand side is uniformly bounded as $K$ is compact. For the first term we have
 $$\| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}} \leq 
@@ -632,7 +673,7 @@ Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_
 where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| r'(t)\| +
 \sup_{\br \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| r'(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the distance is well defined and then $d_{\br, \bp } \in \cmspace{m}{(-1,1)\times (-1,1)}{\IC}$ since we are in the holomorpy domain of the square root function. We left to show the holomorpy of the map from arcs to the distance. Consider 
 \begin{align*}
-D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)} 
+D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)},
 \end{align*}
 we will show that this map is in fact the Frechet derivative of $d_{\br,\bp}$ in the direction $\bh^1,\bh^2$. Is clear from the definition that $D d_{\br,\bp}$ is a linear map in the $\bh^1,\bh^2$ direction, moreover since, 
 $$\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
@@ -816,10 +857,11 @@ $$ |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}  .$$
 \begin{proof}
 The result follows similarly to the uni-variate case, see \todo{red treffeten chapter 7}. 
 \end{proof}
+
 Now we can establish the mapping properties of $R_f$ directly. 
 \begin{lemma}
 \label{lemma:Rfoperator}
-Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then $R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$.  Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ is continuous for $s_1, s_2$ as before, and we have the bound 
+Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then $R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$.\\  Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ is continuous for $s_1, s_2$ as before, and we have the bound 
 $$
 \| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}
 $$
@@ -858,116 +900,122 @@ $$2s_2 -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s_1 -2(m+1)\beta < -1. $$
 replacing $\beta = 1 - \alpha$ and summing both inequalities we arrive to the condition $s_2-s_1 < m$.  The continuity respect to $f$ follows from   \eqref{eq:rfbound} and the bounds on Lemma \ref{lemma:cmdecay}.
 \end{proof}
 
-\todo{comentario de lo que viene }
+The analysis of $L_f$ is obtained from the analysis of periodic integral operators using the lifting operators. We will make heavy use of the results of \todo{saranen chapter 6  }. Following the ideas of \todo{saranen chapter 11}, we can make a cosine change of variable so we obtain,
+\begin{align}
+\label{eq:Lsplit}
+\begin{split}
+(\widehat{J}L_fu)(\theta) &= \frac{log{2}}{2} \int_{-\pi}^{\pi} f(\cos \theta , \cos \phi) Ju(\phi) d\phi \\&+ \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert Ju(\phi) d\phi.
+\end{split}
+\end{align}
 
 \begin{lemma}
 \label{lemma:Lfoperator}
-Let $m \in \IN$, with $m\geq 2$ and $f \in \cmspace{m}{\iinterv}{\IC}$, then $L_f \in \mathcal{L}(T^s,W^{s+1})$, for \todo{not needed=???} $|s+1| +|s| <m$. \\Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto L_f \in \mathcal{L}(T^s,W^{s+1})$ is continuous, and we have 
+Let $m \in \IN$, with $m\geq 2$ and $f \in \cmspace{m}{\iinterv}{\IC}$, then $L_f \in \mathcal{L}(T^s,W^{s+1})$, for $|s+1| +|s| <m$. \\Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto L_f \in \mathcal{L}(T^s,W^{s+1})$ is continuous, and we have 
 $$
 \|L_f\|_{\mathcal{L}(T^s,W^{s+1})} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
 $$
 \end{lemma}
 
-\begin{proof}
-We recall that $\log |t-s|  = \sum_{n \geq 0} d_n T_n(t) T_n(s)$, where $d_n \sim n^{-1}$, \todo{add ref}, thus we have  \todo{este cambio de suma con integral no es directo}
-\begin{align*}
-\begin{split}
-L_f u &= \sum_{n=0}^\infty d_n \int_{-1}^1 f(t,s) T_n(t) T_n(s) u(s) ds \\ &=  \sum_{n=0}^\infty \sum_{p=0}^\infty
-\sum_{q=0}^\infty d_n \widehat{f}_{p,q} \int_{-1}^1 T_nT_p(t) T_nT_q(s) u(s) ds
-\end{split}
-\end{align*}
-Since \todo{esto no se cumple par alos normalizados}$T_n T_m (t)= \frac{1}{2} (T_{n+m}(t) + T_{|n-m|}(t))$, for every pair of integers $n,m$, we get 
-\begin{align*}
-L_f u = \sum_{n=0}^\infty \sum_{p=0}^\infty
-\sum_{q=0}^\infty \frac{d_n}{2} T_nT_p(t) \widehat{f}_{p,q} ( u_{n+q}+u_{|n-q|})
-\end{align*} 
-we do the changes of variables $n+q = r$, $n-q= r$ for $n>q$ and $q-n = r$ for $n \leq q$, thus the above expression is reduced to  \todo{faltan pequeños ajustes...}
-\begin{align}
-\label{eq:Lfexp}
-L_f u =\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
-\frac{d_n}{2} T_nT_p(t)  ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}),
-\end{align}
-to obtain the norm of $L_fu$ in $W^{s+1}$ we need to compute its Chebishev coefficients which are given by 
-\begin{align*}
-(L_f u)_l = \int_{-1}^1 L_fu T_l w^{-1}(t) dt 
-\end{align*} 
-using \eqref{eq:Lfexp}, and the expresion for the product of Chebyshev polynomials we obtain, 
-\begin{align*}
-(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
-\frac{d_n}{4} ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}) \int_{-1}^1 (T_{n+p}+ T_{|n-p|})T_lw^{-1}(t) dt
-\end{align*}
-we can now use the orthogonality of the Chebishev polynomials and after some variable changes in the $p$ variable we get: 
-\begin{align*}
-(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
-\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-\right) ,
-\end{align*}
-using the last expression we get 
-\begin{align*}
-&\| L_f u\|_{W^{s+1}}^2 = \sum_{l= 0}^\infty (1+l^2)^{s+1} | (L_f u)_l| ^2 = \\
-&\sum_{l= 0}^\infty (1+l^2)^{s+1} \left\vert 
-\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
-\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-\right)
-\right\vert^2
-\end{align*} 
-we use the cauchy-schawrz inequality so we obtain 
-\begin{align}
-\label{eq:fourdsum}
-\begin{split}
-\| L_f u\|_{W^{s+1}}^2 \leq \| u\|_{T^s}^2  \sum_{l= 0}^\infty \sum_{r=0}^\infty (1+l^2)^{s+1} (1+r^2)^{-s} \\ \left\vert \sum_{n=0}^\infty
-\frac{d_n}{4} \left( 
-\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-\right)
-\right\vert^2 
-\end{split}
-\end{align}
-We now estimate the sums on the right hand side of the last equation, since $f \in \cmspace{m}{\iinterv}{\IC}$ we can use Lemma \ref{lemma:cmdecay}, thus for the first sum we get  
-\begin{align*}
-\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
-\sum_{n=1}^\infty  n^{-1} (|l-n|+1)^{-(m+1)},
-\end{align*}
-we then split the sum in three parts \footnote{we assume that $l$ is even, the odd case is similar}
-\begin{align*}
-\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} \\
-\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)}+ \sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)} + \sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} ,
-\end{align*}
-each of them is estimated using integrals interpolants so we obtain:  \todo{la segunda esta mal!, esta suma no decae asi...decae con orden 1 solamente creo.....}
-\begin{align*}
-\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)} \lesssim \int_{1}^{l/2} x^{-1} (l-x)^{-m-1} dx  \leq \left(\frac{l}{2}\right)^{-m-1}\log{\frac{l}{2}} \lesssim l^{-m-1}\log l \\
-\sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)}  \lesssim \int_{l/2}^{3l/2} x^{-1}(|l-x|+1)^{-m-1} dx\leq \left(\frac{l}{2}\right)^{-m-1} \log 3  \lesssim l^{-m-1}\\
-\sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} \lesssim \int_{3l/2}^\infty x^{-1}(x-l)^{-m-1} \leq \frac{2}{3l} \left( \frac{2}{3l} \right)^{m} \lesssim l^{-m-1},
-\end{align*}
-thus we obtain
-$$
-\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} l^{-m-1} \log l
-$$ 
-similarly using Lemma \ref{lemma:cmdecay} to bound the coefficients of $f$ in terms of the $r$ variable we can find the following estimation 
-$$
-\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-m-1} \log r,
-$$ 
-and combining these two bounds we have that for $\alpha, \beta \in \IR$ such that $\alpha + \beta =1 $, 
-$$
-\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-\beta(m+1)} l^{-\alpha(m+1)} (\log r)^\beta (\log l)^\alpha,
-$$ 
-for other three terms in \eqref{eq:fourdsum} we can apply the same ideas so we get, 
-\begin{align*}
-\| L_f u\|_{W^{s+1}}^2  \lesssim \| u\|_{T^s}^2 \|f\|_{\cmspace{m}{\iinterv}{\IC}}^2 \sum_{l= 1}^\infty \sum_{r=1}^\infty \\(1+l^2)^{s+1} (1+r^2)^{-s} r^{-2\beta(m+1)} l^{-2\alpha(m+1)} (\log r)^{2\beta} (\log l)^{2\alpha},
-\end{align*}
-notice that the terms $r=l=0$ are omitted as they don't play any role in the convergence. Now the proof is finished by noticing that a equivalent condition for the last sum to converge is 
-$$2(s+1) -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s -2(m+1)\beta < -1. $$
-we replace $\beta = 1 - \alpha$ sum both inequalities and obtain the condition $1<m$. 
-\end{proof}
-\begin{remark}
-One can conclude that in fact the conditions for the continuity of $L_f$ and $R_f$ are the same, so the inclusion of the extra weakly singular factor makes no difference in this context. The reason for this is based in that $m$ could only take discrete values so the extra logaritmic factor plays no role in the convergence of the series. 
-\end{remark}
-\todo{si dejo la demostracion anterior no necesito nada de fourier.}
+%\begin{proof}
+%We recall that $\log |t-s|  = \sum_{n \geq 0} d_n T_n(t) T_n(s)$, where $d_n \sim n^{-1}$, \todo{add ref}, thus we have  \todo{este cambio de suma con integral no es directo}
+%\begin{align*}
+%\begin{split}
+%L_f u &= \sum_{n=0}^\infty d_n \int_{-1}^1 f(t,s) T_n(t) T_n(s) u(s) ds \\ &=  \sum_{n=0}^\infty \sum_{p=0}^\infty
+%\sum_{q=0}^\infty d_n \widehat{f}_{p,q} \int_{-1}^1 T_nT_p(t) T_nT_q(s) u(s) ds
+%\end{split}
+%\end{align*}
+%Since \todo{esto no se cumple par alos normalizados}$T_n T_m (t)= \frac{1}{2} (T_{n+m}(t) + T_{|n-m|}(t))$, for every pair of integers $n,m$, we get 
+%\begin{align*}
+%L_f u = \sum_{n=0}^\infty \sum_{p=0}^\infty
+%\sum_{q=0}^\infty \frac{d_n}{2} T_nT_p(t) \widehat{f}_{p,q} ( u_{n+q}+u_{|n-q|})
+%\end{align*} 
+%we do the changes of variables $n+q = r$, $n-q= r$ for $n>q$ and $q-n = r$ for $n \leq q$, thus the above expression is reduced to  \todo{faltan pequeños ajustes...}
+%\begin{align}
+%\label{eq:Lfexp}
+%L_f u =\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
+%\frac{d_n}{2} T_nT_p(t)  ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}),
+%\end{align}
+%to obtain the norm of $L_fu$ in $W^{s+1}$ we need to compute its Chebishev coefficients which are given by 
+%\begin{align*}
+%(L_f u)_l = \int_{-1}^1 L_fu T_l w^{-1}(t) dt 
+%\end{align*} 
+%using \eqref{eq:Lfexp}, and the expresion for the product of Chebyshev polynomials we obtain, 
+%\begin{align*}
+%(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
+%\frac{d_n}{4} ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}) \int_{-1}^1 (T_{n+p}+ T_{|n-p|})T_lw^{-1}(t) dt
+%\end{align*}
+%we can now use the orthogonality of the Chebishev polynomials and after some variable changes in the $p$ variable we get: 
+%\begin{align*}
+%(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
+%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+%\right) ,
+%\end{align*}
+%using the last expression we get 
+%\begin{align*}
+%&\| L_f u\|_{W^{s+1}}^2 = \sum_{l= 0}^\infty (1+l^2)^{s+1} | (L_f u)_l| ^2 = \\
+%&\sum_{l= 0}^\infty (1+l^2)^{s+1} \left\vert 
+%\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
+%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+%\right)
+%\right\vert^2
+%\end{align*} 
+%we use the cauchy-schawrz inequality so we obtain 
+%\begin{align}
+%\label{eq:fourdsum}
+%\begin{split}
+%\| L_f u\|_{W^{s+1}}^2 \leq \| u\|_{T^s}^2  \sum_{l= 0}^\infty \sum_{r=0}^\infty (1+l^2)^{s+1} (1+r^2)^{-s} \\ \left\vert \sum_{n=0}^\infty
+%\frac{d_n}{4} \left( 
+%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
+%\right)
+%\right\vert^2 
+%\end{split}
+%\end{align}
+%We now estimate the sums on the right hand side of the last equation, since $f \in \cmspace{m}{\iinterv}{\IC}$ we can use Lemma \ref{lemma:cmdecay}, thus for the first sum we get  
+%\begin{align*}
+%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
+%\sum_{n=1}^\infty  n^{-1} (|l-n|+1)^{-(m+1)},
+%\end{align*}
+%we then split the sum in three parts \footnote{we assume that $l$ is even, the odd case is similar}
+%\begin{align*}
+%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} \\
+%\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)}+ \sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)} + \sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} ,
+%\end{align*}
+%each of them is estimated using integrals interpolants so we obtain:  \todo{la segunda esta mal!, esta suma no decae asi...decae con orden 1 solamente creo.....}
+%\begin{align*}
+%\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)} \lesssim \int_{1}^{l/2} x^{-1} (l-x)^{-m-1} dx  \leq \left(\frac{l}{2}\right)^{-m-1}\log{\frac{l}{2}} \lesssim l^{-m-1}\log l \\
+%\sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)}  \lesssim \int_{l/2}^{3l/2} x^{-1}(|l-x|+1)^{-m-1} dx\leq \left(\frac{l}{2}\right)^{-m-1} \log 3  \lesssim l^{-m-1}\\
+%\sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} \lesssim \int_{3l/2}^\infty x^{-1}(x-l)^{-m-1} \leq \frac{2}{3l} \left( \frac{2}{3l} \right)^{m} \lesssim l^{-m-1},
+%\end{align*}
+%thus we obtain
+%$$
+%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} l^{-m-1} \log l
+%$$ 
+%similarly using Lemma \ref{lemma:cmdecay} to bound the coefficients of $f$ in terms of the $r$ variable we can find the following estimation 
+%$$
+%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-m-1} \log r,
+%$$ 
+%and combining these two bounds we have that for $\alpha, \beta \in \IR$ such that $\alpha + \beta =1 $, 
+%$$
+%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-\beta(m+1)} l^{-\alpha(m+1)} (\log r)^\beta (\log l)^\alpha,
+%$$ 
+%for other three terms in \eqref{eq:fourdsum} we can apply the same ideas so we get, 
+%\begin{align*}
+%\| L_f u\|_{W^{s+1}}^2  \lesssim \| u\|_{T^s}^2 \|f\|_{\cmspace{m}{\iinterv}{\IC}}^2 \sum_{l= 1}^\infty \sum_{r=1}^\infty \\(1+l^2)^{s+1} (1+r^2)^{-s} r^{-2\beta(m+1)} l^{-2\alpha(m+1)} (\log r)^{2\beta} (\log l)^{2\alpha},
+%\end{align*}
+%notice that the terms $r=l=0$ are omitted as they don't play any role in the convergence. Now the proof is finished by noticing that a equivalent condition for the last sum to converge is 
+%$$2(s+1) -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s -2(m+1)\beta < -1. $$
+%we replace $\beta = 1 - \alpha$ sum both inequalities and obtain the condition $1<m$. 
+%\end{proof}
+%\begin{remark}
+%One can conclude that in fact the conditions for the continuity of $L_f$ and $R_f$ are the same, so the inclusion of the extra weakly singular factor makes no difference in this context. The reason for this is based in that $m$ could only take discrete values so the extra logaritmic factor plays no role in the convergence of the series. 
+%\end{remark}
+%\todo{si dejo la demostracion anterior no necesito nada de fourier.}
 \begin{proof}
 By the definitions of the functional spaces we have that 
 \begin{align*}
-\| \widehat{J} L_f u \|_{H^s} = \|L_f u  \|_{W^s},
+\| \widehat{J} L_f u \|_{H^{s+1}} = \|L_f u  \|_{W^{s+1}},
 \end{align*}
-The regular part of $\widehat{J} L_f u$, can me mapped back to $[-1,1]$ and we obtain the following operator
+The regular part of $\widehat{J} L_f u$, defined as the first term of the right hand side of \eqref{eq:Lsplit}, can be mapped back to $[-1,1]$ and we obtain the following operator
 $$
 \left\vert \frac{log{2}}{2}
 \right\vert  
@@ -975,12 +1023,15 @@ $$
  \int_{-1}^{1} f(t , s) u(s) ds 
  \right\vert\right\vert_{W^{s+1}}.
 $$
-Since $m>1$ from Lemma \ref{lemma:Rfoperator} the later operator is bounded  from $T^s$ to $W^{s+1}$ for every $s \in \IR$. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1}, but the function $f$ is not arbitrary smooth, hence we need that for a $\nu >\frac{1}{2}$,
+Since $m>1$ from Lemma \ref{lemma:Rfoperator} the later operator is bounded  from $T^s$ to $W^{s+1}$ for every $s \in \IR$. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1} so for any $\nu >\frac{1}{2}$,
 \begin{align}
 \label{eq:condS}
-\sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2 < \infty,
+\begin{split}
+\left\vert \left\vert \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert Ju(\phi) d\phi  \right\vert \right\vert_{H^{s+1}}^2\lesssim  \|J u\|_{H^s}^2\\
+\sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2,
+\end{split}
 \end{align}
-where $\widetilde{f}_{p,q}$ are the Fourier coefficients of the bi-variate function $f(\cos \theta, \cos \phi)$. We notice that, 
+and again since $\|Ju\|_{H^s} = \|u \|_{T^s}$, we only need to verify that the last sum is finite. The coefficients $\widetilde{f}_{p,q}$ are the Fourier coefficients of the bi-variate function $f(\cos \theta, \cos \phi)$ which are related to the Chebishev coefficients of $f$ as, 
 \begin{align*}
 \widetilde{f}_{p,q} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-q}(\phi) e_{-p}(\theta) d\phi d\theta\\
 &= \int_{-1}^{1} \frac{(e_{-p}(\arccos t)+e_{-p}(-\arccos t))}{\sqrt{1-t^2}} \int_{-\pi} ^\pi f(t, \cos \phi)  e_{-q}(\phi) d\phi dt \\
@@ -991,25 +1042,23 @@ thus,
 \label{eq:Fouerier2Cheb}
 \widetilde{f}_{p,q} = \frac{1}{4} \widehat{f}_{p,q},
 \end{align}
- hence by Lemma \ref{lemma:cmdecay}  we have that an equivalent condition to \eqref{eq:condS} is 
+ hence by Lemma \ref{lemma:cmdecay} an equivalent condition to the right hand side of \eqref{eq:condS} to be finite is   
 \begin{align*}
-2 \max(|s+1|, \nu ) - 2(m+1) \alpha < -1 \\ 
-2 \max(|s|, \nu ) - 2(m+1) \beta < -1 
+2 \max(|s+1|, \nu ) - 2(m+1) \alpha < -1, \\ 
+2 \max(|s|, \nu ) - 2(m+1) \beta < -1 ,
 \end{align*}
 for any $\alpha, \beta$ such that $\alpha + \beta =1$. We again replace $\beta$ and sum both inequalities and obtain the condition 
 \begin{align*}
 \max(|s+1|, \nu ) +\max(|s|, \nu )  < m ,
 \end{align*}
-since we can select $\nu$ close to $\frac{1}{2}$ as we want and we already have that $m > 1$, we only need that 
+since we can select $\nu$ as close to $\frac{1}{2}$ as we want, and we already have that $m > 1$, we only need that 
 $$|s+1| + |s| < m. $$
-The continuity in terms of $f$ follows also from Saranen as,
-$$\|L_f\|^2_{\mathcal{L}(T^s,W^{s+1})} \leq \sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2$$
-and then we use \eqref{eq:Fouerier2Cheb}, and Lemma \ref{lemma:cmdecay}.
+The continuity in terms of $f$ follows also from \eqref{eq:condS} and Lemma   \ref{lemma:cmdecay}. 
 \end{proof}
 
 
 \subsection{Weakly-singular and Hyper-singular operators Holomorphic Extensions}
-
+In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$.
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
