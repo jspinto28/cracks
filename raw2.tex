@@ -428,13 +428,11 @@ Sauter: (u escalar? )
 $$\cP u = -div(A \nabla u)+2 \bb \cdot \nabla u + c u $$
 \subsection{Boundary Integral Formulation}
 
-As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results.
-
-Given two arcs $\Gamma_1, \Gamma_2$ parametrized by $\br_1, \br_2$ respectively we assume that the fundamental solution evaluated in the parametrizations can be expressed as
+As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
 \begin{align}
 \label{eq:funsolgen}
-G(\br_1(t), \br_2(s) )  =
-\log \|\br_1(t) -\br_2(s) \| F_1(\|\br_1(t) -\br_2(s) \| ^2)+F_2(\|\br_1(t) -\br_2(s) \| ^2),
+G(\bx,\by )  =
+\log \|\bx -\by \| F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
 \end{align}
 where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ functions. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
 \begin{align*}
@@ -466,7 +464,16 @@ Now we reformulate Problem \todo{ref}, as a set of boundary integral equations. 
 \label{eq:bios}
 \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla = \bg_{\Gamma_1,\hdots,\Gamma_M}, \quad \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu = \mathbf{f}_{\Gamma_1,\hdots,\Gamma_M},
 \end{align}
-where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(g_{\Gamma_1,\hdots,\Gamma_M})_i = g \circ \br_i$, $(f_{\Gamma_1,\hdots,\Gamma_M})_i = f \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$.
+where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(g_{\Gamma_1,\hdots,\Gamma_M})_i = g \circ \br_i$, $(f_{\Gamma_1,\hdots,\Gamma_M})_i = f \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
+\begin{align*}
+((V_{\Gamma_1,\hdots,\Gamma_M})_{i,j})u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
+\end{align*}
+for a suitable $u$, see Section \todo{ref} for more details. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however in what follows we will assume a Maue's representation of the form 
+\begin{align*}
+((W_{\Gamma_1,\hdots,\Gamma_M})_{i,j})u =  \frac{d}{dt}\int_{-1}^1G(\br_i(t),\br_j(s)) \frac{d}{ds}u(s) ds + 
+\int_{-1}^1\widetilde{G}(\br_i(t),\br_j(s))u(s) ds
+\end{align*} 
+where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner, we again refer to  Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, \todo{ref nedelec maues, hisiao}, there is also a more general result for scalar operators in \todo{ref sauter}, however to the best of our knowledge there is not known result for the general case. The extension of 
 
 We recall that the hyper-singular operators $ W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$ have a representation in the form of a 
 
