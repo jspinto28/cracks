@@ -208,6 +208,8 @@
 \newcommand{\IK}{{\mathbb K}}
 \newcommand{\IR}{{\mathbb R}}
 \newcommand{\IU}{{\mathbb U}}
+\newcommand{\IT}{{\mathbb U}}
+\newcommand{\IW}{{\mathbb U}}
 \newcommand{\IP}{{\mathbb P}}
 \newcommand{\IQ}{{\mathbb Q}}
 \newcommand{\IZ}{{\mathbb Z}}
@@ -434,11 +436,11 @@ As is standard we assume that there is a fundamental solution associated with th
 G(\bx,\by )  =
 \log \|\bx -\by \| F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
 \end{align}
-where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ functions. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
+where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ complex functions, that are either scalars or $2 \times 2$ matrices. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
 \begin{align*}
 SL_\Gamma \lambda(\bx) = \int_\Gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\Gamma \mu(\bx) = \int_\Gamma \mathcal{B}_{\bn,\by} G(\bx,\by) \mu(\by) d\by,
 \end{align*} 
-where $\mathcal{B}_{\bn,\by}$ denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
+where $\mathcal{B}_{\bn,\by}$ denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$, and $\lambda, \mu$ are densities defined in $\Gamma$ that could be either scalars or vectors\footnote{We forgo the boldface convection for vectors for the densities of the integral operators as we wish to treat the scalar and vector case together.}. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
 
 We will consider the pulled back versions of the potentials, let us consider the transformed densities 
 \begin{align*}
@@ -466,16 +468,14 @@ Now we reformulate Problem \todo{ref}, as a set of boundary integral equations. 
 \end{align}
 where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(g_{\Gamma_1,\hdots,\Gamma_M})_i = g \circ \br_i$, $(f_{\Gamma_1,\hdots,\Gamma_M})_i = f \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
 \begin{align*}
-((V_{\Gamma_1,\hdots,\Gamma_M})_{i,j})u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
+(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
 \end{align*}
 for a suitable $u$, see Section \todo{ref} for more details. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however in what follows we will assume a Maue's representation of the form 
 \begin{align*}
-((W_{\Gamma_1,\hdots,\Gamma_M})_{i,j})u =  \frac{d}{dt}\int_{-1}^1G(\br_i(t),\br_j(s)) \frac{d}{ds}u(s) ds + 
+(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u =  \frac{d}{dt}\int_{-1}^1G(\br_i(t),\br_j(s)) \frac{d}{ds}u(s) ds + 
 \int_{-1}^1\widetilde{G}(\br_i(t),\br_j(s))u(s) ds
 \end{align*} 
-where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner, we again refer to  Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, \todo{ref nedelec maues, hisiao}, there is also a more general result for scalar operators in \todo{ref sauter}, however to the best of our knowledge there is not known result for the general case. The extension of 
-
-We recall that the hyper-singular operators $ W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$ have a representation in the form of a 
+where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner, we again refer to Section \todo{ref} for details. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, \todo{ref nedelec maues, hisiao}, there is also a more general result for scalar operators in \todo{ref sauter}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried by using the $0$ extension of the density. 
 
 To finalize this sections, let us comment on the uniqueness of the solution of the boundary integral formulation. As we pointed out in \todo{ref arcs}, the uniqueness of the boundary integral formulation is equivalent to the solution of \todo{ref strong form}. For some examples of the uniqness of the strong formulation we refer to \todo{ref sthepane} for the Helmholtz problem, and \todo{ref kres} for the Elastic-wave problem.
 \section{Shape Holomorphy of Boundary Integral Operators}
@@ -540,14 +540,20 @@ where we are using the classical multi-index notation \todo{ref}.
 
 In particular we will make use of $\cmspace{m}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspace{m}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeo{m}$. 
 
-Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n-$Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l}.$$ We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
+Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
+$$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
+ We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
 Given a smooth periodic function $u :[-\pi,\pi] \rightarrow \IC$, its Fourier coefficients are denoted as
 $$
 \widetilde{u}_n = \int_{-\pi}^\pi u(\theta) e_{-n}(\theta) d\theta, 
 $$
-Similarly we define two kind of Chebishev coefficients:
+Similarly we define two families of first kind Chebishev coefficients:
 \begin{align*}
-u_n = \int_{-1}^{1} u(t) T_n(t) dt, \quad \text{and,} \quad  \widehat{u}_n = \int_{-1}^1 u(t) T_n w^{-1}(t)dt.
+u_n = \int_{-1}^{1} u(t) T_n(t) dt, \quad \text{and,} \quad  \widehat{u}_n = \int_{-1}^1 u(t) T_n w^{-1}(t)dt, 
+\end{align*}
+and two families of second kind Chebishev coefficients:
+\begin{align*}
+\ddot{u}_n = \int_{-1}^1 u(t) U_n (t) dt,\quad \text{and,}\quad \widecheck{u} _n = \int_{-1}^1 u(t) U_n w(t) dt
 \end{align*}
 This definitions are extended to bi-variate functions as 
 $$\widetilde{u}_{n,l} = \int_{-\pi}^{\pi}\int_{-\pi}^\pi u(\theta,\phi) e_{-n}(\theta)e_{-l}(\phi) d\theta d\phi,$$
@@ -557,7 +563,7 @@ We will make use of the traditional periodic Sobolev spaces defined as
 $$
 H^s := \left\lbrace u : \| u\|_{H^s}^2 = \sum_{n=-\infty}^\infty (1+n^2)^s |\widetilde{u}_n|^2 < \infty \right\rbrace,
 $$
-for $s\in \IR$. We refer to \todo{ref} for a more rigorous definition. We also define two more family of spaces
+for $s\in \IR$. We refer to \todo{ref} for a more rigorous definition. We also define the first kind spaces following \todo{ref} as : 
 \begin{align*}
 T^s := \left\lbrace u : \| u\|_{T^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |{u}_n|^2 < \infty \right\rbrace, \\
 W^s := \left\lbrace u : \| u\|_{W^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widehat{u}_n|^2 < \infty \right\rbrace,
@@ -572,7 +578,25 @@ which again are extended to distribution by duality, and considering the equival
 \begin{align*}
 u \in T^s \Leftrightarrow Ju \in H^s, \quad \text{and,} \quad u \in W^s \Leftrightarrow \widehat{J}u \in H^s.
 \end{align*}
-The spaces $T^s,W^s$ will be used as domain and range of the integral operators on open arcs mapped back to $[-1,1]$ through the corresponding particularization.
+We also define the second kind spaces as in \todo{ref}, 
+\begin{align*}
+U^s := \left\lbrace u : \| u\|_{U^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\ddot{u}_n|^2 < \infty \right\rbrace, \\
+M^s := \left\lbrace u : \| {u}\|_{M^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widecheck{u}_n|^2 < \infty \right\rbrace,
+\end{align*} 
+These spaces could also referenced back to the classical Sobolev spaces, to this end we define the odd periodic lifftings, 
+$$
+Ku(\theta) = Ju(\theta) \text{sign}(\sin\theta), \quad \text{and,}\quad \widehat{K}u = \widehat{J}u(\theta) \text{sign}(\sin\theta),
+$$
+where the sign function is defined with the convention $\text{sign}(0)=0$, and we have the equivalences: 
+\begin{align*}
+u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
+\end{align*}
+An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular from \todo{ref nicase? o martin} we have 
+\begin{align*}
+\frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
+\frac{d}{dt} : W^s \rightarrow M^{s-1}.
+\end{align*}
+We will use the spaces $T^s,U^s$ as domain of the integral operators on open arcs mapped back to $[-1,1]$, while the spaces $W^s, M^s$ will be used as range spaces.
 \subsection{Holomorphic Extension of Standard Functions}
 Before we proceed with the analysis of the integral operators we recall the holomorphic extension of some common functions.
 
@@ -861,24 +885,38 @@ Before we proceeded any further we need to specify how the smoothness of the ker
 \begin{lemma}
 \label{lemma:cmdecay}
 Let $m \in \IN$, with $m\geq 1$. Consider $f \in \cmspace{m}{\iinterv}{\IC}$, then 
-$$|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1})$$
+\begin{align*}
+|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1}),\\
+|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1}),
+\end{align*}
 for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$. Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
-$$ |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}  .$$
+\begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
+ |\widecheck{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}.
+\end{align*}
 \end{lemma}
 \begin{proof}
-The result follows similarly to the uni-variate case, see \todo{red treffeten chapter 7}. 
+For $\widehat{f}_{n,l}$ the result is a simple extension from the uni-variate results presented in \todo{ref treffeten chapter 7}. The case of $\widecheck{f}_{n,l}$, is reduced to the previous one using integration by parts since using the derivatives of the Chebishev polynomials we have
+\begin{align*}
+\int_{-1}^1 g(t) U_n w(t) dt  = - (n+1) \int_{-1}^1 \left( \int_{-1}^t g(x) dx\right) T_{n+1} w^{-1}(t) dt,
+\end{align*}
+for any continuous function $g$, and the result can be extended to more general cases without difficulties.  
 \end{proof}
 
 Now we can establish the mapping properties of $R_f$ directly. 
 \begin{lemma}
 \label{lemma:Rfoperator}
-Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then $R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$.\\  Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ is continuous for $s_1, s_2$ as before, and we have the bound 
-$$
-\| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}
-$$
+Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then $R_f \in \mathcal{L}(T^{s_1}, W^{s_2})$ for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$. Moreover, the maps
+\begin{align*}
+f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2}),\\
+f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(U^{s_1}, M^{s_2}),
+\end{align*}  are continuous for $s_1, s_2$ as before, and we have the bounds 
+\begin{align*}
+\| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}},\\
+\| R_f \|_{\mathcal{L}(U^{s_1}, M^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}.
+\end{align*}
 \end{lemma}
 \begin{proof}
-We have that 
+We will only proof for the pair $(T^{s_1},W^{s_2})$, for $(U^{s_1},M^{s_2})$ the exact same proofs works by changing the first kind Chebishev polynomials for the second kinds and the factor $w^{-1}$ for $w$. We can directly compute,
 \begin{align*}
 \|R_fu\|_{W^{s_2}}^2  &= \sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert 
 \int_{-1}^1 \left( \int_{-1}^1 f(t,s) u(s) ds\right) T_n w^{-1}(t) dt\right\vert^2\\
@@ -918,7 +956,7 @@ The analysis of $L_f$ is obtained from the analysis of periodic integral operato
 (\widehat{J}L_fu)(\theta) &= \frac{log{2}}{2} \int_{-\pi}^{\pi} f(\cos \theta , \cos \phi) Ju(\phi) d\phi \\&+ \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert Ju(\phi) d\phi.
 \end{split}
 \end{align}
-
+and the equivalent relation using the odd lifting, (obtained by multiplying by the sign
 \begin{lemma}
 \label{lemma:Lfoperator}
 Let $m \in \IN$, with $m\geq 2$ and $f \in \cmspace{m}{\iinterv}{\IC}$, then $L_f \in \mathcal{L}(T^s,W^{s+1})$, for $|s+1| +|s| <m$. \\Moreover, the map $f \in \cmspace{m}{\iinterv}{\IC} \mapsto L_f \in \mathcal{L}(T^s,W^{s+1})$ is continuous, and we have 
@@ -1068,9 +1106,46 @@ The continuity in terms of $f$ follows also from \eqref{eq:condS} and Lemma   \r
 \end{proof}
 
 
-\subsection{Weakly-singular and Hyper-singular operators Holomorphic Extensions}
-In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$.
+\subsection{Weakly-Singular and Hyper-Singular Operators Holomorphic Extensions}
+In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$. We will first analyze the weakly-singular operator and then use the Maue's representation for obtain the result for the hyper-singular operator. 
 
+Through out the rest of this section, we consider $M$ compact disjoint sets $K^1,\hdots,K^M \subset \rgeo{m}$ and the corresponding positive real numbers $\delta_1, ..,\delta_M$ chosen according to Lemmas \ref{lemma:dwelldef}, and \ref{lemma:dcross}, such that for any pair $j,k \in 1,\hdots,M$ (with $j\neq k$) the conclusion of both lemmas holds for the set $K^j_{\delta_j}$ and $ K^j_{\delta_j}\times K^k_{\delta_k}$, respectively \footnote{this selection of values for the $\delta$ variables is possible by taking the minimum value, such that both lemmas holds for all the combination of $j,k$. }. 
+
+We will also consider the spaces $\mathbb{T}^s, \mathbb{W}^s$ which could be either equal to $T^s,W^s$ if the associated operator $\cP$ is scalar, or $T^s\times T^s,W^s\times W^s$ in the vectorial case. 
+
+
+\subsubsection{Weakly-singular Operator}
+
+Let us star with the analysis of the different components of the operator 
+$\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}$. In a more general setting let us consider 
+$$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
+thus $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution and the results of holomorphic extension of integral operators we arrive to the following result. 
+
+\begin{lemma}
+\begin{enumerate}
+\item 
+The map 
+$$ \br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})$$
+is continuous and $ V_{\br,\br} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})$ is Freedholm of order $0$, for any $s\in \IR$, such that $|s+1|+|s|<m$. 
+\item 
+For $j \neq k$, the map
+$$ (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})$$
+is also continuous and  $ V_{\br,\bp} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})$ is compact.
+\end{enumerate}
+
+Furthermore, for any colecction of positive numbers $(\xi_j)_{j=1}^M$, such that $\xi_j< \delta_j$, we have 
+ \begin{align*}
+\br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})\\
+(\br,\bp) \in K^j_{\xi_j} \times K^k_{\xi_k} \mapsto V_{\br,\bp} \in 
+\mathcal{L}(T^s\times T^s, W^{s+1}\times W^{s+1})
+\end{align*}
+are holomorphic for $s$ as before. 
+\end{lemma}
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
 \subsection{Uncertenty Parametrization}
