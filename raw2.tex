@@ -427,8 +427,7 @@ We apply the mentioned result to estimate the statical moments of some quantity 
 \section{Introduction}
 \subsection{General Notations}
 \subsection{Scattering Problem on Open Arcs}
-Sauter: (u escalar? )
-$$\cP u = -div(A \nabla u)+2 \bb \cdot \nabla u + c u $$
+
 \subsection{Boundary Integral Formulation}
 
 As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
@@ -744,14 +743,14 @@ Then for a compact set $K \subset \rgeo{m}$, and $\delta$ as in Lemma \ref{lemma
 \br \in K_\delta \mapsto Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, \\
 \br \in K_\delta \mapsto 1/Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, 
 \end{align*} 
-are both holomorphic, uniformly bounded, and we also have  
+are both holomorphic, uniformly bounded,  and we also have \todo{check the proof this last part->}
 \begin{align*}
 \inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
 \inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
 \end{align*}
 \end{lemma}
 \begin{proof}
-Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$$. For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
+Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}.$$ For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
 \begin{align*}
 DQ_{\br}[\bh](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bh(t)-\bh(s))}{(t-s)^2}, \\
 D1/Q_{\br}[\bh](t,s) = -\frac{DQ_{\br}[\bh](t,s)}{(Q_{\br}(t,s))^2} 
@@ -780,6 +779,8 @@ By \eqref{eq:ddbound} we have that $\| Q_{\bh}\|_{\cmspace{m-1}{\iinterv}{\IC^2}
 1/Q_{\br+\bh} = 1/Q_{\br} - (Q_{\br})^{-2} (Q_{\br+\bh}-Q_{\br}) + o(|Q_{\br+\bh}-Q_{\br}|),
 \end{align*}
 the result then follows from the diffentiability of $Q_{\br}$.
+
+
 
 The uniform bound of $Q_{\br}$ follows directly from the one of $d^2_{\br}$ in Lemma \ref{lemma:dself}. On the other hand, for $1/Q_{\br}$ need the last part of this lemma, which is obtained using the Taylor expansion of $\br$ and Lemma \ref{lemma:dwelldef}.
 \end{proof}
@@ -874,10 +875,11 @@ The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)
 
 \subsection{Abstract Integral Operators}
 
-In this section we study the mapping properties of two kind of integral operators: 
+In this section we study the mapping properties of three kind of integral operators: 
 \begin{align*}
-(R_f u)(t) = \int_{-1}^1f(t,s) u(s) ds,\\
-(L_fu)(t) = \int_{-1}^1 \log|t-s| f(t,s) u(s) ds,
+(R_f u)(t) &:= \int_{-1}^1f(t,s) u(s) ds,\\
+(L_fu)(t) &:= \int_{-1}^1 \log|t-s| f(t,s) u(s) ds\\
+(S_f u)(t) &:= \int_{-1}^1 \log|t-s| (t-s)^2 f(t,s)u(s)ds,
 \end{align*}
 where $f \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
 
@@ -910,7 +912,7 @@ Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then for an
 \begin{align*}
 f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2}),\\
 f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(U^{s_1}, M^{s_2}),
-\end{align*}  are continuous, and we have the bounds 
+\end{align*}  are \todo{compact}, and we have the bounds 
 \begin{align*}
 \| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}},\\
 \| R_f \|_{\mathcal{L}(U^{s_1}, M^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}.
@@ -1129,7 +1131,7 @@ since we can select $\nu$ as close to $\frac{1}{2}$ as we want, and we already h
 $$|s+1| + |s| < m. $$
 The continuity in terms of $f$ follows also from \eqref{eq:condS}, and \eqref{eq:condSodd}; and Lemma   \ref{lemma:cmdecay}. 
 \end{proof}
-
+The final part of this section is dedicated to the analysis of $S_f$. The analysis is simular to the one of $L_f$, in particular we have 
 
 \subsection{Weakly-Singular and Hyper-Singular Operators Holomorphic Extensions}
 In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$. We will first analyze the weakly-singular operator and then use the Maue's representation for obtain the result for the hyper-singular operator. 
@@ -1156,7 +1158,7 @@ For $j=1,\hdots,M$, and $s\in \IR$ such that $|s+1|+|s|<m$, let $\xi_j< \delta_j
 \br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
 \mathcal{L}(\IU^s, \IM^{s+1}),
 \end{align*} 
-are holomorphic and uniformly bounded. 
+are holomorphic, uniformly bounded and Freedholm of order 0. 
 \item 
 For $j,k \in \{1,\hdots,M\}$, $j \neq k$, $s \in \IR$, and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the maps 
 \begin{align*}
@@ -1165,7 +1167,7 @@ For $j,k \in \{1,\hdots,M\}$, $j \neq k$, $s \in \IR$, and let $\xi_j < \delta_j
  (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
 \mathcal{L}(\IU^s, \IM^{s+1}),
 \end{align*}
-are holomorphic and uniformly bounded. 
+are holomorphic, uniformly bounded and compact. 
 \end{enumerate}
 \end{lemma}
 \begin{proof} 
@@ -1184,6 +1186,8 @@ Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,
 
 If we combine the two parts we have two conclusions. First the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator. 
 
+The Fredholm part is  
+
 For the second part, we again use the structure of the fundamental solution so we have,
 \begin{align*}
 \mathbf{G}(\br(t),\bp(s)) = F_1(d_{\br,\bp}(t,s)^2) \log(d_{\br,\bp}(t,s)) + F_2(d_{\br,\bp}(t,s)^2),
@@ -1192,9 +1196,7 @@ For the second part, we again use the structure of the fundamental solution so w
  The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. 
 \end{proof} 
 
-\todo{m>1 is because the regular part has only m-1 regularity, check this against saranen!!!}
 
-\todo{zero order freedholm, and compactenss}
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
