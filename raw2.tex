@@ -436,7 +436,7 @@ As is standard we assume that there is a fundamental solution associated with th
 G(\bx,\by )  =
 \log \|\bx -\by \| F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
 \end{align}
-where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ complex functions, that are either scalars or $2 \times 2$ matrices. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
+where $F_1$, and $F_2$ are assumed to be $\mathcal{C}^\infty$ complex functions, that are either scalars or $2 \times 2$ matrices. Furthermore we will also assume that in the scalar case $F_1(0) \neq 0$, and for the vectorial case $F_1(0)$ is invertible. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
 \begin{align*}
 SL_\Gamma \lambda(\bx) = \int_\Gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\Gamma \mu(\bx) = \int_\Gamma \mathcal{B}_{\bn,\by} G(\bx,\by) \mu(\by) d\by,
 \end{align*} 
@@ -950,6 +950,8 @@ using Lemma \ref{lemma:cmdecay}, the sum of the right hand side would converge i
 for some combination of $\alpha,\beta$, such that $\alpha + \beta = 1$. This is equivalent to 
 $$2s_2 -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s_1 -2(m+1)\beta < -1. $$
 replacing $\beta = 1 - \alpha$ and summing both inequalities we arrive to the condition $s_2-s_1 < m$.  The continuity respect to $f$ follows from   \eqref{eq:rfbound} and the bounds on Lemma \ref{lemma:cmdecay}.
+
+Finally to see the compactness we see from the condition $s_2- s_1 < m $ that we can select $s_2' > s_2$ such that $R_f \in \mathcal{L}(T^{s_1},W^{s'_2})$, and also $R_f \in \mathcal{L}(U^{s_1},M^{s'_2})$ thus from the compact embeding of the periodic Sobolev spaces we deduce an equivalent embedding for the spaces $W^s,M^s$, and the result follows.
 \end{proof}
 
 The analysis of $L_f$ is obtained from the analysis of periodic integral operators using the lifting operators. We will make heavy use of the results of \todo{saranen chapter 6  }. Following the ideas of \todo{saranen chapter 11}, we can make a cosine change of variable so we obtain,
@@ -1084,7 +1086,7 @@ $$
  \int_{-1}^{1} f(t , s) u(s) ds 
  \right\vert\right\vert_{M^{s+1}}
 $$
-Since $m>1$ from Lemma \ref{lemma:Rfoperator} these to are bounded by the norm of $u$ in the corresponding space\footnote{$T^s$ for $W^{s+1}$, and $U^s$ for $M^{s+1}$} for $s \in \IR$. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1} so for any $\nu >\frac{1}{2}$,
+Since $m>1$ from Lemma \ref{lemma:Rfoperator} these to are bounded by the norm of $u$ in the corresponding space\footnote{$T^s$ for $W^{s+1}$, and $U^s$ for $M^{s+1}$} for $s \in \IR$, in fact these regular part are compact as proven in the previous Lemma. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1} so for any $\nu >\frac{1}{2}$,
 \begin{align}
 \label{eq:condS}
 \begin{split}
@@ -1131,7 +1133,29 @@ since we can select $\nu$ as close to $\frac{1}{2}$ as we want, and we already h
 $$|s+1| + |s| < m. $$
 The continuity in terms of $f$ follows also from \eqref{eq:condS}, and \eqref{eq:condSodd}; and Lemma   \ref{lemma:cmdecay}. 
 \end{proof}
-The final part of this section is dedicated to the analysis of $S_f$. The analysis is simular to the one of $L_f$, in particular we have 
+
+The final part of this section is dedicated to the analysis of $S_f$. The analysis is similar to the one of $L_f$, in particular we have that the lifting versions of this operator are
+\begin{align*}
+\begin{split}
+(\widehat{J}S_fu)(\theta) = \frac{\log 2}{2}\int_{-\pi}^\pi
+(cos \theta - \cos \phi)^2 f(\cos \theta, \cos \phi)Ju(\phi) d\phi +\\
+4 \int_{-\pi}^\pi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \sin\left( \frac{\theta-\phi}{2} \right)^2
+\sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) Ju (\phi) d \phi, 
+\end{split} \\
+\begin{split}
+(K S_fu)(\theta) = \frac{\log 2}{2}\int_{-\pi}^\pi
+(cos \theta - \cos \phi)^2 f(\cos \theta, \cos \phi)\sin \theta \sin \phi \widehat{K}u(\phi) d\phi +\\
+4 \int_{-\pi}^\pi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \sin\left( \frac{\theta-\phi}{2} \right)^2
+\sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) )\sin \theta \sin \phi \widehat{K}u (\phi) d \phi, 
+\end{split} \\
+\end{align*}
+
+One can see that these are classical periodic operators of order $-3$ \todo{ref saranen capitulo 5..}, so in particular they can be seen as operator of order $-1-\epsilon$ for small $\epsilon >0$. Based on this observation and the compact embeding of the functional spaces, as it was noticed in the proof of Lemma \ref{lemma:Rfoperator}, we obtain the following result. 
+
+\begin{corollary}
+\label{corollary:Soperator}
+Let $m \in \IN$, with $m\geq 2 $, and $f \in \cmspace{m}{\iinterv}{\IC}$, then for $s \in \IR$ such that $|s+1|+ |s| < m$, we have that $S_f \in \mathcal{L}(T^s,W^{s+1})$ and  also, $\S_f \in \mathcal{L}(U^s,M^{s+1})$. Futhermore in both cases $S_f$ is a compact operator. 
+\end{corollary}
 
 \subsection{Weakly-Singular and Hyper-Singular Operators Holomorphic Extensions}
 In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$. We will first analyze the weakly-singular operator and then use the Maue's representation for obtain the result for the hyper-singular operator. 
@@ -1180,20 +1204,33 @@ we define the singular and regular parts as:
 G^R(\br(t),\br(s)) := \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2)\\
 G^S(\br(t),\br(s)) := \log|t-s| F_1(d_{\br}(t,s)^2).
 \end{align*}
-Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspace{m-1}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Lemma \ref{lemma:Rfoperator} since \todo{$m>2$}, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspace{m-1}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$.
+Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspace{m-1}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Lemma \ref{lemma:Rfoperator} since \todo{$m>2$}, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspace{m-1}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$, and by the same Lemma is in fact a compact operator.
 
-Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section (with $f$ as we already defined it). Hence, from Lemma \ref{lemma:Lfoperator}, since $m>1$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspace{m}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before.
+Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section (with $f$ as we already defined it). Hence, from Lemma \ref{lemma:Lfoperator}, since $m>1$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspace{m}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before. Furthermore we see that the integral operator can be written as
+\begin{align}
+\label{eq:fredSing}
+F_1(d_{\br}(t,t)^2)\int_{-1}^1 \log|t-s| u(s) ds + \int_{-1}^1 \log|t-s| (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2))u(s) ds
+\end{align}
+By the assumption of the invertibility of $F_1(d_{\br}(t,t)^2)= F_1(0)$  the first part is the clasical logarithmic operator which is an invertible operator. On the other hand the difference in the second part can be expanded by Taylor and we get 
+$$
+(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) = d_{\br}(t,s)^2\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
+$$
+we cam then use the Taylor expansion of parametrization $\br$ (see \eqref{eq:expdr}) so we get,
+\begin{align*}
+\begin{split}
+(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) &= (t-s)^2 \\ \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) &\cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
+\end{split}
+\end{align*}
+from the last expression is clear that the second term in the right hand side of \eqref{eq:fredSing} is an operator of the form of $S_f$ descrived in the previous section, with $f \in \cmspace{m-1}{\iinterv}{\IC}$, thus by Corollary \ref{corollary:Soperator}, since $m > 2$ we can conclude that this part is a compact operator, finally obtain that the operator with kernel $G^s$ is in fact a Freedholm operator of order $0$.
 
-If we combine the two parts we have two conclusions. First the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator. 
+If we combine the results for the two parts of the kernel function we see that first, the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator, and  finally since is the sum of a Freedholm operator of order $0$ and a compact operator, we also have that $V_{\br,\br}$ is Freedholm of order $0$. 
 
-The Fredholm part is  
-
-For the second part, we again use the structure of the fundamental solution so we have,
+For the second part of the Lemma, we again use the structure of the fundamental solution so we have,
 \begin{align*}
 \mathbf{G}(\br(t),\bp(s)) = F_1(d_{\br,\bp}(t,s)^2) \log(d_{\br,\bp}(t,s)) + F_2(d_{\br,\bp}(t,s)^2),
 \end{align*}
 
- The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. 
+ The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic, uniformly bounded and compact. 
 \end{proof} 
 
 
