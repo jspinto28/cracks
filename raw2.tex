@@ -591,7 +591,7 @@ where the sign function is defined with the convention $\text{sign}(0)=0$, and w
 \begin{align*}
 u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
 \end{align*}
-An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular from \todo{ref nicase? o martin} we have \todo{are invertible maps?}
+An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular from \todo{ref nicase? o martin} we have 
 \begin{align*}
 \frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
 \frac{d}{dt} : W^s \rightarrow M^{s-1}.
@@ -883,14 +883,14 @@ In this section we study the mapping properties of three kind of integral operat
 \end{align*}
 where $f \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
 
-Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, $L_f$, and $S_f$. The following result give a first insight regarding this relation. 
+Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, $L_f$, and $S_f$. The following results give a first insight regarding this relation. 
 
 \begin{lemma}
 \label{lemma:cmdecay}
 Let $m \in \IN$, with $m\geq 1$. Consider $f \in \cmspace{m}{\iinterv}{\IC}$, then 
 \begin{align*}
-|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1}),\\
-|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m-1}, l^{-m-1}),
+|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
+|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
 \end{align*}
 for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$. Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
 \begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
@@ -904,6 +904,31 @@ For $\widehat{f}_{n,l}$ the result is a simple extension from the uni-variate re
 \end{align*}
 for any continuous function $g$, and the result can be extended to more general cases without difficulties.  
 \end{proof}
+
+\begin{lemma}
+\label{lemma:cmdecay2}
+Let $m \in \IN$, with $m \geq 1$, and consider $f \in \cmspace{m}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that $s_1+s_2 \leq m$, we have  
+\begin{align*}
+\sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widehat{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspace{m}{\iinterv}{\IC}},\\
+\sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspace{m}{\iinterv}{\IC}},
+\end{align*}
+with unspecified constants independent of $f$.
+\end{lemma}
+\begin{proof}
+First let us consider a periodic bi-variate function $g(\theta,\phi)$ in $ \cmspace{m}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}$, and define 
+$$\|g\|_m^2 = \sum_{|\mathbf{\alpha}| \leq m } \| \partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g \|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])},$$
+it is clear that we have $\|g\|_{m}^2 \lesssim \|g\|_{\cmspace{m}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}^2$, with unspecified constant independent of $g$. Furthermore, by the uniform convergence of the Fourier series of $g$ we have that 
+$$\partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty
+(in)^{\alpha_1} (i l )^{\alpha_2} \widetilde{g}_{n,l},$$
+thus by the orthogonality of the Fourier basis we get 
+\begin{align*}
+\|g\|_m^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2
+\end{align*}
+
+\end{proof}
+
 
 Now we can establish the mapping properties of $R_f$ directly. 
 \begin{lemma}
@@ -1217,7 +1242,7 @@ Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,
 \label{eq:fredSing}
 F_1(d_{\br}(t,t)^2)\int_{-1}^1 \log|t-s| u(s) ds + \int_{-1}^1 \log|t-s| (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2))u(s) ds
 \end{align}
-By the assumption of the invertibility of $F_1(d_{\br}(t,t)^2)= F_1(0)$  the first part is the clasical logarithmic operator which is an invertible operator in $T^s$ \todo{ref nedelec}\footnote{In fact the logarithmic operator is diagonal with eigenvectors the first-kind Chebishev polynomials.} \todo{check invertibility in $U^s$, is an infinite matrix... using the periodic operators is hard to argue ...}. On the other hand the difference in the second part can be expanded by Taylor and we get 
+By the assumption of the invertibility of $F_1(d_{\br}(t,t)^2)= F_1(0)$  the first part is the clasical logarithmic operator which is an invertible operator in $T^s$ \todo{ref nedelec}\footnote{In fact the logarithmic operator is diagonal, see \todo{ref}.} \todo{check invertibility in $U^s$, is an infinite matrix... using the periodic operators is hard to argue ...}. On the other hand the difference in the second part can be expanded by Taylor and we get 
 $$
 (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) = d_{\br}(t,s)^2\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
 $$
@@ -1270,7 +1295,7 @@ Notice that
 \end{align*}
 where we omitted the sub-indices $\mathcal{L}(T^s,W^{s+1})$ in the norms of the different components of $\mathbf{V}_{\Gamma_1,\Gamma_2}$. From the last inequality, using the uniform bounds for the different components of $\bf{V}$ we obtain the uniform bound of the weakly-singular operator. The holomorphic property is proven in a simmilar manner using the complex Frechet derivative of each of the components. 
 
-For the second part of the Theorem. Let us first notice that $\mathbf{V}_{\Gamma_1,\Gamma_2}$ is a zero order Freedhom operator. To see this one need to write the full operator as the sum of the diagonal term (zero order by Lemma \ref{lemma:vcomp}) and the cross-interaction terms (compact maps by \ref{lemma:vcomp}). Moreover the operator is invertible in the compact set of real geometries $K^1 \times K^2$ as it was pointed in Section \todo{ref sec boundary integrals..}. 
+For the second part of the Theorem. Let us first notice that $\mathbf{V}_{\Gamma_1,\Gamma_2}$ is a zero order Freedhom operator. To see this one need to write the full operator as the sum of the diagonal term (zero order by Lemma \ref{lemma:vcomp}) and the cross-interaction terms (compact maps by Lemma \ref{lemma:vcomp}). Moreover the operator is invertible in the compact set of real geometries $K^1 \times K^2$ as it was pointed in Section \todo{ref sec boundary integrals..}. 
 
 Now the result follows from Theorem \ref{thrm:abtractinverse}, as a particular conclusion of what we have already proved in the first part is that for $\delta = \min(\delta_1,\delta_2)$,  the map 
 \begin{align*}
