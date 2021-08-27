@@ -301,10 +301,15 @@
 \newcommand{\hncurlbfs}[1]{\bH_ S(\curl,#1)}
 
 \newcommand{\cmspace}[3]{\mathcal{C}^{#1} \left( #2, #3 \right)}
+\newcommand{\cmspaceh}[4]{\mathcal{C}^{#1,#2} \left( #3, #4 \right)}
 
 \newcommand{\rgeo}[1]{\mathcal{C}_b^{#1}\left( (-1,1), \IR^2 \right)}
 
+\newcommand{\rgeoh}[2]{\mathcal{C}_b^{#1,#2}\left( (-1,1), \IR^2 \right)}
+
 \newcommand{\cgeo}[1]{\mathcal{C}^{#1}\left( (-1,1), \IC^2 \right)}
+
+\newcommand{\cgeoh}[1]{\mathcal{C}^{#1,h}\left( (-1,1), \IC^2 \right)}
 
 % BEM Macros
 %
@@ -532,13 +537,17 @@ The rest of this section provide the actual framework to invoke the previous two
 
 According to the previous section, we need two family of functional spaces. First the underlying Banach real space $\mathcal{B}$ that serves as the parameters for the holomorphism. Secondly, the Hilbert spaces $H_1,H_2$ that are the natural spaces for the associated integral operators. 
 
-Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspace{m}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, for any $m \in \IN$. This space has Banach structure when is endowed with the classical norm 
+Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, for any $m \in \IN$ and all the $m$ derivatives are $h$ holder continuous for $h \in [0,1]$, also in $[-1,1]$. This space has Banach structure when is endowed with the classical norm 
 \begin{align*}
-\| f \|_{\cmspace{m}{A}{B}} := \sum_{\bk: |\bk| < m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
+\| f \|_{\cmspaceh{m}{h}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert+ \sum_{k: |k| =m} \sup_{\bx \in A}  \frac{|\partial_{\bx}^{\bk}f(x)-\partial_{\bx}^{\bk}f(y)|}{\| \bx - \by\|^h},
 \end{align*}
-where we are using the classical multi-index notation \todo{ref}. 
+where we are using the classical multi-index notation \todo{ref}.  The case $h=0$ correspond to functions with $m$ continuous derivatives and the norm is reduced to 
+\begin{align*}
+\| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
+\end{align*}
+On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist almost everywhere}. 
 
-In particular we will make use of $\cmspace{m}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspace{m}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeo{m}$. 
+In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$. 
 
 Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
 $$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
@@ -609,7 +618,7 @@ $$d_{\br,\bp}(t,s) =  \sqrt{(\br(t)-\bp(s))\cdot (\br(t)-\bp(s))},$$
 where $\ba \cdot \bb  = a_1 b_1 + a_2 b_2$. Notice that we do not use the conjugate function as it will prevent any possibility of obtaining holomorphic extensions.  Now we present some basic tools that will enable us to show that the distance function is well defined for complex arcs. 
 \begin{lemma}
 \label{lemma:dwelldef}
-Let $m \in \IN$, $m\geq1$, and $K \subset \rgeo{m}$ a compact set, then 
+Let $m \in \IN$, $m\geq1$, $0\leq h \leq 1$, and $K \subset \rgeoh{m}{h}$ a compact set, then 
 \begin{enumerate}
 \item 
 \begin{align*}
@@ -622,13 +631,13 @@ $$
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-First part follows from the continuity of $I(\br) = \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S(\br) = \sup_{t \in (-1,1)} \| \br'(t)\|$ in $\cmspace{m}{(-1,1)}{\IR^2}$, in fact if $\| \br -\bp \|_{\cmspace{m}{(-1,1)}{\IR^2}}< \epsilon$ we have that 
+First part follows from the continuity of $I(\br) = \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S(\br) = \sup_{t \in (-1,1)} \| \br'(t)\|$ in $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, in fact if $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}< \epsilon$ we have that 
 $I(\bp)  < \epsilon + I(\br)$
 and symmetrically 
 $
 I(\br)  < \epsilon + I(\bp)
 $
-thus $|I(\br) - I(\bp)| < \epsilon$, and then the infimum in $K$ is achieved since $K$ is compact. The supremum case follows similarly. For the second part define $I = \inf_{\br \in K } I(\br)$, $S =\sup_{\br \in K } S(\br)$, and consider any element $\br \in K_\delta$, then there is $\bp \in K$ such that $\| \br -\bp \|_{\cmspace{m}{(-1,1)}{\IR^2}} < \delta$, and we have 
+thus $|I(\br) - I(\bp)| < \epsilon$, and then the infimum in $K$ is achieved since $K$ is compact. The supremum case follows similarly. For the second part define $I = \inf_{\br \in K } I(\br)$, $S =\sup_{\br \in K } S(\br)$, and consider any element $\br \in K_\delta$, then there is $\bp \in K$ such that $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}} < \delta$, and we have 
 \begin{align*}
 \br' \cdot \br' = \|\br'\|^2+ 2(\br' -\bp')\cdot \bp' +(\br'-\bp')\cdot(\br'-\bp') 
 \end{align*}
@@ -642,12 +651,12 @@ Now we establish basic proprieties of the function $d_{\br,\br}$.
 
 \begin{lemma}
 \label{lemma:dself}
-Let $m \in \IN$, $m\geq 1$, and $\br \in  \cgeo{m}$ with $\inf_{t \in (-1,1)}Re(\br'(t) \cdot \br'(t)) >0$, then the extension of the distance function 
+Let $m \in \IN$, $m\geq 1$, and $\br \in  \cgeoh{m}$ with $\inf_{t \in (-1,1)}Re(\br'(t) \cdot \br'(t)) >0$, then the extension of the distance function 
 \begin{align*}
 d_{\br} (t,s) = \begin{cases} d_{\br,\br}(t,s) \quad t\neq s \\ 
 0 \quad t=s \end{cases},
 \end{align*} 
-is a continuous function. Moreover, for a compact set $K \in \rgeo{m}$ and delta as in Lemma \ref{lemma:dwelldef}, the map $\br \in K_\delta \mapsto d_{\br}^2 \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomporphic, and uniformly bounded.   
+is a continuous function. Moreover, for a compact set $K \subset \rgeoh{m}{h}$ and $\delta$ as in Lemma \ref{lemma:dwelldef}, the map $\br \in K_\delta \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomporphic, and uniformly bounded.   
 \end{lemma}
 \begin{proof}
 For $t \neq s$ we have that
@@ -660,41 +669,46 @@ using the Taylor expansion of $\br$ we have
 d_{\br}^2(t,s) = (t-s)^2 \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)
 \end{align}
 Using mean value theorem we obtain 
-\begin{align*}
+\begin{align}
+\label{eq:ddbound}
 Re ( d_{\br}^2(t,s)  )  \geq (t-s)^2 \inf_{t \in (-1,1)} Re(\br'(t) \cdot \br'(t)) >0.
-\end{align*}
+\end{align}
 thus $d_{\br}$ is well defined. The continuity is obtained directly from \eqref{eq:expdr}. For the second part let us define 
 $$
-D d_{\br}^2[\bh](t,s) = 2 (\br(t)-\br(s))\cdot (\bh(t) - \bh(s)),
+D d_{\br}^2[\bv](t,s) = 2 (\br(t)-\br(s))\cdot (\bv(t) - \bv(s)),
 $$
-is clear that this function is linear in the $\bh$ variable, and we also have $D d_{\br}^2[\bh] \in \cmspace{m}{\iinterv}{\IC}$ for $\br,\bh \in \cmspace{m}{(-1,1)}{\IC^2}$. We also have 
+is clear that this function is linear in the $\bv$ variable, and we also have $D d_{\br}^2[\bv] \in \cmspaceh{m}{h}{\iinterv}{\IC}$ for $\br,\bv \in \cmspaceh{m}{h}{(-1,1)}{\IC^2}$. We also have 
 \begin{align*}
-d^2_{\br+\bh}(t,s) -d^2_{\br}(t,s) =  D d_{\br}^2[\bh](t,s) + d^2_{\bh}(t,s).
+d^2_{\br+\bv}(t,s) -d^2_{\br}(t,s) =  D d_{\br}^2[\bv](t,s) + d^2_{\bv}(t,s).
 \end{align*}
 Consider $\alpha, \beta \in \IN$ such that $0 \leq \alpha +\beta \leq m$, by the product rule for derivatives we have that 
 \begin{align*}
- \left\vert\partial_s^\beta \partial_t^\alpha d^2_{\bh}(t,s) \right\vert= \left\vert\sum_{k=1}^{\alpha-1} \begin{pmatrix} \alpha \\ k \end{pmatrix} \partial_t^k \bh(t) \cdot \partial^{\alpha-k}_t \bh(t) - 2\partial_s^\beta \bh(s) \cdot \partial^\alpha_t \bh(t)\right\vert \lesssim \| \bh\|^2_{\cmspace{m}{(-1,1)}{\IC}},
+\partial_s^\beta \partial_t^\alpha d^2_{\bv}(t,s) = \sum_{k=1}^{\alpha-1} \begin{pmatrix} \alpha \\ k \end{pmatrix} \partial_t^k \bv(t) \cdot \partial^{\alpha-k}_t \bv(t) - 2\partial_s^\beta \bv(s) \cdot \partial^\alpha_t \bv(t),
 \end{align*} 
-thus we conclude that $D d_{\br}^2[\bh]$ is in fact the Frechet derivative of $d^2_{\br}$ (in the direction $\bh$), in $\cmspace{m}{\iinterv}{\IC}$, and the map $\br  \mapsto d_{\br}^2 \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. Finally we have that given $\br \in K_\delta$, there is $\widetilde{\br} \in K$ such that $\| \br - \widetilde{\br}\|_{\cmspace{m}{(-1,1)}{\IC^2}} < \delta$, then 
+using this rule we can directly show that $d_{\bv}^2(t,s) \lesssim \|\bv\|^2_{\cgeoh{m}}$ thus we conclude that $D d_{\br}^2[\bv]$ is in fact the Frechet derivative of $d^2_{\br}$ (in the direction $\bv$), in $\cmspaceh{m}{h}{\iinterv}{\IC}$, and the map $\br  \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. Finally we have that given $\br \in K_\delta$, there is $\widetilde{\br} \in K$ such that $\| \br - \widetilde{\br}\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}} < \delta$, then 
 \begin{align*}
-\| d^2_{\br} \|_{\cmspace{m}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}},
+\| d^2_{\br} \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
 the seccond term of the right hand side is uniformly bounded as $K$ is compact. For the first term we have
-$$\| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspace{m}{\iinterv}{\IC}} \leq 
-\|D d^2_{\widetilde{\br}}[\br - \widetilde{\br}]\|_{\cmspace{m}{\iinterv}{\IC}} + \| d^2_{\br -\widetilde{\br}}\|_{\cmspace{m}{\iinterv}{\IC}},$$
+\begin{align*}
+\begin{split}
+\|d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \leq 
+\|D d^2_{\widetilde{\br}}[\br - \widetilde{\br}]\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} +\\ \| d^2_{\br -\widetilde{\br}}\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
+\end{split}
+\end{align*} 
  using the explicit expresion of the derivative and the product rule for derivatives we get
 \begin{align*}
-\| d^2_{\br}  - d_{\widetilde{\br}}^2 \| \lesssim 
-\|\widetilde{\br}\|_{\cmspace{m}{\iinterv}{\IC}} \delta  + \delta^2,
+\|d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \lesssim 
+\|\widetilde{\br}\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \delta  + \delta^2,
 \end{align*}
-where the unspecified constant do not depends of $\br$. Since $\widetilde{\br} \in K$ we obtain he the uniform bound. 
+where the unspecified constant do not depends of $\br$. The result then follows by the compactness of $K$.
 \end{proof}
 
 Now we focus in the distance for two different disjoint arcs. 
 \begin{lemma}
 \label{lemma:dcross}
-Consider $K^1,K^2$ two disjoint compact subsets of $\rgeo{m}$, with  $m \in \IN$
-then, there exist $\delta_1 >0 , \delta_2 >0$ such that the map $(\br, \bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto d_{\br, \bp} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded. 
+Consider $K^1,K^2$ two disjoint compact subsets of $\rgeoh{m}{h}$, with  $m \in \IN$
+then, there exist $\delta_1 >0 , \delta_2 >0$ such that the map $(\br, \bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto d_{\br, \bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded. 
 \end{lemma}
 \begin{proof}
 First notice that since we are considering compact sets in a metric space we have that
@@ -705,26 +719,27 @@ First notice that since we are considering compact sets in a metric space we hav
 and from this we can see that
 $$
 Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_2)^2,$$
-where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| r'(t)\| +
-\sup_{\br \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| r'(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the distance is well defined and then $d_{\br, \bp } \in \cmspace{m}{(-1,1)\times (-1,1)}{\IC}$ since we are in the holomorpy domain of the square root function. We left to show the holomorpy of the map from arcs to the distance. Consider 
-\begin{align*}
-D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)},
-\end{align*}
-we will show that this map is in fact the Frechet derivative of $d_{\br,\bp}$ in the direction $\bh^1,\bh^2$. Is clear from the definition that $D d_{\br,\bp}$ is a linear map in the $\bh^1,\bh^2$ direction, moreover since, 
-$$\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
-d_{\br,\bp}(t,s) \geq \sqrt{I^2 -2S (\delta_1 +\delta^2)-(\delta_1 +\delta_2)^2}>0,$$
-and using the product rule for derivatives we conclude that $$D d_{\br,\bp}\in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}^2,
-\cmspace{m}{(-1,1) \times (-1,1)}{\IC}).$$ To proof the approximation propriety we first notice that 
-$$d_{\br+ \bh^1, \bp+\bh^2}(t,s)^2 - d_{\br,\bp}(t,s)^2 = 2 (\br(t)-\bp(s))\cdot (\bh^1(t)- \bh^2(s)) + O(\| \bh^1(t)- \bh^2(s)\|^2),$$
-hence by the diferiantiability of the square root function we get 
-$$
-d_{\br+ \bh^1, \bp+\bh^2}(t,s) - d_{\br,\bp}(t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)}  + O( \| \bh^1(t)- \bh^2(s)\|^2).
-$$
-To finish the proof we need to show that for $\alpha, \beta \in \IN$ such that $0 \leq \alpha + \beta \leq m$ we have,  
-\begin{align*}
-\lim_{\bh^1 \rightarrow 0 \atop \bh^2 \rightarrow 0 }\frac{\partial^\beta_s\partial^\alpha_t \| \bh^1(t)- \bh^2(s)\|^2}{\| \bh^1 \|_{\cmspace{m}{(-1,1)}{\IC^2}} + \|\bh^2\|_{\cmspace{m}{(-1,1)}{\IC^2}}} = 0 ,
-\end{align*}
-the proof is the same as in the differentiability part of the Lemma \ref{lemma:dself}. Similarly the uniform bound follows by bounding $d^2_{\br,\bp}$ as in the previous lemma and the fact that the distance has strictly positive real part. 
+where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br'(t)\| +
+\sup_{\br \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \br'(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the distance is well defined and then $d_{\br, \bp } \in \cmspace{m}{(-1,1)\times (-1,1)}{\IC}$ since we are in the holomorpy domain of the square root function. We left to show the holomorpy  and unoform bound of the the map from two arcs to the distance, but by the holomorphy of the square root function this is reduced to show the properties for the square of the distance function which is done as in the previous lemma. 
+% Consider 
+%\begin{align*}
+%D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)},
+%\end{align*}
+%we will show that this map is in fact the Frechet derivative of $d_{\br,\bp}$ in the direction $\bh^1,\bh^2$. Is clear from the definition that $D d_{\br,\bp}$ is a linear map in the $\bh^1,\bh^2$ direction, moreover since, 
+%$$\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+%d_{\br,\bp}(t,s) \geq \sqrt{I^2 -2S (\delta_1 +\delta^2)-(\delta_1 +\delta_2)^2}>0,$$
+%and using the product rule for derivatives we conclude that $$D d_{\br,\bp}\in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}^2,
+%\cmspace{m}{(-1,1) \times (-1,1)}{\IC}).$$ To proof the approximation propriety we first notice that 
+%$$d_{\br+ \bh^1, \bp+\bh^2}(t,s)^2 - d_{\br,\bp}(t,s)^2 = 2 (\br(t)-\bp(s))\cdot (\bh^1(t)- \bh^2(s)) + O(\| \bh^1(t)- \bh^2(s)\|^2),$$
+%hence by the diferiantiability of the square root function we get 
+%$$
+%d_{\br+ \bh^1, \bp+\bh^2}(t,s) - d_{\br,\bp}(t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)}  + O( \| \bh^1(t)- \bh^2(s)\|^2).
+%$$
+%To finish the proof we need to show that for $\alpha, \beta \in \IN$ such that $0 \leq \alpha + \beta \leq m$ we have,  
+%\begin{align*}
+%\lim_{\bh^1 \rightarrow 0 \atop \bh^2 \rightarrow 0 }\frac{\partial^\beta_s\partial^\alpha_t \| \bh^1(t)- \bh^2(s)\|^2}{\| \bh^1 \|_{\cmspace{m}{(-1,1)}{\IC^2}} + \|\bh^2\|_{\cmspace{m}{(-1,1)}{\IC^2}}} = 0 ,
+%\end{align*}
+%the proof is the same as in the differentiability part of the Lemma \ref{lemma:dself}. Similarly the uniform bound follows by bounding $d^2_{\br,\bp}$ as in the previous lemma and the fact that the distance has strictly positive real part. 
 \end{proof}
 
 An additional function that is crucial for the analysis of integrals kernels is presented now. 
@@ -738,24 +753,24 @@ Q_{\br}(t,s) = \begin{cases}
 \br '(t) \cdot \br '(t), \quad t =s 
 \end{cases}.
 $$
-Then for a compact set $K \subset \rgeo{m}$, and $\delta$ as in Lemma \ref{lemma:dwelldef} the maps, 
+Then for a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef} the maps, 
 \begin{align*}
-\br \in K_\delta \mapsto Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, \\
-\br \in K_\delta \mapsto 1/Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, 
+\br \in K_\delta \mapsto Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \\
+\br \in K_\delta \mapsto 1/Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, 
 \end{align*} 
-are both holomorphic, uniformly bounded,  and we also have \todo{check the proof this last part->}
+are both holomorphic, uniformly bounded,  and we also have \todo{check the proof this last part->i dont think is needed...}
 \begin{align*}
 \inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
 \inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
 \end{align*}
 \end{lemma}
 \begin{proof}
-Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}.$$ For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
+Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}.$$ For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
 \begin{align*}
-DQ_{\br}[\bh](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bh(t)-\bh(s))}{(t-s)^2}, \\
-D1/Q_{\br}[\bh](t,s) = -\frac{DQ_{\br}[\bh](t,s)}{(Q_{\br}(t,s))^2} 
+DQ_{\br}[\bv](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bv(t)-\bv(s))}{(t-s)^2}, \\
+D1/Q_{\br}[\bv](t,s) = -\frac{DQ_{\br}[\bv](t,s)}{(Q_{\br}(t,s))^2} 
 \end{align*}
-with the continious extension for $t=s$. These two are linear maps in the $\bh$ variable, and again by Taylor expansion we have that for $\alpha, \beta \in \IN$, 
+with the continious extension for $t=s$. These two are linear maps in the $\bv$ variable, and again by Taylor expansion we have that for $\alpha, \beta \in \IN$, 
 \begin{align}
 \label{eq:ddbound}
 \left\vert \left\vert \partial_s^\beta \partial_t^\alpha \frac{\br(t)-\br(s)}{t-s} \right \vert  \right \vert\leq \| \br \|_{\cmspace{\alpha+\beta+1}{(-1,1)}{\IC}}
@@ -764,27 +779,31 @@ with the continious extension for $t=s$. These two are linear maps in the $\bh$ 
 %\label{eq:DQbound}
 %DQ_{\br}[\bh](t,s)| \leq 2 \|\br\|_{\cmspace{1}{(-1,1)}{\IC^2}} \| \bh\|_{\cmspace{1}{(-1,1)}{\IC^2}}
 %\end{align}
-hence, $DQ_{\br}$, $D1/Q_{\br} \in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}
-  , \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$.
+hence, $DQ_{\br}$, $D1/Q_{\br} \in \mathcal{L}(\cmspaceh{m}{h}{(-1,1)}{\IC^2}
+  , \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$.
 We also have that 
 \begin{align*}
-d_{\br +\bh}^2(t,s) = d^2_{\br}(t,s) + 2 (\br(t) -\br(s))\cdot (\bh(t)-\bh(s)) + d_{\bh}^2(t,s),
+d_{\br +\bv}^2(t,s) = d^2_{\br}(t,s) + 2 (\br(t) -\br(s))\cdot (\bv(t)-\bv(s)) + d_{\bv}^2(t,s),
 \end{align*}
 thus, 
 \begin{align*}
-Q_{\br +\bh}(t,s) = Q_{\br}(t,s) + DQ_{\br}[h](t,s) + Q_{\bh}(t,s).
+Q_{\br +\bv}(t,s) = Q_{\br}(t,s) + DQ_{\br}[v](t,s) + Q_{\bv}(t,s).
 \end{align*}
-By \eqref{eq:ddbound} we have that $\| Q_{\bh}\|_{\cmspace{m-1}{\iinterv}{\IC^2}} \lesssim \| \bh\|_{\cmspace{m}{\iinterv}{\IC^2}}^2$, so we get the differentiability of $Q_{\br}$. On the other hand from the differentiability of the function $1/z$ for $z$ away from $0$ we get, 
+By \eqref{eq:ddbound} we have that $\| Q_{\bv}\|_{\cmspaceh{m-1}{h}{\iinterv}{\IC^2}} \lesssim \| \bv\|_{\cmspaceh{m}{h}{\iinterv}{\IC^2}}^2$, so we get the differentiability of $Q_{\br}$. On the other hand from the differentiability of the function $1/z$ for $z$ away from $0$ we get, 
 \begin{align*}
-1/Q_{\br+\bh} = 1/Q_{\br} - (Q_{\br})^{-2} (Q_{\br+\bh}-Q_{\br}) + o(|Q_{\br+\bh}-Q_{\br}|),
+1/Q_{\br+\bv} = 1/Q_{\br} - (Q_{\br})^{-2} (Q_{\br+\bv}-Q_{\br}) + o(|Q_{\br+\bv}-Q_{\br}|),
 \end{align*}
 the result then follows from the diffentiability of $Q_{\br}$.
 
 
 
 The uniform bound of $Q_{\br}$ follows directly from the one of $d^2_{\br}$ in Lemma \ref{lemma:dself}. On the other hand, for $1/Q_{\br}$ need the last part of this lemma, which is obtained using the Taylor expansion of $\br$ and Lemma \ref{lemma:dwelldef}.
+
+The final part of the lemma is and immediate consequence of \eqref{eq:ddbound}, and the continuity in the $\br$ variable. 
+
 \end{proof}
 
+\todo{check this...}
 The last function that will be covered in this section is very similar to the previous function, and appears explicitly in the fundamental solution for the elastic scattering.
 
 \begin{lemma}
@@ -796,18 +815,18 @@ Consider two arcs $\br$, and $\bp$ and define the matrix function $\mathbf{D}_{\
 \frac{r_j(t) r_k(s)}{\br'(t)\cdot \br'(s)} \quad \text{i.o.c.} 
 \end{cases} \quad j,k=1,2,
 \end{align*} 
-and also two compact sets $K^1,K^2 \subset \rgeo{m}$ for some $m \in \IN$. 
+and also two compact sets $K^1,K^2 \subset \rgeoh{m}{h}$ for some $m \in \IN$. 
 \begin{enumerate}
 \item
 If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Lemma \ref{lemma:dwelldef} then 
 \begin{align*}
-\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
 \end{align*} 
 is holomorphic and uniformly bounded.
 \item 
 If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross}, then 
 \begin{align*}
-(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
 \end{align*} 
 is holomorphic and uniformly bounded.
 \end{enumerate}
@@ -818,7 +837,6 @@ For the first part, if $t \neq s$ we have,
 (D_{\br,\br}(t,s))_{j,k} = 1/Q_{\br}(t,s) \left( \frac{r_j(t)-r_j(s)}{t-s} \right) \cdot \left( \frac{r_k(t)-r_k(s)}{t-s} \right)
 \end{align*}
 and the results follows as in the proof of Lemma \ref{lemma:Qfun}.
-
 The second part is direct from Lemma \ref{lemma:dcross} and elementary results of complex variable. 
 \end{proof}
 \subsection{Integral Kernels}
@@ -831,14 +849,14 @@ The following result is a basic consequence of the composition of holomorphic fu
 Let $F :\IC \rightarrow \IC$ holomorphic in $\IC \setminus (-\infty,0]$. Consider $K^1, K^2$ compact subsets of $\cmspace{m}{(-1,1)}{\IR^2}$, for some $m \in \IN$, with their corresponding complex extensions $K^1_{\delta_1}$, $K^2_{\delta_2}$, for a pair $\delta_1 >0$, $\delta_2>0$. We also consider a function $q_{\br,\bp} :(-1,1)\times (-1,1) \rightarrow \IC$ with $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$, such that  
 \begin{enumerate}
 \item 
-The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspace{m-j}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
+The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspaceh{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
 \item we have the uniform bound: 
 $$
 \inf_{(\br,\bp) \in K_{\delta_1}^1 \times K_{\delta_2}^2} \inf_{(t,s) \in (-1,1)\times(-1,1)} Re( q_{\br,\bp}(t,s))>0.
 $$
 \end{enumerate}
 Then 
-$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{(-1,1)\times(-1,1)}{\IC}$$
+$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$$
 is holomorphic and uniformly bounded.
 \end{lemma} 
 From the latter result we obtain two important consequences. 
@@ -848,12 +866,12 @@ From the latter result we obtain two important consequences.
 Let $F$ as in the previous lemma and $m \in \IN$: 
 \begin{enumerate}
 \item 
-For a compact $K \subset \rgeo{m}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
-$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspace{m-1}{(-1,1)\times(-1,1)}{\IC}$$
+For a compact $K \subset \rgeoh{m}{h}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
+$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$$
 is holomorphic and uniformly bounded. 
 \item 
-For compact disjoint sets $K_1,K_2 \subset  \rgeo{m}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
-$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$$
+For compact disjoint sets $K_1,K_2 \subset  \rgeoh{m}{h}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
+$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
 is holomorphic and uniformly bounded.
 \end{enumerate}
 \end{corollary}
@@ -865,8 +883,8 @@ Finally we need to analyze the case of smooth functions acting on the function $
 \label{lemma:selfkernell}
 Consider $F :\IC \rightarrow \IC$ holomorphic, and assume there is $f : \IC \rightarrow \IC$ also holomorphic such that
 $$F(z) = f(z^2).$$ 
-We consider again a compact set $K \subset \rgeo{m}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
-$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$$
+We consider again a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
+$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
 is holomorhic and uniformly bounded. 
 \end{lemma}
 \begin{proof}
@@ -881,18 +899,18 @@ In this section we study the mapping properties of three kind of integral operat
 (L_fu)(t) &:= \int_{-1}^1 \log|t-s| f(t,s) u(s) ds\\
 (S_f u)(t) &:= \int_{-1}^1 \log|t-s| (t-s)^2 f(t,s)u(s)ds,
 \end{align*}
-where $f \in \cmspace{m}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
+where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
 
 Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, $L_f$, and $S_f$. The following results give a first insight regarding this relation. 
 
 \begin{lemma}
 \label{lemma:cmdecay}
-Let $m \in \IN$, with $m\geq 1$. Consider $f \in \cmspace{m}{\iinterv}{\IC}$, then 
+Let $m \in \IN$, with $m\geq 1$, and $h \in[0,1)$. Consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then 
 \begin{align*}
-|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
-|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
+|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
+|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
 \end{align*}
-for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$. Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
+for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$ For $h=1$ we have one more order in the decay (i.e.the right most term is $ \min ( n^{-m-1}, l^{-m-1})$). Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
 \begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
  |\widecheck{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}.
 \end{align*}
@@ -924,9 +942,38 @@ $$\partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g = \sum_{n=-\infty}^\in
 (in)^{\alpha_1} (i l )^{\alpha_2} \widetilde{g}_{n,l},$$
 thus by the orthogonality of the Fourier basis we get 
 \begin{align*}
-\|g\|_m^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2
+\|g\|_m^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2,
 \end{align*}
-
+we also notice that $(1+n^2)^{s_1}(1+l^2)^{s_2} \leq \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}$ for every positive $s_1,s_2$ such that $s_1+ s_2 \leq m$, hence we get
+\begin{align}
+\label{eq:presult}
+\sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2 \lesssim \|g\|_{m}^2 \leq \|g\|^2_{\cmspace{m}{(-\pi,\pi)\times(-\pi,\pi))}{\IC}}.
+\end{align} 
+Now we consider the case of a non periodic function $f \in \cmspace{m}{\iinterv}{\IC}$. We define two periodic liftings of $f$ as 
+$$
+g^1(\theta,\phi ) = f(\cos \theta, \cos \phi), \quad \text{and,} \quad g^2(\theta,\phi) = f(\cos \theta, \cos \phi)\sin \theta \sin \phi.
+$$
+we can see that the fourier coefficients of these functions are related to the chebyshev coefficients of f, in fact we have
+ \begin{align*}
+\widetilde{g^1}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
+&= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
+&= 4 \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
+& = 4 \int_{-1}^1 \int_{-1}^1 f(t,s) T_{|n|} w^{-1}(t) T_{|l|} w^{-1}(s) dt ds \\
+&= 4 \widehat{f}_{|n|,|l|},  
+\end{align*}
+and also 
+\begin{align*}
+\widetilde{g^2}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \sin \theta \sin \phi e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
+&= -\int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)\sin \theta \sin \phi \sin(l\phi) \sin(n \theta) d\phi d\theta \\
+&= -4 \text{sign}(n) \text{sign}(l) \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \sin \theta \sin \phi \sin(|l|\phi) \sin(|n| \theta) d\phi d\theta \\
+& = -4\text{sign}(n) \text{sign}(l) \int_{-1}^1 \int_{-1}^1 f(t,s) U_{|n|-1} w(t) U_{|l|-1} w(s) dt ds \\
+&= -4 \text{sign}(n) \text{sign}(l)\widecheck{f}_{|n|-1,|l|-1},
+\end{align*}
+with $\widetilde{g^2}_{n,l}=0$ if $n=0$ or $l=0$. Finally the result is obtained by using \eqref{eq:presult}, and also the trivial observation 
+\begin{align*}
+\|g^1\|_{}
+\end{align*}
 \end{proof}
 
 
