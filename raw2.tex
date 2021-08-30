@@ -901,50 +901,103 @@ In this section we study the mapping properties of three kind of integral operat
 \end{align*}
 where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
 
-Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, $L_f$, and $S_f$. The following results give a first insight regarding this relation. 
+Before we proceeded any further we need to specify how the smoothness of the kernel function $f$ impact the maping propieties of the operators $R_f$, $L_f$, and $S_f$. The following result give a first insight regarding this relation. 
 
-\begin{lemma}
-\label{lemma:cmdecay}
-Let $m \in \IN$, with $m\geq 1$, and $h \in[0,1)$. Consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then 
-\begin{align*}
-|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
-|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
-\end{align*}
-for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$ For $h=1$ we have one more order in the decay (i.e.the right most term is $ \min ( n^{-m-1}, l^{-m-1})$). Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
-\begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
- |\widecheck{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}.
-\end{align*}
-\end{lemma}
-\begin{proof}
-For $\widehat{f}_{n,l}$ the result is a simple extension from the uni-variate results presented in \todo{ref treffeten chapter 7}. The case of $\widecheck{f}_{n,l}$, is reduced to the previous one using integration by parts since using the derivatives of the Chebishev polynomials we have
-\begin{align*}
-\int_{-1}^1 g(t) U_n w(t) dt  = - (n+1) \int_{-1}^1 \left( \int_{-1}^t g(x) dx\right) T_{n+1} w^{-1}(t) dt,
-\end{align*}
-for any continuous function $g$, and the result can be extended to more general cases without difficulties.  
-\end{proof}
+%\begin{lemma}
+%\label{lemma:cmdecay}
+%Let $m \in \IN$, with $m\geq 1$, and $h \in[0,1)$. Consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then 
+%\begin{align*}
+%|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
+%|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
+%\end{align*}
+%for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$ For $h=1$ we have one more order in the decay (i.e.the right most term is $ \min ( n^{-m-1}, l^{-m-1})$). Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
+%\begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
+% |\widecheck{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}.
+%\end{align*}
+%\end{lemma}
+%\begin{proof}
+%For $\widehat{f}_{n,l}$ the result is a simple extension from the uni-variate results presented in \todo{ref treffeten chapter 7}. The case of $\widecheck{f}_{n,l}$, is reduced to the previous one using integration by parts since using the derivatives of the Chebishev polynomials we have
+%\begin{align*}
+%\int_{-1}^1 g(t) U_n w(t) dt  = - (n+1) \int_{-1}^1 \left( \int_{-1}^t g(x) dx\right) T_{n+1} w^{-1}(t) dt,
+%\end{align*}
+%for any continuous function $g$, and the result can be extended to more general cases without difficulties.  
+%\end{proof}
 
 \begin{lemma}
 \label{lemma:cmdecay2}
-Let $m \in \IN$, with $m \geq 1$, and consider $f \in \cmspace{m}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that $s_1+s_2 \leq m$, we have  
+Let $m \in \IN$, $h \in (0,1)$, and consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that  $s_1+s_2 < m+h$, then we have  
 \begin{align*}
 \sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
-(1+n^2)^{s_1} (1+l^2)^{s_2} |\widehat{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspace{m}{\iinterv}{\IC}},\\
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widehat{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
 \sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
-(1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspace{m}{\iinterv}{\IC}},
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
-with unspecified constants independent of $f$.
+with unspecified constants independent of $f$. If $h = 0 $, or $h = 1$ the same result hold but with the slightly tighter bound $s_1+s_2 \leq m$.
 \end{lemma}
 \begin{proof}
-First let us consider a periodic bi-variate function $g(\theta,\phi)$ in $ \cmspace{m}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}$, and define 
-$$\|g\|_m^2 = \sum_{|\mathbf{\alpha}| \leq m } \| \partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g \|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])},$$
-it is clear that we have $\|g\|_{m}^2 \lesssim \|g\|_{\cmspace{m}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}^2$, with unspecified constant independent of $g$. Furthermore, by the uniform convergence of the Fourier series of $g$ we have that 
+The idea of the proof is to notice that the left hand side correspond to a norm in a sobolev-type space, thus it is equivalent to the $L^2$ norm of the corresponding weak derivatives, and these can be bounded directly using the definition of the $\cmspaceh{m}{h}{\iinterv}{\IC}$ spaces. \todo{For completness the proof is included, also I dint not found the result for bi-variate functions...}
+
+First let us consider  the periodic case. For a bi-periodic function $g$, we define 
+$$\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 = \sum_{\alpha_1 \leq m_1} \sum_{\alpha_2 \leq m_2} \| \partial_t^{\alpha_1} \partial_s^{\alpha_2} g(t,s) \|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])}+  |\partial_t^{m_1} \partial_{s}^{m_2} g(t,s)|_{\mathbf{\gamma}}^2  ,$$
+where the $\mathbf{\gamma}-$semi-norm is defined as 
+\begin{align*}
+|g|_{\mathbf{\gamma}}^2 = \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{| g(x,s)-g(t,s)+g(t,s)-g(x,s)|^2}
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds.
+\end{align*}
+We will denote the Sobolev-type norm as,
+\begin{align}
+\label{eq:sobnormtype}
+g\|_{s_1,s_2}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty (1+n^2)^{s_1}(1+l^2)^{s_2}| \widetilde{g}_{n,l}|^2
+\end{align}
+Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathbf{\gamma}}^2$. Given $s_1, s_2$ positive, and a smooth bi-periodic function $g$ we notice that the Fourier coefficients of $\partial_t^{m_1} \partial_s^{m_2} g$ are in fact $(i n)^{m_1} (i l)^{m_2} \widetilde{g}_{n,l}$, this plus the inequality $(1+n^2)^s \lesssim (n^2)^s+1$ give us 
+\begin{align}
+\label{eq:intdevs}
+\begin{split}
+\|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
+ \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\left(\widetilde{g}\right)_{n,l}\right\vert^2
+,
+\end{split}
+\end{align}
+where $[s_1], [s_2]$ denotes the integer parts of $s_1,s_2$ respectively, and $h_1, h_2$ are the coresponding fractional parts. From the last inequality is immediate that for the case $h_1= h_2 =0$ we get 
+$$
+\|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{([s_1],[s_2]),\mathbf{0}},
+$$
+in any other case we define $\varrho = \partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)$, and from \eqref{eq:intdevs} we see that we only need to show that 
+\begin{align*}
+S = \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\widetilde{\varrho}_{n,l}\right\vert^2 \lesssim \| \varrho \|^2_{\mathbf{0},(h_1,h_2)}. 
+\end{align*}
+The details of the this part are given in Appendix \ref{appendix:fracbivariate}. Finally  from the last observation we arrive to the bound
+\begin{align*}
+\|g\|^2_{s_1,s_2} \lesssim \|g\|^2_{([s_1],[s_2]),(h_1,h_2)}. 
+\end{align*}
+Now to finish the proof for periodic functions we need to bound the general norm $\|g\|_{\mathbf{m},\mathbf{\gamma}}^2$, in terms of the holder norms \todo{seguir esto..}
+
+
+
+
+Notice that $\|g\|_{m,0} \lesssim \|g\|_{\cmspaceh{m}{0}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$, and also since Lipchitz continuous implies bounded weak derivative, $\|g\|_{m+1,0} \lesssim \|g\|_{\cmspaceh{m}{1}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$.
+
+On the other hand, for $h \in (0,1)$ we have that for every $\gamma \in (0,1)$ such that $\gamma < h$, 
+$\|g\|_{m,\gamma} \lesssim \|g\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$.
+
+Now we consider the sobolev type norm of $g$ given by 
+$$
+\sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
+(1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2
+$$
+is bounded by $\|g\|^2_{m,\gamma}$ for every $s_1, s_2$ non negative numbers, such that $s_1 + s_2 \leq m + \gamma$.
+
+
+By the uniform convergence of the Fourier series of $g$ we have that 
 $$\partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty
 (in)^{\alpha_1} (i l )^{\alpha_2} \widetilde{g}_{n,l},$$
 thus by the orthogonality of the Fourier basis we get 
 \begin{align*}
-\|g\|_m^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2,
+\|g\|_{m,0}^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2,
 \end{align*}
-we also notice that $(1+n^2)^{s_1}(1+l^2)^{s_2} \leq \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}$ for every positive $s_1,s_2$ such that $s_1+ s_2 \leq m$, hence we get
+we also notice that $(1+n^2)^{[s_1]}(1+l^2)^{[s_2]} \leq \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}$ for every positive $s_1,s_2$ such that $[s_1]+ [s_2] \leq m$. Thus we left to prove the bound for fractional orders. Let us consider $\gamma \in (0,1)$ then following \todo{kress we have }
+
+
 \begin{align}
 \label{eq:presult}
 \sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
@@ -1361,7 +1414,90 @@ is holomorphic and uniformly bounded.
 \section{Numerical Results}
 \subsection{Single Crack}
 \subsection{Multiples Cracks}
+
+\appendix
+\section{Fractional norms for periodic functions}
+\label{appendix:fracbivariate}
+This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \todo{ref kress singular integral equations}. 
+
+In what follows we denote the non-normalized Fourier basis by $e_n(t) = \exp{i n t }$
+
+The fractional semi-norm $|\varrho|_{\mathbf{\gamma}}|$ is generated by the inner product 
+\begin{align*}
+\langle u , v \rangle{\mathbf{\gamma}} := \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{\Delta u (x,t,y,s)\Delta \overline{v} (x,t,y,s) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds, 
+\end{align*}
+where $,u,v$ are bi-periodic functions and the difference operator is given by.
+$$\Delta u(x,t,y,s) = u(x,y)-u(t,y)+u(t,s)-u(x,s).$$
+Consider the bi-periodic Fourier basis 
+$e_{n,l}(t,s) = e_n(t)e_l(s)$, and let us compute the product between two basis, $e_{n_1,l_1}$ and $e_{n_2,l_2}$.  By permuting the names of the integration variables we have that 
+$$\langle e_{n_1,l_1} , e_{n_2,l_2} \rangle{\mathbf{\gamma}}  =
+4 \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)\Delta e_{-n_2,-l_2} (x,t,y,s) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds, 
+$$
+the right most term is decomposed in the sum of forth integrals denoted as
+\begin{align*}
+I_1 := \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)e_{-n_2,-l_2} (x,y) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds,\\
+I_2 :=  -\int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)e_{-n_2,-l_2} (t,y) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds,\\
+I_3 := \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)e_{-n_2,-l_2} (t,s) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds,\\
+I_4 := -\int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)e_{-n_2,-l_2} (x,s) }
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds.
+\end{align*}
+
+We perform the change of variables $u = t-x$, and $v = s-y$ in the four integrals and by the periodicity of the involving factors we get 
+\begin{align*}
+I_1 := \delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi}
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
+\int_{-\pi}^{\pi}  
+\left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
+I_2 := -\delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
+\int_{-\pi}^{\pi}  
+\left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
+I_3 := \delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
+\int_{-\pi}^{\pi}  e_{-l_2}(v)
+\left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
+I_4 := -\delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} 
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
+\int_{-\pi}^{\pi}  e_{-l_2}(v)
+\left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,
+\end{align*}
+where $\delta_{n,m} = 2 \pi $ if $n=m$ and zero otherwise. Since the Fourier basis are $e_n(t) =  (cos(nt) + i \sin (nt)) $, we can use the symmetries of the cosine and sine function, and we get
+$$
+\int_{-\pi}^{\pi} (1-e_{-n_2}(u))
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du = 
+2 \int_{0}^{\pi} (1-\cos(n_2 u))
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du,
+$$
+furthermore we use formula for the cosine of double angle and we get
+$$
+\int_{-\pi}^{\pi} (1-e_{-n_2}(u))
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du = 
+4 \int_{0}^{\pi} \sin(\frac{n_2 u}{2}) ^2
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du,
+$$
+using this we get
+\begin{align*}
+\begin{split}
+\langle e_{n_1,n_2}, e_{l_1,l_2} \rangle_{\mathbf{\gamma}}= 16 \delta_{n_1,n_2} \delta_{l_1,l_2}\\ \int_{0}^{\pi} \sin(\frac{n_2 u}{2}) ^2
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du 
+\int_{0}^{\pi} \sin(\frac{l_2 v}{2}) ^2
+\left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}du,
+\end{split}
+\end{align*}
+notice that the bi-periodic Fourier functions are orthogonal with this product. Denote by $S_\gamma(n) =\int_{0}^{\pi} \sin(n u) ^2
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma}du $, hence by \todo{kress 8.8?} we have $S_\gamma(n) \cong (n^2)^\gamma$, thus by the previously showed orthogonality  
+\begin{align*}
+|\varrho |_{\mathbf{\gamma}}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 S_{\gamma_1}(n) S_{\gamma_2}(l) \cong \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 (n^2)^{\gamma_1} (l^2)^{\gamma_2},
+\end{align*}
+ now we can use the traditional inequality  $(1+n^2)^{\gamma_1}  \leq (n^2)^\gamma_1 +1$ (and analogly for $l$ and $\gamma_2$), so we have 
+ \begin{align*}
+ |\varrho|^2_{\gamma} + \| \varrho\|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])} \geq  \|g\|_{\gamma_1,\gamma_2}^2,
+ \end{align*}
+ where the left most term is the Sobolev-type norm for orders $\gamma_1,\gamma_2$, defined as in \eqref{eq:sobnormtype}.
+
 \end{document}
-
-
-
