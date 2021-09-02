@@ -545,7 +545,7 @@ where we are using the classical multi-index notation \todo{ref}.  The case $h=0
 \begin{align*}
 \| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
 \end{align*}
-On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist almost everywhere}. 
+On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 \leq m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
 
 In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$. 
 
@@ -932,7 +932,7 @@ Let $m \in \IN$, $h \in (0,1)$, and consider $f \in \cmspaceh{m}{h}{\iinterv}{\I
 \sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
 (1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
-with unspecified constants independent of $f$. If $h = 0 $, or $h = 1$ the same result hold but with the slightly tighter bound $s_1+s_2 \leq m$.
+with unspecified constants independent of $f$. If $s_1, s_2$ are integer we get the slightly tighter bound $s_1+s_2 \leq m+h$.
 \end{lemma}
 \begin{proof}
 The idea of the proof is to notice that the left hand side correspond to a norm in a sobolev-type space, thus it is equivalent to the $L^2$ norm of the corresponding weak derivatives, and these can be bounded directly using the definition of the $\cmspaceh{m}{h}{\iinterv}{\IC}$ spaces. \todo{For completness the proof is included, also I dint not found the result for bi-variate functions...}
@@ -947,69 +947,75 @@ where the $\mathbf{\gamma}-$semi-norm is defined as
 We will denote the Sobolev-type norm as,
 \begin{align}
 \label{eq:sobnormtype}
-g\|_{s_1,s_2}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty (1+n^2)^{s_1}(1+l^2)^{s_2}| \widetilde{g}_{n,l}|^2
+\|g\|_{s_1,s_2}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty (1+n^2)^{s_1}(1+l^2)^{s_2}| \widetilde{g}_{n,l}|^2
 \end{align}
 Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathbf{\gamma}}^2$. Given $s_1, s_2$ positive, and a smooth bi-periodic function $g$ we notice that the Fourier coefficients of $\partial_t^{m_1} \partial_s^{m_2} g$ are in fact $(i n)^{m_1} (i l)^{m_2} \widetilde{g}_{n,l}$, this plus the inequality $(1+n^2)^s \lesssim (n^2)^s+1$ give us 
 \begin{align}
 \label{eq:intdevs}
 \begin{split}
-\|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
- \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\left(\widetilde{g}\right)_{n,l}\right\vert^2
+\|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
+ \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{g}\right)_{n,l}\right\vert^2
 ,
 \end{split}
 \end{align}
-where $[s_1], [s_2]$ denotes the integer parts of $s_1,s_2$ respectively, and $h_1, h_2$ are the coresponding fractional parts. From the last inequality is immediate that for the case $h_1= h_2 =0$ we get 
+where $[s_1], [s_2]$ denotes the integer parts of $s_1,s_2$ respectively, and $\{s_1\}, \{s_2\}$ are the coresponding fractional parts. From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
 $$
 \|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{([s_1],[s_2]),\mathbf{0}},
 $$
 in any other case we define $\varrho = \partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)$, and from \eqref{eq:intdevs} we see that we only need to show that 
 \begin{align*}
-S = \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{h_1} (1+l^2)^{h_2} \left\vert\widetilde{\varrho}_{n,l}\right\vert^2 \lesssim \| \varrho \|^2_{\mathbf{0},(h_1,h_2)}. 
+ \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_s\}} \left\vert\widetilde{\varrho}_{n,l}\right\vert^2 \lesssim \| \varrho \|^2_{\mathbf{0},(\{s_1\},\{s_2\})},
 \end{align*}
-The details of the this part are given in Appendix \ref{appendix:fracbivariate}. Finally  from the last observation we arrive to the bound
-\begin{align*}
-\|g\|^2_{s_1,s_2} \lesssim \|g\|^2_{([s_1],[s_2]),(h_1,h_2)}. 
-\end{align*}
-Now to finish the proof for periodic functions we need to bound the general norm $\|g\|_{\mathbf{m},\mathbf{\gamma}}^2$, in terms of the holder norms \todo{seguir esto..}
-
-
-
-
-Notice that $\|g\|_{m,0} \lesssim \|g\|_{\cmspaceh{m}{0}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$, and also since Lipchitz continuous implies bounded weak derivative, $\|g\|_{m+1,0} \lesssim \|g\|_{\cmspaceh{m}{1}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$.
-
-On the other hand, for $h \in (0,1)$ we have that for every $\gamma \in (0,1)$ such that $\gamma < h$, 
-$\|g\|_{m,\gamma} \lesssim \|g\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}$.
-
-Now we consider the sobolev type norm of $g$ given by 
-$$
-\sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
-(1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2
-$$
-is bounded by $\|g\|^2_{m,\gamma}$ for every $s_1, s_2$ non negative numbers, such that $s_1 + s_2 \leq m + \gamma$.
-
-
-By the uniform convergence of the Fourier series of $g$ we have that 
-$$\partial_\theta^{\alpha_1} \partial_{\phi}^{\alpha_2} g = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty
-(in)^{\alpha_1} (i l )^{\alpha_2} \widetilde{g}_{n,l},$$
-thus by the orthogonality of the Fourier basis we get 
-\begin{align*}
-\|g\|_{m,0}^2   = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}|\widetilde{g}_{n,l}|^2,
-\end{align*}
-we also notice that $(1+n^2)^{[s_1]}(1+l^2)^{[s_2]} \leq \sum_{|\mathbf{\alpha}| \leq m } n^{2 \alpha_1} l^{2 \alpha_2}$ for every positive $s_1,s_2$ such that $[s_1]+ [s_2] \leq m$. Thus we left to prove the bound for fractional orders. Let us consider $\gamma \in (0,1)$ then following \todo{kress we have }
-
-
+the details of the this part are given in Appendix \ref{appendix:fracbivariate}. Finally  from the last observation we arrive to the bound
 \begin{align}
-\label{eq:presult}
-\sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
-(1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2 \lesssim \|g\|_{m}^2 \leq \|g\|^2_{\cmspace{m}{(-\pi,\pi)\times(-\pi,\pi))}{\IC}}.
-\end{align} 
-Now we consider the case of a non periodic function $f \in \cmspace{m}{\iinterv}{\IC}$. We define two periodic liftings of $f$ as 
+\label{eq:gbound1}
+\|g\|^2_{s_1,s_2} \lesssim \|g\|^2_{([s_1],[s_2]),(\{s_1\},\{s_1\})}. 
+\end{align}
+Now to finish the proof for periodic functions we need to bound the general norm $\|g\|_{\mathbf{m},\mathbf{\gamma}}^2$, in terms of the $\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$-norms.
+
+First notice that is direct from the definition of the Holder norms that 
+\begin{align*}
+ \|g\|^2_{\mathbf{m},(0,0)} \lesssim \|g\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}. 
+\end{align*}
+for every $m+h \geq m_1 + m_2$. Now let us consider the pure fractional case, here we have that for any $\alpha, \beta >0$ such that $\alpha + \beta = 1$
+\begin{align*}
+\begin{split}
+|g|_{\mathbf{\gamma}}^2 \lesssim \|g\|_{\cmspaceh{0}{h}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}^2\\ \left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|x-t|^{2\alpha h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_1}} dt dx\right)
+\left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|y-s|^{2\beta h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_2}} ds dy\right),
+\end{split}
+\end{align*}
+thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used when ever $\gamma_1 +\gamma_2 \geq 1$. For this last case we need to use the result \eqref{eq:smnormeq} of the Appendix \ref{appendix:fracbivariate}. In particular if we assume that $\gamma_1 = \max\{\gamma_1,\gamma_2\}$ we have 
 $$
-g^1(\theta,\phi ) = f(\cos \theta, \cos \phi), \quad \text{and,} \quad g^2(\theta,\phi) = f(\cos \theta, \cos \phi)\sin \theta \sin \phi.
+|g|_{\mathbf{\gamma}}^2 \leq \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty |\widetilde{g}_{n,l}|^2 n^2 l^{2\gamma_2},
+$$
+and we recall that $ |n \widetilde{g}_{n,l}| = \left\vert \left(\widetilde{\partial_t g(t,s)}\right)_{n,l}\right\vert$, thus 
+$$
+g|_{\mathbf{\gamma}}^2 \leq \|\partial_t g(t,s)\|_{L^2([-\pi,\pi]\times[-\pi,\pi])}^2+ |\partial_t g(t,s)|^2_{(0,\gamma_2)} \lesssim \|g\|_{\cmspaceh{1}{h}{([-\pi,\pi]\times[-\pi,\pi]}{\IC}}
+$$
+for every $h > \gamma_2$ or in general $h > \min \{\gamma_1,\gamma_2\}$. Hence we conclude that 
+\begin{align*}
+\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
+ \text{  for $m_1+m_2+\gamma_1 + \gamma_2 < m+h$ if $\gamma_1 + \gamma_2 < 1$},\\
+ \text{ for $m_1+m_2+1+\min\{\gamma_1, \gamma_2 \}< m+h$, if $\gamma_1 + \gamma_2 \geq 1$}.
+\end{cases}
+\end{align*}
+Notice that if $\mathbf{\gamma} = (0,0)$ only the first case apply and we have the tighter bound $m_1 + m_2 \leq m+ h$. Thus from \eqref{eq:gbound1}, and the last bound we obtain
+\begin{align}
+\label{eq:gbound2}
+\|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
+ \text{  for $s_1+s_2 < m+h$, if $\{s_1\} + \{s_2\} < 1$},\\
+ \text{ for $[s_1]+[s_2]+1+\min\{\{s_1\}, \{s_2\} \}< m+h$, if $\{s_1\} + \{s_2\} \geq 1$},
+\end{cases}
+\end{align}
+with the exception that for $\{s_1\} =\{s_2\} = 0$ the bound is reduced to $s_1 +s_2 \leq m+h$.
+
+Now we consider the case of a non periodic function $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$. We define two periodic liftings of $f$ as 
+$$
+\sigma(\theta,\phi ) = f(\cos \theta, \cos \phi), \quad \text{and,} \quad \varphi(\theta,\phi) = f(\cos \theta, \cos \phi)\sin \theta \sin \phi.
 $$
 we can see that the fourier coefficients of these functions are related to the chebyshev coefficients of f, in fact we have
  \begin{align*}
-\widetilde{g^1}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
+\widetilde{\sigma}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
 &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
 &= 4 \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
 & = 4 \int_{-1}^1 \int_{-1}^1 f(t,s) T_{|n|} w^{-1}(t) T_{|l|} w^{-1}(s) dt ds \\
@@ -1017,18 +1023,23 @@ we can see that the fourier coefficients of these functions are related to the c
 \end{align*}
 and also 
 \begin{align*}
-\widetilde{g^2}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \sin \theta \sin \phi e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
+\widetilde{\varphi}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \sin \theta \sin \phi e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
 &= -\int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)\sin \theta \sin \phi \sin(l\phi) \sin(n \theta) d\phi d\theta \\
 &= -4 \text{sign}(n) \text{sign}(l) \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \sin \theta \sin \phi \sin(|l|\phi) \sin(|n| \theta) d\phi d\theta \\
 & = -4\text{sign}(n) \text{sign}(l) \int_{-1}^1 \int_{-1}^1 f(t,s) U_{|n|-1} w(t) U_{|l|-1} w(s) dt ds \\
 &= -4 \text{sign}(n) \text{sign}(l)\widecheck{f}_{|n|-1,|l|-1},
 \end{align*}
-with $\widetilde{g^2}_{n,l}=0$ if $n=0$ or $l=0$. Finally the result is obtained by using \eqref{eq:presult}, and also the trivial observation 
+with $\widetilde{\varphi}_{n,l}=0$ if $n=0$ or $l=0$. Moreover, since the cosine function and all its derivatives are trivially bounded we have 
 \begin{align*}
-\|g^1\|_{}
-\end{align*}
+\|f\|_{ \cmspaceh{m}{h}{\iinterv}{\IC}} \cong \|\sigma \|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\cong 
+\|\varphi \|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
+\end{align*} 
+then the result follows directly by applying the bound \eqref{eq:gbound2} to the functions $\sigma$ and $\varphi$.
 \end{proof}
 
+\begin{remark}
+\todo{remark that the bound is better to only use the bound for the coefficients...}
+\end{remark}
 
 Now we can establish the mapping properties of $R_f$ directly. 
 \begin{lemma}
@@ -1491,9 +1502,10 @@ using this we get
 \end{align*}
 notice that the bi-periodic Fourier functions are orthogonal with this product. Denote by $S_\gamma(n) =\int_{0}^{\pi} \sin(n u) ^2
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma}du $, hence by \todo{kress 8.8?} we have $S_\gamma(n) \cong (n^2)^\gamma$, thus by the previously showed orthogonality  
-\begin{align*}
+\begin{align}
+\label{eq:smnormeq}
 |\varrho |_{\mathbf{\gamma}}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 S_{\gamma_1}(n) S_{\gamma_2}(l) \cong \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 (n^2)^{\gamma_1} (l^2)^{\gamma_2},
-\end{align*}
+\end{align}
  now we can use the traditional inequality  $(1+n^2)^{\gamma_1}  \leq (n^2)^\gamma_1 +1$ (and analogly for $l$ and $\gamma_2$), so we have 
  \begin{align*}
  |\varrho|^2_{\gamma} + \| \varrho\|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])} \geq  \|g\|_{\gamma_1,\gamma_2}^2,
