@@ -925,14 +925,21 @@ Before we proceeded any further we need to specify how the smoothness of the ker
 
 \begin{lemma}
 \label{lemma:cmdecay2}
-Let $m \in \IN$, $h \in (0,1)$, and consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that  $s_1+s_2 < m+h$, then we have  
+Let $m \in \IN$, $h \in [0,1]$, and consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers with integer parts denoted by $[s_1], [s_2]$ and fractionals parts ${s_1},{s_2}$ respectively, such that at least one of the following conditions are met 
+\begin{enumerate}
+\item 
+If  $\{s_1\}+\{s_2\}<1$, and $s_1+s_2 < m+h$.
+\item 
+If $\{s_1\} +\{s_2\} \geq 1$ and $[s_1]+[s_2]+1 +\min\{\{s_1\},\{s_2\}\} < m+h$.
+\end{enumerate}
+Then we have 
 \begin{align*}
 \sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
 (1+n^2)^{s_1} (1+l^2)^{s_2} |\widehat{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
 \sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
 (1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
-with unspecified constants independent of $f$. If $s_1, s_2$ are integer we get the slightly tighter bound $s_1+s_2 \leq m+h$.
+with unspecified constants independent of $f$. 
 \end{lemma}
 \begin{proof}
 The idea of the proof is to notice that the left hand side correspond to a norm in a sobolev-type space, thus it is equivalent to the $L^2$ norm of the corresponding weak derivatives, and these can be bounded directly using the definition of the $\cmspaceh{m}{h}{\iinterv}{\IC}$ spaces. \todo{For completness the proof is included, also I dint not found the result for bi-variate functions...}
@@ -955,10 +962,10 @@ Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathb
 \begin{split}
 \|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
  \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{g}\right)_{n,l}\right\vert^2
-,
+.
 \end{split}
 \end{align}
-where $[s_1], [s_2]$ denotes the integer parts of $s_1,s_2$ respectively, and $\{s_1\}, \{s_2\}$ are the coresponding fractional parts. From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
+From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
 $$
 \|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{([s_1],[s_2]),\mathbf{0}},
 $$
@@ -984,13 +991,13 @@ for every $m+h \geq m_1 + m_2$. Now let us consider the pure fractional case, he
 \left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|y-s|^{2\beta h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_2}} ds dy\right),
 \end{split}
 \end{align*}
-thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used when ever $\gamma_1 +\gamma_2 \geq 1$. For this last case we need to use the result \eqref{eq:smnormeq} of the Appendix \ref{appendix:fracbivariate}. In particular if we assume that $\gamma_1 = \max\{\gamma_1,\gamma_2\}$ we have 
+thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used whenever $\gamma_1 +\gamma_2 \geq 1$. For this last case we need to use the result \eqref{eq:smnormeq} of the Appendix \ref{appendix:fracbivariate}. In particular if we assume that $\gamma_1 = \max\{\gamma_1,\gamma_2\}$ we have 
 $$
 |g|_{\mathbf{\gamma}}^2 \leq \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty |\widetilde{g}_{n,l}|^2 n^2 l^{2\gamma_2},
 $$
 and we recall that $ |n \widetilde{g}_{n,l}| = \left\vert \left(\widetilde{\partial_t g(t,s)}\right)_{n,l}\right\vert$, thus 
 $$
-g|_{\mathbf{\gamma}}^2 \leq \|\partial_t g(t,s)\|_{L^2([-\pi,\pi]\times[-\pi,\pi])}^2+ |\partial_t g(t,s)|^2_{(0,\gamma_2)} \lesssim \|g\|_{\cmspaceh{1}{h}{([-\pi,\pi]\times[-\pi,\pi]}{\IC}}
+|g|_{\mathbf{\gamma}}^2 \leq \|\partial_t g(t,s)\|_{L^2([-\pi,\pi]\times[-\pi,\pi])}^2+ |\partial_t g(t,s)|^2_{(0,\gamma_2)} \lesssim \|g\|_{\cmspaceh{1}{h}{([-\pi,\pi]\times[-\pi,\pi]}{\IC}}
 $$
 for every $h > \gamma_2$ or in general $h > \min \{\gamma_1,\gamma_2\}$. Hence we conclude that 
 \begin{align*}
@@ -1038,59 +1045,57 @@ then the result follows directly by applying the bound \eqref{eq:gbound2} to the
 \end{proof}
 
 \begin{remark}
-\todo{remark that the bound is better to only use the bound for the coefficients...}
+A similar result to Lemma \ref{lemma:cmdecay2} can be established by noticing that the smoothness of $f$ implies a degree of decay in the Chebishev coefficients. In fact following \todo{treffeten chapter 7}, we can obtain that for a pair of non negative real values $s_1,s_2$ and $f \in \cmspace{m}{\iinterv}{\IC}$ one has the same bound of the previous Lemma, under the more restrictive condition $s_1+s_2+1 < m$.
+This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{\iinterv}{\IC}$ with derivatives of order $m+1$ integrables, which is comparable with the previous lemma with $h=1$, more restrictive condition but the subspaces of $\cmspace{m}{\iinterv}{\IC}$  with $m+1$ integrable derivatives is larger than $\cmspaceh{m}{1}{\iinterv}{\IC}$. 
+
+We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$.
 \end{remark}
+
+We recall the classical definition of the positive part of a real number defined as $s^+ = \max(0,s)$, for any $s \in \IR$.
 
 Now we can establish the mapping properties of $R_f$ directly. 
 \begin{lemma}
 \label{lemma:Rfoperator}
-Let $m \in \IN$, with $m\geq 1$, $f \in \cmspace{m}{\iinterv}{\IC}$, then for any $s_1,s_2 \in \IR$ such that $s_2 -s_1 < m$, we have 
+Let $m \in \IN$, $h \in [0,1]$, $r_1,r_2 \in \IR$, such that $m,h$ satisfy the conditions of Lemma \ref{lemma:cmdecay2} with $s_1 = (-r_1)^+$, and $s_2 = r_2^+$, then the maps
 \begin{align*}
-f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{s_1}, W^{s_2}),\\
-f \in \cmspace{m}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(U^{s_1}, M^{s_2}),
+f \in \cmspaceh{m}{h}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{r_1}, W^{r_2}),\\
+f \in \cmspaceh{m}{h}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(U^{r_1}, M^{r_2}),
 \end{align*}  are \todo{compact}, and we have the bounds 
 \begin{align*}
-\| R_f \|_{\mathcal{L}(T^{s_1}, W^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}},\\
-\| R_f \|_{\mathcal{L}(U^{s_1}, M^{s_2})} \lesssim \| f\|_{\cmspace{m}{\iinterv}{\IC}}.
+\| R_f \|_{\mathcal{L}(T^{r_1}, W^{r_2})} \lesssim \| f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
+\| R_f \|_{\mathcal{L}(U^{r_1}, M^{r_2})} \lesssim \| f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}.
 \end{align*}
 \end{lemma}
 \begin{proof}
-We will only proof for the pair $(T^{s_1},W^{s_2})$, for $(U^{s_1},M^{s_2})$ the exact same proofs works by changing the first kind Chebishev polynomials for the second kinds and the factor $w^{-1}$ for $w$. We can directly compute,
+We will only proof for the pair $(T^{r_1},W^{r_2})$, for $(U^{r_1},M^{r_2})$ the exact same proofs works by changing the first kind Chebishev polynomials for the second kinds and the factor $w^{-1}$ for $w$. We can directly compute,
 \begin{align*}
-\|R_fu\|_{W^{s_2}}^2  &= \sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert 
+\|R_fu\|_{W^{r_2}}^2  &= \sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert 
 \int_{-1}^1 \left( \int_{-1}^1 f(t,s) u(s) ds\right) T_n w^{-1}(t) dt\right\vert^2\\
 & = 
-\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert  \sum_{p=0}^\infty \sum_{q=0}^\infty \widehat{f}_{p,q} u_q
+\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert  \sum_{p=0}^\infty \sum_{q=0}^\infty \widehat{f}_{p,q} u_q
 \int_{-1}^1 T_p   T_n w^{-1}(t) dt \right\vert^2
 \end{align*} 
 by the orthogonality of the Chebishev polynomials,
  \begin{align*}
-\|R_fu\|_{W^{s_2}}^2  &=
-\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert   \sum_{q=0}^\infty \widehat{f}_{n,q} u_q
+\|R_fu\|_{W^{r_2}}^2  &=
+\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert   \sum_{q=0}^\infty \widehat{f}_{n,q} u_q
  \right\vert^2 
  \\
  &= 
-\sum_{n=0}^\infty (1+n^2)^{s_2} \left\vert   \sum_{q=0}^\infty (1+q^2)^{-s_1/2}\widehat{f}_{n,q} (1 +q^2)^{s_1/2}u_q
+\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert   \sum_{q=0}^\infty (1+q^2)^{-r_1/2}\widehat{f}_{n,q} (1 +q^2)^{r_1/2}u_q
  \right\vert^2  
 \end{align*} 
-by the cauchy-schawrz inequality 
+by the Cauchy-Schawrz inequality 
 \begin{align}
 \label{eq:rfbound}
 \|R_fu\|_{W^{s_2}}^2  \leq 
-\sum_{n=0}^\infty \sum_{q=0}^\infty (1+n^2)^{s_2}     (1+q^2)^{-s_1}|\widehat{f}_{n,q}|^2  \| u\|^2_{T^{s_1}},
+\sum_{n=0}^\infty \sum_{q=0}^\infty (1+n^2)^{r_2}     (1+q^2)^{-r_1}|\widehat{f}_{n,q}|^2  \| u\|^2_{T^{r_1}},
 \end{align}
-using Lemma \ref{lemma:cmdecay}, the sum of the right hand side would converge iff
-\begin{align*}
-\sum_{n=1}^\infty \sum_{q=1}^\infty (1+n^2)^{s_2}     (1+q^2)^{-s_1} n^{-2(m+1)\alpha} q^{-2(m+1)\beta} < \infty
-\end{align*}
-for some combination of $\alpha,\beta$, such that $\alpha + \beta = 1$. This is equivalent to 
-$$2s_2 -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s_1 -2(m+1)\beta < -1. $$
-replacing $\beta = 1 - \alpha$ and summing both inequalities we arrive to the condition $s_2-s_1 < m$.  The continuity respect to $f$ follows from   \eqref{eq:rfbound} and the bounds on Lemma \ref{lemma:cmdecay}.
+the mapping properties of $R_f$ then follows directly from Lemma \ref{lemma:cmdecay2}, and noticing that 
+$(1+n^2)^{r_2}     (1+q^2)^{s_1} \leq (1+n^2)^{s_2}     (1+q^2)^{-r_1}$. 
 
-Finally to see the compactness we see from the condition $s_2- s_1 < m $ that we can select $s_2' > s_2$ such that $R_f \in \mathcal{L}(T^{s_1},W^{s'_2})$, and also $R_f \in \mathcal{L}(U^{s_1},M^{s'_2})$ thus from the compact embeding of the periodic Sobolev spaces we deduce an equivalent embedding for the spaces $W^s,M^s$, and the result follows.
+The compactness is direct as the conditions in Lemma \ref{lemma:cmdecay2} are given in terms of strict inequalities, thus we could sightly increase $r_2$ and and keep the mapping property, then the result follows from the compact embedding of the spaces. 
 \end{proof}
-
-The analysis of $L_f$ is obtained from the analysis of periodic integral operators using the lifting operators. We will make heavy use of the results of \todo{saranen chapter 6  }. Following the ideas of \todo{saranen chapter 11}, we can make a cosine change of variable so we obtain,
 \begin{align}
 \label{eq:Lsplit}
 \begin{split}
