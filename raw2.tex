@@ -545,7 +545,7 @@ where we are using the classical multi-index notation \todo{ref}.  The case $h=0
 \begin{align*}
 \| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
 \end{align*}
-On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 \leq m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
+On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
 
 In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$. 
 
@@ -601,10 +601,11 @@ where the sign function is defined with the convention $\text{sign}(0)=0$, and w
 u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
 \end{align*}
 An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular from \todo{ref nicase? o martin} we have 
-\begin{align*}
+\begin{align}
+\label{eq:devprop}
 \frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
 \frac{d}{dt} : W^s \rightarrow M^{s-1}.
-\end{align*}
+\end{align}
 We will use the spaces $T^s,U^s$ as domain of the integral operators on open arcs mapped back to $[-1,1]$, while the spaces $W^s, M^s$ will be used as range spaces.
 \subsection{Holomorphic Extension of Standard Functions}
 Before we proceed with the analysis of the integral operators we recall the holomorphic extension of some common functions.
@@ -907,14 +908,7 @@ The main differences with \todo{chapter 6 saranen} is that we consider kernels o
 
 \begin{lemma}
 \label{lemma:cmdecay2}
-Let $m \in \IN$, $h \in [0,1]$, and consider a bi-periodic function $g \in \cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$, then given $s_1, s_2$, non negative real numbers with integer parts denoted by $[s_1], [s_2]$ and fractionals parts $\{s_1\},\{s_2\}$ respectively, such that at least one of the following conditions are met 
-\begin{enumerate}
-\item 
- $\{s_1\}+\{s_2\}<1$, and $s_1+s_2 < m+h$.
-\item 
- $\{s_1\} +\{s_2\} \geq 1$ and $[s_1]+[s_2]+1 +\min\{\{s_1\},\{s_2\}\} < m+h$.
-\end{enumerate}
-Then we have 
+Let $m \in \IN$, $h \in [0,1]$, and consider a bi-periodic function $g \in \cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that $s_1+s_2 < m+h$, then we have 
 \begin{align*}
 \sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
 (1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
@@ -928,7 +922,7 @@ For a bi-periodic function $g$, we define
 $$\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 = \sum_{\alpha_1 \leq m_1} \sum_{\alpha_2 \leq m_2} \| \partial_t^{\alpha_1} \partial_s^{\alpha_2} g(t,s) \|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])}+  |\partial_t^{m_1} \partial_{s}^{m_2} g(t,s)|_{\mathbf{\gamma}}^2  ,$$
 where the $\mathbf{\gamma}-$semi-norm is defined as 
 \begin{align*}
-|g|_{\mathbf{\gamma}}^2 = \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{| g(x,s)-g(t,s)+g(t,s)-g(x,s)|^2}
+|g|_{\mathbf{\gamma}}^2 = \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{| g(x,y)-g(t,y)+g(t,s)-g(x,s)|^2}
 {\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds.
 \end{align*}
 We will denote the Sobolev-type norm as,
@@ -936,16 +930,16 @@ We will denote the Sobolev-type norm as,
 \label{eq:sobnormtype}
 \|g\|_{s_1,s_2}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty (1+n^2)^{s_1}(1+l^2)^{s_2}| \widetilde{g}_{n,l}|^2
 \end{align}
-Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathbf{\gamma}}^2$. Given $s_1, s_2$ positive, and a smooth bi-periodic function $g$ we notice that the Fourier coefficients of $\partial_t^{m_1} \partial_s^{m_2} g$ are in fact $(i n)^{m_1} (i l)^{m_2} \widetilde{g}_{n,l}$, this plus the inequality $(1+n^2)^s \lesssim (n^2)^s+1$ give us 
+Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathbf{\gamma}}^2$. We notice that the Fourier coefficients of $\partial_t^{m_1} \partial_s^{m_2} g$ are in fact $(i n)^{m_1} (i l)^{m_2} \widetilde{g}_{n,l}$, this plus the inequality $(1+n^2)^s \lesssim (n^2)^s+1$ give us 
 \begin{align}
 \label{eq:intdevs}
 \begin{split}
 \|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
  \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\widetilde{g}_{n,l}\right\vert^2
-.
+,
 \end{split}
 \end{align}
-From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
+where $[s_1], [s_2]$ denote the integer parts of $s_1, s_2$ respectively and $\{s_1\}, \{s_2\}$ are the corresponding fractional parts. From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
 $$
 \|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{([s_1],[s_2]),\mathbf{0}},
 $$
@@ -971,40 +965,47 @@ for $m+h \geq m_1 + m_2$. Now let us consider the pure fractional case, here we 
 \left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|y-s|^{2\beta h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_2}} ds dy\right),
 \end{split}
 \end{align*}
-thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used whenever $\gamma_1 +\gamma_2 \geq 1$. For this last case we need to use the result \eqref{eq:smnormeq} of the Appendix \ref{appendix:fracbivariate}. In particular if we assume that $\gamma_1 = \max\{\gamma_1,\gamma_2\}$ we have 
+thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used whenever $\gamma_1 +\gamma_2 \geq 1$. For the latter we assume that $m \geq 1$ and by mean value theorem we see that 
+\begin{align*}
+\begin{split}
+|g(x,y)-g(t,y)+g(t,s)-g(x,s)|
+=  \left\vert \int_{t}^x \partial_1 g(\lambda,y) - \partial_1 g(\lambda,s)d \lambda \right\vert = \\ |x-t|
+ \left\vert\partial_1 g(\xi,y)-\partial_t g(\xi,s)\right\vert \leq |x-t||y-s|^h \|g \|_{\cmspaceh{1}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}
+\end{split}
+\end{align*}
+and also by considering the variations in the second variables we obtain
 $$
-|g|_{\mathbf{\gamma}}^2 \leq \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty |\widetilde{g}_{n,l}|^2 n^2 l^{2\gamma_2},
+|g(x,y)-g(t,y)+g(t,s)-g(x,s)|\leq |y-s||x-t|^h \|g \|_{\cmspaceh{1}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
 $$
-and we recall that $ |n \widetilde{g}_{n,l}| = \left\vert \left(\widetilde{\partial_t g(t,s)}\right)_{n,l}\right\vert$, thus 
-$$
-|g|_{\mathbf{\gamma}}^2 \leq \|\partial_t g(t,s)\|_{L^2([-\pi,\pi]\times[-\pi,\pi])}^2+ |\partial_t g(t,s)|^2_{(0,\gamma_2)} \lesssim \|g\|_{\cmspaceh{1}{h}{([-\pi,\pi]\times[-\pi,\pi]}{\IC}}
-$$
-for every $h > \gamma_2$ or in general $h > \min \{\gamma_1,\gamma_2\}$. Hence we conclude that 
+thus for every $\alpha\geq 0, \beta \geq 0$ such that $\alpha + \beta = 1$ we have 
+\begin{align*}
+\begin{split}
+|g|_{\mathbf{\gamma}}^2 \lesssim \|g \|^2_{\cmspaceh{1}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}} \\
+\int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{ (|x-t|^{\alpha + h \beta}  
+|y-s|^{\beta + h \alpha}
+)^2}
+{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds.
+\end{split},
+\end{align*}
+and one can easily see that integrals in the right hand side are finite if $h > \gamma_1 + \gamma_2 -1$. 
+Finally we conclude that 
 \begin{align*}
 \|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
  \text{  for $m_1+m_2+\gamma_1 + \gamma_2 < m+h$ if $\gamma_1 + \gamma_2 < 1$},\\
- \text{ for $m_1+m_2+1+\min\{\gamma_1, \gamma_2 \}< m+h$, if $\gamma_1 + \gamma_2 \geq 1$}.
+ \text{ for $(m_1+m_2+1)+(\gamma_1+\gamma_2 -1)< m+h$, if $\gamma_1 + \gamma_2 \geq 1$}.
 \end{cases}
 \end{align*}
-Notice that if $\mathbf{\gamma} = (0,0)$ only the first case apply and we have the tighter bound $m_1 + m_2 \leq m+ h$. Thus from \eqref{eq:gbound1}, and the last bound we obtain
-\begin{align}
-\label{eq:gbound2}
-\|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
- \text{  for $s_1+s_2 < m+h$, if $\{s_1\} + \{s_2\} < 1$},\\
- \text{ for $[s_1]+[s_2]+1+\min\{\{s_1\}, \{s_2\} \}< m+h$, if $\{s_1\} + \{s_2\} \geq 1$},
-\end{cases}
-\end{align}
-and noticing that for $\{s_1\} =\{s_2\} = 0$ the bound can be reduced to $s_1 +s_2 \leq m+h$.
+which is equivalent to 
+$$
+\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
+$$
+if $m_1+m_2+\gamma_1+\gamma_2 < m+h$. 
+The statment of the lemma then follows from this last bound and \eqref{eq:gbound1}.
 \end{proof}
-
-\begin{remark}
-\label{rem:simplerbound}
-A simpler but less tight condition is that the result of previous lemma holds whenever, $s_1+s_2 +\frac{1}{2} < m +h $.
-\end{remark}
-
+ 
 \begin{remark}
 A similar result to Lemma \ref{lemma:cmdecay2} can be established by noticing that the smoothness of $g$ implies a degree of decay in the Fourier coefficients. In fact we can obtain that for a pair of non negative real values $s_1,s_2$ and $g \in \cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ one has the same bound of the previous Lemma, under the more restrictive condition $s_1+s_2+1 < m$.
-This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ with derivatives of order $m+1$ integrables (bounded variation), which is comparable with the previous lemma with $h=1$, more restrictive condition but the subspaces of $\cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$  with $m+1$ integrable derivatives is larger than $\cmspaceh{m}{1}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$. 
+This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ with derivatives of order $m+1$ integrables (bounded variation).
 
 We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$.
 \end{remark}
@@ -1037,23 +1038,23 @@ R_f^K u (\theta) &= \frac{1}{2}\int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \sin 
 The following results follows directly from \todo{Saranen theorem 6.1.1}, and Lemma \ref{lemma:cmdecay2}
 \begin{lemma}
 \label{lemma:rfper}
-Let $m \in \IN$, $h \in [0,1]$ and $s_1, s_2 \in \IR$ such that $s_1 \leq s_1$, thus if one of the following conditions is satisfied: 
+Let $m \in \IN$, $h \in [0,1]$ and $s_1, s_2 \in \IR$ such that $s_1 \leq s_2$, thus if one of the following conditions is satisfied: 
 \begin{enumerate}
-\item $|s_1| \leq \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$ and $\frac{3}{2} < m+h$.
+\item $|s_1| \leq \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$ and $1 < m+h$.
 \item 
-$|s_1| > \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$, and  $1+|s_1| < m+h$.
+$|s_1| > \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$, and  $\frac{1}{2}+|s_1| < m+h$.
 %\begin{align*}
 %\frac{1}{2}+ |s_1| < m+h, \text{ for } \{|s_1|\} < \frac{1}{2}, \\ 
 %1+ |s_1| < m+h, \text{ for } \{|s_1|\} \geq \frac{1}{2}
 %\end{align*}
 \item 
-$|s_1| \leq \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $1+|s_2| < m+h$.
+$|s_1| \leq \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $\frac{1}{2}+|s_2| < m+h$.
 %\begin{align*}
 %\frac{1}{2}+ |s_2| < m+h, \text{ for } \{|s_2|\} < \frac{1}{2}, \\ 
 %1+ |s_2| < m+h, \text{ for } \{|s_2|\} \geq \frac{1}{2}
 %\end{align*} 
 \item 
-$|s_1| > \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $|s_1|+|s_2|+\frac{1}{2} < m+h$.
+$|s_1| > \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $|s_1|+|s_2| < m+h$.
 %\begin{align*}
 %|s_1|+ |s_2| < m+h, \text{ for } \{|s_2|\}+\{|s_1|\} < 1, \\ 
 %[|s_1|]+[|s_2|]+1+ \min\{\{|s_2|\},\{|s_1|\}\} < m+h, \text{ for } \{|s_2|\}+\{|s_1|\} \geq 1
@@ -1122,13 +1123,13 @@ We see that these two operators can be characterized as the sum of a regular ope
 \label{corollary:lfop}
 Let $m \in \IN$, $h \in [0,1]$ and $s \in \IR$, thus if one of the following conditions is satisfied: 
 \begin{enumerate}
-\item $s< \frac{-3}{2}$, and $-2s-\frac{1}{2} < m+h$
+\item $s< \frac{-3}{2}$, and $-2s-1 < m+h$
 \item 
-$\frac{-3}{2} \leq s < \frac{-1}{2}$,and  $ 1-s < m+h$
+$\frac{-3}{2} \leq s < \frac{-1}{2}$,and  $ \frac{1}{2}-s < m+h$
 \item 
-$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $2+s < m+h$
+$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s < m+h$
 \item 
-$s > \frac{1}{2}$, and $2s + \frac{3}{2} < m+h$.
+$s > \frac{1}{2}$, and $2s + 1 < m+h$.
 \end{enumerate}
 we have that $ L_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $L_f  \in \mathcal{L}(U^{s},M^{s+1})$. Furthermore we also have the bounds: 
 \begin{align*}
@@ -1570,7 +1571,7 @@ Let $m \in \IN$, $h \in [0,1]$ and $s \in \IR$, such that the same conditions of
 \subsection{Weakly-Singular and Hyper-Singular Operators Holomorphic Extensions}
 In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$. We will first analyze the weakly-singular operator and then use the Maue's representation for obtain the result for the hyper-singular operator. 
 
-Throughout the rest of this section, we consider $ m \in \IN$, with $m >1$ \todo{m>2}, and $M$ compact disjoint sets $K^1,\hdots,K^M \subset \rgeo{m}$ and the corresponding positive real numbers $\delta_1, ..,\delta_M$ chosen according to Lemmas \ref{lemma:dwelldef}, and \ref{lemma:dcross}, such that for any pair $j,k \in 1,\hdots,M$ (with $j\neq k$) the conclusion of both lemmas holds for the set $K^j_{\delta_j}$ and $ K^j_{\delta_j}\times K^k_{\delta_k}$, respectively \footnote{this selection of values for the $\delta$ variables is possible by taking the minimum value, such that both lemmas holds for all the combination of $j,k$. }. 
+Throughout the rest of this section we consider $m\in \IN$, $h \in [0,1]$, and, $M$ compact disjoint sets $K^1,\hdots,K^M \subset \rgeoh{m}{h}$. and the corresponding positive real numbers $\delta_1, ..,\delta_M$ chosen according to Lemmas \ref{lemma:dwelldef}, and \ref{lemma:dcross}, such that for any pair $j,k \in 1,\hdots,M$ (with $j\neq k$) the conclusion of both lemmas holds for the set $K^j_{\delta_j}$ and $ K^j_{\delta_j}\times K^k_{\delta_k}$, respectively \footnote{this selection of values for the $\delta$ variables is possible by taking the minimum value, such that both lemmas holds for all the combination of $j,k$. }. 
 
 We will also consider the spaces $\mathbb{T}^s, \mathbb{W}^s$ which could be either equal to $T^s,W^s$ if the associated operator $\cP$ is scalar, or $T^s\times T^s,W^s\times W^s$ in the vector case. Similarly we define $\mathbb{U}^s, \mathbb{M}^s$ as $U^s,M^s$ for scalar $\cP$ and $U^s\times U^s,M^s\times M^s$ for the vector case.
 
@@ -1588,10 +1589,20 @@ $$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
 thus $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution and the results of holomorphic extension of integral operators we arrive to the following result. 
 
 \begin{lemma}
-\label{lemma:vcomp}
+\label{lemma:vcomp}For $s\in \IR$ such that:
 \begin{enumerate}
-\item 
-For $j=1,\hdots,M$, and $s\in \IR$ such that $|s+1|+|s|<m$, let $\xi_j< \delta_j$, then the maps
+\item[i] 
+If $s < \frac{-3}{2}$, then $-2s-1<m-1+h$,
+\item[ii] 
+If $\frac{-3}{2} \leq s < \frac{-1}{2}$, then $\frac{1}{2} -s < m-1+h$.
+\item[iii] 
+If $\frac{-1}{2} \leq s \leq \frac{1}{2}$, then $\frac{3}{2}+s< m-1 +h$
+\item[iv] 
+If $s> \frac{1}{2}$, then $2s +1 < m -1 +h $.
+\end{enumerate}
+We have:
+\begin{enumerate}
+\item  Let $\xi_j< \delta_j$, for $j=1,\hdots,M$, then the maps
 \begin{align*}
 \br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
 \mathcal{L}(\IT^s, \IW^{s+1}), \\
@@ -1600,7 +1611,7 @@ For $j=1,\hdots,M$, and $s\in \IR$ such that $|s+1|+|s|<m$, let $\xi_j< \delta_j
 \end{align*} 
 are holomorphic, and uniformly bounded. Moreover, when we select the pair $\IT^s,\IW^{s+1}$ the operator is Freedholm of order 0. 
 \item 
-For $j,k \in \{1,\hdots,M\}$, $j \neq k$, $s \in \IR$, and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the maps 
+For $j,k \in \{1,\hdots,M\}$, $j \neq k$,  and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the maps 
 \begin{align*}
  (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
 \mathcal{L}(\IT^s, \IW^{s+1}),\\
@@ -1620,9 +1631,9 @@ we define the singular and regular parts as:
 G^R(\br(t),\br(s)) &:= \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2)\\
 G^S(\br(t),\br(s)) &:= \log|t-s| F_1(d_{\br}(t,s)^2).
 \end{align*}
-Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspace{m-1}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Lemma \ref{lemma:Rfoperator} since $m>2$, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspace{m-1}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$, and by the same Lemma is in fact a compact operator.
+Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Corollary \ref{corollary:rfop} and the conditions on $s,m,h$, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$, and by the same Lemma is in fact a compact operator.
 
-Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section (with $f$ as we already defined it). Hence, from Lemma \ref{lemma:Lfoperator}, since $m>1$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspace{m}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before. Furthermore we see that the integral operator can be written as
+Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section. Hence, from Corollary \ref{corollary:lfop}, and the conditions on $s,m,h$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspaceh{m}{h}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before. Furthermore we see that the integral operator can be written as
 \begin{align}
 \label{eq:fredSing}
 F_1(d_{\br}(t,t)^2)\int_{-1}^1 \log|t-s| u(s) ds + \int_{-1}^1 \log|t-s| (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2))u(s) ds
@@ -1637,7 +1648,7 @@ we cam then use the Taylor expansion of parametrization $\br$ (see \eqref{eq:exp
 (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) &= (t-s)^2 \\ \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) &\cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
 \end{split}
 \end{align*}
-from the last expression is clear that the second term in the right hand side of \eqref{eq:fredSing} is an operator of the form of $S_f$ descrived in the previous section, with $f \in \cmspace{m-1}{\iinterv}{\IC}$, thus by Corollary \ref{corollary:Soperator}, since $m > 2$ we can conclude that this part is a compact operator, finally obtain that the operator with kernel $G^s$ is in fact a Freedholm operator of order $0$.
+from the last expression is clear that the second term in the right hand side of \eqref{eq:fredSing} is an operator of the form of $S_f$ descrived in the previous section, with $f \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus by Corollary \ref{corollary:sfop} and the conditions on $s,m,h$ we can conclude that this part is a compact operator, finally we obtain that the operator with kernel $G^s$ is in fact a Freedholm operator of order $0$.
 
 If we combine the results for the two parts of the kernel function we see that first, the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator, and  finally since is the sum of a Freedholm operator of order $0$ and a compact operator, we also have that $V_{\br,\br}$ is Freedholm of order $0$. 
 
@@ -1646,13 +1657,13 @@ For the second part of the Lemma, we again use the structure of the fundamental 
 \mathbf{G}(\br(t),\bp(s)) = F_1(d_{\br,\bp}(t,s)^2) \log(d_{\br,\bp}(t,s)) + F_2(d_{\br,\bp}(t,s)^2),
 \end{align*}
 
- The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspace{m}{\iinterv}{\IC}$ is holomorphic, uniformly bounded and uniformly bounded. 
+ The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic, uniformly bounded. 
 \end{proof} 
 
 Now let us consider the full weakly singular operator. By the previous lemma and the structure of the product spaces we obtain the following result. 
 
 \begin{theorem}
-Let $\xi_j$, $j=1,..,M$ defined as in Lemma \ref{lemma:vcomp}, $s \in \IR$, and $m > 2$ such that $|s+1|+|s| <m$, then the maps 
+Let $\xi_j$, $j=1,..,M$ defined as in Lemma \ref{lemma:vcomp}, $s \in \IR$, such that the same conditions on $s,m,h$ of Lemma \ref{lemma:vcomp} holds. Then the maps 
 \begin{align*}
 (\br_1,..,\br_M) \in K^1_{\xi_1} \times ... K^M_{\xi_M} \mapsto 
 \mathbf{V}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}) , \\
@@ -1674,8 +1685,8 @@ Notice that
 \begin{split}
 \| \mathbf{V_{\Gamma_1,\Gamma_2}}\bla\|^2_{\prod_{j=1}^M T^s} =& \| V_{\br_1,\br_1} \lambda_1 + V_{\br_1,\br_2} \lambda_2 \|^2_{W^{s+1}}+
 \| V_{\br_2,\br_1} \lambda_1 + V_{\br_2,\br_2} \lambda_2 \|^2_{W^{s+1}} \\
-\leq& \max(\|V_{\br_1,\br_1} \| ,\|V_{\br_1,\br_2} \|,\|V_{\br_2,\br_1} \|,\|V_{\br_2,\br_2} \| ) (\|\lambda_1\|^2_{T^s}+ \|\lambda_2\|_{T^s}^2)\\
-\leq& \max(\|V_{\br_1,\br_1} \| ,\|V_{\br_1,\br_2} \|,\|V_{\br_2,\br_1} \|,\|V_{\br_2,\br_2} \| ) (\| \bla\|^2_{\prod_{j=1}^M T^s}),
+\leq& \max(\|V_{\br_1,\br_1} \|^2 ,\|V_{\br_1,\br_2} \|^2,\|V_{\br_2,\br_1} \|^2,\|V_{\br_2,\br_2} \|^2 ) (\|\lambda_1\|^2_{T^s}+ \|\lambda_2\|_{T^s}^2)\\
+\leq& \max(\|V_{\br_1,\br_1} \|^2 ,\|V_{\br_1,\br_2} \|^2,\|V_{\br_2,\br_1} \|^2,\|V_{\br_2,\br_2} \|^2 ) (\| \bla\|^2_{\prod_{j=1}^M T^s}),
 \end{split}
 \end{align*}
 where we omitted the sub-indices $\mathcal{L}(T^s,W^{s+1})$ in the norms of the different components of $\mathbf{V}_{\Gamma_1,\Gamma_2}$. From the last inequality, using the uniform bounds for the different components of $\bf{V}$ we obtain the uniform bound of the weakly-singular operator. The holomorphic property is proven in a simmilar manner using the complex Frechet derivative of each of the components. 
@@ -1689,6 +1700,53 @@ Now the result follows from Theorem \ref{thrm:abtractinverse}, as a particular c
 is holomorphic and uniformly bounded. 
 \end{proof}
 
+\subsubsection{Hyper-Singular Integral Operator}
+
+Now we consider the hyper-singular operator. As in the previous case we consider the general interacion $W_{\br,\bp}$, which can be written using Maue's representation as, 
+\begin{align*}
+W_{\br,\bp} u (t)= \frac{d}{dt}
+ \int_{-1}^1 G(\br(t),\bp(s))\frac{d}{ds}u(s) ds + \int_{-1}^1\widetilde{G}(\br(t),\bp(s))u(s)ds
+ \end{align*}
+and hence we have $W_{\br_i,\br_j} = (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. The main properties of this operator are given in the following lemma. 
+
+\begin{lemma}
+\label{lemma:wcomp}
+For and $s\in \IR$ such that the same conditions of Lemma \ref{lemma:vcomp} for $s,m,h,$ holds, we have:
+\begin{enumerate}
+\item 
+Let $\xi_j< \delta_j$, for $j =1,\hdots,M$, then the map
+\begin{align*}
+\br \in K^j_{\xi_j} \mapsto W_{\br,\br} \in 
+\mathcal{L}(\IU^s, \IM^{s-1}), 
+\end{align*} 
+is holomorphic, uniformly bounded, and Freedholm of order 0. 
+\item 
+For $j,k \in \{1,\hdots,M\}$, $j \neq k$, $s \in \IR$, and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the map 
+\begin{align*}
+  (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
+\mathcal{L}(\IU^s, \IM^{s-1}),
+\end{align*}
+is holomorphic, uniformly bounded and compact. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Form the Maue's representation formula we define 
+\begin{align*}
+W^1_{\br,\bp} = \frac{d}{dt}
+ \int_{-1}^1 G(\br(t),\bp(s))\frac{d}{ds}u(s) ds,\\
+ W^2_{\br,\bp} = \int_{-1}^1\widetilde{G}(\br(t),\bp(s))u(s)ds.
+\end{align*}
+Since $\widetilde{G}$ has the same structure of $G$ the properties of $ W^2_{\br,\bp}$ are given by Lemma \ref{lemma:vcomp}. In fact this lemma give us the result in the more restrictive space $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s+1})$. The sole exception is the freedom order, but since the operator is in $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s+1})$, is compact in $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s-1})$.
+
+Now we focus in $W^1_{\br,\bp}$, again we focus only in the scalar case. From Lemma \ref{lemma:vcomp}, and the mapping properties of the derivative operator (see \eqref{eq:devprop}), we have that $W^1_{\br,\bp} \in \mathcal{L}(U^{s},M^{s-1})$, and is uniformly bounded in $K^j_{\chi_j}$
+
+\end{proof}
+
+
+\begin{remark}
+\todo{In practice $\widetilde{G}$ includes  the normal vectors so the kernels lost one order of regularity (this because the normal vectors has regularity of $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, however this doesn't change anything as we only need the properties as a map in $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s-1})$, instead of $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s+1})$, thus no extra regularity of the geometry is needed. }
+\end{remark}
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
