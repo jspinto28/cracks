@@ -545,9 +545,9 @@ where we are using the classical multi-index notation \todo{ref}.  The case $h=0
 \begin{align*}
 \| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
 \end{align*}
-On the other hand the case $m=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
+On the other hand the case $h=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
 
-In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$. 
+In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$, with the convention $\rgeoh{0}{h}  = \emptyset$.
 
 Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
 $$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
@@ -1007,7 +1007,7 @@ The statment of the lemma then follows from this last bound and \eqref{eq:gbound
 A similar result to Lemma \ref{lemma:cmdecay2} can be established by noticing that the smoothness of $g$ implies a degree of decay in the Fourier coefficients. In fact we can obtain that for a pair of non negative real values $s_1,s_2$ and $g \in \cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ one has the same bound of the previous Lemma, under the more restrictive condition $s_1+s_2+1 < m$.
 This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ with derivatives of order $m+1$ integrables (bounded variation).
 
-We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$.
+We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$. \todo{This fact can be combined with bounds on the ad-joint and interpolation to obtain the more classical bounds for integral operators mapping from a pair Sobolev spaces of orders $s_1,s_2$ of different sign.}
 \end{remark}
 
 \begin{remark}
@@ -1074,7 +1074,7 @@ From \todo{Saranen theorem 6.1.1} we get
 \| R^J_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\sigma}_{n,l}|^2,\\
 \| R^K_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\varphi}_{n,l}|^2,
 \end{align*}
-where $a = \max\{|s_2|, \nu\}$, $b = \max\{|s_1|, \nu\} $, and $\nu$ any parameter such that $\nu > \frac{1}{2}$. The continuity follows by considering the cases in which is possible to select $\nu < |s_1|$ ($\nu < |s_2|$ resp.) and using Lemma \ref{lemma:cmdecay2} to bound the sums. In particular we used the condition in Remark \ref{rem:simplerbound}. 
+where $a = \max\{|s_2|, \nu\}$, $b = \max\{|s_1|, \nu\} $, and $\nu$ any parameter such that $\nu > \frac{1}{2}$. The continuity follows by considering the cases in which is possible to select $\nu < |s_1|$ ($\nu < |s_2|$ resp.) and using Lemma \ref{lemma:cmdecay2} to bound the sums. 
 The compactness follows from the fact that in the fourth cases we can slightly increase the value of $s_2$, to $s_2 + \delta$  such that the conditions still holds thus the maps are in $\mathcal{L}(H^{s_1},H^{s_2+\delta})$, and then the result follows from the compact embedding of the spaces. 
 \end{proof}
 
@@ -1663,14 +1663,13 @@ For the second part of the Lemma, we again use the structure of the fundamental 
 Now let us consider the full weakly singular operator. By the previous lemma and the structure of the product spaces we obtain the following result. 
 
 \begin{theorem}
+\label{thrm:Vop}
 Let $\xi_j$, $j=1,..,M$ defined as in Lemma \ref{lemma:vcomp}, $s \in \IR$, such that the same conditions on $s,m,h$ of Lemma \ref{lemma:vcomp} holds. Then the maps 
 \begin{align*}
 (\br_1,..,\br_M) \in K^1_{\xi_1} \times ... K^M_{\xi_M} \mapsto 
-\mathbf{V}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}) , \\
-(\br_1,..,\br_M) \in K^1_{\xi_1} \times ... K^M_{\xi_M} \mapsto 
-\mathbf{V}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s+1}) ,
+\mathbf{V}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}) ,
 \end{align*}
-are holomorphic and uniformly bounded. Moreover, there is a positive number $\eta$, with $0< \eta < \xi_j$, for every $j \in \{1,..,M\}$ such that 
+is holomorphic and uniformly bounded. Moreover, there is a positive number $\eta$, with $0< \eta < \xi_j$, for every $j \in \{1,..,M\}$ such that 
 \begin{align*}
 (\br_1,..,\br_M) \in K^1_{\eta} \times ... K^M_{\eta} \mapsto 
 \mathbf{V}_{\Gamma_1,\hdots,\Gamma_m}^{-1} \in \mathcal{L}(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^{s}) 
@@ -1739,14 +1738,171 @@ W^1_{\br,\bp} = \frac{d}{dt}
 \end{align*}
 Since $\widetilde{G}$ has the same structure of $G$ the properties of $ W^2_{\br,\bp}$ are given by Lemma \ref{lemma:vcomp}. In fact this lemma give us the result in the more restrictive space $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s+1})$. The sole exception is the freedom order, but since the operator is in $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s+1})$, is compact in $\mathcal{L}(\mathbb{U}^s,\mathbb{M}^{s-1})$.
 
-Now we focus in $W^1_{\br,\bp}$, again we focus only in the scalar case. From Lemma \ref{lemma:vcomp}, and the mapping properties of the derivative operator (see \eqref{eq:devprop}), we have that $W^1_{\br,\bp} \in \mathcal{L}(U^{s},M^{s-1})$, and is uniformly bounded in $K^j_{\chi_j}$
+Now we focus on $W^1_{\br,\bp}$, again we will only consider the scalar case. From Lemma \ref{lemma:vcomp}, and the mapping properties of the derivative operator (see \eqref{eq:devprop}), we have that $W^1_{\br,\bp} \in \mathcal{L}(U^{s},M^{s-1})$, and is uniformly bounded in $K^j_{\xi_j}$.
 
+Moreover, the derivatives are linear operators and do not depends of the parametrizations $\br,bp$, thus by Theorem \ref{thrm:abstractholm} $W^1_{\br,\bp}$ has holomorphic extension to $K^j_{\xi_j}$, hence we conclude that the full operato $W_{\br,\bp}$ has an uniformly bounded holomorphic extension. 
+
+Finally we need to show that $W^1_{\br,\br}$ is a Fredholm operator of order 0. We proceed as in the weakly-singular case, thus we have 
+\begin{align*}
+\begin{split}
+W^1_{\br,\br} = \frac{d}{dt}\left( F_1 (d_{\br}(t,t)^2)
+\int_{-1}^1 \log|t-s| \frac{d}{ds}u(s)ds\right) +\\
+\frac{d}{dt}\int_{-1}^1(F_1 (d_{\br}(t,s)^2)-F_1 (d_{\br}(t,t)^2)) \log|t-s| \frac{d}{ds}u(s)ds+\\
+\frac{d}{dt} \int_{-1}^1 \left(\log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2)+F_2(d_{\br}(t,s)^2) \right)\frac{d}{ds}u(s)ds,
+\end{split}
+\end{align*}
+using the same arguments than in the proof of Lemma \ref{lemma:vcomp}, and the properties of the derivative operator we conclude that the second and third term of the right hand side of the last equation are compact operators as maps from $U^s$ to $M^{s-1}$. For the first term we use that $d_{\br}(t,t) = 0$ for every $t \in [-1,1]$, thus it can be written as 
+$$
+ F_1 (d_{\br}(t,t)^2)\frac{d}{dt}
+\int_{-1}^1 \log|t-s| \frac{d}{ds}u(s)ds,
+$$
+the result then follows by the assumption that $F_1(0)$ has inverse, and the the standard result for hyper-singular operator on a slit \todo{ref nedelec}. 
 \end{proof}
 
 
 \begin{remark}
 \todo{In practice $\widetilde{G}$ includes  the normal vectors so the kernels lost one order of regularity (this because the normal vectors has regularity of $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, however this doesn't change anything as we only need the properties as a map in $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s-1})$, instead of $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s+1})$, thus no extra regularity of the geometry is needed. }
 \end{remark}
+
+The result for the full hyper-singular operator follows directly from the last lemma. The proof is similar to Theorem \ref{thrm:Vop} so is omitted. 
+
+\begin{theorem}
+\label{thrm:Wop}
+Let $\xi_j$, $j=1,..,M$ defined as in Lemma \ref{lemma:wcomp}, $s \in \IR$, such that the same conditions on $s,m,h$ of Lemma \ref{lemma:vcomp} holds. Then the map
+\begin{align*}
+(\br_1,..,\br_M) \in K^1_{\xi_1} \times ... K^M_{\xi_M} \mapsto 
+\mathbf{W}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s-1}) ,
+\end{align*}
+is holomorphic and uniformly bounded. Moreover, there is a positive number $\eta$, with $0< \eta < \xi_j$, for every $j \in \{1,..,M\}$ such that 
+\begin{align*}
+(\br_1,..,\br_M) \in K^1_{\eta} \times ... K^M_{\eta} \mapsto 
+\mathbf{W}_{\Gamma_1,\hdots,\Gamma_m}^{-1} \in \mathcal{L}(\prod_{j=1}^M \IM^{s-1}, \prod_{j=1}^M \IU^{s}) 
+\end{align*}
+is also holomorphic and uniformly bounded.
+\end{theorem}
+
+An immediate conclusion of the holomorphic extension of the integral operators and its inverses, is the holomorphic extension of the solution map. 
+
+\begin{corollary}
+Let $\eta,s \in \IR $ as in Theorem \ref{thrm:Vop}. Under the assumption of $g$, the right hand side of Problem \todo{ref} is an entire function we have that the solution map for the Dirichlet problem 
+\begin{align*}
+(\br_1,..,\br_M) \in K^1_{\eta} \times ... K^M_{\eta} \mapsto 
+\bla \in \IT^{s},
+\end{align*}
+where $\bla$ is defined as in \todo{ref}, is holomorphic and uniforlmly bounded. Analogously, if $\eta$ is as in Theorem \ref{thrm:Wop}, and $f$ ,the right hand side of the Neumann problem \todo{ref} is also entire we have, 
+\begin{align*}
+(\br_1,..,\br_M) \in K^1_{\eta} \times ... K^M_{\eta} \mapsto 
+\bmu \in \IU^{s},
+\end{align*}
+where $\bmu$ is defined as in \todo{ref}, is holomorphic and uniformly bounded.
+\end{corollary}
+
+\begin{remark}
+For practical applications one is typically concerned with linear functionals of $\bla$ or $\bmu$. Since $\bla$, and $\bmu$ are no the boundary data, these linear functional would typically depend of the parametrizations $\br_1, \hdots,\br_M$. For example, the far-field for the Helmholtz equation ($\cP = -\delta - k^2$)  with Dirichlet condition, on a given angle $\alpha$ is 
+$$
+\sum_{-1}^1 \int_{-1}^1 \lambda_j(s) e^{-ik(\cos \alpha , \sin \alpha)\cdot \br_j(s)} ds ,
+$$
+which depends on the parametrizations $\br_1, \hdots, \br_j$ as they appear explicitly in the exponential factor. Hence, the holomorphy extension of $\bla$ or $\bmu$ is not enough to argument that the linear functionals have holomporpic extensions. However, typical functionals could also be considered with the framework presented in this work. For example for the Helmholtz far-field one could easily see from Theorem \ref{thrm:abstractholm}, and Corollary \ref{corollary:rfop} that integral operators acting on an arbitrary $u$ of the forms
+$$
+\int_{-1}^1 u(s) e^{-ik(\cos \alpha , \sin \alpha)\cdot \br_j(s)} ds
+$$
+have holomorphic extension, thus the far-field could be seen as a composition of operators of this kind, with $\bla$, and obtain the holomorpic extension of the linear functional in this case. 
+\end{remark}
+
+\section{Parametric Holomorphism}
+
+For practical applications one is concerned if the solution map is smooth when considering very particular families of geometries. The class of families that are typically considered are given as a parametric perturbation of a fixed configuration, i.e given a initial configuration given by the parametrizations $\br_1^0,\hdots,\br_M^0$,  the new configuration is parametrized by 
+\begin{align*}
+\br_j = \br_j^0 +\sum_{n=1}^\infty y^j_n \bb_n, \quad j =1,\hdots,M,
+\end{align*}
+where $y^j_n \in [-1,1]$ are the parameters, and $\bb_n$ are a set of fixed functions that describe the possible perturbations to the initial configuration. The elements $\br_j$ would also be denoted by $\br_j(\by)$ to make the dependence of the parameters $\by$ explicitly.
+
+Under this framework we are interested in the smoothness of the solution map respect to the real parameters $y^j_n$.
+
+In order to keep well-posed problems for every possibility of the parameters $y^j_n$ we will need to make some assumptions on the initial configuration and the perturbation basis $\{\bb_n\}_{n=1}^\infty$. 
+
+\begin{assumption}
+\label{assump:geoparam}
+For $m \in \IN$, with $m\geq 1$, and $h \in [0,1]$ such that $\br^0_j \in \rgeoh{m}{h}$, for $j =1,\hdots,M$ we assume that
+\begin{enumerate}
+\item 
+The sequence $\|\bb_n\|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}$, $n\in \IN$ is $p-$sumable for some $p \in (0,1)$.
+\item 
+$$\sum_{n=0}^\infty \sup_{t \in (-1,1)} \|  \bb_n'(t)\| < \inf_{t \in (-1,1)}\|(\br^0_j)'(t)\|,\quad \forall
+j \in \{1,\hdots,M\}.
+$$
+\item
+There exist a sequence of points $(\bc_j)_{j=1}^M \subset \IR^2$, and a sequence of strictly positive real numbers $(\tau_j)_{j=1}^M $, both depending of $(\br^0)_{j=1}^M$ such that 
+$$\sup_{t\in(-1,1)} \| \br_j(t) - \bc_j \| < 2\tau_j,\ \forall j \in \{1,\hdots,M\},$$
+and also assume that 
+$$
+\sum_{n=0}^\infty \sup_{t \in (-1,1)} \| \bb_n(t)\| <  \tau_j,\ \forall j \in \{1,\hdots,M\}.
+$$
+\end{enumerate}
+\end{assumption}
+\begin{remark}
+The first two points in the previous assumption ensure that 
+$$
+\inf_{t \in (-1,1)} \| \br_j(\by)'(t) \| > 0 \ \forall j \in \{1,\hdots,M\}.
+$$
+and also that not self crossings occurs. The final point ensure that not crosses between different arcs occurs.
+\end{remark}
+Obviously to be able to apply the results presented in Section \todo{ref}, we would need that the families $\{\br_j(\by), \by \in [-1,1]^{\IN} \} \subset \rgeoh{m}{h}$, are a compact subset for every $j \in \{1,\hdots,M\}$. This is consequence of standard results of general topology as is show in what follows. 
+
+\begin{lemma}
+For every $j \in  \{1,\hdots,M\}$, the sets $\{\br_j(\by), \by \in [-1,1]^{\IN} \}$  are compact subsets of $\rgeoh{m}{h}$. 
+\end{lemma}
+\begin{proof}
+Since $[-1,1]^{\IN}$ is compact under the product topology \footnote{this is the classical Tychonoff's equivalence to the axiom of choice.} the result is equivalent to show that the map 
+\begin{align}
+\label{eq:mapys}
+\by \in [-1,1]^{\IN} \mapsto \br_j(\by) \in \rgeoh{m}{h},
+\end{align}
+is continuous. We proof this using neighborhood, let us consider a ball of radius $\epsilon$ with center $\br_j(\bx)$, for a fixed parameter $\bx$. By the assumptions on the perturbation basis $\bb$ we can find $N \in \IN$ such that $\sum_{n>N}\|\bb_n\|_{\rgeoh{m}{h}}< \frac{\epsilon}{2}$. Then consider the set 
+$$
+A_N =\left\lbrace \by \in [-1,1]^{N}:  \sum_{n=1}^N |y_n-x_n| \|\bb_n \|_{\rgeoh{m}{h}} < \frac{\epsilon}{2}\right\rbrace,
+$$
+Notice that $A_N$ is an open subset of $[-1,1]^N$ since the map $ \by \in [-1,1]^N \mapsto  \br_j^0 + \sum_{n=1}^N y_n \bb_n$, is continuous\footnote{This maps can be interpreted as a linear map between two finite dimensional spaces}. Thus, we denote by $\widetilde{A}_N$, the canonical embedding of $A_N$ into $[-1,1]^\IN$ which by definition of product topology is an open set in $[-1,1]^N$, finally we notice that for $\by \in \widetilde{A}_N$ we have 
+\begin{align*}
+\begin{split}
+\|\br_j(\by) - \br_j(\bx)\|_{\rgeoh{m}{h}} 
+\leq 
+\sum_{n=1}^N |y_n-x_n|\|\bb_n \|_{\rgeoh{m}{h}} +\\ \sum_{n >N}\|\bb_n \|_{\rgeoh{m}{h}} < \epsilon
+\end{split}
+\end{align*}
+thus since $\epsilon$ is arbitrary we have that for any neighborhood of $\br_j(\bx)$ there is an open set ($\widetilde{A}_N$) such that the image of the latter under the map \ref{eq:mapys} is contained in the given neighborhood of $\br_j(\bx)$, which is the continuity that we needed.
+\end{proof}
+
+
+Now we recall the the notion of $b,\epsilon,p$-holomrphic which was introduced in \todo{add refs...}.
+
+ For a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
+\begin{align*}
+\mathcal{T}_n := \left\lbrace z \in \IZ : \text{dist}(z,[-1,1]) \leq \rho_n-1 \right\rbrace.
+\end{align*}
+Notice that for every $n \in \IN$, $\mathcal{T}_n$ is a closed domain, we will make use of the following family of tubes 
+\begin{align*}
+\mathcal{T}_{\rho} = \prod_{n \in \IN} \mathcal{T}_{\rho_n} \supseteq [-1,1]^{\IN}, \quad \text{and,} \quad
+\mathcal{T}^M_{\rho} = \prod_{k=1}^M \mathcal{T}_{\rho}.
+\end{align*}
+
+\begin{definition}
+Given $\epsilon >0$, $p \in (0,1)$, a real $p$-sumable sequence $\{b_n\}_{n \in \IN}$ . We say that $f:\prod_{j=1}^M[-1,1]^\IN\rightarrow B$, where $B$ is a Banach space, is a ($b$,p,$\epsilon$)-holomorphy function if
+\begin{enumerate}
+\item The function $f$ is bounded.
+\item 
+For any real sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n >1$ that satisfy 
+\begin{align*}
+\sum_{n \in \IN} (\rho_n -1) b_n < \epsilon, 
+\end{align*}
+The function $f$ admits a extension to a set of the form $\mathcal{O}^M_\rho = \prod_{j=1}^M \prod_{n \in \IN} \mathcal{O}_{\rho_n} \supset \mathcal{T}^M_\rho$, where each set $\mathcal{O}_{\rho_n}$ is open, and the extension is holomophic in each variable. 
+\item 
+There exist a set $\widetilde{\mathcal{O}}_\rho^M =  \prod_{j=1}^M \prod_{n \in \IN} \widetilde{\mathcal{O}}_{\rho_n}$ such that for every $n \in \IN$, $\widetilde{\mathcal{O}}_{\rho_n} \supset \overline{\mathcal{O}}_{\rho_n}$, and $\widetilde{\mathcal{O}}_{\rho_n}$ is an open subset. Futhermore, $f$ can also be exteded to $\widetilde{\mathcal{O}}_\rho^M$ and the extension is bounded as 
+\begin{align*}
+\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho^M } \| f(\mathbf{z})\|_B \leq C(\epsilon).
+\end{align*}
+\end{enumerate}
+\end{definition}
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
@@ -1763,7 +1919,7 @@ Now we focus in $W^1_{\br,\bp}$, again we focus only in the scalar case. From Le
 \label{appendix:fracbivariate}
 This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \todo{ref kress singular integral equations}. 
 
-In what follows we denote the non-normalized Fourier basis by $e_n(t) = \exp{i n t }$
+In what follows we denote the non-normalized Fourier basis by $e_n(t) = \exp{(i n t) }$
 
 The fractional semi-norm $|\varrho|_{\mathbf{\gamma}}|$ is generated by the inner product 
 \begin{align*}
@@ -1832,7 +1988,7 @@ using this we get
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}du,
 \end{split}
 \end{align*}
-notice that the bi-periodic Fourier functions are orthogonal with this product. Denote by $S_\gamma(n) =\int_{0}^{\pi} \sin(n u) ^2
+notice that the bi-periodic Fourier functions are orthogonal with this product. Denote by $S_\gamma(n) =\int_{0}^{\pi} \sin(\frac{n}{2} u) ^2
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma}du $, hence by \todo{kress 8.8?} we have $S_\gamma(n) \cong (n^2)^\gamma$, thus by the previously showed orthogonality  
 \begin{align}
 \label{eq:smnormeq}
