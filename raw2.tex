@@ -1771,7 +1771,7 @@ The result for the full hyper-singular operator follows directly from the last l
 Let $\xi_j$, $j=1,..,M$ defined as in Lemma \ref{lemma:wcomp}, $s \in \IR$, such that the same conditions on $s,m,h$ of Lemma \ref{lemma:vcomp} holds. Then the map
 \begin{align*}
 (\br_1,..,\br_M) \in K^1_{\xi_1} \times ... K^M_{\xi_M} \mapsto 
-\mathbf{W}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s-1}) ,
+\mathbf{W}_{\Gamma_1,\hdots,\Gamma_m} \in \mathcal{L}\left(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s-1}\right) ,
 \end{align*}
 is holomorphic and uniformly bounded. Moreover, there is a positive number $\eta$, with $0< \eta < \xi_j$, for every $j \in \{1,..,M\}$ such that 
 \begin{align*}
@@ -1812,9 +1812,10 @@ have holomorphic extension, thus the far-field could be seen as a composition of
 \section{Parametric Holomorphism}
 
 For practical applications one is concerned if the solution map is smooth when considering very particular families of geometries. The class of families that are typically considered are given as a parametric perturbation of a fixed configuration, i.e given a initial configuration given by the parametrizations $\br_1^0,\hdots,\br_M^0$,  the new configuration is parametrized by 
-\begin{align*}
+\begin{align}
+\label{eq:geoY}
 \br_j = \br_j^0 +\sum_{n=1}^\infty y^j_n \bb_n, \quad j =1,\hdots,M,
-\end{align*}
+\end{align}
 where $y^j_n \in [-1,1]$ are the parameters, and $\bb_n$ are a set of fixed functions that describe the possible perturbations to the initial configuration. The elements $\br_j$ would also be denoted by $\br_j(\by)$ to make the dependence of the parameters $\by$ explicitly.
 
 Under this framework we are interested in the smoothness of the solution map respect to the real parameters $y^j_n$.
@@ -1903,6 +1904,44 @@ There exist a set $\widetilde{\mathcal{O}}_\rho^M =  \prod_{j=1}^M \prod_{n \in 
 \end{align*}
 \end{enumerate}
 \end{definition}
+
+Let us denote by $\mathbf{V}(\by^1,\hdots,\by^M)$, and $\mathbf{W}(\by^1,\hdots,\by^M)$ the weakly-singular and hyper-singular operators acting on a geometric configuration of the canonical form \eqref{eq:geoY}. An immediate consequence of the holomorphy dependence of the parametrizations (theorems \ref{thrm:Vop}, and \ref{thrm:Wop}) is the parametric holomorphism of the operators and its inverses. 
+
+\begin{theorem}
+Let $m \in \IN$, $h \in [0,1]$, $s \in \IR$, such that the conditions of Lemma \ref{lemma:vcomp} holds. Also denote by $\{b_n\}_{n\in \IN}$ the sequence of positive numbers given by $b_n = \| \bb \|_{\rgeoh{m}{h}}$, then under Assumption \ref{assump:geoparam} we have 
+\begin{enumerate}
+\item 
+If $\epsilon < \xi_j$, for every $j \in \{1,\hdots,M\}$, where $\chi_j$ are given in Theorem \ref{thrm:Vop}, we have that the map 
+\begin{align*}
+(\by^1,\hdots, \by^M ) \mapsto \mathbf{V}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right), 
+\end{align*}
+is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
+\item 
+If $\epsilon < \eta$, where $\eta$ is also given by Theorem \ref{thrm:Vop} then 
+\begin{align*}
+(\by^1,\hdots, \by^M ) \mapsto \mathbf{V}^{-1}(\by^1,\hdots,\by^M)^ \in \mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^{s}\right), 
+\end{align*}
+is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
+\item 
+If $\epsilon < \xi_j$, for every $j \in \{1,\hdots,M\}$, where $\chi_j$ are given in Theorem \ref{thrm:Wop}, we have that the map 
+\begin{align*}
+(\by^1,\hdots, \by^M ) \mapsto \mathbf{W}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s-1}\right), 
+\end{align*}
+is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
+\item 
+If $\epsilon < \eta$, where $\eta$ is also given by Theorem \ref{thrm:Wop} then 
+\begin{align*}
+(\by^1,\hdots, \by^M ) \mapsto \mathbf{W}^{-1}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IM^{s-1}, \prod_{j=1}^M \IU^{s}\right), 
+\end{align*}
+is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
+\end{enumerate}
+The parameter $p$ is the same than in Assumption \ref{assump:geoparam}. 
+\end{theorem} 
+\begin{proof}
+We will only consider the first case, the other three follows with similar arguments.
+
+
+\end{proof}
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
