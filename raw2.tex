@@ -1798,6 +1798,7 @@ where $\bmu$ is defined as in \todo{ref}, is holomorphic and uniformly bounded.
 \end{corollary}
 
 \begin{remark}
+\label{rem:functionalholorphism}
 For practical applications one is typically concerned with linear functionals of $\bla$ or $\bmu$. Since $\bla$, and $\bmu$ are no the boundary data, these linear functional would typically depend of the parametrizations $\br_1, \hdots,\br_M$. For example, the far-field for the Helmholtz equation ($\cP = -\delta - k^2$)  with Dirichlet condition, on a given angle $\alpha$ is 
 $$
 \sum_{-1}^1 \int_{-1}^1 \lambda_j(s) e^{-ik(\cos \alpha , \sin \alpha)\cdot \br_j(s)} ds ,
@@ -1814,7 +1815,7 @@ have holomorphic extension, thus the far-field could be seen as a composition of
 For practical applications one is concerned if the solution map is smooth when considering very particular families of geometries. The class of families that are typically considered are given as a parametric perturbation of a fixed configuration, i.e given a initial configuration given by the parametrizations $\br_1^0,\hdots,\br_M^0$,  the new configuration is parametrized by 
 \begin{align}
 \label{eq:geoY}
-\br_j = \br_j^0 +\sum_{n=1}^\infty y^j_n \bb_n, \quad j =1,\hdots,M,
+\br_j = \br_j^0 +\sum_{n=0}^\infty y^j_n \bb_n, \quad j =1,\hdots,M,
 \end{align}
 where $y^j_n \in [-1,1]$ are the parameters, and $\bb_n$ are a set of fixed functions that describe the possible perturbations to the initial configuration. The elements $\br_j$ would also be denoted by $\br_j(\by)$ to make the dependence of the parameters $\by$ explicitly.
 
@@ -1851,6 +1852,7 @@ and also that not self crossings occurs. The final point ensure that not crosses
 Obviously to be able to apply the results presented in Section \todo{ref}, we would need that the families $\{\br_j(\by), \by \in [-1,1]^{\IN} \} \subset \rgeoh{m}{h}$, are a compact subset for every $j \in \{1,\hdots,M\}$. This is consequence of standard results of general topology as is show in what follows. 
 
 \begin{lemma}
+\label{lemma:parcompact}
 For every $j \in  \{1,\hdots,M\}$, the sets $\{\br_j(\by), \by \in [-1,1]^{\IN} \}$  are compact subsets of $\rgeoh{m}{h}$. 
 \end{lemma}
 \begin{proof}
@@ -1859,23 +1861,23 @@ Since $[-1,1]^{\IN}$ is compact under the product topology \footnote{this is the
 \label{eq:mapys}
 \by \in [-1,1]^{\IN} \mapsto \br_j(\by) \in \rgeoh{m}{h},
 \end{align}
-is continuous. We proof this using neighborhood, let us consider a ball of radius $\epsilon$ with center $\br_j(\bx)$, for a fixed parameter $\bx$. By the assumptions on the perturbation basis $\bb$ we can find $N \in \IN$ such that $\sum_{n>N}\|\bb_n\|_{\rgeoh{m}{h}}< \frac{\epsilon}{2}$. Then consider the set 
+is continuous. We proof this using neighborhoods, let us consider a ball of radius $\epsilon$ with center $\br_j(\bx)$, for a fixed parameter $\bx$. By the assumptions on the perturbation basis $\bb$ we can find $N \in \IN$ such that $\sum_{n>N}\|\bb_n\|_{\rgeoh{m}{h}}< \frac{\epsilon}{2}$. Then consider the set 
 $$
-A_N =\left\lbrace \by \in [-1,1]^{N}:  \sum_{n=1}^N |y_n-x_n| \|\bb_n \|_{\rgeoh{m}{h}} < \frac{\epsilon}{2}\right\rbrace,
+A_N =\left\lbrace \by \in [-1,1]^{N}:  \sum_{n=0}^N |y_n-x_n| \|\bb_n \|_{\rgeoh{m}{h}} < \frac{\epsilon}{2}\right\rbrace,
 $$
-Notice that $A_N$ is an open subset of $[-1,1]^N$ since the map $ \by \in [-1,1]^N \mapsto  \br_j^0 + \sum_{n=1}^N y_n \bb_n$, is continuous\footnote{This maps can be interpreted as a linear map between two finite dimensional spaces}. Thus, we denote by $\widetilde{A}_N$, the canonical embedding of $A_N$ into $[-1,1]^\IN$ which by definition of product topology is an open set in $[-1,1]^N$, finally we notice that for $\by \in \widetilde{A}_N$ we have 
+Notice that $A_N$ is an open subset of $[-1,1]^N$ since the map $ \by \in [-1,1]^N \mapsto  \br_j^0 + \sum_{n=0}^N y_n \bb_n$, is continuous\footnote{This maps can be interpreted as an afin map between two finite dimensional spaces}. Thus, we denote by $\widetilde{A}_N$, the canonical embedding of $A_N$ into $[-1,1]^\IN$ which by definition of product topology is an open set in $[-1,1]^N$, finally we notice that for $\by \in \widetilde{A}_N$ we have 
 \begin{align*}
 \begin{split}
 \|\br_j(\by) - \br_j(\bx)\|_{\rgeoh{m}{h}} 
 \leq 
-\sum_{n=1}^N |y_n-x_n|\|\bb_n \|_{\rgeoh{m}{h}} +\\ \sum_{n >N}\|\bb_n \|_{\rgeoh{m}{h}} < \epsilon
+\sum_{n=0}^N |y_n-x_n|\|\bb_n \|_{\rgeoh{m}{h}} +\\ \sum_{n >N}\|\bb_n \|_{\rgeoh{m}{h}} < \epsilon
 \end{split}
 \end{align*}
 thus since $\epsilon$ is arbitrary we have that for any neighborhood of $\br_j(\bx)$ there is an open set ($\widetilde{A}_N$) such that the image of the latter under the map \ref{eq:mapys} is contained in the given neighborhood of $\br_j(\bx)$, which is the continuity that we needed.
 \end{proof}
 
 
-Now we recall the the notion of $b,\epsilon,p$-holomrphic which was introduced in \todo{add refs...}.
+Now we recall the the notion of $(b,\epsilon,p)$-holomrphic which was introduced in \todo{add refs...}.
 
  For a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
 \begin{align*}
@@ -1908,6 +1910,7 @@ There exist a set $\widetilde{\mathcal{O}}_\rho^M =  \prod_{j=1}^M \prod_{n \in 
 Let us denote by $\mathbf{V}(\by^1,\hdots,\by^M)$, and $\mathbf{W}(\by^1,\hdots,\by^M)$ the weakly-singular and hyper-singular operators acting on a geometric configuration of the canonical form \eqref{eq:geoY}. An immediate consequence of the holomorphy dependence of the parametrizations (theorems \ref{thrm:Vop}, and \ref{thrm:Wop}) is the parametric holomorphism of the operators and its inverses. 
 
 \begin{theorem}
+\label{thrm:bepholm}
 Let $m \in \IN$, $h \in [0,1]$, $s \in \IR$, such that the conditions of Lemma \ref{lemma:vcomp} holds. Also denote by $\{b_n\}_{n\in \IN}$ the sequence of positive numbers given by $b_n = \| \bb \|_{\rgeoh{m}{h}}$, then under Assumption \ref{assump:geoparam} we have 
 \begin{enumerate}
 \item 
@@ -1940,8 +1943,142 @@ The parameter $p$ is the same than in Assumption \ref{assump:geoparam}.
 \begin{proof}
 We will only consider the first case, the other three follows with similar arguments.
 
-
+First notice that the map 
+\begin{align}
+\label{eq:yVmap}
+(\by^1,\hdots, \by^M) \mapsto \mathbf{V}(\by^1,\hdots, \by^M),
+\end{align}
+can be written as the following composition
+$$
+(\by^1,\hdots, \by^M) \mapsto  (\br_1(\by^1),\hdots,\br_M(\by^M))
+\mapsto 
+\mathbf{V}_{\Gamma_1,\hdots,\Gamma_m}, 
+$$
+where the geometry configuration $\Gamma_1,\hdots,\Gamma_M$ is given by the parametrization $\br_1(\by^1),\hdots,\br_M(\by^M)$. From this representation and Lemma \ref{lemma:parcompact} the continuity in the product topology follows. Let us denote by $\mathbf{P}$ the map 
+$$
+\mathbf{P} : (\by^1,\hdots, \by^M) \mapsto  (\br_1(\by^1),\hdots,\br_M(\by^M)),
+$$
+following the same arguments of Lemma \ref{lemma:parcompact} we have that $\mathbf{P}$ is continuous map with respect to the product topology respect to the following spaces 
+\begin{align*}
+\mathbf{P} : \prod_{j=1}^M [-1,1]^{\IN} 
+\mapsto
+\prod_{j=1}^M K^j \subset \prod_{j=1}^M \rgeoh{m}{h},
+\end{align*}
+where $K^j =\{ \br_j(\by): \by \in [-1,1]^{ \IN}\}$ are compact. Now we will consider extensions of $P$, given a sequence of real numbers $\{\rho_n\}_{n \in \IN}$, such that $\rho_n >1$ for every $n \in \IN$, and $\sum_{n=0}^\infty  b_n (\rho_n -1) < \epsilon$, we can construct another real sequence $\{r_n\}_{n \in \IN}$, such that $r_n > \rho_n$ for every $n\in \IN$, and also  $\sum_{n=0}^\infty  b_n (r_n -1) < \epsilon $. Finally we consider the family of open sets $O_n = \left\lbrace z \in \IC: \ \text{dist}([-1,1],z) < r_n-1\right\rbrace$. We see that $\mathcal{T}_{\rho_n} \subset O_n$, and we define a extension of $\mathbf{P}$ over $\prod_{j=1}^\M \prod_{n \in \IN} O_n$ as, 
+$$
+\mathbf{P} : (\bz^1,\hdots,\bz^M) \mapsto \left(r^0_1 + \sum_{n=0}^\infty z^1_n \bb_n , \hdots, r^0_M + \sum_{n=0}^\infty z^M_n \bb_n \right).
+$$
+Now we describe the range of this last operator. Consider $\bz^j \in \prod_{n \in \IN} O_n$, by definition there exist $\by^j \in [-1,1]^{\IN}$ such that $|z^j_n - y^j_n| < r_n-1$ for every $n \in \IN$, hence 
+$$
+\| \br_j(\bz^j) - \br_j(\by^j)\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}} < \sum_{n=0}^\infty b_n (r_n -1) < \epsilon,
+$$
+where the last inequality follows from the construction of $r_n$. This implies that the range of $\mathbf{P}$ is contained in $\prod_{j=1}^M K^j_\epsilon$\footnote{we recall that $K^j$ are defined as $\{\br_j(\by): \by \in [-1,1]^\IN \}$, and $K^j_\epsilon$ is defined acordding to \eqref{eq:openext}.}. Now we consider the extension of \eqref{eq:yVmap} defined by 
+\begin{align*}
+\begin{split}
+(\bz^1,\hdots,\bz^M) \in \prod_{j=1}^\M \prod_{n \in \IN} O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M)) \in \prod_{j=1}^M K^j_\epsilon \\\mapsto
+V_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right) ,
+\end{split}
+\end{align*}
+which is well defined by Theorem \ref{thrm:Vop}. Moreover also from the same theorem we also get that this map is uniformly bounded, since 
+\begin{align*}
+\begin{split}
+\sup_{(\bz^1,\hdots,\bz^M) \in \prod_{j=1}^\M \prod_{n \in \IN} O_n} \| V(\bz^1,\hdots,\bz^M ) \|_{\mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right)}  \leq \\
+\sup_{(\br_1,\hdots,\br_M) \in \prod_{j=1}^\M K^j_\epsilon} \| V_{\Gamma_1,\hdots,\Gamma_M}\|_{\mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right)} < \infty.
+\end{split}
+\end{align*}
+Also since the map $z^j_n \in O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M))$ is a one dimensional linear map, is holomorphic, thus the map 
+\begin{align*}
+z^j_n \in O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M)) \mapsto V_{\Gamma_1,\hdots,\Gamma_M},
+\end{align*}
+ is also holomorphic by theorem \ref{thrm:Vop}. Hence since the map is uniformly bounded and holomorphic with respect to each variable we have that the map is $(b,p,\epsilon)-$holomorphic.
 \end{proof}
+
+As in the previous section we can use the properties of the inverse of the associated integral operators to obtain a result on the regularity of the solution map. The following result state exactly that. The proof is omitted as is the same than of the previous theorem. 
+
+\begin{corollary}
+Under the hypotesis of Theorem \ref{thrm:bepholm}. If $g$ the right-hand-side of the Dirichlet problem is an entire function then the map 
+\begin{align*}
+(\by^1,\hdots,\by^M) \mapsto \bla \in \prod_{j=1}^M \IT^s,
+\end{align*}
+where $\bla$ denotes the solution of the Dirichlet problem, is $(b,p,\epsilon)-$holomorphic with $\epsilon$ as in the second point of Theorem \ref{thrm:bepholm}, and continuous in product topology. Similarly, if $f$ the right-hand-side of the Neumann problem, is an entire function, then the map 
+\begin{align*}
+(\by^1,\hdots,\by^M) \mapsto \bmu \in \prod_{j=1}^M \IT^s,
+\end{align*}
+where $\bmu$ denotes the solution of the Neumann problem, is $(b,p,\epsilon)-$holomorphic, with $\epsilon$ as in the fourth point of Theorem \ref{thrm:bepholm}, and continuous in product topology.
+\end{corollary}
+
+\begin{remark}
+It is also possible to establish the $(b,p,\epsilon)-$holomorphism for a number of   linear functional acting on $\bla, \bmu$. The results follows by showing first that the linear functional has an holomorphic extension (as in Remark \ref{rem:functionalholorphism}), and then this would implies the $(b,p,\epsilon)-$holomorphism as in Theorem \ref{thrm:bepholm}.
+\end{remark}
+
+The final part of this section is devoted to establish the $(b,p,\epsilon)-$holomorphism for approximations of $\bla$,$\bmu$. We consider approximations, $\bla_N \in \prod_{j=1}^M\IT_N  \subset \prod_{j=1}^M\IT^s$, and $\bmu_N \in \prod_{j=1}^M \IU_N \subset \prod_{j=1}^M \IU^s$ for every $s \in \IR$, where the dimension of $\IT_N$ (resp. $\IU_N$) is $N+1$. Furthermore we assume that the families $\{\IT_N\}_{N \in \IN}$, and $\{\IU_N\}_{N \in \IN}$ are dense in $\IT^s$, and $\IU^s$ respectively (for every $s$ in $\IR$). Under this considerations the approximations are seeks as the solutions of the discrete problems: 
+\begin{align*}
+P_N \mathbf{V}(\by^1,\hdots,\by^M) \bla_N = P_N \bg,\\
+Q_N \mathbf{W}(\by^1,\hdots,\by^M) \bmu_N = Q_N \mathbf{f},
+\end{align*}
+where the operators, $P_N,Q_N$ are linear continuous maps from $\prod_{j=1}^M \IW^{s+1}$ (resp. $\prod_{j=1}^M \IM^{s-1}$) to a subspace of finite dimension $\prod_{j=1}^M \IW_N$ (resp. $\prod_{j=1}^M \IM_N$), and also independent of the geometry.
+
+First let us remark that the operators $ \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IT_N, \prod_{j=1}^M\IW^{s+1}\right)$, and $ \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IU_N, \prod_{j=1}^M\IM^{s-1}\right)$, have holomorphic extensions in the parametrizations, in fact the proof is the same than in Theorems \ref{thrm:Vop}, and \ref{thrm:Wop}, with the difference that domain of the operators are $\prod_{j=1}^M\IT_N$ and $\prod_{j=1}^M\IU_N$ respectively, which are Banach spaces since they are finite dimensional subspaces.
+
+On the other hand, since $P_N,Q_N$ are linear and independent of the geometry we obtain that the maps 
+$P_N\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IT_N, \prod_{j=1}^M\IW_N\right)$ and $Q_N\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IU_N, \prod_{j=1}^M\IM_N\right)$ also have holomorphic extensions in the parametrization variables. Hence arguing as in point one of Theorem \ref{thrm:bepholm} we obtain the $(b,p,\epsilon)-$holomorphism of  $P_N\mathbf{V}(\by^1,\hdots,\by^M)$ and $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$.
+
+If the operators $P_N\mathbf{V}(\by^1,\hdots,\by^M)$, $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$ were invertible we would obtain the $(b,p,\epsilon)$-holomorphism of $\bla_N$, $\bmu_N$ arguing as in Theorem \ref{thrm:bepholm}. However one typically only have the following condition 
+\begin{assumption}
+\label{assumption:discinverze}
+For every $(\by^1,\hdots,\by^M) \in \prod_{j=1}^M [-1,1]^\IN$ there exist an integer number $N_0(\by^1,\hdots,\by^M)$, such that for $N>N_0(\by^1,\hdots,\by^M)$ the operators $P_N \mathbf{V}(\by^1,\hdots,\by^M)$ have inverse and also 
+$$\left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right \vert \right \vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s\right)} \leq C(s,\by^1,\hdots,\by^M),$$
+where $C$ do not depend of $N$. The same holds (with potentially different value of $N_0$, and $C$, and the corresponding changes in the functional spaces) for $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$.
+\end{assumption}
+
+The following result ensure that we can select a single value of $N_0$ such that $P_N\mathbf{V}(\by^1,\hdots,\by^M)$ and $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$ have inverse for $N>N_0$, and these inverses are uniformly bounded.
+\begin{lemma}
+\label{lemma:discreteinverse}
+Under Assumption \ref{assumption:discinverze} there exist $N_0 \in \IN$, such that for $N> N_0$ the operator $P_N \mathbf{V}(\by^1,\hdots,\by^M)$ has inverse, and also 
+\begin{align*}
+\sup_{(\by^1,\hdots,\by^M)\in \prod_{j=1}^M[-1,1]^\IN}\left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right \vert \right \vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s\right)} \leq C(s),
+\end{align*}
+where $C$ do not depend of $N$. And the same holds  (with the adequate modifications) for $Q_N \mathbf{W}(\by^1,\hdots,\by^M)$.
+\end{lemma}
+\begin{proof}
+Fix $s \in \IR$ and consider the sets
+\begin{align*}
+\begin{split}
+&A_{N,C} = \\ &\left\lbrace 
+(\by^1,\hdots,\by^M) \in \prod_{j=1}^M[-1,1]^{\IN} \ : \ \left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right\vert \right\vert_{\mathcal{L}\left(\prod_{j=1}^M \IT^s,\prod_{j=1}^M \IW^{s+1}\right)} < C, \text{ for $N>N_0$}
+\right\rbrace.
+\end{split}
+\end{align*}
+Is clear from Assumption \ref{assumption:discinverze} that the family $\{A_{N,C}\}_{N \in \IN, C > 0}$ is a cover of the compact space $\prod_{j=1}^M[-1,1]^{\IN}$, thus if we show that each $A_{N,C}$ is open we can select a finite sub-cover and the results follows directly. Arguing as in the proof of Lemma \ref{lemma:parcompact} the sets $A_{N,C}$ are open if the sets 
+\begin{align*}
+\begin{split}
+&B_{N,C} = \\ &\left\lbrace 
+(\br^1,\hdots,\br^M) \in \prod_{j=1}\rgeoh{m}{h} \ : \ \left\vert \left\vert (P_N V_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right\vert \right\vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}\right)} < C, \text{ for $N>N_0$}
+\right\rbrace.
+\end{split}
+\end{align*}
+are open (since $A_{N,C}$ are the pre-image of $B_{N,C}$ by a continuous map). The result then follows  from the fact that the map $\br^1,\hdots \br^M \mapsto P_N V_{\Gamma_1,\hdots,\Gamma_M} $  is continious (in fact has holomorphic extension as proven in Theorem \ref{thrm:Vop}), and using that the inverse map is also a continuous mapping.  
+The result for $Q_N \mathbf{W}(\by^1,\hdots,\by^M)$ follows the same ideas.
+\end{proof}
+
+Now following Theorem \ref{thrm:bepholm} we obtain the result for the approximated solutions.
+
+\begin{corollary}
+Under the hypothesis of Theorem \ref{thrm:bepholm}, and assumption \ref{assumption:discinverze}. There exist $\epsilon >0$, and $N_0 \in \IN$ given by Lemma \ref{lemma:discreteinverse}, such that if $\bg, \bf$ the right-hand-sides of the Dirichler and Neumann problems are  entire functions, the maps 
+\begin{align*}
+(\by^1,\hdots,\by^M) \mapsto \bla_N \in  \prod_{j=1}^M \IT_N ,\\
+(\by^1,\hdots,\by^M) \mapsto \bmu_N \in  \prod_{j=1}^M \IU_N ,
+\end{align*}
+are $(b,p,\epsilon)-$holomorphic and continuous in product topology for $N > N_0$. 
+\end{corollary} 
+
+\section{Examples for Particular Integral operators.}
+Now we consider particular cases of the operator $\cP$. In particular we will consider the scalar Helmholtz case ($\cP  = -\Delta - k^2$) and the elastic wave operator 
+($\cP = 
+\alpha \Delta + (\alpha +\beta) \nabla \nabla \cdot  + \omega^2
+$), which is a vectorial operator.
+
+\subsection{Helmholtz Operators}
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
