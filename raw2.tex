@@ -434,7 +434,7 @@ We apply the mentioned result to estimate the statical moments of some quantity 
 \subsection{Scattering Problem on Open Arcs}
 
 \subsection{Boundary Integral Formulation}
-
+\label{sec:bif}
 As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
 \begin{align}
 \label{eq:funsolgen}
@@ -445,7 +445,7 @@ where $F_1$, and $F_2$ are assumed to be entire complex functions, that are eith
 \begin{align*}
 SL_\Gamma \lambda(\bx) = \int_\Gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\Gamma \mu(\bx) = \int_\Gamma \mathcal{B}_{\bn,\by} G(\bx,\by) \mu(\by) d\by,
 \end{align*} 
-where $\mathcal{B}_{\bn,\by}$ denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$, and $\lambda, \mu$ are densities defined in $\Gamma$ that could be either scalars or vectors\footnote{We forgo the boldface convection for vectors for the densities of the integral operators as we wish to treat the scalar and vector case together.}. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
+where $\mathcal{B}_{\bn,\by}$\footnote{the definition of the Double layer is more complicated if more general operators $\cP$ are allowed. We refer to \todo{ref mclean} for the details.} denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$, and $\lambda, \mu$ are densities defined in $\Gamma$ that could be either scalars or vectors\footnote{We forgo the boldface convection for vectors for the densities of the integral operators as we wish to treat the scalar and vector case together.}. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
 
 We will consider the pulled back versions of the potentials, let us consider the transformed densities 
 \begin{align*}
@@ -801,45 +801,8 @@ the result then follows from the diffentiability of $Q_{\br}$.
 The uniform bound of $Q_{\br}$ follows directly from the one of $d^2_{\br}$ in Lemma \ref{lemma:dself}. On the other hand, for $1/Q_{\br}$ need the last part of this lemma, which is obtained using the Taylor expansion of $\br$ and Lemma \ref{lemma:dwelldef}.
 
 The final part of the lemma is and immediate consequence of \eqref{eq:ddbound}, and the continuity in the $\br$ variable. 
-
 \end{proof}
 
-\todo{check this...}
-The last function that will be covered in this section is very similar to the previous function, and appears explicitly in the fundamental solution for the elastic scattering.
-
-\begin{lemma}
-\label{lemma:Dmatrix}
-Consider two arcs $\br$, and $\bp$ and define the matrix function $\mathbf{D}_{\br,\bp}$, with components
-\begin{align*}
-(D_{\br,\bp}(t,s))_{j,k} :=  \begin{cases}
-\frac{(r_j(t)-p_j(s))\cdot (r_k(t)-p_k(s))}{d_{\br,\bp}^2(t,s)} \quad \br \neq \bp\text{, or, } t \neq s \\
-\frac{r_j(t) r_k(s)}{\br'(t)\cdot \br'(s)} \quad \text{i.o.c.} 
-\end{cases} \quad j,k=1,2,
-\end{align*} 
-and also two compact sets $K^1,K^2 \subset \rgeoh{m}{h}$ for some $m \in \IN$. 
-\begin{enumerate}
-\item
-If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Lemma \ref{lemma:dwelldef} then 
-\begin{align*}
-\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
-\end{align*} 
-is holomorphic and uniformly bounded.
-\item 
-If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross}, then 
-\begin{align*}
-(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
-\end{align*} 
-is holomorphic and uniformly bounded.
-\end{enumerate}
-\end{lemma} 
-\begin{proof}
-For the first part, if $t \neq s$ we have, 
-\begin{align*}
-(D_{\br,\br}(t,s))_{j,k} = 1/Q_{\br}(t,s) \left( \frac{r_j(t)-r_j(s)}{t-s} \right) \cdot \left( \frac{r_k(t)-r_k(s)}{t-s} \right)
-\end{align*}
-and the results follows as in the proof of Lemma \ref{lemma:Qfun}.
-The second part is direct from Lemma \ref{lemma:dcross} and elementary results of complex variable. 
-\end{proof}
 \subsection{Integral Kernels}
 In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
 
@@ -1761,7 +1724,8 @@ the result then follows by the assumption that $F_1(0)$ has inverse, and the the
 
 
 \begin{remark}
-\todo{In practice $\widetilde{G}$ includes  the normal vectors so the kernels lost one order of regularity (this because the normal vectors has regularity of $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, however this doesn't change anything as we only need the properties as a map in $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s-1})$, instead of $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s+1})$, thus no extra regularity of the geometry is needed. }
+\label{remark:gtildereg}
+Typically $\widetilde{G}$ includes explicit operations on the normal vector, thus the corresponding kernel lost one order of regularity. However, this fact does not any impact as would still give us enough regularity to show the properties of the map in $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s-1})$, instead of $\mathcal{L}(\mathbb{U}^s, \mathbb{M}^{s+1})$.
 \end{remark}
 
 The result for the full hyper-singular operator follows directly from the last lemma. The proof is similar to Theorem \ref{thrm:Vop} so is omitted. 
@@ -1784,6 +1748,7 @@ is also holomorphic and uniformly bounded.
 An immediate conclusion of the holomorphic extension of the integral operators and its inverses, is the holomorphic extension of the solution map. 
 
 \begin{corollary}
+\label{cor:solholom}
 Let $\eta,s \in \IR $ as in Theorem \ref{thrm:Vop}. Under the assumption of $g$, the right hand side of Problem \todo{ref} is an entire function we have that the solution map for the Dirichlet problem 
 \begin{align*}
 (\br_1,..,\br_M) \in K^1_{\eta} \times ... K^M_{\eta} \mapsto 
@@ -1996,6 +1961,7 @@ z^j_n \in O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M)) \mapsto V_{\Gamma_1,\hd
 As in the previous section we can use the properties of the inverse of the associated integral operators to obtain a result on the regularity of the solution map. The following result state exactly that. The proof is omitted as is the same than of the previous theorem. 
 
 \begin{corollary}
+\label{corollary:bepsol}
 Under the hypotesis of Theorem \ref{thrm:bepholm}. If $g$ the right-hand-side of the Dirichlet problem is an entire function then the map 
 \begin{align*}
 (\by^1,\hdots,\by^M) \mapsto \bla \in \prod_{j=1}^M \IT^s,
@@ -2079,6 +2045,135 @@ Now we consider particular cases of the operator $\cP$. In particular we will co
 $), which is a vectorial operator.
 
 \subsection{Helmholtz Operators}
+The helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
+$$
+\lim_{\|\bx\| \rightarrow \infty}
+\| \bx \|^{\frac{1}{2}}\left( \frac{\partial u}{\partial \bx}-i k u\right)=0.
+$$
+The corresponding fundamental solution is
+$$
+G(\bx,\by) = \frac{i}{4}H^{(1)}_0(k \| \bx-\by\|),
+$$
+where $H^{(1)}_0$ denotes the zero-order Hankel function of first kind, and is defined as $H^{(1)}_0(z) = J_0(z) + i Y_0(z)$, where $J_0, Y_0$ are the zeroth order Bessel function of first and seccond kind respectively. From \todo{ref stegusson, 9.1.12 and 9.1.13} we have that 
+$$
+G(\bx,\by) = \log\|\bx-\by\|\left(\frac{J_0(k \|bx -\by\|)}{-2\pi}\right)+ R(k\|bx-by\|^2),
+$$
+where the first kind Bessel function $J_0$, and $R$ are entire functions.
+Furthermore also from \todo{ref steguson 9.1.12} we have that $J_0(0) = 1$, and also $J_0(z) = j_0(z^2)$, with $j_0$ an entire function.  Hence, we have a representation of the form of \eqref{eq:funsolgen}, with $F_1(z) = \frac{j_0(k z)}{-2\pi}$, and $F_2(z) = R(k z)$.
+
+From the last observations the holomorphism results for the Dirichlet problems follows directly. For the Neumann problem we make use of the corresponding Maue's representation formula  formula \todo{ref sauter?},
+\begin{align*}
+\begin{split}
+(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \frac{d}{dt} \int_{-1}^1 G(\br_i(t),\br_j(s)) \frac{d}{ds} u(s) ds \\- k^2\int_{-1}^1 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s))u(s) ds, 
+\end{split}
+\end{align*} 
+thus, following the notation of Section \ref{sec:bif} we have that 
+$$
+\widetilde{G}(\br_i(t),\br_j(s)) = -k^2 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s)).
+$$
+Notice that this function is has almost the same structure that $G(\br_i(t),\br_j(s))$ except for the fact that it lost one degree of smoothness because of the factors $\br_i'$, and $\br_j'$, however, as it was noticed in Remark \ref{remark:gtildereg} this do not have any impact, and we obtain the corresponding results for the Neumann problem.
+
+Finally let us remark the special case $k=0$, which correspond to the Laplace equation. While most of the result follows directly with fundamental solution $G(\bx,\by) = \frac{-1}{2\pi} \log \| \bx - \by \|$, special care has to be put in the radiation condition of this problem to be well posed. One particular alternative is to impose that the solutions decay at infinity and change the space $T^s$ for the subspace of functions such that $\langle u, 1 \rangle = 0$, see \todo{ref sthephan, paper arcs} for more details on the Laplace case. 
+\subsection{Elastic Wave Operators}
+
+Now let us consider the operator $\cP = \alpha \Delta + (\alpha + \beta) \nabla \nabla \cdot + \omega^2$. The parameters $\alpha,\beta$ are called Lame parameters \footnote{Tipically this are denoted $\lambda, \mu = \alpha, \beta$ but we have changed to avoid confusion with the solutions of the Dirichlet and Neumann problems denoted by $\bla, \bmu$.}, and $\omega$ is the frequency parameter. These parameters are  fixed real numbers and we also impose that  $\beta > 0$, $\alpha > - \beta$, $\omega \neq 0$. We also define two associated wavenumbers $$
+k_p^2 = \frac{\omega^2}{\alpha+2\beta}, \quad
+k_s^2 = \frac{\omega^2}{\beta}.$$  
+The co-normal trace correspond to the tractions, defined as: 
+\begin{align*}
+\mathcal{B}_{\bn} \mathbf{u} =
+\alpha \mathbf{n} (\div(\mathbf{u}))
++ 2 \beta \partial_{\mathbf{n}} \mathbf{u}+
+\beta  \mathbf{n}^\perp (\div(\mathbf{u}^\perp))
+\end{align*}
+where the $\mathbf{v}^\perp  = (v_2,-v_1)$. For a vector function $\bu$ we introduce the Helmholtz decomposition: 
+\begin{align*}
+\mathbf{u}_p := \frac{-1}{k^2_p}\nabla \nabla \cdot \mathbf{u}, \quad
+\mathbf{u}_s := \mathbf{u} - \mathbf{u}_p,
+\end{align*} 
+and the radiations conditions associated with this operator are the Somerfeld condition applied to $\bu_p, \bu_s$. 
+The corresponding fundamental solution given by 
+\begin{align*}
+\mathbf{G} (\mathbf{x}, \mathbf{y}) := 
+\frac{i}{4 \beta} H^{(1)}_0(k_s d)\mathbf{I}+ \frac{i}{4\omega^2} \nabla_\mathbf{x} 
+\nabla_\mathbf{x} \cdot \left( 
+H^{(1)}_0(k_sd ) - H^{(1)}_0(k_p d)
+\right),
+\end{align*}
+where $d = \| \bx -\by\|$, and $\mathbf{I}$ denotes the identity matrix. Alternatively following \todo{reff kress} this can be expressed as 
+\begin{align*}
+\mathbf{G}(\mathbf{x},\mathbf{y})  = G^1(d) \mathbf{I} + 
+{G}^2(d)\mathbf{D}(\mathbf{x}-\mathbf{y}),
+\end{align*}
+where  $D(\mathbf{d}) = \frac{\mathbf{d} \mathbf{d}^t}{\|\mathbf{d}\|^2}$, and 
+\begin{align*}
+G^1(d) = \frac{i}{4\beta} H_{0}^{(1)}(k_s d) - \frac{i}{4\omega^2d}(k_s H_1^{(1)}(k_s d)- k_p H_1^{(1)}(k_p d)) \\
+G^2(d) = \frac{i}{4\omega^2} \left( 
+\frac{2k_s H^{(1)}_1(k_s d)-2k_p H^{(1)}_1(k_p d)}{d}+
+k_p^2H^{(1)}_0(k_p d)- k_s^2H^{(1)}_0(k_s d)  
+\right)
+\end{align*}
+Using the expansion of the Hankel functions \todo{ref abramowish seguson} see that we can express $G^1,G^2$ could be expressed in the form 
+$$
+G^j(d) = R^j(d) +\log(d)J^j(d), \quad j=1,2.
+$$
+where $R^1,R^2$ are entire functions on the variable $d^2$, and 
+\begin{align*}
+J^1(d) = -\frac{J_0(k_s d)}{2\pi\beta}+ \frac{1}{2\pi\omega^2 d}(k_sJ_1(k_s d) - k_p J_1(k_p d)), \\
+J^2(d) = \frac{-1}{2 \pi \omega^2} \left(
+\frac{2k_s J_1(k_sd)-2k_p J_1(k_p d)}{d} +k_p^2J_0(k_p d) -k_s^2J_0(k_s d)
+\right),
+\end{align*}
+hence from the serie expansion of the Bessel function we have $J^1,J^2$ are entire functions in the $d^2$ variable, and also 
+\begin{align*}
+J^1(0) = \frac{-1}{2\pi\beta} + \frac{-1}{4 \pi\omega^2}(k_p^2-k_s^2), \quad J^2(0) = 0.
+\end{align*}
+Hence we can express the fundamental solution as 
+\begin{align*}
+\mathbf{G}(\bx,\by) = \log(d)\mathbf{J}+ \mathbf{R},
+\end{align*}
+where $\mathbf{J} = J^1(d) \mathbf{I} +J^2(d)\mathbf{D}(\bx-\by)$, and 
+$\mathbf{R} = R^1(d) \mathbf{I} +R^2(d) \mathbf{D}(\bx-\by)$. The only difference with the canonical expression  \eqref{eq:funsolgen} is the presence of factor $\mathbf{D}(\bx-\by)$. Let us study the properties of this factor. 
+
+\begin{lemma}
+\label{lemma:Dmatrix}
+Consider two arcs $\br$, and $\bp$ and define the matrix function $\mathbf{D}_{\br,\bp}$, with components
+\begin{align*}
+(D_{\br,\bp}(t,s))_{j,k} :=  \begin{cases}
+\frac{(r_j(t)-p_j(s))\cdot (r_k(t)-p_k(s))}{d_{\br,\bp}^2(t,s)} \quad \br \neq \bp\text{, or, } t \neq s \\
+\frac{r_j(t) r_k(s)}{\br'(t)\cdot \br'(s)} \quad \text{i.o.c.} 
+\end{cases} \quad j,k=1,2,
+\end{align*} 
+and also two compact sets $K^1,K^2 \subset \rgeoh{m}{h}$ for some $m \in \IN$. 
+\begin{enumerate}
+\item
+If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Lemma \ref{lemma:dwelldef} then 
+\begin{align*}
+\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\end{align*} 
+is holomorphic and uniformly bounded.
+\item 
+If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross}, then 
+\begin{align*}
+(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\end{align*} 
+is holomorphic and uniformly bounded.
+\end{enumerate}
+\end{lemma} 
+\begin{proof}
+For the first part, if $t \neq s$ we have, 
+\begin{align*}
+(D_{\br,\br}(t,s))_{j,k} = 1/Q_{\br}(t,s) \left( \frac{r_j(t)-r_j(s)}{t-s} \right) \cdot \left( \frac{r_k(t)-r_k(s)}{t-s} \right)
+\end{align*}
+and the results follows as in the proof of Lemma \ref{lemma:Qfun}.
+The second part is direct from Lemma \ref{lemma:dcross} and elementary results of complex variable. 
+\end{proof}
+
+We conclude that this function has holomorphic extension, but it also lose one order of regularity (since the components are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$). This implies that the proof of Lemma \ref{lemma:vcomp} the corresponding functions $F_1(d_{\br}(t,s)^2)$, $F_2(d_{\br}(t,s)^2)$ are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$ instead of $\cmspaceh{m}{h}{\iinterv}{\IC}$.  However this do not moddify the condition on $s,m,h$ since this is limited for the factor $\log Q_{\br}(t,s) F_1(d_{\br}(t,s)^2) \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$. Hence, the results for the Dirichlet problems follows. 
+
+For the Neumann problem we use the following Maue's representation formula
+
+
 
 \section{Uncertenty Quantification problem for Elastic Scattering on Cracks}
 \subsection{Direct Problem Discretization and Error Bounds}
