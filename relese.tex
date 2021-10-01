@@ -409,7 +409,7 @@
 \newcommand{\mD}{\{ \tD \}}
 \newcommand{\mN}{\{ \tN \}}
 %\newcounter{cont}
-\title{Uncertainty Quantification for Elastic Waves on Multiples Cracks}
+\title{Shape Holomorphy of Integral Operators on two-dimensional Open Arcs}
 
 \DeclareMathOperator{\spn}{span}
 
@@ -424,16 +424,18 @@
 \maketitle
 
 \begin{abstract}
- This works present a generalized analysis of the holomorphy dependence of a class of integral operators, coming from the reduction of scattering problems with Dirichlet or Neumann boundary conditions on open arcs in two dimensions,  in terms of the geometric parametrization. 
-
-We apply the mentioned result to estimate the statical moments of some quantity of interest in the context of elastic-wave scattering of cracks whose shape and position are uncertain. We show that high order quasi-Montecarlo rules can be applied (provided some assumptions on the size of the perturbations with respect to a canonical configuration), and demonstrate the results with numerical experiments on a single crack. In the case of multiple cracks, while the theory predicts similar convergence rates in practice only low order convergence is achieved, we provide an adequate analysis that justifies this behavior. 
+todo
 \end{abstract}
 
 \section{Introduction}
-\subsection{General Notations}
-\subsection{Scattering Problem on Open Arcs}
+This works is concerned on establish the smoothness of the solution map from the geometry configuration composed of multiple disjoint open arcs, to the solutions of the Dirichlet and Neumann problems for an underlaying partial differential operators with boundary conditions on the mentioned open arcs. 
 
-\subsection{Boundary Integral Formulation}
+We do this by following closely \cite{Henriquez2021}. In the cited work, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
+
+Our focus is in PDEs defined on domains of the form $\IR^2 \setminus \Gamma$, with boundary conditions on $\Gamma = \left\lbrace \Gamma_1, \hdots, \Gamma_M \right\rbrace$, as set of $M$ disjoint open arcs. In this context boundary integral formulations gives a more  natural framework to define the problem than classical weak formulations, since Green formulas do not follows directly. We refer to (\cite{stephane,stephan1984augmented,STE86,Stephan1987,sloan1991,JEREZHANCKES2011547,JHP20,Averseng2019,kress1996,kress2000}) for some references on problems posed on open arcs and the equivalent three-dimensional counterpart on surfaces with boundaries.  
+
+\subsection{Boundary Value Problems on Open Arcs}
+\subsubsection{Boundary Integral Formulation}
 \label{sec:bif}
 As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
 \begin{align}
@@ -484,6 +486,66 @@ for a suitable $u$, see Section \todo{ref} for more details. On the other hand t
 where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner, we again refer to Section \todo{ref} for details. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, \todo{ref nedelec maues, hisiao}, there is also a more general result for scalar operators in \todo{ref sauter}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried by using the $0$ extension of the density. 
 
 To finalize this sections, let us comment on the uniqueness of the solution of the boundary integral formulation. As we pointed out in \todo{ref arcs}, the uniqueness of the boundary integral formulation is equivalent to the solution of \todo{ref strong form}. For some examples of the uniqness of the strong formulation we refer to \todo{ref sthepane} for the Helmholtz problem, and \todo{ref kres} for the Elastic-wave problem.
+
+\subsection{Shape Holomorphy}
+\subsection{Outline}
+
+\section{Main Results}
+\begin{enumerate}
+\item 
+Holomorphic extension of V, and W
+\item 
+Holomorphic extension of $\lambda, \mu$
+\item 
+remark on linear functionals
+\item 
+Parametric holomrphism of $\lambda, \mu$
+\remark 
+linear functionals
+\end{enumerate}
+
+\section{Mathematical tools}
+\begin{enumerate}
+\item 
+Abtract holomorphy theorems, maybe something with parametric holomorphism ???
+\item 
+Functional spaces
+\item 
+Holomorphy extension of standard functions 
+\item 
+Integral kernels 
+\item 
+General integral operators
+\end{enumerate}
+
+\section{Shape Holomirphism for Dirichlet and Neumann Problems}
+\begin{enumerate}
+\item 
+Dirichlet problem proof
+\item 
+Neumann problem proof 
+\item 
+remarks on linear functionals.
+\end{enumerate}
+
+\section{Parametric Holomorphism for Ditichlet and Neumann Problems}
+\begin{enumerate}
+\item 
+result for Dirichlet and Neumann problem 
+\item 
+remark on linear functionals
+\item 
+discretizations
+\end{enumerate}
+
+\section{Examples}
+
+\section{Future Work}
+\begin{enumerate}
+\item 
+Stokes equation, thermolastic???
+\end{enumerate}
+
 \section{Shape Holomorphy of Boundary Integral Operators}
 
 Let us begin this section by recalling a pair of abstract theorems that constitute the main tool to establish the holomorphic dependence of a class of integral operators. These results are not new but slightly generalization of  Theorems 4.13 and 5.21 presented in \todo{ref}. Their proofs also follows verbatim as in the reference, and as so are omitted.
@@ -2189,6 +2251,9 @@ The second part is direct from Lemma \ref{lemma:dcross} and elementary results o
 We conclude that this function has holomorphic extension, but it also lose one order of regularity (since the components are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$). This implies that the proof of Lemma \ref{lemma:vcomp} the corresponding functions $F_1(d_{\br}(t,s)^2)$, $F_2(d_{\br}(t,s)^2)$ are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$ instead of $\cmspaceh{m}{h}{\iinterv}{\IC}$.  However this do not moddify the condition on $s,m,h$ as it was noticed in Remark \ref{remark:mm1extension}.
 
 For the Neumann problem we need a Maue's representation formula. While we are not aware of a proper formula for this case, a result with the same properties is given in \todo{kress On the numerical solution of a hypersingular integral equation for elastic scattering from a planar crack}. In this paper the authors use the Maue's representation for the kernel of the static case ($\omega = 0$), that was showed in \todo{ref nedelec Integral equations with non integrable kernels}, and then proceed to explicitly find the kernel given by the co-normal traces, in both variables, of the difference of the fundamental solution \eqref{eq:efunsol}  minus the one coming from the static case. The resulting function only has a logarithmic singularity and hence in principle could be considered as part of $\widetilde{\mathbf{G}}$ in the general Maue's representation formula \eqref{eq:mauesrep}. The only difference is that this function includes part related to the second derivative of the parametrizations, hence is only in $\cmspaceh{m-2}{h}{\iinterv}{\IC}$, for $m\geq 2$, but this do not modify the results as it was noticed in Remark \ref{remark:gtildereg}. 
+
+\bibliography{biblio}
+\bibliographystyle{siam}
 
 \appendix
 \section{Fractional norms for periodic functions}
