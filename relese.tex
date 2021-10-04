@@ -428,13 +428,55 @@ todo
 \end{abstract}
 
 \section{Introduction}
-This works is concerned on establish the smoothness of the solution map from the geometry configuration composed of multiple disjoint open arcs, to the solutions of the Dirichlet and Neumann problems for an underlaying partial differential operators with boundary conditions on the mentioned open arcs. 
+This works is concerned on establishing the smoothness of the solution map from the geometry configuration, composed of multiple disjoint open arcs, to the solutions of the Dirichlet and Neumann problems for a partial differential operators with boundary conditions on the mentioned open arcs. 
 
 We do this by following closely \cite{Henriquez2021}. In the cited work, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
 
-Our focus is in PDEs defined on domains of the form $\IR^2 \setminus \Gamma$, with boundary conditions on $\Gamma = \left\lbrace \Gamma_1, \hdots, \Gamma_M \right\rbrace$, as set of $M$ disjoint open arcs. In this context boundary integral formulations gives a more  natural framework to define the problem than classical weak formulations, since Green formulas do not follows directly. We refer to (\cite{stephane,stephan1984augmented,STE86,Stephan1987,sloan1991,JEREZHANCKES2011547,JHP20,Averseng2019,kress1996,kress2000}) for some references on problems posed on open arcs and the equivalent three-dimensional counterpart on surfaces with boundaries.  
+Our focus is in PDEs defined on domains of the form $\IR^2 \setminus \Gamma$, with boundary conditions on $\Gamma = \left\lbrace \Gamma_1, \hdots, \Gamma_M \right\rbrace$, a set of $M$ disjoint open arcs. In this context boundary integral formulations gives a more  natural framework for defining the problem than classical weak formulations, since Green formulas do not follows directly. We refer to (\cite{stephane,stephan1984augmented,STE86,Stephan1987,sloan1991,JEREZHANCKES2011547,JHP20,Averseng2019,kress1996,kress2000}) for some references on problems posed on open arcs and the equivalent three-dimensional counterpart on surfaces with boundaries.  
 
+In contrast to \cite{Henriquez2021}, were only the Laplace equation was considered, here we consider more general differential operators, including the possibility of vector differential operators. In particular we show explicit results for the scalar Helmholtz equation and the Stoke equation (also refereed as the elastic wave equation). 
+
+The generalization is done by assuming the existence of a fundamental solution with a specific function structure, the latter is very common for  fundamental solutions of second order partial differential operators on two dimensions. We then consider general integral operators whose kernels are given by the assumed structure of the fundamental solution, and obtain the holomorphic extension of these integral operators by  slighly more abstract version of the holomorphic extension theorem for integral operators  from \cite[Theorem 3.12]{Henriquez2021}. We also assume a general Maue's representation formula that enable us to extend the analysis of the weakly singular operator to the hyper-singular operator. 
+
+A further difference with \cite{Henriquez2021}, is that in our current work we do not only establish the holomorphism result from the parametrizations sets to the solution in a fixed energy space, but instead we consider the range of the map in a  scale of functional spaces defined over the open arcs. The advantage of this analysis, is that provide a functional  framework for high order methods, such as the one presented in \cite{JHP20}. 
+
+The family of functional spaces considering here correspond to Sobolev-type spaces defined trough Fourier series, mapped back to open arcs by a cosine transformation, see  \cite[Chapter 11]{saranen2013periodic} for more details. Furthermore, these spaces can be characterized as Chebishev formal series (\cite{Averseng2019}). 
+
+As is standard, for the solution of the Dirichlet and Neumann problem to be in high-order spaces we need to impose that the geometry and right-hand-sides  to have some regularity. In this work we will consider that the right-hand-side are given by restriction of entire functions, thus having arbitrary regularity, and geometry to have a limited regularity in a Holder-continuous class. We put great effort in finding how this limited regularity restrict the functional spaces where solutions for the Dirichlet and Neumann problem exist. 
+
+The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
+
+\subsection{General Notation}
+todo
 \subsection{Boundary Value Problems on Open Arcs}
+
+Through out we consider a set of $M$ disjoint open arcs denoted by $\Gamma = \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc is the  image of a function $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$, $j=1,\hdots,M$, which is assumed to have continuous derivative nowhere null, and be globally invertible. Furthermore the normal vector of the each arc is assumed to have the same direction as $((r'_j)_2,-(r'_j)_1)$, for $j=1,\hdots,M$. 
+
+Rigorously speaking we have defined the geometry $\Gamma$, through a particular selection of parametrizations instead of the set of points in $\IR^2$ which describe the open arcs. 
+
+Now let us consider a seccond order partial differential operator 
+$$\cP = - \sum_{j=1}^2 \sum_{k=1}^2 \partial_{x_j}\mathbf{A_{j,k}} \partial_k  + \mathbf{A},$$
+where $\mathbf{A_{j,k}},\mathbf{A}$ are constant real numbers, or $2\times 2$ constant complex matrices in which case we impose that $\overline{\mathbf{A_{j,k}}}^t = \mathbf{A_{k,j}}$ and $\overline{\mathbf{A}}^t = \mathbf{A}$ . Associated with $\cP$ the co-normal trace operator\footnote{The simetry conditions on the matrices $\mathbf{A_{j,k}}$, and $\mathbf{A}$, ensures that the co-normal trace is a self-adjoint operator. If we do not assume this we would have to introduce the adjoint co-normal trace but most of the result of this work follows verbatim.} over $\Gamma_p$ is defined as 
+$$
+\cB_p \bu =  \sum_{j=1}^2 (\bn_p)_j \sum_{k=1}^2 \mathbf{A}_{j,k} \partial_k \bu \vert_{\Gamma_p} 
+$$
+for any smooth function $\bu$, where $\bn_p$ denotes the unitary normal vector of $\Gamma_p$. Now let us consider the problem, seek $\bu$ such that 
+\begin{align}
+\label{eq:volprob}
+\cP \bu = 0, \quad \text{on} \IR^2 \setminus \Gamma,\\
+\label{eq:radcond}
+\text{Condition at Infinity}(\cP). 
+\end{align}
+which is complemented with one of the following boundary conditions: 
+\begin{align}
+\label{eq:dircond}
+\bu = \bg,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
+\label{eq:neumanncond}
+ \cB_p \bu = \mathbf{f},  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
+\end{align}
+Condition \eqref{eq:radcond} speciffy the behavior of $\bu$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $\bg,$ and, $\bf$ are the right-hand-side of the Dirichlet and Neumann problems respectively throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
+
+Results for this general problem are hard to come by since a more explicit form of the conditions at infinity is needed. We, however, will assume the uniqueness for both boundary value problems (Dirichlet and Neumann), while the existence will be consequence of the boundary integral formulation presented next. 
 \subsubsection{Boundary Integral Formulation}
 \label{sec:bif}
 As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
@@ -1617,7 +1659,7 @@ $$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
 thus $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution and the results of holomorphic extension of integral operators we arrive to the following result. 
 
 \begin{lemma}
-\label{lemma:vcomp}For $s\in \IR$ such that:
+\label{lemma:vcomp}For $s\in \IR$ such that: \todo{write this condition out of the lemma}
 \begin{enumerate}
 \item[i] 
 If $s < \frac{-3}{2}$, then $-2s-1<m-1+h$,
@@ -2121,7 +2163,7 @@ Now we consider particular cases of the operator $\cP$. In particular we will co
 ($\cP = 
 \alpha \Delta + (\alpha +\beta) \nabla \nabla \cdot  + \omega^2
 $), which is a vectorial operator.
-
+\todo{cite uniqness of volume problems (dirichlet neumann) for each example}
 \subsection{Helmholtz Operators}
 The helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
 $$
