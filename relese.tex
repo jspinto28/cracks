@@ -429,8 +429,9 @@ todo
 
 \section{Introduction}
 This works is concerned on establishing the smoothness of the solution map from the geometry configuration, composed of multiple disjoint open arcs, to the solutions of the Dirichlet and Neumann problems for a partial differential operators with boundary conditions on the mentioned open arcs. 
+\todo{add paragraph on the applications of the smoothnes of this map...}
 
-We do this by following closely \cite{Henriquez2021}. In the cited work, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
+We obtain the smoothness of the mentioned map following closely \cite{Henriquez2021}. In the cited work, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
 
 Our focus is in PDEs defined on domains of the form $\IR^2 \setminus \Gamma$, with boundary conditions on $\Gamma = \left\lbrace \Gamma_1, \hdots, \Gamma_M \right\rbrace$, a set of $M$ disjoint open arcs. In this context boundary integral formulations gives a more  natural framework for defining the problem than classical weak formulations, since Green formulas do not follows directly. We refer to (\cite{stephane,stephan1984augmented,STE86,Stephan1987,sloan1991,JEREZHANCKES2011547,JHP20,Averseng2019,kress1996,kress2000}) for some references on problems posed on open arcs and the equivalent three-dimensional counterpart on surfaces with boundaries.  
 
@@ -447,68 +448,70 @@ As is standard, for the solution of the Dirichlet and Neumann problem to be in h
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
 \subsection{General Notation}
-todo
+\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable}
+
+Throughout we will define open arcs as the image of a continuous derivable, globally invertible in their range, function $\br : [-1,1] \rightarrow \IR^2$.  We further assume that the tangent vector is nowhere null, and fix the normal vector to have the same direction of $(r'_2,-r'_1)$. Rigorously speaking  this definition identifies open arcs with the corresponding parametrization function instead of the set of points that describe the arc in $\IR^2$. 
 \subsection{Boundary Value Problems on Open Arcs}
 
-Through out we consider a set of $M$ disjoint open arcs denoted by $\Gamma = \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc is the  image of a function $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$, $j=1,\hdots,M$, which is assumed to have continuous derivative nowhere null, and be globally invertible. Furthermore the normal vector of the each arc is assumed to have the same direction as $((r'_j)_2,-(r'_j)_1)$, for $j=1,\hdots,M$. 
+We will denote by $\Gamma$ set of $M$ disjoint open arcs $ \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc characterized by a particular parametrization $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$.
 
-Rigorously speaking we have defined the geometry $\Gamma$, through a particular selection of parametrizations instead of the set of points in $\IR^2$ which describe the open arcs. 
-
-Now let us consider a seccond order partial differential operator 
-$$\cP = - \sum_{j=1}^2 \sum_{k=1}^2 \partial_{x_j}\mathbf{A_{j,k}} \partial_k  + \mathbf{A},$$
-where $\mathbf{A_{j,k}},\mathbf{A}$ are constant real numbers, or $2\times 2$ constant complex matrices in which case we impose that $\overline{\mathbf{A_{j,k}}}^t = \mathbf{A_{k,j}}$ and $\overline{\mathbf{A}}^t = \mathbf{A}$ . Associated with $\cP$ the co-normal trace operator\footnote{The simetry conditions on the matrices $\mathbf{A_{j,k}}$, and $\mathbf{A}$, ensures that the co-normal trace is a self-adjoint operator. If we do not assume this we would have to introduce the adjoint co-normal trace but most of the result of this work follows verbatim.} over $\Gamma_p$ is defined as 
+Let us consider a second order partial differential operator 
+$$\cP = - \sum_{j=1}^2 \sum_{k=1}^2 \partial_{x_j}{A_{j,k}} \partial_k  + {A},$$
+where ${A_{j,k}},{A}$ are constant real numbers, or $2\times 2$ constant complex matrices in which case we impose that $\overline{\mathbf{A_{j,k}}}^t = \mathbf{A_{k,j}}$ and $\overline{\mathbf{A}}^t = \mathbf{A}$ . Associated with $\cP$ the co-normal trace operator\footnote{The simetry conditions on the matrices $\mathbf{A_{j,k}}$, and $\mathbf{A}$, ensures that the co-normal trace is a self-adjoint operator. If we do not assume this we would have to introduce the adjoint co-normal trace but most of the result of this work follows verbatim.} over $\Gamma_p$ is defined as 
 $$
-\cB_p \bu =  \sum_{j=1}^2 (\bn_p)_j \sum_{k=1}^2 \mathbf{A}_{j,k} \partial_k \bu \vert_{\Gamma_p} 
+\cB_p u =  \sum_{j=1}^2 (\bn_p)_j \sum_{k=1}^2 {A}_{j,k} \partial_k u \vert_{\Gamma_p} 
 $$
 for any smooth function $\bu$, where $\bn_p$ denotes the unitary normal vector of $\Gamma_p$. Now let us consider the problem, seek $\bu$ such that 
 \begin{align}
 \label{eq:volprob}
-\cP \bu = 0, \quad \text{on} \IR^2 \setminus \Gamma,\\
+\cP u = 0, \quad \text{on } \IR^2 \setminus \Gamma,\\
 \label{eq:radcond}
 \text{Condition at Infinity}(\cP). 
 \end{align}
 which is complemented with one of the following boundary conditions: 
 \begin{align}
 \label{eq:dircond}
-\bu = \bg,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
+u = g,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
 \label{eq:neumanncond}
- \cB_p \bu = \mathbf{f},  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
+ \cB_p u = f,  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
 \end{align}
-Condition \eqref{eq:radcond} speciffy the behavior of $\bu$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $\bg,$ and, $\bf$ are the right-hand-side of the Dirichlet and Neumann problems respectively throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
+Condition \eqref{eq:radcond} speciffy the behavior of $u$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $g,$ and, $f$ are the right-hand-side of the Dirichlet and Neumann problems respectively throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
 
 Results for this general problem are hard to come by since a more explicit form of the conditions at infinity is needed. We, however, will assume the uniqueness for both boundary value problems (Dirichlet and Neumann), while the existence will be consequence of the boundary integral formulation presented next. 
-\subsubsection{Boundary Integral Formulation}
+\subsubsection{Boundary Integral Formulations}
 \label{sec:bif}
-As is standard we assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \todo{ref mclean chapter 6} and references therein, for a rigorous definition of the fundamental solution, as well as existence results. We will further assume that the fundamental solution has the following structure:
+We assume that there is a fundamental solution associated with the differential operator $\cP$, denoted by $G(\vx,\by)$. We refer to \cite[Chapter 6]{mclean2000strongly} and references therein, for a rigorous definition of the fundamental solution, as well as existence results.
+ We will further assume that the fundamental solution has the following structure:
 \begin{align}
 \label{eq:funsolgen}
 G(\bx,\by )  =
 \log \|\bx -\by \| F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
 \end{align}
-where $F_1$, and $F_2$ are assumed to be entire complex functions, that are either scalars or $2 \times 2$ matrices. Furthermore we will also assume that in the scalar case $F_1(0) \neq 0$, and for the vectorial case $F_1(0)$ is invertible. The associated layered potentials, for a Jordan $\mathcal{C}^1$ arc $\Gamma$, are defined as 
+where $F_1$, and $F_2$ are assumed to be entire complex functions, that are either scalars or $2 \times 2$ matrices. Furthermore we will also assume that in the scalar case $F_1(0) \neq 0$, and for the vectorial case $\mathbf{F_1}(0)$ is invertible. For an open arc $\gamma$ the layered potential are defined as:
 \begin{align*}
-SL_\Gamma \lambda(\bx) = \int_\Gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\Gamma \mu(\bx) = \int_\Gamma \left(\mathcal{B}_{\bn,\by} G(\bx,\by) \right)^T \mu(\by) d\by,
+SL_\gamma \lambda(\bx) = \int_\gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\gamma \mu(\bx) = \int_\gamma \left(\mathcal{B}_{\bn,\by} G(\bx,\by) \right)^T \mu(\by) d\by,
 \end{align*} 
-where $\mathcal{B}_{\bn,\by}$\footnote{the definition of the Double layer is more complicated if more general operators $\cP$ are allowed. We refer to \todo{ref mclean} for the details.} denotes the co-normal trace in the $\by$ variable, according to a predefined orientation of $\Gamma$, and $\lambda, \mu$ are densities defined in $\Gamma$ that could be either scalars or vectors\footnote{We forgo the boldface convection for vectors for the densities of the integral operators as we wish to treat the scalar and vector case together.}. By the definition of the fundamental solution is immediate that both potentials solves the homogeneous PDE (associated with $\cP$) in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \todo{ref}. 
+where $\mathcal{B}_{\bn,\by}$\footnote{the general definition of the Double layer involes the adjoint of the co-normal trace operator, under our assumptions on $\cP$ this operator is self-adjoint. } denotes the co-normal trace in the $\by$ variable, and $\lambda, \mu$ are densities defined in $\gamma$ that are scalars if $\cP$ is a scalar operator, or two-dimensional vector otherwise. Standard properties of the fundamental solution ensure that  both potentials solves the PDE \eqref{eq:volprob} in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \eqref{eq:radcond}. 
 
-We will consider the pulled back versions of the potentials, let us consider the transformed densities 
+Denoting by $\br$ the parametrization that defines $\gamma$ we construct the pulled back versions of the potentials. First let us consider the transformed densities 
 \begin{align*}
 \widehat{\lambda} (s) = \lambda \circ \br(s)  \| \br'(s) \|, \quad 
 \widehat{\mu} (s) = \mu \circ \br(s),
 \end{align*}
 and the pulled back potentials 
 \begin{align*}
-\widehat{SL}_{\Gamma} u := \int_{-1}^1 
+\widehat{SL}_{\gamma} u := \int_{-1}^1 
  G(\bx,\br(s))  u(s) ds, \quad 
- \widehat{DL}_{\Gamma} u := \int_{-1}^1 
+ \widehat{DL}_{\gamma} u := \int_{-1}^1 
  \left(\mathcal{B}_{\bn,\by}G(\bx,\br(s))\right)^T  u(s) \|\br'(s)\|ds,
 \end{align*}
-defined for an arbitrary function $u$, thus we have $SL_\Gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. In what follows we will omit the hat notations, as we will only use the pulled back potentials. 
+defined for an arbitrary function $u$, thus we have $SL_\gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. In what follows we will omit the hat notations, as we will only use the pulled back potentials. 
 
-Now we reformulate Problem \todo{ref}, as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. In particular working on the geometry setting of Problem \todo{ref} we seek densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $(-1,1)$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $(-1,1)$, such that
+Now we reformulate boundary value problems presented in the previous section as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. We seek for densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $(-1,1)$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $(-1,1)$, for $i = \{1,\hdots,M\}$ such that
 \begin{align*}
-\sum_{j=1}^M (SL_{\Gamma_j} \lambda_j )\circ \br_i = g\circ \br_i, \quad i = 1,\hdots,M \\
+\sum_{j=1}^M (SL_{\Gamma_j} \lambda_j )\circ \br_i = g\circ \br_i, \quad i = 1,\hdots,M \text{ (Dirichlet BIE)}, \\
 \sum_{j=1}^M (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} \mu_j )\circ \br_i = f\circ \br_i, \quad i = 1,\hdots,M,
+\text{ (Neumann BIE)},
 \end{align*}
  thus $u = \sum_{j=1}^M SL_{\Gamma_j} \lambda_j $ is a solution for the Dirichlet Problem, and  $u = \sum_{j=1}^M DL_{\Gamma_j} \mu_j $ solves the Neumann Problem. We can rewrite the boundary integral equations in matrix form as 
 \begin{align}
@@ -519,19 +522,71 @@ where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W
 \begin{align*}
 (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
 \end{align*}
-for a suitable $u$, see Section \todo{ref} for more details. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however in what follows we will assume a Maue's representation of the form 
+for a function $u$. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however in what follows we will assume a Maue's representation of the form 
 \begin{align}
 \label{eq:mauesrep}
 (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u =  \frac{d}{dt}\int_{-1}^1G(\br_i(t),\br_j(s)) \frac{d}{ds}u(s) ds + 
 \int_{-1}^1\widetilde{G}(\br_i(t),\br_j(s))u(s) ds
 \end{align} 
-where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner, we again refer to Section \todo{ref} for details. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, \todo{ref nedelec maues, hisiao}, there is also a more general result for scalar operators in \todo{ref sauter}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried by using the $0$ extension of the density. 
+where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, see for example \cite{Nedelec1982,Maue1949}. There is also a more general result for scalar operators in \cite[Chapter 3.3.4]{Sauter:2011}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried out using the zero-extension of the density. 
 
-To finalize this sections, let us comment on the uniqueness of the solution of the boundary integral formulation. As we pointed out in \todo{ref arcs}, the uniqueness of the boundary integral formulation is equivalent to the solution of \todo{ref strong form}. For some examples of the uniqness of the strong formulation we refer to \todo{ref sthepane} for the Helmholtz problem, and \todo{ref kres} for the Elastic-wave problem.
+Whenever there is a solution for the boundary integral formulations a solution exist for the boundary value problem. Under the assumptions of the 
+structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \todo{ref}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed in the previous section. 
 
 \subsection{Shape Holomorphy}
-\subsection{Outline}
 
+To prevent any confusion let us define properly the holomorfism properties that we will consider. For this section we denote by $B_1,B_2$ two Banach spaces, such that $B_1$ is a real space and $B_2$ a complex one, and by $K$ a compact subset of $B_1$. 
+
+\begin{definition}
+\label{def:holmrfextension}
+Given $f :K \subset B_1 \rightarrow B_2$. We say that $f$ has holomorphic extension in $\cO$, if $\cO$ is an open set in the complexification of $B_1$ such that, $K \subset \cO$, and $f$ has an extension to $\cO$, denoted again $f$, such that $f : \cO \mapsto B_2$, is Frechet differentiable, and bounded in $\cO$.
+\end{definition}
+
+In particular we are interested in the holomorphic extensions of the solution maps: 
+\begin{align*}
+(\br_1,\hdots,\br_M) \mapsto \bla, \quad (\br_1,\hdots,\br_M) \mapsto \bmu,
+\end{align*}
+where $\bla,\bmu$ are the solutions of the Dirichlet and Neumann boundary integral formulations \eqref{eq:bios}, and the corresponding Banach spaces would be detailed in Section \todo{ref}.
+
+For practical applications one is usually concerned with some particular compact set over which the holomorphic extension is constructed. In the abstract setting the compact sets has the structure 
+$$
+K =\left\lbrace k(\by) \in B_1 \ : k(\by) = k_0 + \sum_{n=0}^\infty y_n a_n, \ \{y_n\}_{n \in \IN} \subset [-1,1] \right\rbrace,
+$$ 
+where $k_0 \in B_1$ is a fixed element, and $\{a_n\}_{n\in \IN} \subset B_1$ is  a fixed sequence. One can show that under the assumption that $\sum_{n=0}^\infty \|a_n\|_{B_1} < \infty$, $K$ is in fact compact. 
+
+In this framework we study the map $h : \by \mapsto f(k(\by)) \in  B_2$. This motivate the introduction of the notion of $(b,p,\epsilon)-$holomorphism, or parametric holomorphism ( see  \todo{ref} for the original introduction of this notion, and \todo{refs} for applications of this notion). First given a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
+\begin{align*}
+\mathcal{T}_n := \left\lbrace z \in \IZ : \text{dist}(z,[-1,1]) \leq \rho_n-1 \right\rbrace.
+\end{align*}
+Notice that for every $n \in \IN$, $\mathcal{T}_n$ is a closed domain, we will make use of the following family of tubes: 
+\begin{align*}
+\mathcal{T}_{\rho} = \prod_{n \in \IN} \mathcal{T}_{\rho_n} \supseteq [-1,1]^{\IN}.
+\end{align*}
+\begin{definition}
+\label{def:bepholom}
+Given $\epsilon >0$, $p \in (0,1)$, a real $p$-sumable sequence $\{b_n\}_{n \in \IN}$ . We say that $h:\prod_{j=1}^M[-1,1]^\IN\rightarrow B_2$, is a ($b$,p,$\epsilon$)-holomorphy function if
+\begin{enumerate}
+\item The function $h$ is bounded.
+\item 
+For any real sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n >1$ that satisfy 
+\begin{align*}
+\sum_{n \in \IN} (\rho_n -1) b_n < \epsilon, 
+\end{align*}
+The function $h$ admits a extension to a set of the form $\mathcal{O}\rho =  \prod_{n \in \IN} \mathcal{O}_{\rho_n} \supset \mathcal{T}_\rho$, where each set $\mathcal{O}_{\rho_n}$ is open, and the extension is holomophic in each variable. 
+\item 
+There exist a set $\widetilde{\mathcal{O}}_\rho =  \prod_{n \in \IN} \widetilde{\mathcal{O}}_{\rho_n}$ such that for every $n \in \IN$, $\widetilde{\mathcal{O}}_{\rho_n} \supset \overline{\mathcal{O}}_{\rho_n}$, and $\widetilde{\mathcal{O}}_{\rho_n}$ is an open subset. Futhermore, $h$ can also be extended to $\widetilde{\mathcal{O}}_\rho^M$ and the extension is bounded as 
+\begin{align*}
+\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho } \| h(\mathbf{z})\|_{B_1} \leq C(\epsilon).
+\end{align*}
+\end{enumerate}
+\end{definition}
+We will see in Section \todo{ref}, that  if $f$ has holomorphic extension on some particular open sets, and the sequence $\|a_n\|_{B_1}$ is $p$-sumable for some $p \in(0,1)$, then the map $h :\by \mapsto f(k(\by))$ is in fact $(b,p,\epsilon)-$holomorphic with  $b_n = \|a_n\|_{B_1}$, and $\epsilon$ related to the holomorphic extension of $f$. 
+
+In the context of the multiple-open arc problem, we will consider a fixed geometric configuration parametrized by the functions $\br_1^0 ,\hdots, \br_M^0$, and some pertubations basis also given by parametrizations functions. We will show that under some assumptions in the perturbation basis, the map from the parameters to the boundary integral formulations solutions $\bla,\bmu$ are $(b,p,\epsilon)-$holomorphic.
+\subsection{Outline}
+The outline for the rest of the paper is the following. In Section \todo{ref}, we present the main results concerning the holomorphic extension of the solution of BIF with respect to the geometry parametrization, and the corresponding parametric holomorphism. Section \todo{ref} present the main tools to proof the results, in particular in Section \todo{ref} we present abstract result to proof the holomorphic extension of boundary integral operators, and also a result on how we obtain the parametric holomorphism from the general holomorphic extension. Then sections \todo{ref} through \todo{ref} show the tools for using the abtract theorems to our particular problem. 
+In Section \todo{4} we conclude the holomorphic extension of the integral operators and obtain the holomorphic extension of the solution maps. Similarly, in Section \todo{5} we conclude the parametric holomorphism  solution maps. 
+Finally in Section \todo{6} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
 \section{Main Results}
 \begin{enumerate}
 \item 
