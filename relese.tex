@@ -214,6 +214,7 @@
 \newcommand{\IP}{{\mathbb P}}
 \newcommand{\IQ}{{\mathbb Q}}
 \newcommand{\IZ}{{\mathbb Z}}
+\newcommand{\IY}{{\mathbb Y}}
 % dislaystyle 
 \def\dis{\displaystyle}
 \newcommand{\dsl}{\displaystyle\sum\limits}
@@ -448,11 +449,11 @@ As is standard, for the solution of the Dirichlet and Neumann problem to be in h
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
 \subsection{General Notation}
-\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable}
+\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable, complexification of banach spaces, open sets of delta, $\mathcal{L}$}
 
 Throughout we will define open arcs as the image of a continuous derivable, globally invertible in their range, function $\br : [-1,1] \rightarrow \IR^2$.  We further assume that the tangent vector is nowhere null, and fix the normal vector to have the same direction of $(r'_2,-r'_1)$. Rigorously speaking  this definition identifies open arcs with the corresponding parametrization function instead of the set of points that describe the arc in $\IR^2$. 
 \subsection{Boundary Value Problems on Open Arcs}
-
+\label{sec:bvproblem}
 We will denote by $\Gamma$ set of $M$ disjoint open arcs $ \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc characterized by a particular parametrization $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$.
 
 Let us consider a second order partial differential operator 
@@ -531,9 +532,10 @@ for a function $u$. On the other hand the hyper-singular operator could only be 
 where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, see for example \cite{Nedelec1982,Maue1949}. There is also a more general result for scalar operators in \cite[Chapter 3.3.4]{Sauter:2011}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried out using the zero-extension of the density. 
 
 Whenever there is a solution for the boundary integral formulations a solution exist for the boundary value problem. Under the assumptions of the 
-structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \todo{ref}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed in the previous section. 
+structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \todo{ref}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed to hold in the previous section. 
 
 \subsection{Shape Holomorphy}
+\label{section:ShapeHolormsGeneral}
 
 To prevent any confusion let us define properly the holomorfism properties that we will consider. For this section we denote by $B_1,B_2$ two Banach spaces, such that $B_1$ is a real space and $B_2$ a complex one, and by $K$ a compact subset of $B_1$. 
 
@@ -549,12 +551,13 @@ In particular we are interested in the holomorphic extensions of the solution ma
 where $\bla,\bmu$ are the solutions of the Dirichlet and Neumann boundary integral formulations \eqref{eq:bios}, and the corresponding Banach spaces would be detailed in Section \todo{ref}.
 
 For practical applications one is usually concerned with some particular compact set over which the holomorphic extension is constructed. In the abstract setting the compact sets has the structure 
-$$
+\begin{align}
+\label{eq:Kcompact}
 K =\left\lbrace k(\by) \in B_1 \ : k(\by) = k_0 + \sum_{n=0}^\infty y_n a_n, \ \{y_n\}_{n \in \IN} \subset [-1,1] \right\rbrace,
-$$ 
+\end{align}
 where $k_0 \in B_1$ is a fixed element, and $\{a_n\}_{n\in \IN} \subset B_1$ is  a fixed sequence. One can show that under the assumption that $\sum_{n=0}^\infty \|a_n\|_{B_1} < \infty$, $K$ is in fact compact. 
 
-In this framework we study the map $h : \by \mapsto f(k(\by)) \in  B_2$. This motivate the introduction of the notion of $(b,p,\epsilon)-$holomorphism, or parametric holomorphism ( see  \todo{ref} for the original introduction of this notion, and \todo{refs} for applications of this notion). First given a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
+In this framework we study the map $F : \by \mapsto f(k(\by)) \in  B_2$. This motivate the introduction of the notion of $(b,p,\epsilon)-$holomorphism, or parametric holomorphism ( see  \todo{ref} for the original introduction of this notion, and \todo{refs} for applications of this notion). First given a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
 \begin{align*}
 \mathcal{T}_n := \left\lbrace z \in \IZ : \text{dist}(z,[-1,1]) \leq \rho_n-1 \right\rbrace.
 \end{align*}
@@ -564,23 +567,23 @@ Notice that for every $n \in \IN$, $\mathcal{T}_n$ is a closed domain, we will m
 \end{align*}
 \begin{definition}
 \label{def:bepholom}
-Given $\epsilon >0$, $p \in (0,1)$, a real $p$-sumable sequence $\{b_n\}_{n \in \IN}$ . We say that $h:\prod_{j=1}^M[-1,1]^\IN\rightarrow B_2$, is a ($b$,p,$\epsilon$)-holomorphy function if
+Given $\epsilon >0$, $p \in (0,1)$, and a real $p$-sumable sequence $\{b_n\}_{n \in \IN}$. We say that $F:\prod_{j=1}^M[-1,1]^\IN\rightarrow B_2$, is a ($b$,p,$\epsilon$)-holomorphy function if
 \begin{enumerate}
-\item The function $h$ is bounded.
+\item $F$ is bounded.
 \item 
 For any real sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n >1$ that satisfy 
 \begin{align*}
-\sum_{n \in \IN} (\rho_n -1) b_n < \epsilon, 
+\sum_{n =0}^\infty (\rho_n -1) b_n < \epsilon, 
 \end{align*}
-The function $h$ admits a extension to a set of the form $\mathcal{O}\rho =  \prod_{n \in \IN} \mathcal{O}_{\rho_n} \supset \mathcal{T}_\rho$, where each set $\mathcal{O}_{\rho_n}$ is open, and the extension is holomophic in each variable. 
+$F$ admits a extension to a set of the form $\mathcal{O}\rho =  \prod_{n \in \IN} \mathcal{O}_{\rho_n} \supset \mathcal{T}_\rho$, where each set $\mathcal{O}_{\rho_n}$ is open, and the extension is holomophic in each variable. 
 \item 
-There exist a set $\widetilde{\mathcal{O}}_\rho =  \prod_{n \in \IN} \widetilde{\mathcal{O}}_{\rho_n}$ such that for every $n \in \IN$, $\widetilde{\mathcal{O}}_{\rho_n} \supset \overline{\mathcal{O}}_{\rho_n}$, and $\widetilde{\mathcal{O}}_{\rho_n}$ is an open subset. Futhermore, $h$ can also be extended to $\widetilde{\mathcal{O}}_\rho^M$ and the extension is bounded as 
+There exist a set $\widetilde{\mathcal{O}}_\rho =  \prod_{n \in \IN} \widetilde{\mathcal{O}}_{\rho_n}$ such that for every $n \in \IN$, $\widetilde{\mathcal{O}}_{\rho_n} \supset \overline{\mathcal{O}}_{\rho_n}$, and $\widetilde{\mathcal{O}}_{\rho_n}$ is an open subset. Futhermore, $F$ can also be extended to $\widetilde{\mathcal{O}}_\rho^M$ and the extension is bounded as 
 \begin{align*}
-\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho } \| h(\mathbf{z})\|_{B_1} \leq C(\epsilon).
+\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho } \| F(\mathbf{z})\|_{B_1} \leq C(\epsilon).
 \end{align*}
 \end{enumerate}
 \end{definition}
-We will see in Section \todo{ref}, that  if $f$ has holomorphic extension on some particular open sets, and the sequence $\|a_n\|_{B_1}$ is $p$-sumable for some $p \in(0,1)$, then the map $h :\by \mapsto f(k(\by))$ is in fact $(b,p,\epsilon)-$holomorphic with  $b_n = \|a_n\|_{B_1}$, and $\epsilon$ related to the holomorphic extension of $f$. 
+We will see in Section \todo{ref}, that  if $f$ has holomorphic extension on some particular open sets, and the sequence $\|a_n\|_{B_1}$ is $p$-sumable for some $p \in(0,1)$, then the map $F :\by \mapsto f(k(\by))$ is in fact $(b,p,\epsilon)-$holomorphic with  $b_n = \|a_n\|_{B_1}$, and $\epsilon$ related to the holomorphic extension of $f$. 
 
 In the context of the multiple-open arc problem, we will consider a fixed geometric configuration parametrized by the functions $\br_1^0 ,\hdots, \br_M^0$, and some pertubations basis also given by parametrizations functions. We will show that under some assumptions in the perturbation basis, the map from the parameters to the boundary integral formulations solutions $\bla,\bmu$ are $(b,p,\epsilon)-$holomorphic.
 \subsection{Outline}
@@ -588,25 +591,230 @@ The outline for the rest of the paper is the following. In Section \todo{ref}, w
 In Section \todo{4} we conclude the holomorphic extension of the integral operators and obtain the holomorphic extension of the solution maps. Similarly, in Section \todo{5} we conclude the parametric holomorphism  solution maps. 
 Finally in Section \todo{6} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
 \section{Main Results}
-\begin{enumerate}
-\item 
-Holomorphic extension of V, and W
-\item 
-Holomorphic extension of $\lambda, \mu$
-\item 
-remark on linear functionals
-\item 
-Parametric holomrphism of $\lambda, \mu$
-\remark 
-linear functionals
-\end{enumerate}
+\label{sec:MainResult}
+In this section we list our main results related with the boundary integral formulation presented in Section \todo{1.2} that would be proved in the remaining Sections. We refer to Section\todo{3.2} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \todo{ref}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \todo{ref} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
 
+\begin{theorem}
+\label{thrm:biohlmextension}
+Let $s \in \IR$, $m \in \IN$ with $m \geq 1$, and $h \in (0,1)$, such that Condition \todo{ref} holds. Consder $M$ compact sets of parametrizations $K^1,\hdots,K^M \subset \rgeoh{m}{h}$, and the corresponding real numbers $\delta_j$ given by Condition  \todo{ref}. Then given the real parameters $\{\xi_j\}_{j=1}^M$ such that $0 < \xi_j < \delta_j$, for $j=1,\hdots,M$ we have that the maps 
+\begin{align*}
+(\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto \mathbf{V}_{\Gamma_1, \hdots,\Gamma_M} \in \mathcal{L} \left(  \prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}
+\right)
+,\\
+(\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto \mathbf{W}_{\Gamma_1, \hdots,\Gamma_M} \in \mathcal{L} \left(  \prod_{j=1}^M \IU^s, \prod_{j=1}^M \IY^{s-1}
+\right)
+,
+\end{align*}
+have holomorphic extensions on the open set $K^1_{\xi_1}\times\hdots K^M_{\xi_M}$.
+\end{theorem}
+Once we show this Theorem using some abstract properties on inverse function, and using that the right hand side of the Dirichlet and Neumann problem are given by entire functions we obtain the holomirphic extension of the solution maps. 
+\begin{theorem}
+\label{thrm:solutionholomrext}
+Under the same hypothesis of Theorem \ref{thrm:biohlmextension}, there exist $\eta_1,\eta_2$ real numbers such that
+$0<\eta_1,\eta_2< \min_{j=1,\hdots,M}\xi_j$ and we have that: 
+\begin{align*}
+(\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto  \bla \in \prod_{j=1}^M \IT^s
+\end{align*}
+has holomorphic extension to the open set $K_{\eta_1}^1 \times \hdots K_{\eta_1}^M$, and also: 
+\begin{align*}
+(\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto  \bmu \in \prod_{j=1}^M \IU^s
+\end{align*}
+has holomorphic extension to the open set $K_{\eta_2}^1 \times \hdots K_{\eta_2}^M$.
+\end{theorem}
+The previous Theorem enable us to obtain holomorphic extension for some linear functionals. In particular if we consider linear functionals of the form  $$L\bu (\bx) = \int_{-1}^{1} \mathbf{\varphi}(\bx,\br_1(t),\hdots,\br_M(t)) \cdot \bu(t) dt,$$ where $\bu = \bla $ or $\bu = \bmu$, and $\mathbf{\varphi}$ is an entire function, the holomorphic extension this functional is obtained by noticing that is the composition of $\bu$ which has holomorphic by Theorem \ref{thrm:solutionholomrext}, and using Theorem \todo{thrm abtract holmorfism} for showing that the integral operator 
+$L\bv(\bx)$ (where $\bv$ is independent of the paramatrizations) has holomorphic extensions. 
+
+Finally assuming a parametric form of geometry configuration presented in Section \todo{5}, with the corresponding Assumption \todo{ref}, using the abtract result Theorem\todo{ref theorem of holomorphic extension to bpepsilon holomorphism} we obtain the following result. 
+
+\begin{theorem}
+Under the hypothesis of Theorem \ref{thrm:solutionholomrext}, and Assumption \todo{ref}\footnote{The assumption defined the parameter $p$, as well conditions for the perturbations basis $\mathbf{b}_n$.} we have that for $b_n = \|\mathbf{b}_n\|_{\rgeoh{m}{h}}$, the norm of perturbation basis, the map
+\begin{align*}
+\by \in [-1,1]^{\IN} \mapsto \bla \in \prod_{j=1}^M \IT^s,
+\end{align*}
+is $(b,p,\epsilon)-$holomorphic for $\epsilon < \eta_1$, where $\eta_1$ is given in Theorem \ref{thrm:solutionholomrext}, and continuous with respect to the product topology. The same hols for the map 
+\begin{align*}
+\by \in [-1,1]^{\IN} \mapsto \bmu \in \prod_{j=1}^M \IU^s,
+\end{align*}
+with $\epsilon < \eta_2$, where $\eta_2$ is also given in Theorem \ref{thrm:solutionholomrext}.
+\end{theorem}
+As with the holomorphic extension, the previous Theorem enable us to conclude the parametric holomorphism of some linear functionals of $\bla$, and $\bmu$. Futhermore, Section \todo{5} would also show that some Galerkin approximations are also parametric holomorphic. 
 \section{Mathematical tools}
+This section present the main tools for the proofs of the Theorems presented in Section \ref{sec:MainResult}. Since some of the results are very technical they are relegated to Appendices \todo{ref}.
+
+\subsection{Abstract Holomorphism Theorems}
+
+In this Section we present some theorems that would enable us to establish holomorphic extension of some general integral operators, as well as the connection between holomorphic extension and parametric holomorphism. These results are abstractions (for the most part) of results that appears first in \cite{Henriquez2021}, in general terms the proofs are the same that the corresponding result in the cited reference so we only pointed out to the specif result instead of provided the same proof. 
+
+As in Section \ref{section:ShapeHolormsGeneral}, we consider a real Banach space $B_1$, with its corresponding complexification $B_1^{\IC}$, a compact set $K \subset B_1$, and $B_2$ a complex Banach space. Let us also consider a general integral operator of the form 
+\begin{align*}
+(P_k u)(t) = \int_{-1}^{1} S(t-s) p_k(t,s) u(s) ds,
+\end{align*}
+defined by the functions $S$, $p_k$, where $k \in K$ denotes an arbitrary parameter. We assume that for every $k \in K$ the integral operator is a bounded linear map between two Hilbert spaces $H_1,H_2$, such that the continuous functions are dense in $H_1$. The following result enable us to construct the holomirphic extension of the map $k  \in K \mapsto P_k \in \mathcal{L}(H_1,H_2)$. 
+
+\begin{theorem}[Theorem 3.12 in \cite{Henriquez2021}] \label{thrm:abstractholm}
+If we have 
 \begin{enumerate}
 \item 
-Abtract holomorphy theorems, maybe something with parametric holomorphism ???
+The function $S$ is continuous everywhere with the sole possible  exception of 0. In a neighborhood of $0$ assume that $S$ is controlled as 
+$$|S(t)| \lesssim| t|^{-\alpha}$$
+for some $\alpha \in [0,1)$. 
 \item 
-Functional spaces
+There exist a $\delta >0$, such that the map $k \in K \mapsto p_k \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ can be extended to a map $k \in K_\delta \mapsto p_{k,\IC}$ and that extension is such that 
+the map $k \in K_\delta \mapsto p_{k,\IC } \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. 
+\item 
+For $\delta$ as before, the corresponding extension of $P_k$ defined as $(P_{k,\IC}u)(t) = \int_{-1}^{1} S(t-s) p_{k,\IC}(t,s) u(s) ds$ is uniformly bounded, i.e. 
+$$ \sup_{k \in K_\delta} \| P_{k,\IC} \|_{\mathcal{L}(H_1,H_2)}< \infty.$$
+\end{enumerate}
+Then the map $k \in K \mapsto P_{k} \in \mathcal{L}(H_1,H_2)$ has holomorphic extension in $K_\xi$ for $0<\xi < \delta$.
+\end{theorem}
+Classical complex-variable theory also enable us to deduce the holomophic extension of the inverse of a function with holomorphic extension, the following result state exactly that.
+
+\begin{theorem}[Proposition 4.20 in \cite{Henriquez2021}]
+\label{thrm:abtractinverse}For two Banach spaces $H_1,H2$,
+consider $A_k \in \mathcal{L}(H_1,H_2)$ such that: 
+\begin{enumerate}
+\item 
+For every $k \in K$, $A_k$ is invertible and $(A_k)^{-1} \in \mathcal{L}(H_2,H1)$. 
+\item 
+There exist a $\delta >0$ such that $k \in K \mapsto A_k \in \mathcal{L}(H_1,H_2)$, has holomorphic extension in $K_\delta$.
+\end{enumerate}
+Then there exist $\eta$, such that $0<\eta<\delta$ depending of $K$, and we have that $A_{k,\IC}$ is invertible for every $k \in K_\eta$, and the map 
+$$k \in K \mapsto (A_{k,\IC})^{-1} \in \mathcal{L}(H_2,H_1),$$ has holomorphic extension in $K_\eta$.
+\end{theorem} 
+Finally we state an abstract result that enable us deduce parametric holomorphism. We reuse the notations introduced in Section \ref{section:ShapeHolormsGeneral}.
+\begin{theorem}
+Aassume that fixed sequence $\{a_n\}_{n \in \IN}$ in \eqref{eq:Kcompact} is  such that $\sum_{n=0}^\infty \| a_n \|^p_{B_1} <\infty$, for some $p \in (0,1)$. 
+Let $\delta>0$ and $f : K \subset B_1 \rightarrow B_2$, with holomorphic extension from $K_\delta$. Then for $\epsilon < \delta$ the map 
+$$ \by \in [-1,1]^{\IN} \mapsto f(k(\by)) \in B_2,$$
+is $(b,p,\epsilon)-$holomorphic for $b_n = \|a_n\|_{B_1}$, and continious in product topology.
+\end{theorem}
+\begin{proof}
+Let us define the map 
+$$
+P : \by \in [-1,1]^{\IN} \mapsto k(\by) \in B_1.
+$$
+First we will show that this map is continuous in product topology, and hence we obtain the continuity of the map $\by \mapsto f(k(\by))$, and also that $K$ in \eqref{eq:Kcompact} is compact. We show this using neighborhoods, let us consider a ball of radius $\rho$ centered at $k(\by^0)$, for a fixed $\by^0 \in [-1,1]^{\IN}$. We can find $N \in \IN$ such that $\sum_{n> \IN} \|a_n\|_{B_1} < \frac{\rho}{2}$, and we consider the sets 
+$$
+A_N = \left\lbrace \by \in [-1,1]^{N} : \sum_{n=0}^N |y^0_n- y_n| \| a_n\|_{B_1} < \frac{\rho}{2} \right\rbrace,
+$$
+is clear that $A_N$ is an open subset of $[-1,1]^N$. Consider now the embedding of $A_N$ onto $[-1,1]^{\IN}$, given by $A_N \times [-1,1]^{\IN -N}$, which is open by definition. Furthermore for $\by$ in this set we have: 
+\begin{align*}
+\|k(\by) - k(\by^0)\|_{B_1} \leq \sum_{n=0}^N |y^0_n- y_n| \| a_n\|_{B_1} + \sum_{n > N} \| a_n\|_{B_1} < \rho,
+\end{align*}
+thus the image of the latter set under the transformation $k()$ is inside the ball with radius $\rho$, hence since $\rho$ is arbitrary we obtain the continuity. 
+
+Now we show the parametric holomorphism, we notice that the map $\by \mapsto f(k(\by))$, is equivalent to the composition $f \circ P$, and hence is immediate that is bounded. Let  us consider a sequence of positive numbers $\{\rho_n\}_{n \in \IN}$, such that $\sum_{n=0}^\infty (\rho_n-1) b_n < \epsilon$. Thus the image under $P$ of $\mathcal{T}_\rho \subset K_\epsilon$, since by definition of the complex tubes we have that given $z \in \cT_\rho$, there is $\by \in [-1,1]^\IN$ such that $|z_n - y_n| < 1-\rho_n$ for every $n$, and hence we have that 
+$$
+\|P(\bz) -P(\by)\|_{B^{\IC}_1}  \leq 
+\sum_{0}^\infty | z_n - y_n | \| a_n\|_{B_1} \leq \sum_{0}^\infty (1-\rho_n) b_n < \epsilon.
+$$
+The result then follows directly from the holomorphic extension of $f$, and by the observation of that for each $y_n \in [-1,1]$ the map $Py_n  \mapsto (\by)$ is linear, and hence could be extended to the full complex plane.
+\end{proof}
+
+\subsection{Functional Spaces}
+\label{sec:FunctionalSpaces}
+
+We now define properly the Banach space in which the parametrizations are considered, as well as the Hilbert spaces that serve as domain and range of the associated boundary integral operators that appears in the Theorems of Section \ref{sec:MainResult}.
+
+Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$,and such that the derivatives of order $m$ are $h$ holder   also in $[-1,1]$, for any $m\in \IN$ and $h \in [0,1]$. This space has Banach structure when is endowed with the classical norm 
+\begin{align*}
+\| f \|_{\cmspaceh{m}{h}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert+ \sum_{k: |k| =m} \sup_{\bx \in A}  \frac{|\partial_{\bx}^{\bk}f(x)-\partial_{\bx}^{\bk}f(y)|}{\| \bx - \by\|^h},
+\end{align*}
+where we are using the classical multi-index notation \cite[pg. 61]{mclean2000strongly}.  The case $h=0$ correspond to functions with $m$ continuous derivatives and the norm is reduced to 
+\begin{align*}
+\| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
+\end{align*}
+On the other hand the case $h=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, thus the derivatives of order $m+1$ exist and are bounded almost everywhere (see \cite[pg. 280]{evans1998partial}). Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
+
+In particular the paramatrizations of the open arcs will be taken as elements of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, whose complexification is $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. We will only use those elements with global inverse an non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$, with the convention $\rgeoh{0}{h}  = \emptyset$.
+
+Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
+$$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
+ We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
+Given a smooth periodic function $u :[-\pi,\pi] \rightarrow \IC$, its Fourier coefficients are denoted as
+$$
+\widetilde{u}_n = \int_{-\pi}^\pi u(\theta) e_{-n}(\theta) d\theta, 
+$$
+Similarly we define two families of first kind Chebishev coefficients:
+\begin{align*}
+u_n = \int_{-1}^{1} u(t) T_n(t) dt, \quad \text{and,} \quad  \widehat{u}_n = \int_{-1}^1 u(t) T_n w^{-1}(t)dt, 
+\end{align*}
+and two families of second kind Chebishev coefficients:
+\begin{align*}
+\ddot{u}_n = \int_{-1}^1 u(t) U_n (t) dt,\quad \text{and,}\quad \widecheck{u} _n = \int_{-1}^1 u(t) U_n w(t) dt
+\end{align*}
+This definitions are extended to bi-variate functions as 
+$$\widetilde{u}_{n,l} = \int_{-\pi}^{\pi}\int_{-\pi}^\pi u(\theta,\phi) e_{-n}(\theta)e_{-l}(\phi) d\theta d\phi,$$
+for a bi-periodic function, and similarly  for Chebyshev coefficients of  bi-variate functions on $[-1,1]\times[-1,1]$. Furthermore, the definition of the coefficients are extended to distribution by duality respect to the bases. 
+
+We will make use of the traditional periodic Sobolev spaces defined as 
+$$
+H^s := \left\lbrace u : \| u\|_{H^s}^2 = \sum_{n=-\infty}^\infty (1+n^2)^s |\widetilde{u}_n|^2 < \infty \right\rbrace,
+$$
+for $s\in \IR$. We refer to \cite[Chapter 5]{saranen2013periodic} for a more rigorous definition. We also define the first kind spaces similarly as in \cite{Averseng2019},
+\begin{align*}
+T^s := \left\lbrace u : \| u\|_{T^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |{u}_n|^2 < \infty \right\rbrace, \\
+W^s := \left\lbrace u : \| u\|_{W^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widehat{u}_n|^2 < \infty \right\rbrace,
+\end{align*} 
+for $s \in \IR$. These two can be defined rigurously from $H^s$ by defining two periodic lifting operators  as 
+\begin{align}
+\label{eq:liffings}
+(Ju) (\theta) = u(\cos(\theta)) | \sin \theta|, \quad \text{and,} \quad
+(\widehat{J}u)(\theta) = u (\cos(\theta)),
+\end{align}
+which again are extended to distribution by duality, and considering the equivalences 
+\begin{align*}
+u \in T^s \Leftrightarrow Ju \in H^s, \quad \text{and,} \quad u \in W^s \Leftrightarrow \widehat{J}u \in H^s.
+\end{align*}
+We also define the second kind spaces, 
+\begin{align*}
+U^s := \left\lbrace u : \| u\|_{U^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\ddot{u}_n|^2 < \infty \right\rbrace, \\
+Y^s := \left\lbrace u : \| {u}\|_{M^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widecheck{u}_n|^2 < \infty \right\rbrace,
+\end{align*} 
+These spaces could also referenced back to the classical Sobolev spaces, to this end we define the odd periodic lifftings, 
+$$
+Ku(\theta) = Ju(\theta) \text{sign}(\sin\theta), \quad \text{and,}\quad \widehat{K}u = \widehat{J}u(\theta) \text{sign}(\sin\theta),
+$$
+where the sign function is defined with the convention $\text{sign}(0)=0$, and we have the equivalences: 
+\begin{align*}
+u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
+\end{align*}
+From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see the functions $\{wU_n\}_{n \in \IN}$ are dense in $U^s$, since these are $0$
+on the extremes $\pm 1$, we obtain that the general Maue's representation formula \eqref{eq:mauesrep} is valid for functions in $U^s$.  
+
+An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular using the density of the Chebishev basis we can easly see that 
+\begin{align}
+\label{eq:devprop}
+\frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
+\frac{d}{dt} : W^s \rightarrow Y^{s-1}.
+\end{align}
+Finally depending on the nature of the underlying differential operator $\cP$ (see Section \ref{sec:bvproblem}) we use the notation 
+\begin{align*}
+\IT^s = T^s,\ \IU^s = U^s, \ \IW^s = W^s, \ \IY^s = Y^s,
+\end{align*}
+if $\cP$ is a scalar operator, and 
+\begin{align*}
+\IT^s = T^s \times T^s,\ \IU^s = U^s \times U^s, \ \IW^s = W^s \times W^s, \ \IY^s = Y^s \times Y^s,
+\end{align*}
+if $\cP$ is a vectorial operator.
+\subsection{Holomorphic Extension of Common Functions}
+\label{sec:funext}
+Before we proceed with the analysis of integral operators we show that some recurrent functions has holomorphic extensions. The results of this section are very similar to the ones presented  in \cite{Henriquez2021}, with the difference that here the involved functions are not periodic and we analyses them in the context of general spaces $\cmspaceh{m}{h}{\iinterv}{\IC^s}$, instead of only $\cmspace{2}{\iinterv}{\IC^2}$. The proofs are presented in Appendix \todo{ref}.
+
+Through the remaining of this section $m$ will denote an integer such that $m\geq 1$, and $h$ is a real number in $[0,1]$.
+
+We will make use of the square root and logarithmic functions. Both of them have holomorphic extension (through the main branch) in $\IC \setminus (-\infty,0]$.
+
+We will also use the extension of the distance function between two (not necessarily different) arcs. For parametrizations $\bp,\br$ the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
+\begin{align*}
+d_{\br,\bp}(t,s) = \sqrt{(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
+\end{align*}
+whenever $\br = \bp$ we use the notation $d_{\br} = d_{\br,\br}$, and over define $d_{\br}(t,t)=0$. The first result of this section state that for $\br = \bp$ the square of the distance have holomorphic extension.
+\begin{lemma} \todo{no... la distancia siempre es holomorfa lo que necesito es delta tal que la parte real de Q sea positiva para evaluarlo en el logaritmo!!!!}
+Let $K \subset \rgeoh{m}{h}{(-1,1)}{\IR^2}$, there exist $\delta>0$ such that the map, $\br \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{\iinterv}{\IC}$, has holomorphic extension in $K_\delta$.
+\end{lemma}
+
+\begin{enumerate}
 \item 
 Holomorphy extension of standard functions 
 \item 
@@ -643,132 +851,9 @@ discretizations
 Stokes equation, thermolastic???
 \end{enumerate}
 
-\section{Shape Holomorphy of Boundary Integral Operators}
 
-Let us begin this section by recalling a pair of abstract theorems that constitute the main tool to establish the holomorphic dependence of a class of integral operators. These results are not new but slightly generalization of  Theorems 4.13 and 5.21 presented in \todo{ref}. Their proofs also follows verbatim as in the reference, and as so are omitted.
 
-Consider a real Banach space $\mathcal{B}$, and its complexification denoted $\mathcal{B}^{\IC}$. Furthermore, consider a compact set $K \subset \mathcal{B}$ and its complex open extension defined as 
-\begin{align}
-\label{eq:openext}
-K_\delta :=  \left\lbrace k \in \mathcal{B}^{\IC} : \text{ dist}(k, K) < \delta \right\rbrace,
-\end{align}
-for any $\delta>0$. We then consider a family of integral operators of the form
-\begin{align*}
-(P_k u)(t) = \int_{-1}^{1} f(t-s) p_k(t,s) u(s) ds,
-\end{align*}
-with any $k \in K$. We assume that $P_k$ is a linear bounded operator between two Hilbert spaces $H_1,H_2$\footnote{As is classical, we are abusing the notation by representing $P_k$ as an integral. Is it word notice that if $u$ is a continuous function the integral representation is well defined.} and that the continuous functions are dense in $H_1$. Now we present the result that ensure that the map $k \in K_\delta \mapsto P_k \in \mathcal{L}(H_1,H_2)$ has an holomorphic extension to $K_\delta$ for some $\delta>0$. 
 
-\begin{theorem} \label{thrm:abstractholm}
-Assume that 
-\begin{enumerate}
-\item 
-The function $f$ is continuous everywhere with the sole possible  exception of 0. In a neighborhood of $0$ assume that $f$ is controlled as 
-$$|f(t)| \lesssim| t|^{-\alpha}$$
-for some $\alpha \in [0,1)$. 
-\item 
-There exist a $\delta >0$, such that the map $k \in K \mapsto p_k \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ can be extended to a map $k \in K_\delta \mapsto p_{k,\IC}$ and that extension is such that 
-the map $k \in K_\delta \mapsto p_{k,\IC } \in \cmspace{0}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. 
-\item 
-For $\delta$ as before, the corresponding extension of $P_k$ defined as $(P_{k,\IC}u)(t) = \int_{-1}^{1} f(t,s) p_{k,\IC}(t,s) u(s) ds$ is uniformly bounded, i.e. 
-$$ \sup_{k \in K_\delta} \| P_{k,\IC} \|_{\mathcal{L}(H_1,H_2)}< \infty.$$
-If this three condition are satisfied, then the map $k \in K_\xi \mapsto P_{k, \IC} \in \mathcal{L}(H_1,H_2)$ is holomorphic for every $0< \xi<\delta$.  
-\end{enumerate}
-\end{theorem}
-
-\begin{theorem}
-\label{thrm:abtractinverse}
-Consider $A_k \in \mathcal{L}(H_1,H_2)$ such that: 
-\begin{enumerate}
-\item 
-For every $k \in K$, $A_k$ is invertible and $(A_k)^{-1} \in \mathcal{L}(H_2,H1)$. 
-\item 
-There exist a $\delta >0$ and a extension of $A_k$, denoted $A_{k,\IC}$, to $K_\delta$ such that 
-$$k \in K_\delta \mapsto A_{k,\IC} \in \mathcal{L}(H_1,H_2),$$
- is holomorphic and uniformly bounded in $k$. 
-\end{enumerate}
-Then there exist $0<\eta<\delta$ depending of $K$, such that 
-$A_{k,\IC}$ is invertible for every $k \in K_\eta$, and the map 
-$$k \in K_\eta \mapsto (A_{k,\IC})^{-1} \in \mathcal{L}(H_2,H_1),$$ is holomorphic and uniformly bounded. 
-\end{theorem} 
-The proof of the latter is based on the holomphism of the inverse function, we refer to \todo{ref theorem 5.21} for the details.
-
-The rest of this section provide the actual framework to invoke the previous two theorems. 
-\subsection{Functional Spaces}
-
-According to the previous section, we need two family of functional spaces. First the underlying Banach real space $\mathcal{B}$ that serves as the parameters for the holomorphism. Secondly, the Hilbert spaces $H_1,H_2$ that are the natural spaces for the associated integral operators. 
-
-Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, for any $m \in \IN$ and all the $m$ derivatives are $h$ holder continuous for $h \in [0,1]$, also in $[-1,1]$. This space has Banach structure when is endowed with the classical norm 
-\begin{align*}
-\| f \|_{\cmspaceh{m}{h}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert+ \sum_{k: |k| =m} \sup_{\bx \in A}  \frac{|\partial_{\bx}^{\bk}f(x)-\partial_{\bx}^{\bk}f(y)|}{\| \bx - \by\|^h},
-\end{align*}
-where we are using the classical multi-index notation \todo{ref}.  The case $h=0$ correspond to functions with $m$ continuous derivatives and the norm is reduced to 
-\begin{align*}
-\| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
-\end{align*}
-On the other hand the case $h=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, \todo{thus the derivatives of order $m+1$ exist and are bounded almost everywhere}. Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
-
-In particular we will make use of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, and identify its elements with open arcs, Its complexification is denoted by $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. Furthermore we are going to only use those elements who define non self crossing arcs (Jordan arc) with non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$, with the convention $\rgeoh{0}{h}  = \emptyset$.
-
-Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
-$$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
- We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
-Given a smooth periodic function $u :[-\pi,\pi] \rightarrow \IC$, its Fourier coefficients are denoted as
-$$
-\widetilde{u}_n = \int_{-\pi}^\pi u(\theta) e_{-n}(\theta) d\theta, 
-$$
-Similarly we define two families of first kind Chebishev coefficients:
-\begin{align*}
-u_n = \int_{-1}^{1} u(t) T_n(t) dt, \quad \text{and,} \quad  \widehat{u}_n = \int_{-1}^1 u(t) T_n w^{-1}(t)dt, 
-\end{align*}
-and two families of second kind Chebishev coefficients:
-\begin{align*}
-\ddot{u}_n = \int_{-1}^1 u(t) U_n (t) dt,\quad \text{and,}\quad \widecheck{u} _n = \int_{-1}^1 u(t) U_n w(t) dt
-\end{align*}
-This definitions are extended to bi-variate functions as 
-$$\widetilde{u}_{n,l} = \int_{-\pi}^{\pi}\int_{-\pi}^\pi u(\theta,\phi) e_{-n}(\theta)e_{-l}(\phi) d\theta d\phi,$$
-for a bi-periodic function, and similarly  for Chebyshev coefficients of  bi-variate functions on $[-1,1]$. Furthermore, the definition of the coefficients are extended to distribution by duality respect to the basis. 
-
-We will make use of the traditional periodic Sobolev spaces defined as 
-$$
-H^s := \left\lbrace u : \| u\|_{H^s}^2 = \sum_{n=-\infty}^\infty (1+n^2)^s |\widetilde{u}_n|^2 < \infty \right\rbrace,
-$$
-for $s\in \IR$. We refer to \todo{ref} for a more rigorous definition. We also define the first kind spaces following \todo{ref} as : 
-\begin{align*}
-T^s := \left\lbrace u : \| u\|_{T^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |{u}_n|^2 < \infty \right\rbrace, \\
-W^s := \left\lbrace u : \| u\|_{W^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widehat{u}_n|^2 < \infty \right\rbrace,
-\end{align*} 
-for $s \in \IR$. These two can be defined rigurously from $H^s$ by considering two periodic lifting operators defined as 
-\begin{align}
-\label{eq:liffings}
-(Ju) (\theta) = u(\cos(\theta)) | \sin \theta|, \quad \text{and,} \quad
-(\widehat{J}u)(\theta) = u (\cos(\theta)),
-\end{align}
-which again are extended to distribution by duality, and considering the equivalences 
-\begin{align*}
-u \in T^s \Leftrightarrow Ju \in H^s, \quad \text{and,} \quad u \in W^s \Leftrightarrow \widehat{J}u \in H^s.
-\end{align*}
-We also define the second kind spaces as in \todo{ref}, 
-\begin{align*}
-U^s := \left\lbrace u : \| u\|_{U^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\ddot{u}_n|^2 < \infty \right\rbrace, \\
-M^s := \left\lbrace u : \| {u}\|_{M^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widecheck{u}_n|^2 < \infty \right\rbrace,
-\end{align*} 
-These spaces could also referenced back to the classical Sobolev spaces, to this end we define the odd periodic lifftings, 
-$$
-Ku(\theta) = Ju(\theta) \text{sign}(\sin\theta), \quad \text{and,}\quad \widehat{K}u = \widehat{J}u(\theta) \text{sign}(\sin\theta),
-$$
-where the sign function is defined with the convention $\text{sign}(0)=0$, and we have the equivalences: 
-\begin{align*}
-u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
-\end{align*}
-From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see that there is a dense set of continuous  functions in $U^s$, such that they take $0$ value in $\pm 1$. Hence general Maue's representation formulas (as in \eqref{eq:mauesrep}) are valid for functions in $U^s$.  
-
-An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular from \todo{ref nicase? o martin} we have 
-\begin{align}
-\label{eq:devprop}
-\frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
-\frac{d}{dt} : W^s \rightarrow M^{s-1}.
-\end{align}
-We will use the spaces $T^s,U^s$ as domain of the integral operators on open arcs mapped back to $[-1,1]$, while the spaces $W^s, M^s$ will be used as range spaces.
 \subsection{Holomorphic Extension of Standard Functions}
 Before we proceed with the analysis of the integral operators we recall the holomorphic extension of some common functions.
 
@@ -779,36 +864,7 @@ $$d_{\br,\bp}(t,s) = \| \br(t) - \br(s)\|,$$
 while for complex arcs $\br, \bp :[-1,1] \rightarrow \IC^2$, the corresponding extension is 
 $$d_{\br,\bp}(t,s) =  \sqrt{(\br(t)-\bp(s))\cdot (\br(t)-\bp(s))},$$
 where $\ba \cdot \bb  = a_1 b_1 + a_2 b_2$. Notice that we do not use the conjugate function as it will prevent any possibility of obtaining holomorphic extensions.  Now we present some basic tools that will enable us to show that the distance function is well defined for complex arcs. 
-\begin{lemma}
-\label{lemma:dwelldef}
-Let $m \in \IN$, $m\geq1$, $0\leq h \leq 1$, and $K \subset \rgeoh{m}{h}$ a compact set, then 
-\begin{enumerate}
-\item 
-\begin{align*}
-\inf_{\br \in K } \inf_{t \in (-1,1)} \| \br'(t) \|>0  \quad \text{and,} \quad  \sup_{\br \in K} \sup_{t \in (-1,1)} \| \br'(t)\| < \infty.
-\end{align*}
-\item 
-There exist $\delta >0 $ such that  
-$$ 
-\inf_{\br \in K_\delta} \inf_{t \in (-1,1)}Re (\br'(t) \cdot \br'(t)) > 0 .$$
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-First part follows from the continuity of $I(\br) = \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S(\br) = \sup_{t \in (-1,1)} \| \br'(t)\|$ in $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, in fact if $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}< \epsilon$ we have that 
-$I(\bp)  < \epsilon + I(\br)$
-and symmetrically 
-$
-I(\br)  < \epsilon + I(\bp)
-$
-thus $|I(\br) - I(\bp)| < \epsilon$, and then the infimum in $K$ is achieved since $K$ is compact. The supremum case follows similarly. For the second part define $I = \inf_{\br \in K } I(\br)$, $S =\sup_{\br \in K } S(\br)$, and consider any element $\br \in K_\delta$, then there is $\bp \in K$ such that $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}} < \delta$, and we have 
-\begin{align*}
-\br' \cdot \br' = \|\br'\|^2+ 2(\br' -\bp')\cdot \bp' +(\br'-\bp')\cdot(\br'-\bp') 
-\end{align*}
-thus we get
-\begin{align*}
-Re(\br' \cdot \br') \geq I^2 - 2S\delta -\delta^2, \end{align*}
-the result then follows by selecting $\delta < \sqrt{I^2+S^2}-S$.
-\end{proof} 
+
 
 Now we establish basic proprieties of the function $d_{\br,\br}$. 
 
@@ -2353,6 +2409,38 @@ For the Neumann problem we need a Maue's representation formula. While we are no
 \bibliographystyle{siam}
 
 \appendix
+\section{Proofs Holomorphic Extensions of Common functions }
+\label{appendix:funext}
+\begin{lemma}
+\label{lemma:dwelldef}
+Let and $K \subset \rgeoh{m}{h}$ a compact set, then 
+\begin{enumerate}
+\item 
+\begin{align*}
+\inf_{\br \in K } \inf_{t \in (-1,1)} \| \br'(t) \|>0  \quad \text{and,} \quad  \sup_{\br \in K} \sup_{t \in (-1,1)} \| \br'(t)\| < \infty.
+\end{align*}
+\item 
+There exist $\delta >0 $ such that  
+$$ 
+\inf_{\br \in K_\delta} \inf_{t \in (-1,1)}Re (\br'(t) \cdot \br'(t)) > 0 .$$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+First part follows from the continuity of $I(\br) = \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S(\br) = \sup_{t \in (-1,1)} \| \br'(t)\|$ in $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, in fact if $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}< \epsilon$ we have that 
+$I(\bp)  < \epsilon + I(\br)$
+and symmetrically 
+$
+I(\br)  < \epsilon + I(\bp)
+$
+thus $|I(\br) - I(\bp)| < \epsilon$, and then the infimum in $K$ is achieved since $K$ is compact. The supremum case follows similarly. For the second part define $I = \inf_{\br \in K } I(\br)$, $S =\sup_{\br \in K } S(\br)$, and consider any element $\br \in K_\delta$, then there is $\bp \in K$ such that $\| \br -\bp \|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}} < \delta$, and we have 
+\begin{align*}
+\br' \cdot \br' = \|\br'\|^2+ 2(\br' -\bp')\cdot \bp' +(\br'-\bp')\cdot(\br'-\bp') 
+\end{align*}
+thus we get
+\begin{align*}
+Re(\br' \cdot \br') \geq I^2 - 2S\delta -\delta^2, \end{align*}
+the result then follows by selecting $\delta < \sqrt{I^2+S^2}-S$.
+\end{proof} 
 \section{Fractional norms for periodic functions}
 \label{appendix:fracbivariate}
 This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \todo{ref kress singular integral equations}. 
