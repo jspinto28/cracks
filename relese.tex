@@ -41,6 +41,7 @@
 
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{condition}[theorem]{Condition}
 \newcommand{\dc}{downward closed }
 %CJ Macros
 
@@ -486,7 +487,7 @@ We assume that there is a fundamental solution associated with the differential 
 \begin{align}
 \label{eq:funsolgen}
 G(\bx,\by )  =
-\log \|\bx -\by \| F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
+\log (\|\bx -\by \|^2) F_1(\|\bx -\by \| ^2)+F_2(\|\bx -\by \| ^2),
 \end{align}
 where $F_1$, and $F_2$ are assumed to be entire complex functions, that are either scalars or $2 \times 2$ matrices. Furthermore we will also assume that in the scalar case $F_1(0) \neq 0$, and for the vectorial case $\mathbf{F_1}(0)$ is invertible. For an open arc $\gamma$ the layered potential are defined as:
 \begin{align*}
@@ -799,29 +800,83 @@ if $\cP$ is a scalar operator, and
 if $\cP$ is a vectorial operator.
 \subsection{Holomorphic Extension of Common Functions}
 \label{sec:funext}
-Before we proceed with the analysis of integral operators we show that some recurrent functions has holomorphic extensions. The results of this section are very similar to the ones presented  in \cite{Henriquez2021}, with the difference that here the involved functions are not periodic and we analyses them in the context of general spaces $\cmspaceh{m}{h}{\iinterv}{\IC^s}$, instead of only $\cmspace{2}{\iinterv}{\IC^2}$. The proofs are presented in Appendix \todo{ref}.
+Before we proceed with the analysis of integral operators we show that some recurrent functions has holomorphic extensions. The results of this section are very similar to the ones presented  in \cite{Henriquez2021}, with the difference that here the involved functions are not periodic and we analyses them in the context of general spaces $\cmspaceh{m}{h}{\iinterv}{\IC^s}$, instead of only $\cmspace{2}{\iinterv}{\IC^2}$. The proofs are presented in Appendix \ref{appendix:funext}.
 
 Through the remaining of this section $m$ will denote an integer such that $m\geq 1$, and $h$ is a real number in $[0,1]$.
 
 We will make use of the square root and logarithmic functions. Both of them have holomorphic extension (through the main branch) in $\IC \setminus (-\infty,0]$.
 
-We will also use the extension of the distance function between two (not necessarily different) arcs. For parametrizations $\bp,\br$ the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
+We will also use the extension of the square of the distance function between two points located in two (not necessarily different) arcs. For parametrizations $\bp,\br$ the square of the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|^2$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
 \begin{align*}
-d_{\br,\bp}(t,s) = \sqrt{(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
+d_{\br,\bp}(t,s) = {(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
 \end{align*}
-whenever $\br = \bp$ we use the notation $d_{\br} = d_{\br,\br}$, and over define $d_{\br}(t,t)=0$. The first result of this section state that for $\br = \bp$ the square of the distance have holomorphic extension.
-\begin{lemma} \todo{no... la distancia siempre es holomorfa lo que necesito es delta tal que la parte real de Q sea positiva para evaluarlo en el logaritmo!!!!}
-Let $K \subset \rgeoh{m}{h}{(-1,1)}{\IR^2}$, there exist $\delta>0$ such that the map, $\br \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{\iinterv}{\IC}$, has holomorphic extension in $K_\delta$.
+where we use the real dot product, as the inclusion of the conjugates prevent the existence of any holomorphic extension. Whenever $\br = \bp$ we use the notation $d_{\br} = d_{\br,\br}$. The following result state that the square of the distance function always have holomorphic extension.  
+\begin{lemma} 
+\label{lemma:squaredistance}
+Let $K^1,K^2 \subset \rgeoh{m}{h}{(-1,1)}{\IR^2}$ compact sets, then for every pair $\delta_1>0, \ \delta_2 > 0$ the map, $$(\br,\bp) \in K^1 \times K^2 \mapsto d_{\br,\bp}^2 \in \cmspaceh{m}{h}{\iinterv}{\IC},$$has holomorphic extension in $K^1_{\delta_1} \times K^2_{\delta_2}$. Futhermore if $K^1,K^2$ are disjoint, there exist $\delta_1>0,\delta_2>0$ such that 
+\begin{align*}
+\inf_{(\br,\bp) \in K^1_{\delta_1}  \times K^2_{\delta_2}} 
+\inf_{(t,s)\in \iinterv}
+Re(d_{\br,\bp}^2(t,s))>0.
+\end{align*}
 \end{lemma}
+Another function that would be crucial in establishing the holomirphic extension of our integral operators is presented in the following result.
+\begin{lemma}
+\label{lemma:Qfun}
+For a function $\br$ consider
+$$
+Q_{\br}(t,s) = \begin{cases}
+\frac{d^2_{\br}(t,s)}{(t-s)^2}, \quad t\neq s \\
+\br '(t) \cdot \br '(t), \quad t =s 
+\end{cases}.
+$$
+Then for a compact set $K \subset \rgeoh{m}{h}$, the map  
+\begin{align*}
+\br \in K \mapsto Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC},
+\end{align*}
+has holomiric extension in $K$ for every $\delta>0$. Furthermore there exist $\delta >0$ such that 
+\begin{align*}
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
+\end{align*}
+and also the map 
+\begin{align*}
+\br \in K \mapsto 1/Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, 
+\end{align*} 
+has holomorphic extension in $K_\delta$.
+\end{lemma} 
+The summary of this section is that the functions $d_{\br,\bp}$, $Q_{\br}$ have holomorphic extension, and they have strictly real positive part under some conditions previously specified. For future references we write explictly the conditions.
 
+\begin{condition}
+\label{condition:dcross}
+For $K^1,K^2 \subset \rgeoh{m}{h}$ compact disjoint sets. If $\delta_1>0,\delta_2>0 \in \IR$ are such that 
+$$
+(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
+$$
+where $\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+ \| \br(t) - \bp(s) \|$, $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br(t)\| +
+\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$. 
+\end{condition}
+
+\begin{condition}
+\label{condition:Qself}
+For $K \subset \rgeoh{m}{h}$ compact  sets. If $\delta>0 $ is such that 
+$$
+(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
+$$
+where $I = \inf_{\br \in K} \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S = \sup_{\br \in K} \sup_{t \in (-1,1)} \|\br'(t)\|$.
+\end{condition}
+Hence Condition \ref{condition:dcross}, ensures that $Re(d_{\br,\bp}(t,s))>0$ for every $(t,s) \in \iinterv$ and $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$. While, Condition \ref{condition:Qself} ensures that $Re(Q_{\br}(t)) >0$, for every $t \in (-1,1)$, and $\br \in K_\delta$. 
 \begin{enumerate}
-\item 
-Holomorphy extension of standard functions 
 \item 
 Integral kernels 
 \item 
 General integral operators
 \end{enumerate}
+\subsection{Holomorphic Extension of Integral Kernals}
+In this section we show that the kernels of the integral operators (weakly-singular, and hyper-singular), according to representation \eqref{eq:funsolgen}, have holomorphic extensions. 
+
+This is a direct continuation of the previous section as the extensions of the integral kernels use explictly the functions $d_{\br,\bp}^2$ and $Q_{\br}$, that we have previously considered.
 
 \section{Shape Holomirphism for Dirichlet and Neumann Problems}
 \begin{enumerate}
@@ -851,175 +906,6 @@ discretizations
 Stokes equation, thermolastic???
 \end{enumerate}
 
-
-
-
-\subsection{Holomorphic Extension of Standard Functions}
-Before we proceed with the analysis of the integral operators we recall the holomorphic extension of some common functions.
-
-The most basic functions that we will use are the square root and the logarithm function. Both of them are extended to the complex plane taking the main branch and the resulting extensions are holomorphic in $\IC \setminus (-\infty,0]$. We denote both extension with the same notation that the real functions, i.e. $\sqrt{\cdot}$, and $\log{(\cdot)}$.   
-
-We will also make use of the extension of the distance function between two points of two arcs (including the possibility that the two arcs are the same).  For real parametrizations $\br, \bp :[-1,1] \rightarrow \IR^2$ the distance function is defined as 
-$$d_{\br,\bp}(t,s) = \| \br(t) - \br(s)\|,$$
-while for complex arcs $\br, \bp :[-1,1] \rightarrow \IC^2$, the corresponding extension is 
-$$d_{\br,\bp}(t,s) =  \sqrt{(\br(t)-\bp(s))\cdot (\br(t)-\bp(s))},$$
-where $\ba \cdot \bb  = a_1 b_1 + a_2 b_2$. Notice that we do not use the conjugate function as it will prevent any possibility of obtaining holomorphic extensions.  Now we present some basic tools that will enable us to show that the distance function is well defined for complex arcs. 
-
-
-Now we establish basic proprieties of the function $d_{\br,\br}$. 
-
-\begin{lemma}
-\label{lemma:dself}
-Let $m \in \IN$, $m\geq 1$, and $\br \in  \cgeoh{m}$ with $\inf_{t \in (-1,1)}Re(\br'(t) \cdot \br'(t)) >0$, then the extension of the distance function 
-\begin{align*}
-d_{\br} (t,s) = \begin{cases} d_{\br,\br}(t,s) \quad t\neq s \\ 
-0 \quad t=s \end{cases},
-\end{align*} 
-is a continuous function. Moreover, for a compact set $K \subset \rgeoh{m}{h}$ and $\delta$ as in Lemma \ref{lemma:dwelldef}, the map $\br \in K_\delta \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomporphic, and uniformly bounded.   
-\end{lemma}
-\begin{proof}
-For $t \neq s$ we have that
-\begin{align*}
-d_{\br}^2(t,s) = (\br(t)-\br(s))\cdot (\br(t) -\br(s)),
-\end{align*}
-using the Taylor expansion of $\br$ we have 
-\begin{align}
-\label{eq:expdr}
-d_{\br}^2(t,s) = (t-s)^2 \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)
-\end{align}
-Using mean value theorem we obtain 
-\begin{align}
-\label{eq:ddbound}
-Re ( d_{\br}^2(t,s)  )  \geq (t-s)^2 \inf_{t \in (-1,1)} Re(\br'(t) \cdot \br'(t)) >0.
-\end{align}
-thus $d_{\br}$ is well defined. The continuity is obtained directly from \eqref{eq:expdr}. For the second part let us define 
-$$
-D d_{\br}^2[\bv](t,s) = 2 (\br(t)-\br(s))\cdot (\bv(t) - \bv(s)),
-$$
-is clear that this function is linear in the $\bv$ variable, and we also have $D d_{\br}^2[\bv] \in \cmspaceh{m}{h}{\iinterv}{\IC}$ for $\br,\bv \in \cmspaceh{m}{h}{(-1,1)}{\IC^2}$. We also have 
-\begin{align*}
-d^2_{\br+\bv}(t,s) -d^2_{\br}(t,s) =  D d_{\br}^2[\bv](t,s) + d^2_{\bv}(t,s).
-\end{align*}
-Consider $\alpha, \beta \in \IN$ such that $0 \leq \alpha +\beta \leq m$, by the product rule for derivatives we have that 
-\begin{align*}
-\partial_s^\beta \partial_t^\alpha d^2_{\bv}(t,s) = \sum_{k=1}^{\alpha-1} \begin{pmatrix} \alpha \\ k \end{pmatrix} \partial_t^k \bv(t) \cdot \partial^{\alpha-k}_t \bv(t) - 2\partial_s^\beta \bv(s) \cdot \partial^\alpha_t \bv(t),
-\end{align*} 
-using this rule we can directly show that $d_{\bv}^2(t,s) \lesssim \|\bv\|^2_{\cgeoh{m}}$ thus we conclude that $D d_{\br}^2[\bv]$ is in fact the Frechet derivative of $d^2_{\br}$ (in the direction $\bv$), in $\cmspaceh{m}{h}{\iinterv}{\IC}$, and the map $\br  \mapsto d_{\br}^2 \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic. Finally we have that given $\br \in K_\delta$, there is $\widetilde{\br} \in K$ such that $\| \br - \widetilde{\br}\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}} < \delta$, then 
-\begin{align*}
-\| d^2_{\br} \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \leq \| d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  + \| d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
-\end{align*}
-the seccond term of the right hand side is uniformly bounded as $K$ is compact. For the first term we have
-\begin{align*}
-\begin{split}
-\|d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \leq 
-\|D d^2_{\widetilde{\br}}[\br - \widetilde{\br}]\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} +\\ \| d^2_{\br -\widetilde{\br}}\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
-\end{split}
-\end{align*} 
- using the explicit expresion of the derivative and the product rule for derivatives we get
-\begin{align*}
-\|d^2_{\br}  - d_{\widetilde{\br}}^2 \|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \lesssim 
-\|\widetilde{\br}\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \delta  + \delta^2,
-\end{align*}
-where the unspecified constant do not depends of $\br$. The result then follows by the compactness of $K$.
-\end{proof}
-
-Now we focus in the distance for two different disjoint arcs. 
-\begin{lemma}
-\label{lemma:dcross}
-Consider $K^1,K^2$ two disjoint compact subsets of $\rgeoh{m}{h}$, with  $m \in \IN$
-then, there exist $\delta_1 >0 , \delta_2 >0$ such that the map $(\br, \bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto d_{\br, \bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded. 
-\end{lemma}
-\begin{proof}
-First notice that since we are considering compact sets in a metric space we have that
-\begin{align*}
-\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
- \| \br(t) - \bp(s) \| = I > 0,
-\end{align*}
-and from this we can see that
-$$
-Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_2)^2,$$
-where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br'(t)\| +
-\sup_{\br \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \br'(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the distance is well defined and then $d_{\br, \bp } \in \cmspace{m}{(-1,1)\times (-1,1)}{\IC}$ since we are in the holomorpy domain of the square root function. We left to show the holomorpy  and unoform bound of the the map from two arcs to the distance, but by the holomorphy of the square root function this is reduced to show the properties for the square of the distance function which is done as in the previous lemma. 
-% Consider 
-%\begin{align*}
-%D d_{\br,\bp}[\bh^1,\bh^2](t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)},
-%\end{align*}
-%we will show that this map is in fact the Frechet derivative of $d_{\br,\bp}$ in the direction $\bh^1,\bh^2$. Is clear from the definition that $D d_{\br,\bp}$ is a linear map in the $\bh^1,\bh^2$ direction, moreover since, 
-%$$\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
-%d_{\br,\bp}(t,s) \geq \sqrt{I^2 -2S (\delta_1 +\delta^2)-(\delta_1 +\delta_2)^2}>0,$$
-%and using the product rule for derivatives we conclude that $$D d_{\br,\bp}\in \mathcal{L}(\cmspace{m}{(-1,1)}{\IC^2}^2,
-%\cmspace{m}{(-1,1) \times (-1,1)}{\IC}).$$ To proof the approximation propriety we first notice that 
-%$$d_{\br+ \bh^1, \bp+\bh^2}(t,s)^2 - d_{\br,\bp}(t,s)^2 = 2 (\br(t)-\bp(s))\cdot (\bh^1(t)- \bh^2(s)) + O(\| \bh^1(t)- \bh^2(s)\|^2),$$
-%hence by the diferiantiability of the square root function we get 
-%$$
-%d_{\br+ \bh^1, \bp+\bh^2}(t,s) - d_{\br,\bp}(t,s) = \frac{(\br(t) -\bp(s))\cdot(\bh^1(t)- \bh^2(s))}{d_{\br,\bp}((t,s)}  + O( \| \bh^1(t)- \bh^2(s)\|^2).
-%$$
-%To finish the proof we need to show that for $\alpha, \beta \in \IN$ such that $0 \leq \alpha + \beta \leq m$ we have,  
-%\begin{align*}
-%\lim_{\bh^1 \rightarrow 0 \atop \bh^2 \rightarrow 0 }\frac{\partial^\beta_s\partial^\alpha_t \| \bh^1(t)- \bh^2(s)\|^2}{\| \bh^1 \|_{\cmspace{m}{(-1,1)}{\IC^2}} + \|\bh^2\|_{\cmspace{m}{(-1,1)}{\IC^2}}} = 0 ,
-%\end{align*}
-%the proof is the same as in the differentiability part of the Lemma \ref{lemma:dself}. Similarly the uniform bound follows by bounding $d^2_{\br,\bp}$ as in the previous lemma and the fact that the distance has strictly positive real part. 
-\end{proof}
-
-An additional function that is crucial for the analysis of integrals kernels is presented now. 
-
-\begin{lemma}
-\label{lemma:Qfun}
-For an arc $\br$ consider the function 
-$$
-Q_{\br}(t,s) = \begin{cases}
-\frac{d^2_{\br}(t,s)}{(t-s)^2}, \quad t\neq s \\
-\br '(t) \cdot \br '(t), \quad t =s 
-\end{cases}.
-$$
-Then for a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef} the maps, 
-\begin{align*}
-\br \in K_\delta \mapsto Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \\
-\br \in K_\delta \mapsto 1/Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, 
-\end{align*} 
-are both holomorphic, uniformly bounded,  and we also have \todo{check the proof this last part->i dont think is needed...}
-\begin{align*}
-\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
-\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
-\end{align*}
-\end{lemma}
-\begin{proof}
-Using the Taylor expansion of $\br$  is immediate that  $$Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}.$$ For $1/Q_{\br}$ the result also follows from the Taylor expansion and Lemma \ref{lemma:dwelldef}.  Now let us define,
-\begin{align*}
-DQ_{\br}[\bv](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bv(t)-\bv(s))}{(t-s)^2}, \\
-D1/Q_{\br}[\bv](t,s) = -\frac{DQ_{\br}[\bv](t,s)}{(Q_{\br}(t,s))^2} 
-\end{align*}
-with the continious extension for $t=s$. These two are linear maps in the $\bv$ variable, and again by Taylor expansion we have that for $\alpha, \beta \in \IN$, 
-\begin{align}
-\label{eq:ddbound}
-\left\vert \left\vert \partial_s^\beta \partial_t^\alpha \frac{\br(t)-\br(s)}{t-s} \right \vert  \right \vert\leq \| \br \|_{\cmspace{\alpha+\beta+1}{(-1,1)}{\IC}}
-\end{align}
-%\begin{align}
-%\label{eq:DQbound}
-%DQ_{\br}[\bh](t,s)| \leq 2 \|\br\|_{\cmspace{1}{(-1,1)}{\IC^2}} \| \bh\|_{\cmspace{1}{(-1,1)}{\IC^2}}
-%\end{align}
-hence, $DQ_{\br}$, $D1/Q_{\br} \in \mathcal{L}(\cmspaceh{m}{h}{(-1,1)}{\IC^2}
-  , \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$.
-We also have that 
-\begin{align*}
-d_{\br +\bv}^2(t,s) = d^2_{\br}(t,s) + 2 (\br(t) -\br(s))\cdot (\bv(t)-\bv(s)) + d_{\bv}^2(t,s),
-\end{align*}
-thus, 
-\begin{align*}
-Q_{\br +\bv}(t,s) = Q_{\br}(t,s) + DQ_{\br}[v](t,s) + Q_{\bv}(t,s).
-\end{align*}
-By \eqref{eq:ddbound} we have that $\| Q_{\bv}\|_{\cmspaceh{m-1}{h}{\iinterv}{\IC^2}} \lesssim \| \bv\|_{\cmspaceh{m}{h}{\iinterv}{\IC^2}}^2$, so we get the differentiability of $Q_{\br}$. On the other hand from the differentiability of the function $1/z$ for $z$ away from $0$ we get, 
-\begin{align*}
-1/Q_{\br+\bv} = 1/Q_{\br} - (Q_{\br})^{-2} (Q_{\br+\bv}-Q_{\br}) + o(|Q_{\br+\bv}-Q_{\br}|),
-\end{align*}
-the result then follows from the diffentiability of $Q_{\br}$.
-
-
-
-The uniform bound of $Q_{\br}$ follows directly from the one of $d^2_{\br}$ in Lemma \ref{lemma:dself}. On the other hand, for $1/Q_{\br}$ need the last part of this lemma, which is obtained using the Taylor expansion of $\br$ and Lemma \ref{lemma:dwelldef}.
-
-The final part of the lemma is and immediate consequence of \eqref{eq:ddbound}, and the continuity in the $\br$ variable. 
-\end{proof}
 
 \subsection{Integral Kernels}
 In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
@@ -2274,7 +2160,7 @@ Now we consider particular cases of the operator $\cP$. In particular we will co
 ($\cP = 
 \alpha \Delta + (\alpha +\beta) \nabla \nabla \cdot  + \omega^2
 $), which is a vectorial operator.
-\todo{cite uniqness of volume problems (dirichlet neumann) for each example}
+\todo{cite uniqness of volume problems (dirichlet neumann) for each example, also the logaritmic now appears with the square of the distance}
 \subsection{Helmholtz Operators}
 The helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
 $$
@@ -2411,6 +2297,32 @@ For the Neumann problem we need a Maue's representation formula. While we are no
 \appendix
 \section{Proofs Holomorphic Extensions of Common functions }
 \label{appendix:funext}
+
+\begin{proof}[of Lemma \ref{lemma:squaredistance}]
+Consider two arbitraty functions $\br,\bp \in \cmspace{m}{h}{(-1,1)}{\IC^2}$,  by the definition of the norm of the latter space we have that $$d_{\br,\bp}^2(t,s) \in \cmspaceh{m}{h}{\iinterv}{\IC}.$$
+For a pair $\bv^1,\bv^2 \in \cmspace{m}{h}{(-1,1)}{\IC^2}$ we define
+$$Dd_{\br,\bp}^2[\bv^1,\bv^2](t,s) = 2(\br(t)-\bp(s))\cdot (\bv^1(t)-\bv^2(s)),$$
+which is linear in the function $\bv^1,\bv^2$, and is also in $\cmspaceh{m}{h}{\iinterv}{\IC}$. Finally we notice that 
+$$
+d^2_{\br+\bv^1,\bp+\bv^2}(t,s) -d^2_{\br,\bp}(t,s) -Dd_{\br,\bp}^2[\bv^1,\bv^2](t,s) = d^2_{\bv^1,\bv^2}(t,s)
+$$
+and using the rule for the derivative of a product we conclude that 
+$$\| d^2_{\bv^1,\bv^2}(t,s)\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \lesssim \|\bv^1\|_{\cmspace{m}{h}{(-1,1)}{\IC^2}} \|\bv^2\|_{\cmspace{m}{h}{(-1,1)}{\IC^2}},$$
+hence $Dd_{\br,\bp}^2[\bv^1,\bv^2]$ is in fact the Frechet derivative of $d_{\br,\bp}^2$, and since $\br,\bp$ were arbitrary the distance function is holomorphic in an arbitraty open set of 
+$\cmspaceh{m}{h}{\iinterv}{\IC}$.
+
+For the final part notice that by compactness 
+\begin{align*}
+\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+ \| \br(t) - \bp(s) \| = I > 0,
+\end{align*}
+thus for every $\br,\bp  \in K^1_{\delta_1} \times K^2_{\delta_2}$ we have
+$$
+Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_2)^2,$$
+where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br(t)\| +
+\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$
+\end{proof}
+
 \begin{lemma}
 \label{lemma:dwelldef}
 Let and $K \subset \rgeoh{m}{h}$ a compact set, then 
@@ -2441,6 +2353,34 @@ thus we get
 Re(\br' \cdot \br') \geq I^2 - 2S\delta -\delta^2, \end{align*}
 the result then follows by selecting $\delta < \sqrt{I^2+S^2}-S$.
 \end{proof} 
+
+\begin{proof}[of Lemma \ref{lemma:Qfun}]
+Consider $\br \in \cmspaceh{m}{h}{(-1,1)}{\IC^2}$, using the corresponding Taylor expansion is immediate that  $$Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}.$$  For $\bv \in \cmspaceh{m}{h}{(-1,1)}{\IC^2}$ let us define,
+\begin{align*}
+DQ_{\br}[\bv](t,s) = \frac{2 (\br(t)-\br(s))\cdot (\bv(t)-\bv(s))}{(t-s)^2}, 
+\end{align*}
+with the continious extension for $t=s$, given by the Taylor expansions of $\br$ and $\bv$. Is clear that $DQ_{\br}[\bv]$ is linear in the $\bv$ variable and also $DQ_{\br}[\bv] \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$. We also have that 
+\begin{align*}
+d_{\br +\bv}^2(t,s) = d^2_{\br}(t,s) + 2 (\br(t) -\br(s))\cdot (\bv(t)-\bv(s)) + d_{\bv}^2(t,s),
+\end{align*}
+thus, 
+\begin{align*}
+Q_{\br +\bv}(t,s) = Q_{\br}(t,s) + DQ_{\br}[v](t,s) + Q_{\bv}(t,s).
+\end{align*}
+Arguing as in the proof of Lemma \ref{lemma:squaredistance}, 
+we have that $\| Q_{\bv}\|_{\cmspaceh{m-1}{h}{\iinterv}{\IC^2}} \lesssim \| \bv\|_{\cmspaceh{m}{h}{\iinterv}{\IC^2}}^2$, so we get the arbitrary holomorphic extension of $Q_{\br}$.
+
+Now we show that the real part is strictly positive. Using the Taylor expansion once again we have 
+\begin{align*}
+d_{\br}^2(t,s) = (t-s)^2 \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right),
+\end{align*}
+thus 
+$$
+Q_{\br}(t,s) = \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right),
+$$
+the result then follows from the mean value theorem and selecting $\delta$ as in Lemma \ref{lemma:dwelldef}. The results for $1/Q_{\br}$  follows using the fact that the function $1/z$ is holomorphic 
+\end{proof}
+
 \section{Fractional norms for periodic functions}
 \label{appendix:fracbivariate}
 This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \todo{ref kress singular integral equations}. 
