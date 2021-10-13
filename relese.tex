@@ -445,7 +445,7 @@ A further difference with \cite{Henriquez2021}, is that in our current work we d
 
 The family of functional spaces considering here correspond to Sobolev-type spaces defined trough Fourier series, mapped back to open arcs by a cosine transformation, see  \cite[Chapter 11]{saranen2013periodic} for more details. Furthermore, these spaces can be characterized as Chebishev formal series (\cite{Averseng2019}). 
 
-As is standard, for the solution of the Dirichlet and Neumann problem to be in high-order spaces we need to impose that the geometry and right-hand-sides  to have some regularity. In this work we will consider that the right-hand-side are given by restriction of entire functions, thus having arbitrary regularity, and geometry to have a limited regularity in a Holder-continuous class. We put great effort in finding how this limited regularity restrict the functional spaces where solutions for the Dirichlet and Neumann problem exist. 
+As is standard, for the solution of the Dirichlet and Neumann problem to be in high-order spaces we need to impose that the geometry and right-hand-sides  to have some regularity. In this work we will consider that the right-hand-side are given by restriction of entire functions, thus having arbitrary regularity, and the geometry to have a limited regularity in a Holder-continuous class. We put great effort in finding how this limited regularity restrict the functional spaces where solutions for the Dirichlet and Neumann problem exist. 
 
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
@@ -470,14 +470,14 @@ for any smooth function $\bu$, where $\bn_p$ denotes the unitary normal vector o
 \label{eq:radcond}
 \text{Condition at Infinity}(\cP). 
 \end{align}
-which is complemented with one of the following boundary conditions: 
+which is complemented with one of the following boundary conditions:  \todo{use $f_D$ and $f_N$ for the right hand sides}
 \begin{align}
 \label{eq:dircond}
-u = g,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
+u = f^D,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
 \label{eq:neumanncond}
- \cB_p u = f,  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
+ \cB_p u = f^N,  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
 \end{align}
-Condition \eqref{eq:radcond} speciffy the behavior of $u$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $g,$ and, $f$ are the right-hand-side of the Dirichlet and Neumann problems respectively throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
+Condition \eqref{eq:radcond} speciffy the behavior of $u$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $f^D,$ and, $f^N$ are the right-hand-side of the Dirichlet and Neumann problems respectively, throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
 
 Results for this general problem are hard to come by since a more explicit form of the conditions at infinity is needed. We, however, will assume the uniqueness for both boundary value problems (Dirichlet and Neumann), while the existence will be consequence of the boundary integral formulation presented next. 
 \subsubsection{Boundary Integral Formulations}
@@ -509,28 +509,28 @@ and the pulled back potentials
 \end{align*}
 defined for an arbitrary function $u$, thus we have $SL_\gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. In what follows we will omit the hat notations, as we will only use the pulled back potentials. 
 
-Now we reformulate boundary value problems presented in the previous section as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. We seek for densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $(-1,1)$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $(-1,1)$, for $i = \{1,\hdots,M\}$ such that
+Now we reformulate boundary value problems presented in the previous section as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. We seek for densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $[-1,1]$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $[-1,1]$, for $i = \{1,\hdots,M\}$ such that
 \begin{align*}
-\sum_{j=1}^M (SL_{\Gamma_j} \lambda_j )\circ \br_i = g\circ \br_i, \quad i = 1,\hdots,M \text{ (Dirichlet BIE)}, \\
-\sum_{j=1}^M (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} \mu_j )\circ \br_i = f\circ \br_i, \quad i = 1,\hdots,M,
+\sum_{j=1}^M (SL_{\Gamma_j} \lambda_j )\circ \br_i = f^D\circ \br_i, \quad i = 1,\hdots,M \text{ (Dirichlet BIE)}, \\
+\sum_{j=1}^M (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} \mu_j )\circ \br_i = f^N\circ \br_i, \quad i = 1,\hdots,M,
 \text{ (Neumann BIE)},
 \end{align*}
  thus $u = \sum_{j=1}^M SL_{\Gamma_j} \lambda_j $ is a solution for the Dirichlet Problem, and  $u = \sum_{j=1}^M DL_{\Gamma_j} \mu_j $ solves the Neumann Problem. We can rewrite the boundary integral equations in matrix form as 
 \begin{align}
 \label{eq:bios}
-\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla = \bg_{\Gamma_1,\hdots,\Gamma_M}, \quad \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu = \mathbf{f}_{\Gamma_1,\hdots,\Gamma_M},
+\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla = \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}, \quad \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu = \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M},
 \end{align}
-where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(g_{\Gamma_1,\hdots,\Gamma_M})_i = g \circ \br_i$, $(f_{\Gamma_1,\hdots,\Gamma_M})_i = f \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
+where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(f^D_{\Gamma_1,\hdots,\Gamma_M})_i = f^D \circ \br_i$, $(f^N_{\Gamma_1,\hdots,\Gamma_M})_i = f^N \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
 \begin{align*}
 (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
 \end{align*}
-for a function $u$. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however in what follows we will assume a Maue's representation of the form 
+for a function $u$. On the other hand the hyper-singular operator could only be expressed as the finite-part of an integral, however we will assume a Maue's representation of the form 
 \begin{align}
 \label{eq:mauesrep}
 (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u =  \frac{d}{dt}\int_{-1}^1G(\br_i(t),\br_j(s)) \frac{d}{ds}u(s) ds + 
 \int_{-1}^1\widetilde{G}(\br_i(t),\br_j(s))u(s) ds
 \end{align} 
-where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, see for example \cite{Nedelec1982,Maue1949}. There is also a more general result for scalar operators in \cite[Chapter 3.3.4]{Sauter:2011}, however, to the best of our knowledge there is not known result for the general case. The extension of from closed curves to open arcs is carried out using the zero-extension of the density. 
+where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, see for example \cite{Nedelec1982,Maue1949}. There is also a more general result for scalar operators in \cite[Chapter 3.3.4]{Sauter:2011}, however, to the best of our knowledge there is not known result for the general case. The extension  from closed curves to open arcs is carried out using the zero-extension of the density. 
 
 Whenever there is a solution for the boundary integral formulations a solution exist for the boundary value problem. Under the assumptions of the 
 structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \todo{ref}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed to hold in the previous section. 
@@ -549,7 +549,7 @@ In particular we are interested in the holomorphic extensions of the solution ma
 \begin{align*}
 (\br_1,\hdots,\br_M) \mapsto \bla, \quad (\br_1,\hdots,\br_M) \mapsto \bmu,
 \end{align*}
-where $\bla,\bmu$ are the solutions of the Dirichlet and Neumann boundary integral formulations \eqref{eq:bios}, and the corresponding Banach spaces would be detailed in Section \todo{ref}.
+where $\bla,\bmu$ are the solutions of the Dirichlet and Neumann boundary integral formulations \eqref{eq:bios}, and the corresponding Banach spaces would be detailed in Section \ref{sec:FunctionalSpaces}.
 
 For practical applications one is usually concerned with some particular compact set over which the holomorphic extension is constructed. In the abstract setting the compact sets has the structure 
 \begin{align}
@@ -584,7 +584,7 @@ There exist a set $\widetilde{\mathcal{O}}_\rho =  \prod_{n \in \IN} \widetilde{
 \end{align*}
 \end{enumerate}
 \end{definition}
-We will see in Section \todo{ref}, that  if $f$ has holomorphic extension on some particular open sets, and the sequence $\|a_n\|_{B_1}$ is $p$-sumable for some $p \in(0,1)$, then the map $F :\by \mapsto f(k(\by))$ is in fact $(b,p,\epsilon)-$holomorphic with  $b_n = \|a_n\|_{B_1}$, and $\epsilon$ related to the holomorphic extension of $f$. 
+We will see in Theorem \ref{theorem:generalbpeholomrfsm}, that  if $f$ has holomorphic extension on some particular open sets, and the sequence $\|a_n\|_{B_1}$ is $p$-sumable for some $p \in(0,1)$, then the map $F :\by \mapsto f(k(\by))$ is in fact $(b,p,\epsilon)-$holomorphic with  $b_n = \|a_n\|_{B_1}$, and $\epsilon$ related to the holomorphic extension of $f$. 
 
 In the context of the multiple-open arc problem, we will consider a fixed geometric configuration parametrized by the functions $\br_1^0 ,\hdots, \br_M^0$, and some pertubations basis also given by parametrizations functions. We will show that under some assumptions in the perturbation basis, the map from the parameters to the boundary integral formulations solutions $\bla,\bmu$ are $(b,p,\epsilon)-$holomorphic.
 \subsection{Outline}
@@ -593,7 +593,7 @@ In Section \todo{4} we conclude the holomorphic extension of the integral operat
 Finally in Section \todo{6} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
 \section{Main Results}
 \label{sec:MainResult}
-In this section we list our main results related with the boundary integral formulation presented in Section \todo{1.2} that would be proved in the remaining Sections. We refer to Section\todo{3.2} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \todo{ref}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \todo{ref} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
+In this section we list our main results related with the boundary integral formulation presented in Section \ref{sec:bif}. We refer to Section \ref{sec:FunctionalSpaces} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \todo{ref}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \todo{ref} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
 
 \begin{theorem}
 \label{thrm:biohlmextension}
@@ -622,10 +622,10 @@ has holomorphic extension to the open set $K_{\eta_1}^1 \times \hdots K_{\eta_1}
 \end{align*}
 has holomorphic extension to the open set $K_{\eta_2}^1 \times \hdots K_{\eta_2}^M$.
 \end{theorem}
-The previous Theorem enable us to obtain holomorphic extension for some linear functionals. In particular if we consider linear functionals of the form  $$L\bu (\bx) = \int_{-1}^{1} \mathbf{\varphi}(\bx,\br_1(t),\hdots,\br_M(t)) \cdot \bu(t) dt,$$ where $\bu = \bla $ or $\bu = \bmu$, and $\mathbf{\varphi}$ is an entire function, the holomorphic extension this functional is obtained by noticing that is the composition of $\bu$ which has holomorphic by Theorem \ref{thrm:solutionholomrext}, and using Theorem \todo{thrm abtract holmorfism} for showing that the integral operator 
+The previous Theorem enable us to obtain holomorphic extension for some linear functionals. In particular if we consider linear functionals of the form  $$L\bu (\bx) = \int_{-1}^{1} \mathbf{\varphi}(\bx,\br_1(t),\hdots,\br_M(t)) \cdot \bu(t) dt,$$ where $\bu = \bla $ or $\bu = \bmu$, and $\mathbf{\varphi}$ is an entire function, the holomorphic extension of this functional is obtained by noticing that is the composition of $\bu$ which has holomorphic by Theorem \ref{thrm:solutionholomrext}, and using Theorem \ref{thrm:abstractholm} for showing that the integral operator 
 $L\bv(\bx)$ (where $\bv$ is independent of the paramatrizations) has holomorphic extensions. 
 
-Finally assuming a parametric form of geometry configuration presented in Section \todo{5}, with the corresponding Assumption \todo{ref}, using the abtract result Theorem\todo{ref theorem of holomorphic extension to bpepsilon holomorphism} we obtain the following result. 
+Finally assuming a parametric form of geometry configuration presented in Section \todo{5}, with the corresponding Assumption \todo{ref}, using the abtract result Theorem \ref{theorem:generalbpeholomrfsm} we obtain the following result. 
 
 \begin{theorem}
 Under the hypothesis of Theorem \ref{thrm:solutionholomrext}, and Assumption \todo{ref}\footnote{The assumption defined the parameter $p$, as well conditions for the perturbations basis $\mathbf{b}_n$.} we have that for $b_n = \|\mathbf{b}_n\|_{\rgeoh{m}{h}}$, the norm of perturbation basis, the map
@@ -640,11 +640,11 @@ with $\epsilon < \eta_2$, where $\eta_2$ is also given in Theorem \ref{thrm:solu
 \end{theorem}
 As with the holomorphic extension, the previous Theorem enable us to conclude the parametric holomorphism of some linear functionals of $\bla$, and $\bmu$. Futhermore, Section \todo{5} would also show that some Galerkin approximations are also parametric holomorphic. 
 \section{Mathematical tools}
-This section present the main tools for the proofs of the Theorems presented in Section \ref{sec:MainResult}. Since some of the results are very technical they are relegated to Appendices \todo{ref}.
+This section present the main tools for the proofs of the Theorems presented in Section \ref{sec:MainResult}. Since some of the results are very technical they are relegated to Appendices \ref{appendix:funext}, and \ref{appendix:fracbivariate}.
 
 \subsection{Abstract Holomorphism Theorems}
 
-In this Section we present some theorems that would enable us to establish holomorphic extension of some general integral operators, as well as the connection between holomorphic extension and parametric holomorphism. These results are abstractions (for the most part) of results that appears first in \cite{Henriquez2021}, in general terms the proofs are the same that the corresponding result in the cited reference so we only pointed out to the specif result instead of provided the same proof. 
+In this Section we present some theorems that would enable us to establish holomorphic extension of some general integral operators, as well as the connection between holomorphic extension and parametric holomorphism. These results are abstractions (for the most part) of results that appears first in \cite{Henriquez2021}, in general terms the proofs are the same that the corresponding result in the cited reference so we only pointed out to the specif result instead of provided the a proof. 
 
 As in Section \ref{section:ShapeHolormsGeneral}, we consider a real Banach space $B_1$, with its corresponding complexification $B_1^{\IC}$, a compact set $K \subset B_1$, and $B_2$ a complex Banach space. Let us also consider a general integral operator of the form 
 \begin{align*}
@@ -671,20 +671,21 @@ Then the map $k \in K \mapsto P_{k} \in \mathcal{L}(H_1,H_2)$ has holomorphic ex
 Classical complex-variable theory also enable us to deduce the holomophic extension of the inverse of a function with holomorphic extension, the following result state exactly that.
 
 \begin{theorem}[Proposition 4.20 in \cite{Henriquez2021}]
-\label{thrm:abtractinverse}For two Banach spaces $H_1,H2$,
+\label{thrm:abtractinverse}For two Banach spaces $H_1,H_2$,
 consider $A_k \in \mathcal{L}(H_1,H_2)$ such that: 
 \begin{enumerate}
 \item 
-For every $k \in K$, $A_k$ is invertible and $(A_k)^{-1} \in \mathcal{L}(H_2,H1)$. 
+For every $k \in K$, $A_k$ is invertible and $(A_k)^{-1} \in \mathcal{L}(H_2,H_1)$. 
 \item 
 There exist a $\delta >0$ such that $k \in K \mapsto A_k \in \mathcal{L}(H_1,H_2)$, has holomorphic extension in $K_\delta$.
 \end{enumerate}
-Then there exist $\eta$, such that $0<\eta<\delta$ depending of $K$, and we have that $A_{k,\IC}$ is invertible for every $k \in K_\eta$, and the map 
-$$k \in K \mapsto (A_{k,\IC})^{-1} \in \mathcal{L}(H_2,H_1),$$ has holomorphic extension in $K_\eta$.
+Then there exist $\eta$, such that $0<\eta<\delta$ depending of $K$, such that the map 
+$$k \in K \mapsto (A_{k})^{-1} \in \mathcal{L}(H_2,H_1),$$ has holomorphic extension in $K_\eta$, and this extension is the inverse of the holomorphic extension of $A_k$ in $K_\eta$.
 \end{theorem} 
 Finally we state an abstract result that enable us deduce parametric holomorphism. We reuse the notations introduced in Section \ref{section:ShapeHolormsGeneral}.
 \begin{theorem}
-Aassume that fixed sequence $\{a_n\}_{n \in \IN}$ in \eqref{eq:Kcompact} is  such that $\sum_{n=0}^\infty \| a_n \|^p_{B_1} <\infty$, for some $p \in (0,1)$. 
+\label{theorem:generalbpeholomrfsm}
+Assume that fixed sequence $\{a_n\}_{n \in \IN}$ in \eqref{eq:Kcompact} is  such that $\sum_{n=0}^\infty \| a_n \|^p_{B_1} <\infty$, for some $p \in (0,1)$. 
 Let $\delta>0$ and $f : K \subset B_1 \rightarrow B_2$, with holomorphic extension from $K_\delta$. Then for $\epsilon < \delta$ the map 
 $$ \by \in [-1,1]^{\IN} \mapsto f(k(\by)) \in B_2,$$
 is $(b,p,\epsilon)-$holomorphic for $b_n = \|a_n\|_{B_1}$, and continious in product topology.
@@ -717,7 +718,7 @@ The result then follows directly from the holomorphic extension of $f$, and by t
 
 We now define properly the Banach space in which the parametrizations are considered, as well as the Hilbert spaces that serve as domain and range of the associated boundary integral operators that appears in the Theorems of Section \ref{sec:MainResult}.
 
-Let us begin with the parameter space. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$,and such that the derivatives of order $m$ are $h$ holder   also in $[-1,1]$, for any $m\in \IN$ and $h \in [0,1]$. This space has Banach structure when is endowed with the classical norm 
+Let us begin with the space of parametrizations. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, and such that the derivatives of order $m$ are $h$ holder   also in $[-1,1]$, for any $m\in \IN$ and $h \in [0,1]$. This space has Banach structure when is endowed with the classical norm 
 \begin{align*}
 \| f \|_{\cmspaceh{m}{h}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert+ \sum_{k: |k| =m} \sup_{\bx \in A}  \frac{|\partial_{\bx}^{\bk}f(x)-\partial_{\bx}^{\bk}f(y)|}{\| \bx - \by\|^h},
 \end{align*}
@@ -725,13 +726,13 @@ where we are using the classical multi-index notation \cite[pg. 61]{mclean2000st
 \begin{align*}
 \| f \|_{\cmspaceh{m}{0}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert,
 \end{align*}
-On the other hand the case $h=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, thus the derivatives of order $m+1$ exist and are bounded almost everywhere (see \cite[pg. 280]{evans1998partial}). Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
+On the other hand, the case $h=1$ correspond to the case where the $m$-derivatives are Lipchitz continuous, thus the derivatives of order $m+1$ exist and are bounded almost everywhere (see \cite[pg. 280]{evans1998partial}). Notice that for $m_1, m_2 \in \IN$ and $h_1, h_2 \in [0,1]$, such that $m_1 + h_1 < m_2 + h_2$, one has that $\cmspaceh{m_2}{h_2}{A}{B} \subset \cmspaceh{m_1}{h_1}{A}{B}$.
 
 In particular the paramatrizations of the open arcs will be taken as elements of $\cmspaceh{m}{h}{(-1,1)}{\IR^2}$, whose complexification is $\cmspaceh{m}{h}{(-1,1)}{\IC^2}$. We will only use those elements with global inverse an non null tangent vector at every point. The subset of such functions will be denoted by $\rgeoh{m}{h}$, with the convention $\rgeoh{0}{h}  = \emptyset$.
 
-Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$,and $T_n(t)$ the $n$th first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n$th seccond kind Chebishev polynomials normalized as 
+Next we consider the Hilbert spaces. Throughout we will denote by $w(t) = \sqrt{1-t^2}$, and $T_n(t)$ the $n^{th}$ first kind Chebishev polynomial normalized according to $$\int_{-1}^1 T_n(t) T_l(t) w^{-1}(t) dt = \delta_{n,l},$$ and $U_n$ the $n^{th}$ seccond kind Chebishev polynomials normalized as 
 $$\int_{-1}^1 U_n(t) U_l(t) w(t) dt = \delta_{n,l}.$$
- We will also denote by $e_n(\theta)$ the n-Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
+ We will also denote by $e_n(\theta)$ the $n^{th}$ Fourier basis normalized according to the $L^2(-\pi,\pi)$ norm. 
 Given a smooth periodic function $u :[-\pi,\pi] \rightarrow \IC$, its Fourier coefficients are denoted as
 $$
 \widetilde{u}_n = \int_{-\pi}^\pi u(\theta) e_{-n}(\theta) d\theta, 
@@ -744,7 +745,7 @@ and two families of second kind Chebishev coefficients:
 \begin{align*}
 \ddot{u}_n = \int_{-1}^1 u(t) U_n (t) dt,\quad \text{and,}\quad \widecheck{u} _n = \int_{-1}^1 u(t) U_n w(t) dt
 \end{align*}
-This definitions are extended to bi-variate functions as 
+The fourier coefficients for bi-variate functions are defined as
 $$\widetilde{u}_{n,l} = \int_{-\pi}^{\pi}\int_{-\pi}^\pi u(\theta,\phi) e_{-n}(\theta)e_{-l}(\phi) d\theta d\phi,$$
 for a bi-periodic function, and similarly  for Chebyshev coefficients of  bi-variate functions on $[-1,1]\times[-1,1]$. Furthermore, the definition of the coefficients are extended to distribution by duality respect to the bases. 
 
@@ -772,13 +773,13 @@ We also define the second kind spaces,
 U^s := \left\lbrace u : \| u\|_{U^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\ddot{u}_n|^2 < \infty \right\rbrace, \\
 Y^s := \left\lbrace u : \| {u}\|_{M^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widecheck{u}_n|^2 < \infty \right\rbrace,
 \end{align*} 
-These spaces could also referenced back to the classical Sobolev spaces, to this end we define the odd periodic lifftings, 
+These spaces could also defined from to the classical Sobolev spaces by means of the odd periodic liftings,:
 $$
 Ku(\theta) = Ju(\theta) \text{sign}(\sin\theta), \quad \text{and,}\quad \widehat{K}u = \widehat{J}u(\theta) \text{sign}(\sin\theta),
 $$
 where the sign function is defined with the convention $\text{sign}(0)=0$, and we have the equivalences: 
 \begin{align*}
-u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in M^s \Leftrightarrow Ku \in H^s.
+u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in Y^s \Leftrightarrow Ku \in H^s.
 \end{align*}
 From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see the functions $\{wU_n\}_{n \in \IN}$ are dense in $U^s$, since these are $0$
 on the extremes $\pm 1$, we obtain that the general Maue's representation formula \eqref{eq:mauesrep} is valid for functions in $U^s$.  
@@ -789,6 +790,9 @@ An important property that will play a mayor role in the analysis of the hyper-s
 \frac{d}{dt} : U^s \rightarrow T^{s-1}, \quad \text{and,} \quad 
 \frac{d}{dt} : W^s \rightarrow Y^{s-1}.
 \end{align}
+
+Also we recall from \cite[Lemma 5.3.2]{saranen2013periodic} that the periodic spaces $H^s$ are compactly embedded for increasing values of $s$. Hence, the same holds for the spaces $T^s,W^s,U^s,Y^s$.
+
 Finally depending on the nature of the underlying differential operator $\cP$ (see Section \ref{sec:bvproblem}) we use the notation 
 \begin{align*}
 \IT^s = T^s,\ \IU^s = U^s, \ \IW^s = W^s, \ \IY^s = Y^s,
@@ -797,185 +801,31 @@ if $\cP$ is a scalar operator, and
 \begin{align*}
 \IT^s = T^s \times T^s,\ \IU^s = U^s \times U^s, \ \IW^s = W^s \times W^s, \ \IY^s = Y^s \times Y^s,
 \end{align*}
-if $\cP$ is a vectorial operator.
-\subsection{Holomorphic Extension of Common Functions}
-\label{sec:funext}
-Before we proceed with the analysis of integral operators we show that some recurrent functions has holomorphic extensions. The results of this section are very similar to the ones presented  in \cite{Henriquez2021}, with the difference that here the involved functions are not periodic and we analyses them in the context of general spaces $\cmspaceh{m}{h}{\iinterv}{\IC^s}$, instead of only $\cmspace{2}{\iinterv}{\IC^2}$. The proofs are presented in Appendix \ref{appendix:funext}.
-
-Through the remaining of this section $m$ will denote an integer such that $m\geq 1$, and $h$ is a real number in $[0,1]$.
-
-We will make use of the square root and logarithmic functions. Both of them have holomorphic extension (through the main branch) in $\IC \setminus (-\infty,0]$.
-
-We will also use the extension of the square of the distance function between two points located in two (not necessarily different) arcs. For parametrizations $\bp,\br$ the square of the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|^2$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
-\begin{align*}
-d_{\br,\bp}(t,s) = {(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
-\end{align*}
-where we use the real dot product, as the inclusion of the conjugates prevent the existence of any holomorphic extension. Whenever $\br = \bp$ we use the notation $d_{\br} = d_{\br,\br}$. The following result state that the square of the distance function always have holomorphic extension.  
-\begin{lemma} 
-\label{lemma:squaredistance}
-Let $K^1,K^2 \subset \rgeoh{m}{h}{(-1,1)}{\IR^2}$ compact sets, then for every pair $\delta_1>0, \ \delta_2 > 0$ the map, $$(\br,\bp) \in K^1 \times K^2 \mapsto d_{\br,\bp}^2 \in \cmspaceh{m}{h}{\iinterv}{\IC},$$has holomorphic extension in $K^1_{\delta_1} \times K^2_{\delta_2}$. Futhermore if $K^1,K^2$ are disjoint, there exist $\delta_1>0,\delta_2>0$ such that 
-\begin{align*}
-\inf_{(\br,\bp) \in K^1_{\delta_1}  \times K^2_{\delta_2}} 
-\inf_{(t,s)\in \iinterv}
-Re(d_{\br,\bp}^2(t,s))>0.
-\end{align*}
-\end{lemma}
-Another function that would be crucial in establishing the holomirphic extension of our integral operators is presented in the following result.
-\begin{lemma}
-\label{lemma:Qfun}
-For a function $\br$ consider
+if $\cP$ is a vectorial operator, and also consider the product spaces 
 $$
-Q_{\br}(t,s) = \begin{cases}
-\frac{d^2_{\br}(t,s)}{(t-s)^2}, \quad t\neq s \\
-\br '(t) \cdot \br '(t), \quad t =s 
-\end{cases}.
+\prod_{j=1}^M \IT^s, \quad \prod_{j=1}^M \IU^s,  \quad \prod_{j=1}^M \IW^s, \quad \prod_{j=1}^M \IY^s,
 $$
-Then for a compact set $K \subset \rgeoh{m}{h}$, the map  
-\begin{align*}
-\br \in K \mapsto Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC},
-\end{align*}
-has holomiric extension in $K$ for every $\delta>0$. Furthermore there exist $\delta >0$ such that 
-\begin{align*}
-\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
-\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
-\end{align*}
-and also the map 
-\begin{align*}
-\br \in K \mapsto 1/Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, 
-\end{align*} 
-has holomorphic extension in $K_\delta$.
-\end{lemma} 
-The summary of this section is that the functions $d_{\br,\bp}$, $Q_{\br}$ have holomorphic extension, and they have strictly real positive part under some conditions previously specified. For future references we write explictly the conditions.
+with the standard norms for Cartesian products.
+\subsection{General boundary integral Operators on Open Arcs}
+\label{sec:generalbio}
 
-\begin{condition}
-\label{condition:dcross}
-For $K^1,K^2 \subset \rgeoh{m}{h}$ compact disjoint sets. If $\delta_1>0,\delta_2>0 \in \IR$ are such that 
-$$
-(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
-$$
-where $\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
- \| \br(t) - \bp(s) \|$, $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br(t)\| +
-\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$. 
-\end{condition}
-
-\begin{condition}
-\label{condition:Qself}
-For $K \subset \rgeoh{m}{h}$ compact  sets. If $\delta>0 $ is such that 
-$$
-(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
-$$
-where $I = \inf_{\br \in K} \inf_{t \in (-1,1)} \| \br'(t)\|$, and $S = \sup_{\br \in K} \sup_{t \in (-1,1)} \|\br'(t)\|$.
-\end{condition}
-Hence Condition \ref{condition:dcross}, ensures that $Re(d_{\br,\bp}(t,s))>0$ for every $(t,s) \in \iinterv$ and $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$. While, Condition \ref{condition:Qself} ensures that $Re(Q_{\br}(t)) >0$, for every $t \in (-1,1)$, and $\br \in K_\delta$. 
-\begin{enumerate}
-\item 
-Integral kernels 
-\item 
-General integral operators
-\end{enumerate}
-\subsection{Holomorphic Extension of Integral Kernals}
-In this section we show that the kernels of the integral operators (weakly-singular, and hyper-singular), according to representation \eqref{eq:funsolgen}, have holomorphic extensions. 
-
-This is a direct continuation of the previous section as the extensions of the integral kernels use explictly the functions $d_{\br,\bp}^2$ and $Q_{\br}$, that we have previously considered.
-
-\section{Shape Holomirphism for Dirichlet and Neumann Problems}
-\begin{enumerate}
-\item 
-Dirichlet problem proof
-\item 
-Neumann problem proof 
-\item 
-remarks on linear functionals.
-\end{enumerate}
-
-\section{Parametric Holomorphism for Ditichlet and Neumann Problems}
-\begin{enumerate}
-\item 
-result for Dirichlet and Neumann problem 
-\item 
-remark on linear functionals
-\item 
-discretizations
-\end{enumerate}
-
-\section{Examples}
-
-\section{Future Work}
-\begin{enumerate}
-\item 
-Stokes equation, thermolastic???
-\end{enumerate}
-
-
-\subsection{Integral Kernels}
-In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
-
-The following result is a basic consequence of the composition of holomorphic functions. 
-
-\begin{lemma}
-\label{lemma:Fcircq}
-Let $F :\IC \rightarrow \IC$ holomorphic in $\IC \setminus (-\infty,0]$. Consider $K^1, K^2$ compact subsets of $\cmspace{m}{(-1,1)}{\IR^2}$, for some $m \in \IN$, with their corresponding complex extensions $K^1_{\delta_1}$, $K^2_{\delta_2}$, for a pair $\delta_1 >0$, $\delta_2>0$. We also consider a function $q_{\br,\bp} :(-1,1)\times (-1,1) \rightarrow \IC$ with $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$, such that  
-\begin{enumerate}
-\item 
-The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspaceh{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
-\item we have the uniform bound: 
-$$
-\inf_{(\br,\bp) \in K_{\delta_1}^1 \times K_{\delta_2}^2} \inf_{(t,s) \in (-1,1)\times(-1,1)} Re( q_{\br,\bp}(t,s))>0.
-$$
-\end{enumerate}
-Then 
-$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded.
-\end{lemma} 
-From the latter result we obtain two important consequences. 
-
-\begin{corollary}
-\label{cor:smoothcomp}
-Let $F$ as in the previous lemma and $m \in \IN$: 
-\begin{enumerate}
-\item 
-For a compact $K \subset \rgeoh{m}{h}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
-$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded. 
-\item 
-For compact disjoint sets $K_1,K_2 \subset  \rgeoh{m}{h}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
-$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded.
-\end{enumerate}
-\end{corollary}
-\begin{proof}
-The proof is direct from previous Lemma, using Lemmas \ref{lemma:Qfun}, and \ref{lemma:dcross} to verify the hipotesis. The only point that was not not explicitly given is that the real parts of $d_{\br,\bp}$ is strictly positive, but this is a condition for the function to be well defined and was also showed in the proof of Lemma \ref{lemma:dcross}.
-\end{proof}
-Finally we need to analyze the case of smooth functions acting on the function $d_{\br}$ (defined as in Lemma \ref{lemma:dself}). The result is not direct as the distance in this case is only continuous regardless of the regularity of the arcs. To establish the regularity we need special conditions on the kernel function. 
-\begin{lemma}
-\label{lemma:selfkernell}
-Consider $F :\IC \rightarrow \IC$ holomorphic, and assume there is $f : \IC \rightarrow \IC$ also holomorphic such that
-$$F(z) = f(z^2).$$ 
-We consider again a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
-$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorhic and uniformly bounded. 
-\end{lemma}
-\begin{proof}
-The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)) \cdot (\br(t)-\br(s)))$$ the smoothness of $f$, and Lemma \ref{lemma:dself}. 
-\end{proof}
-
-\subsection{Abstract Integral Operators}
-
-In this section we study the mapping properties of three kind of integral operators: 
+Based on the previously described functional spaces, we study the mapping properties of the following integral operators:
 \begin{align*}
 (R_f u)(t) &:= \int_{-1}^1f(t,s) u(s) ds,\\
 (L_fu)(t) &:= \int_{-1}^1 \log|t-s| f(t,s) u(s) ds\\
 (S_f u)(t) &:= \int_{-1}^1 \log|t-s| (t-s)^2 f(t,s)u(s)ds,
 \end{align*}
-where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$. The results of this section are aiming to prove the hypotesis of the third point of Theorem \ref{thrm:abstractholm}, and are also needed for Theorem \ref{thrm:abtractinverse}.
+where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$, and $h \in [0,1]$. This wold be one of the main ingredients for invoking Theorem \ref{thrm:abstractholm} for the weakly-singular and hyper-singular operators.
 
-The analysis is done following \todo{saranen chapters 6 and 11}. In particular we consider periodizations of the three types of integral operators, and then apply \todo{saranen Theorem 6.1.1} to obtain the mapping properties of the operators. 
+Throughout the rest $m$ will denote a natural number such that $m \geq 1$, and $h$ is any real number in $[0,1]$.
 
-The main differences with \todo{chapter 6 saranen} is that we consider kernels of limmited regularity, thus in the following lemma we consider describe how the limited regularity affect the range in which the integral operators could be considered.  
+The analysis is done following closely \cite[Chapters 6 and 11]{saranen2013periodic}. In particular we consider periodizations of the three types of integral operators, and then apply \cite[Theorem 6.1.1]{saranen2013periodic} to obtain the mapping properties of the operators. 
+
+We remark that in contrast to \cite[Chapter 6]{saranen2013periodic}  we consider kernels of limited regularity. The following lemma describes how the limited regularity affect the range in which the integral operators could be considered.  
 
 \begin{lemma}
 \label{lemma:cmdecay2}
-Let $m \in \IN$, $h \in [0,1]$, and consider a bi-periodic function $g \in \cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that $s_1+s_2 < m+h$, then we have 
+Consider a bi-periodic function $g \in \cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$, then given $s_1, s_2$, non negative real numbers, such that $s_1+s_2 < m+h$, then we have 
 \begin{align*}
 \sum_{n=-\infty}^{\infty}\sum_{l=-\infty}^{\infty}
 (1+n^2)^{s_1} (1+l^2)^{s_2} |\widetilde{g}_{n,l}|^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
@@ -1057,7 +907,7 @@ thus for every $\alpha\geq 0, \beta \geq 0$ such that $\alpha + \beta = 1$ we ha
 and one can easily see that integrals in the right hand side are finite if $h > \gamma_1 + \gamma_2 -1$. 
 Finally we conclude that 
 \begin{align*}
-\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
+\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\\\begin{cases}
  \text{  for $m_1+m_2+\gamma_1 + \gamma_2 < m+h$ if $\gamma_1 + \gamma_2 < 1$},\\
  \text{ for $(m_1+m_2+1)+(\gamma_1+\gamma_2 -1)< m+h$, if $\gamma_1 + \gamma_2 \geq 1$}.
 \end{cases}
@@ -1069,12 +919,12 @@ $$
 if $m_1+m_2+\gamma_1+\gamma_2 < m+h$. 
 The statment of the lemma then follows from this last bound and \eqref{eq:gbound1}.
 \end{proof}
- 
+
 \begin{remark}
 A similar result to Lemma \ref{lemma:cmdecay2} can be established by noticing that the smoothness of $g$ implies a degree of decay in the Fourier coefficients. In fact we can obtain that for a pair of non negative real values $s_1,s_2$ and $g \in \cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ one has the same bound of the previous Lemma, under the more restrictive condition $s_1+s_2+1 < m$.
 This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$ with derivatives of order $m+1$ integrables (bounded variation).
 
-We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$. \todo{This fact can be combined with bounds on the ad-joint and interpolation to obtain the more classical bounds for integral operators mapping from a pair Sobolev spaces of orders $s_1,s_2$ of different sign.}
+We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$. This fact can be combined with bounds on the adjoint and interpolation theory to obtain the more classical bounds for integral operators mapping from a pair Sobolev spaces of orders $s_1,s_2$ of different sign.
 \end{remark}
 
 \begin{remark}
@@ -1102,10 +952,10 @@ R_f^J u(\theta)  &= \frac{1}{2}\int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) u(\ph
 R_f^K u (\theta) &= \frac{1}{2}\int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \sin \theta \sin \phi  u(\phi) d \phi.
 \end{align*}
 
-The following results follows directly from \todo{Saranen theorem 6.1.1}, and Lemma \ref{lemma:cmdecay2}
+The following results follows directly from \cite[Theorem 6.1.1]{saranen2013periodic}, and Lemma \ref{lemma:cmdecay2}.
 \begin{lemma}
 \label{lemma:rfper}
-Let $m \in \IN$, $h \in [0,1]$ and $s_1, s_2 \in \IR$ such that $s_1 \leq s_2$, thus if one of the following conditions is satisfied: 
+Let $s_1, s_2 \in \IR$ such that $s_1 \leq s_2$, thus if one of the following conditions is satisfied: 
 \begin{enumerate}
 \item $|s_1| \leq \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$ and $1 < m+h$.
 \item 
@@ -1132,42 +982,42 @@ we have that $ R_f^J  \in \mathcal{L}(H^{s_1},H^{s_2})$ and  $R^K_f  \in \mathca
 \| R_f^J\|_{ \mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|\sigma\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},\\
 \| R_f^K\|_{ \mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|\varphi\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
 \end{align*}
-where $\sigma, \varphi$ are defined as in Remark \ref{rem:sigmaphi}.
+where $\sigma, \varphi$ are defined as in Remark \ref{rem:sigmaphi}, and the unspecified constants do not depends of $f$.
 \end{lemma}
 
 \begin{proof}
-From \todo{Saranen theorem 6.1.1} we get
+From \cite[Theorem 6.1.1]{saranen2013periodic} we get
 \begin{align*}
 \| R^J_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\sigma}_{n,l}|^2,\\
 \| R^K_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\varphi}_{n,l}|^2,
 \end{align*}
-where $a = \max\{|s_2|, \nu\}$, $b = \max\{|s_1|, \nu\} $, and $\nu$ any parameter such that $\nu > \frac{1}{2}$. The continuity follows by considering the cases in which is possible to select $\nu < |s_1|$ ($\nu < |s_2|$ resp.) and using Lemma \ref{lemma:cmdecay2} to bound the sums. 
-The compactness follows from the fact that in the fourth cases we can slightly increase the value of $s_2$, to $s_2 + \delta$  such that the conditions still holds thus the maps are in $\mathcal{L}(H^{s_1},H^{s_2+\delta})$, and then the result follows from the compact embedding of the spaces. 
+where $a = \max\{|s_2|, \nu\}$, $b = \max\{|s_1|, \nu\} $, and $\nu \in \IR$  is any number such that $\nu > \frac{1}{2}$. The continuity follows by considering the cases in which is possible to select $\nu < |s_1|$ ($\nu < |s_2|$ resp.) and using Lemma \ref{lemma:cmdecay2} to bound the sums. 
+The compactness follows from the fact that in the fourth cases we can slightly increase the value of $s_2$, to $s_2 + \delta$  such that the conditions still holds thus the maps are in $\mathcal{L}(H^{s_1},H^{s_2+\delta})$, and then the result follows from the compact embedding of the periodic spaces spaces. 
 \end{proof}
 
 Now using the properties of the lifting operators we get the properties of the operator $R_f$. 
 
 \begin{corollary}
 \label{corollary:rfop}
-Let $m \in \IN$, $h \in [0,1]$ and $s_1, s_2  \in \IR$ such that the hypothesis of Lemma \ref{lemma:rfper} are fulfilled. Then we have that 
-$R_f  \in \mathcal{L}(T^{s_1},W^{s_2})$, and $R_f \in \mathcal{L}(U^{s_1},M^{s_2})$. Furthermore they are compact operators and we have the bounds:
+Let $s_1, s_2  \in \IR$ such that the hypothesis of Lemma \ref{lemma:rfper} are fulfilled. Then we have that 
+$R_f  \in \mathcal{L}(T^{s_1},W^{s_2})$, and $R_f \in \mathcal{L}(U^{s_1},Y^{s_2})$. Furthermore they are compact operators and we have the bounds:
 \begin{align*}
 \| R_f\|_{ \mathcal{L}(T^{s_1},W^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-\| R_f\|_{ \mathcal{L}(U^{s_1},M^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}.
+\| R_f\|_{ \mathcal{L}(U^{s_1},Y^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
+with unspecified constants independent of $f$.
 \end{corollary}
 \begin{proof}
 From the lifting properties, and the periodization of $R_f$ we have 
 \begin{align*}
 \| R_f u\|_{T^{s_2}} = \|  J R_f u \|_{H^{s_2}} = \|R_f^J Ju \|_{H^{s_2}} \leq \| R_f^J\|_{\mathcal{L}(H^{s_1},H^{s_2})} \|J u \|_{H^{s_1}}. 
 \end{align*}
-We also recall that $\|J u \|_{H^{s_1}} = \|u\|_{T^{s_1}}$. By previous Lemma and Remark \ref{rem:sigmaphi} we get 
+We also recall that $\|J u \|_{H^{s_1}} = \|u\|_{T^{s_1}}$, see Section \ref{sec:FunctionalSpaces}. By previous Lemma and Remark \ref{rem:sigmaphi} we get 
 \begin{align*}
-\| R_f^J\|_{\mathcal{L}(H^{s_1},H^{s_2})} \cong \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
+\| R_f^J\|_{\mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
-so we obtain the result for the pair $T^{s_1}, W^{s_2}$, and the proof is analogous for $U^{s_1},M^{s_2}$.
+so we obtain the result for the pair $T^{s_1}, W^{s_2}$, and the proof is analogous for $U^{s_1},Y^{s_2}$.
 \end{proof}
-
 \subsubsection{Operator $L_f$}
 
 As for the operator $R_f$ we consider the two lifting versions of $L_f$, 
@@ -1184,11 +1034,11 @@ and,
 (KL_fu)(\theta) &= \frac{log{2}}{2} \int_{-\pi}^{\pi} f(\cos \theta , \cos \phi)\sin \theta \sin \phi \widehat{K}u(\phi) d\phi \\&+ \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi)\sin \theta \sin \phi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \widehat{K}u(\phi) d\phi.
 \end{split}
 \end{align}
-We see that these two operators can be characterized as the sum of a regular operator plus a logarithmic operator. The logarithmic part give rise to an operator of order $-1$ \todo{add ref}, thus by the same arguments used for the analysis of $R_f$ we arrive to the following result  
+We see that these two operators can be characterized as the sum of a regular operator plus a logarithmic operator. The logarithmic part give rise to an operator of order $-1$, thus by the same arguments used for the analysis of $R_f$ we arrive to the following result  
 
 \begin{corollary}
 \label{corollary:lfop}
-Let $m \in \IN$, $h \in [0,1]$ and $s \in \IR$, thus if one of the following conditions is satisfied: 
+Let $s \in \IR$, if one of the following conditions is satisfied: 
 \begin{enumerate}
 \item $s< \frac{-3}{2}$, and $-2s-1 < m+h$
 \item 
@@ -1198,14 +1048,15 @@ $\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s < m+h$
 \item 
 $s > \frac{1}{2}$, and $2s + 1 < m+h$.
 \end{enumerate}
-we have that $ L_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $L_f  \in \mathcal{L}(U^{s},M^{s+1})$. Furthermore we also have the bounds: 
+then, we have that $ L_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $L_f  \in \mathcal{L}(U^{s},Y^{s+1})$. Furthermore we also have the bounds: 
 \begin{align*}
 \| L_f\|_{ \mathcal{L}(T^{s},W^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-\| L_f\|_{ \mathcal{L}(U^{s},M^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}.
+\| L_f\|_{ \mathcal{L}(U^{s},Y^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
+with unspecified constants independent of $f$.
 \end{corollary}
 \begin{proof}
-The proof is almost the same that for $R_f$, the only difference is that the continuity of the logarithmic part is restricted to $s_2 = s_1+1$, thus we parametrize the sobolev indices as $s_1 = 1$, and $s_2 = s+1$ and express the conditions of Lemma \ref{lemma:rfper} in terms of $s$. 
+The proof is almost the same that for $R_f$, the only difference is that the continuity of the logarithmic part is restricted to $s_2 = s_1+1$, thus we parametrize the sobolev indices as $s_1 = s$, and $s_2 = s+1$ and express the conditions of Lemma \ref{lemma:rfper} in terms of $s$. 
 \end{proof}
 
 \subsubsection{Operator $S_f$}
@@ -1225,17 +1076,311 @@ Finally we consider the $S_f$ operator, whose periodic liftings are
 \sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) )\sin \theta \sin \phi \widehat{K}u (\phi) d \phi, 
 \end{split} 
 \end{align*}
-while this operator is of order $-3$, we will only consider it as a compact operator of order $-1$, these can be done by analyzing the mapping proprieties from $T^s$ (resp. $U^s$) to $W^{s+1+\delta}$ (resp. $M^{s+1+\delta}$). In particular we can select $\delta$ small enough such that the same conditions of Corollary \ref{corollary:lfop} apply, hence we obtain the following result. 
+while this operator is of order $-3$, we will only consider it as a compact operator of order $-1$, these can be done by analyzing the mapping proprieties from $T^s$ (resp. $U^s$) to $W^{s+1+\delta}$ (resp. $Y^{s+1+\delta}$). In particular we can select $\delta$ small enough such that the same conditions of Corollary \ref{corollary:lfop} apply, hence we obtain the following result. 
 
 \begin{corollary}
 \label{corollary:sfop}
-Let $m \in \IN$, $h \in [0,1]$ and $s \in \IR$, such that the same conditions of Corollary \ref{corollary:lfop} are satisfied. Then
- $ S_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $S_f  \in \mathcal{L}(U^{s},M^{s+1})$, and is a compact operator in both cases. Furthermore we have the bounds: 
+Let $s \in \IR$, such that the same conditions of Corollary \ref{corollary:lfop} are satisfied. Then
+ $ S_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $S_f  \in \mathcal{L}(U^{s},Y^{s+1})$, and is a compact operator in both cases. Furthermore we have the bounds: 
 \begin{align*}
 \| S_f\|_{ \mathcal{L}(T^{s},W^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-\| S_f\|_{ \mathcal{L}(U^{s},M^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}.
+\| S_f\|_{ \mathcal{L}(U^{s},Y^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
+with unspecified constants independent of $f$.
 \end{corollary}
+
+\subsection{Holomorphic Extension of Common Functions}
+\label{sec:funext}
+Now we show that some recurrent functions has holomorphic extensions. The results of this section are very similar to the ones presented  in \cite{Henriquez2021}, with the difference that here the involved functions are not periodic and we analyses them in the context of general spaces $\cmspaceh{m}{h}{\iinterv}{\IC^s}$, instead of only $\cmspace{2}{\iinterv}{\IC^2}$. The proofs are presented in Appendix \ref{appendix:funext}.
+
+We will make use of the square root and logarithmic functions. Both of them have holomorphic extension (through the main branch) in $\IC \setminus (-\infty,0]$.
+
+We will also use the extension of the square of the distance function between two points located in two (not necessarily different) arcs. For real  parametrizations $\br,\bp$ the square of the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|^2$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
+\begin{align*}
+d^2_{\br,\bp}(t,s) = {(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
+\end{align*}
+where we use the real dot product, as the inclusion of the conjugates prevent the existence of any holomorphic extension. Whenever $\br = \bp$ we use the notation $d^2_{\br} = d^2_{\br,\br}$. The following result state that the square of the distance function always have holomorphic extension.  
+\begin{lemma} 
+\label{lemma:squaredistance}
+Let $K^1,K^2 \subset \rgeoh{m}{h}{(-1,1)}{\IR^2}$ compact sets, then for every pair $\delta_1>0, \ \delta_2 > 0$ the map, $$(\br,\bp) \in K^1 \times K^2 \mapsto d_{\br,\bp}^2 \in \cmspaceh{m}{h}{\iinterv}{\IC},$$has holomorphic extension in $K^1_{\delta_1} \times K^2_{\delta_2}$. Futhermore if $K^1,K^2$ are disjoint, there exist $\delta_1>0,\delta_2>0$ such that 
+\begin{align*}
+\inf_{(\br,\bp) \in K^1_{\delta_1}  \times K^2_{\delta_2}} 
+\inf_{(t,s)\in \iinterv}
+Re(d_{\br,\bp}^2(t,s))>0.
+\end{align*}
+\end{lemma}
+Another function that would be crucial in establishing the holomirphic extension of our integral operators is presented in the following result.
+\begin{lemma}
+\label{lemma:Qfun}
+For a parametrization $\br$ consider
+$$
+Q_{\br}(t,s) = \begin{cases}
+\frac{d^2_{\br}(t,s)}{(t-s)^2}, \quad t\neq s \\
+\br '(t) \cdot \br '(t), \quad t =s 
+\end{cases}.
+$$
+Then for a compact set $K \subset \rgeoh{m}{h}$, the map  
+\begin{align*}
+\br \in K \mapsto Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC},
+\end{align*}
+has holomiric extension in $K_\delta$ for every $\delta>0$. Furthermore there exist $\delta >0$ such that 
+\begin{align*}
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(Q_{\br}(t,s)) >0 \\
+\inf_{\br \in K_\delta} \inf_{(t,s) \in (-1,1)\times (-1,1)} Re(1/Q_{\br}(t,s)) >0 
+\end{align*}
+and also the map 
+\begin{align*}
+\br \in K \mapsto 1/Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, 
+\end{align*} 
+has holomorphic extension in $K_\delta$.
+\end{lemma} 
+The summary of this section is that the functions $d_{\br,\bp}$, $Q_{\br}$ have holomorphic extension, and they have strictly real positive part under some conditions previously specified. For future references we write explictly the conditions.
+
+\begin{condition}
+\label{condition:dcross}
+For $K^1,K^2 \subset \rgeoh{m}{h}$ compact disjoint sets. If $\delta_1>0,\delta_2>0$ are such that 
+$$
+(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
+$$
+where $I=\inf_{(\br,\bp) \in K^1 \times K^2} \inf_{(t,s) \in (-1,1)\times(-1,1)}
+ \| \br(t) - \bp(s) \|$, $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br(t)\| +
+\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$. 
+\end{condition}
+
+\begin{condition}
+\label{condition:Qself}
+For $K \subset \rgeoh{m}{h}$ compact  sets. If $\delta>0 $ is such that 
+$$
+(\delta_1 + \delta_2) < \sqrt{I^2+S^2}-S,
+$$
+where $I,S$ are defined as:
+\begin{align*}
+ I = \inf_{\br \in K} \inf_{t \in (-1,1)} \| \br'(t)\|,\\
+ S = \sup_{\br \in K} \sup_{t \in (-1,1)} \|\br'(t)\|.
+\end{align*} 
+\end{condition}
+Hence Condition \ref{condition:dcross}, ensures that $Re(d_{\br,\bp}(t,s))>0$ for every $(t,s) \in \iinterv$ and $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$. While, Condition \ref{condition:Qself} ensures that $Re(Q_{\br}(t)) >0$, for every $t \in (-1,1)$, and $\br \in K_\delta$. 
+
+\subsection{Holomorphic Extension of Integral Kernels}
+In this section we show that the kernels of the integral operators (weakly-singular, and hyper-singular), according to representation \eqref{eq:funsolgen}, have holomorphic extensions. 
+
+This is a direct continuation of the previous section as the extensions of the integral kernels use explictly the functions $d_{\br,\bp}^2$ and $Q_{\br}$, that we have previously considered.
+
+Following \eqref{eq:funsolgen}, we have that for two parametrizations $\br,\bp$: 
+$$
+G(\br(t),\bp(s)) = \log(d^2_{\br,\bp}(t,s)) F_1(d^2_{\br,\bp}(t,s))+F_2(d^2_{\br,\bp}(t,s))
+$$
+the following result follows directly using the composition of Holomorphic functions. 
+\begin{lemma}
+\label{lemma:crosskernel}
+Suppose that Condition \ref{condition:dcross} is fulfilled, then the map 
+$$
+(\br,\bp) \in K^1 \times K^2 \mapsto G(\br,\bp) \in \cmspaceh{m}{h}{\iinterv}{\IC},
+$$
+has holomorphic extension in $K^1_{\delta_1} \times K^2_{\delta_2}$.
+\end{lemma}
+\begin{proof}
+Since $\delta_1,\delta_2$ are choosen acording to Condition \ref{condition:dcross}, by Lemma \ref{lemma:squaredistance} we have that $Re(d_{\br,\bp}^2(t,s)) >0$, hence we are in the holomorphic domain of the logaritmic function and the results follows. 
+\end{proof}
+
+For the self-interaction case ($\br=\bp$), the result do not follows by the same arguments as we inevitable will have a logaritmic-singularity at $d_{\br}(t,t)=0$. In this case we consider the split of the kernel function as 
+\begin{align}
+\label{eq:kernelsplit}
+G(\br(t),\br(s) ) = G^R(\br(t),\br(s))+G^S(\br(t),\br(s)),
+\end{align}
+where 
+\begin{align}
+\label{eq:GR}
+G^R(\br(t),\br(s)) &= \log(Q_{\br}(t,s)) F_1(d^2_{\br}(t,s))+F_2(d^2_{\br}(t,s)),\\
+G^S(\br(t),\br(s)) &= 2\log|t-s| F_1(d^2_{\br}(t,s)),
+\end{align}
+Notice that now the logarithmic singularity is independent of the parametrization. Furthermore we have the following results regarding the holomorphic extension of the kernels. 
+\begin{lemma}
+\label{lemma:selfkernel}
+Suppose that Condition \ref{condition:Qself} is fullfilled then the maps: 
+\begin{align*}
+\br \in K &\mapsto G^R(\br(t),\br(s)) \in \cmspaceh{m-1}{h}{\iinterv}{\IC},\\
+\br \in K &\mapsto F(d^2_{\br}(t,s)) \in \cmspaceh{m}{h}{\iinterv}{\IC},
+\end{align*}
+have holomorphic extension in $K_\delta$.
+\end{lemma}
+\begin{proof}
+The only part that don't follows directly is the logaritmic term of $G^R$, but by Lemma \ref{lemma:Qfun} we are in the holomorphic domain of the logarithmic and the conclusion follows. 
+\end{proof}
+
+Notice that for the second part of the previous lemma we do not need $\delta$ as in Condition \ref{condition:Qself}, however, since we would need to consider the full kernel the most restrictive condition need to be imposed. 
+\begin{remark}
+\label{remark:lessregularitykernel}
+We have imposed that the functions $F_1,$ and $F_2$ are entire and in the kernel expansion they depend only of the square of the distance . However less restrictive cases will also be considered. In particular sporadically will consider cases where the functions $F_1,F_2$ are replaced with functions of the following structure:  
+$$
+G_j(t,s) = f_j(\br'(t),\bp'(s))F_j(d_{\br,\bp}^2(t-s)), \quad j=1,2,
+$$
+where $f_j$ are entire in both coordinates, and $F_j$ are as before for $j=1,2$. Under this assumption both Lemmas \ref{lemma:crosskernel}, and \ref{lemma:selfkernel} still hold true, but the space $\cmspaceh{m}{h}{\iinterv}{\IC}$, has to be replaced with $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, as the functions $f_1,$ and $f_2$ depends of the derivative of the parametrizations. This lost in one order of regularity has no effect, as we need to consider the holomorphic extension of the full kernel function which by the first point of Lemma \ref{lemma:selfkernel} has to be done in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$.
+\end{remark}
+
+
+\section{Shape Holomirphism for Dirichlet and Neumann Problems}
+\begin{enumerate}
+\item 
+Dirichlet problem proof
+\item 
+Neumann problem proof 
+\end{enumerate}
+
+In this section we present the proof for Theorems \ref{thrm:biohlmextension}, and \ref{thrm:solutionholomrext}. First let us consider the weakly-singular operator interaction between two generics arcs $\br,\bp \in \rgeoh{m}{h}$, denoted by 
+$$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
+hence with the notation of Section \ref{sec:bif}, $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution \eqref{eq:funsolgen}, and Lemmas \ref{lemma:crosskernel}, and \ref{lemma:selfkernel}, this operator is a logaritmic operator (of the form $L_f$ in notation of Section \ref{sec:generalbio} ) with a $\cmspaceh{m}{h}{\iinterv}{\IC}$ kernel if $\br ,\bp$ don't cross each other, and $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, if $\br = \bp$. Thus given $s \in \IR$,   by Corrollary \ref{corollary:lfop}, the following condition over $(m,h,s)$ ensures that $V_{\br,\bp} \in \mathcal{L}\left(\IT^s,\IW^{s+1}\right)$ and $V_{\br,\bp} \in \mathcal{L}\left(\IU^s,\IY^{s+1}\right)$\footnote{The condition ensure the property for $\br = \bp$, which is more restricted that the condition for the disjoint arcs.}.
+\begin{condition}
+\label{condition:smh}
+For $m \in \IN$, $h \in [0,1]$, $s \in \IR$, one of the following needs to hold:
+\begin{enumerate}
+\item[i] 
+$s < \frac{-3}{2}$, and $-2s-1<m-1+h$,
+\item[ii] 
+$\frac{-3}{2} \leq s < \frac{-1}{2}$, and $\frac{1}{2} -s < m-1+h$.
+\item[iii] 
+$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s< m-1 +h$
+\item[iv] 
+$s> \frac{1}{2}$, and $2s +1 < m -1 +h $.
+\end{enumerate}
+\end{condition}
+Now we have the holomorphic extension of $V_{\br,\bp}$.
+\begin{lemma}
+\label{lemma:vcomp} 
+Assume that Condition 
+\begin{enumerate}
+\item  Let $\xi_j< \delta_j$, for $j=1,\hdots,M$, then the maps
+\begin{align*}
+\br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
+\mathcal{L}(\IT^s, \IW^{s+1}), \\
+\br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
+\mathcal{L}(\IU^s, \IM^{s+1}),
+\end{align*} 
+are holomorphic, and uniformly bounded. Moreover, when we select the pair $\IT^s,\IW^{s+1}$ the operator is Freedholm of order 0. 
+\item 
+For $j,k \in \{1,\hdots,M\}$, $j \neq k$,  and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the maps 
+\begin{align*}
+ (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
+\mathcal{L}(\IT^s, \IW^{s+1}),\\
+ (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
+\mathcal{L}(\IU^s, \IM^{s+1}),
+\end{align*}
+are holomorphic, uniformly bounded and compact. 
+\end{enumerate}
+\end{lemma}
+\begin{proof} 
+We are going to focus in the case of scalar operator $\cP$ with the spaces $T^s,W^{s+1}$, as the vector case and spaces $U^s,M^{s+1}$ follows verbatim. We recall the assumptions on the structure of the fundamental solution \eqref{eq:funsolgen}, thus the self interaction can be expressed as 
+\begin{align*}
+G(\br(t),\br(s)) = \log|t-s| F_1(d_{\br}(t,s)^2)+ \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2),
+\end{align*}
+we define the singular and regular parts as: 
+\begin{align*}
+G^R(\br(t),\br(s)) &:= \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2)\\
+G^S(\br(t),\br(s)) &:= \log|t-s| F_1(d_{\br}(t,s)^2).
+\end{align*}
+Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Corollary \ref{corollary:rfop} and the conditions on $s,m,h$, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$, and by the same Lemma is in fact a compact operator.
+
+Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section. Hence, from Corollary \ref{corollary:lfop}, and the conditions on $s,m,h$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspaceh{m}{h}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before. Furthermore we see that the integral operator can be written as
+\begin{align}
+\label{eq:fredSing}
+F_1(d_{\br}(t,t)^2)\int_{-1}^1 \log|t-s| u(s) ds + \int_{-1}^1 \log|t-s| (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2))u(s) ds
+\end{align}
+By the assumption of the invertibility of $F_1(d_{\br}(t,t)^2)= F_1(0)$  the first part is the clasical logarithmic operator which is an invertible operator in $T^s$ \todo{ref nedelec}\footnote{In fact the logarithmic operator is diagonal, see \todo{ref}.} \todo{check invertibility in $U^s$, is an infinite matrix... using the periodic operators is hard to argue ...}. On the other hand the difference in the second part can be expanded by Taylor and we get 
+$$
+(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) = d_{\br}(t,s)^2\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
+$$
+we cam then use the Taylor expansion of parametrization $\br$ (see \eqref{eq:expdr}) so we get,
+\begin{align*}
+\begin{split}
+(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) &= (t-s)^2 \\ \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) &\cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
+\end{split}
+\end{align*}
+from the last expression is clear that the second term in the right hand side of \eqref{eq:fredSing} is an operator of the form of $S_f$ descrived in the previous section, with $f \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus by Corollary \ref{corollary:sfop} and the conditions on $s,m,h$ we can conclude that this part is a compact operator, finally we obtain that the operator with kernel $G^s$ is in fact a Freedholm operator of order $0$.
+
+If we combine the results for the two parts of the kernel function we see that first, the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator, and  finally since is the sum of a Freedholm operator of order $0$ and a compact operator, we also have that $V_{\br,\br}$ is Freedholm of order $0$. 
+
+For the second part of the Lemma, we again use the structure of the fundamental solution so we have,
+\begin{align*}
+\mathbf{G}(\br(t),\bp(s)) = F_1(d_{\br,\bp}(t,s)^2) \log(d_{\br,\bp}(t,s)) + F_2(d_{\br,\bp}(t,s)^2),
+\end{align*}
+
+ The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic, uniformly bounded. 
+\end{proof} 
+
+\section{Parametric Holomorphism for Ditichlet and Neumann Problems}
+\begin{enumerate}
+\item 
+result for Dirichlet and Neumann problem 
+\item 
+remark on linear functionals
+\item 
+discretizations
+\end{enumerate}
+
+\section{Examples}
+
+\section{Future Work}
+\begin{enumerate}
+\item 
+Stokes equation, thermolastic???
+\end{enumerate}
+
+In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
+
+The following result is a basic consequence of the composition of holomorphic functions. 
+
+\begin{lemma}
+\label{lemma:Fcircq}
+Let $F :\IC \rightarrow \IC$ holomorphic in $\IC \setminus (-\infty,0]$. Consider $K^1, K^2$ compact subsets of $\cmspace{m}{(-1,1)}{\IR^2}$, for some $m \in \IN$, with their corresponding complex extensions $K^1_{\delta_1}$, $K^2_{\delta_2}$, for a pair $\delta_1 >0$, $\delta_2>0$. We also consider a function $q_{\br,\bp} :(-1,1)\times (-1,1) \rightarrow \IC$ with $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$, such that  
+\begin{enumerate}
+\item 
+The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspaceh{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
+\item we have the uniform bound: 
+$$
+\inf_{(\br,\bp) \in K_{\delta_1}^1 \times K_{\delta_2}^2} \inf_{(t,s) \in (-1,1)\times(-1,1)} Re( q_{\br,\bp}(t,s))>0.
+$$
+\end{enumerate}
+Then 
+$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded.
+\end{lemma} 
+From the latter result we obtain two important consequences. 
+
+\begin{corollary}
+\label{cor:smoothcomp}
+Let $F$ as in the previous lemma and $m \in \IN$: 
+\begin{enumerate}
+\item 
+For a compact $K \subset \rgeoh{m}{h}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
+$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded. 
+\item 
+For compact disjoint sets $K_1,K_2 \subset  \rgeoh{m}{h}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
+$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorphic and uniformly bounded.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+The proof is direct from previous Lemma, using Lemmas \ref{lemma:Qfun}, and \ref{lemma:dcross} to verify the hipotesis. The only point that was not not explicitly given is that the real parts of $d_{\br,\bp}$ is strictly positive, but this is a condition for the function to be well defined and was also showed in the proof of Lemma \ref{lemma:dcross}.
+\end{proof}
+Finally we need to analyze the case of smooth functions acting on the function $d_{\br}$ (defined as in Lemma \ref{lemma:dself}). The result is not direct as the distance in this case is only continuous regardless of the regularity of the arcs. To establish the regularity we need special conditions on the kernel function. 
+\begin{lemma}
+\label{lemma:selfkernell}
+Consider $F :\IC \rightarrow \IC$ holomorphic, and assume there is $f : \IC \rightarrow \IC$ also holomorphic such that
+$$F(z) = f(z^2).$$ 
+We consider again a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
+$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
+is holomorhic and uniformly bounded. 
+\end{lemma}
+\begin{proof}
+The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)) \cdot (\br(t)-\br(s)))$$ the smoothness of $f$, and Lemma \ref{lemma:dself}. 
+\end{proof}
+
+
+
+
+
+
 
 
 
@@ -1652,80 +1797,8 @@ and analogously for the other 3 spaces.
 
 Let us star with the analysis of the different components of the operator 
 $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}$. In a more general setting let us consider 
-$$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
-thus $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution and the results of holomorphic extension of integral operators we arrive to the following result. 
 
-\begin{lemma}
-\label{lemma:vcomp}For $s\in \IR$ such that: \todo{write this condition out of the lemma}
-\begin{enumerate}
-\item[i] 
-If $s < \frac{-3}{2}$, then $-2s-1<m-1+h$,
-\item[ii] 
-If $\frac{-3}{2} \leq s < \frac{-1}{2}$, then $\frac{1}{2} -s < m-1+h$.
-\item[iii] 
-If $\frac{-1}{2} \leq s \leq \frac{1}{2}$, then $\frac{3}{2}+s< m-1 +h$
-\item[iv] 
-If $s> \frac{1}{2}$, then $2s +1 < m -1 +h $.
-\end{enumerate}
-We have:
-\begin{enumerate}
-\item  Let $\xi_j< \delta_j$, for $j=1,\hdots,M$, then the maps
-\begin{align*}
-\br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
-\mathcal{L}(\IT^s, \IW^{s+1}), \\
-\br \in K^j_{\xi_j} \mapsto V_{\br,\br} \in 
-\mathcal{L}(\IU^s, \IM^{s+1}),
-\end{align*} 
-are holomorphic, and uniformly bounded. Moreover, when we select the pair $\IT^s,\IW^{s+1}$ the operator is Freedholm of order 0. 
-\item 
-For $j,k \in \{1,\hdots,M\}$, $j \neq k$,  and let $\xi_j < \delta_j$, and $\xi_k  < \delta_k$, then the maps 
-\begin{align*}
- (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
-\mathcal{L}(\IT^s, \IW^{s+1}),\\
- (\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k} \mapsto V_{\br,\bp} \in 
-\mathcal{L}(\IU^s, \IM^{s+1}),
-\end{align*}
-are holomorphic, uniformly bounded and compact. 
-\end{enumerate}
-\end{lemma}
-\begin{proof} 
-We are going to focus in the case of scalar operator $\cP$ with the spaces $T^s,W^{s+1}$, as the vector case and spaces $U^s,M^{s+1}$ follows verbatim. We recall the assumptions on the structure of the fundamental solution \eqref{eq:funsolgen}, thus the self interaction can be expressed as 
-\begin{align*}
-G(\br(t),\br(s)) = \log|t-s| F_1(d_{\br}(t,s)^2)+ \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2),
-\end{align*}
-we define the singular and regular parts as: 
-\begin{align*}
-G^R(\br(t),\br(s)) &:= \log Q_{\br}(t,s)F_1(d_{\br}(t,s)^2) + F_2(d_{\br}(t,s)^2)\\
-G^S(\br(t),\br(s)) &:= \log|t-s| F_1(d_{\br}(t,s)^2).
-\end{align*}
-Let us first consider the integral kernel $G^R(\br(t),\br(s))$ and the associated integral operator. From the smoothness of $F_1$, $F_2$ combined with Lemma \ref{lemma:selfkernell}, and also Lemma \ref{lemma:Qfun}, we obtain that the map $\br \in K^j_{\delta_j} \mapsto G^R(\br(t),\br(s)) \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. Furthermore by Corollary \ref{corollary:rfop} and the conditions on $s,m,h$, the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $G^R$ in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus the operator is uniformly bounded as a map from $K^j_{\delta_j}$ to $\mathcal{L}(T^s,W^{s+1})$, and by the same Lemma is in fact a compact operator.
 
-Now let us consider the singular part. In this case we define $f =F_1(d_{\br}(t,s)^2)$, and from the smoothness of $F_1$ and Lemma \ref{lemma:selfkernell} we have that the map $\br \in K^j_{\delta_j} \mapsto f \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic and uniformly bounded. We then can consider the integral operator associated with $G^S$ as an operator of the form $L_f$ of the previous section. Hence, from Corollary \ref{corollary:lfop}, and the conditions on $s,m,h$, we have that the associated integral operator is in $\mathcal{L}(T^s,W^{s+1})$, and its norm is controlled by the norm of $f$ in $\cmspaceh{m}{h}{\iinterv}{\IC}$, thus the integral operator is uniformly bounded as before. Furthermore we see that the integral operator can be written as
-\begin{align}
-\label{eq:fredSing}
-F_1(d_{\br}(t,t)^2)\int_{-1}^1 \log|t-s| u(s) ds + \int_{-1}^1 \log|t-s| (F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2))u(s) ds
-\end{align}
-By the assumption of the invertibility of $F_1(d_{\br}(t,t)^2)= F_1(0)$  the first part is the clasical logarithmic operator which is an invertible operator in $T^s$ \todo{ref nedelec}\footnote{In fact the logarithmic operator is diagonal, see \todo{ref}.} \todo{check invertibility in $U^s$, is an infinite matrix... using the periodic operators is hard to argue ...}. On the other hand the difference in the second part can be expanded by Taylor and we get 
-$$
-(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) = d_{\br}(t,s)^2\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
-$$
-we cam then use the Taylor expansion of parametrization $\br$ (see \eqref{eq:expdr}) so we get,
-\begin{align*}
-\begin{split}
-(F_1(d_{\br}(t,s)^2)-F_1(d_{\br}(t,t)^2)) &= (t-s)^2 \\ \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) &\cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right)\int_{0}^1 F_1(\delta d_{\br}(t,s))d\delta,
-\end{split}
-\end{align*}
-from the last expression is clear that the second term in the right hand side of \eqref{eq:fredSing} is an operator of the form of $S_f$ descrived in the previous section, with $f \in \cmspaceh{m-1}{h}{\iinterv}{\IC}$, thus by Corollary \ref{corollary:sfop} and the conditions on $s,m,h$ we can conclude that this part is a compact operator, finally we obtain that the operator with kernel $G^s$ is in fact a Freedholm operator of order $0$.
-
-If we combine the results for the two parts of the kernel function we see that first, the map $\br \in K^j_{\delta_j} \mapsto V_{\br,\br} \in \mathcal{L}(T^s,W^{s+1})$ is uniformly bounded. Secondly, using the last point and also the properties of the kernel functions $G^R$ and $G^S$, by Theorem \ref{thrm:abstractholm} we obtain the holomorphic extension of the self interaction operator, and  finally since is the sum of a Freedholm operator of order $0$ and a compact operator, we also have that $V_{\br,\br}$ is Freedholm of order $0$. 
-
-For the second part of the Lemma, we again use the structure of the fundamental solution so we have,
-\begin{align*}
-\mathbf{G}(\br(t),\bp(s)) = F_1(d_{\br,\bp}(t,s)^2) \log(d_{\br,\bp}(t,s)) + F_2(d_{\br,\bp}(t,s)^2),
-\end{align*}
-
- The conclusion now follows as in the analysis of the regular part of the self-interaction case since by Lemma \ref{lemma:dcross} the map $(\br,\bp) \in K^j_{\delta_j} \times K^k_{\delta_k}\mapsto d_{\br,\bp} \in \cmspaceh{m}{h}{\iinterv}{\IC}$ is holomorphic, uniformly bounded. 
-\end{proof} 
 
 \begin{remark}
 \label{remark:mm1extension}
@@ -2383,7 +2456,7 @@ the result then follows from the mean value theorem and selecting $\delta$ as in
 
 \section{Fractional norms for periodic functions}
 \label{appendix:fracbivariate}
-This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \todo{ref kress singular integral equations}. 
+This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \cite[Theorem 8.6]{kress2013linear} 
 
 In what follows we denote the non-normalized Fourier basis by $e_n(t) = \exp{(i n t) }$
 
@@ -2392,7 +2465,7 @@ The fractional semi-norm $|\varrho|_{\mathbf{\gamma}}|$ is generated by the inne
 \langle u , v \rangle{\mathbf{\gamma}} := \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{\Delta u (x,t,y,s)\Delta \overline{v} (x,t,y,s) }
 {\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds, 
 \end{align*}
-where $,u,v$ are bi-periodic functions and the difference operator is given by.
+where, $u,v$ are bi-periodic functions and the difference operator is given by:
 $$\Delta u(x,t,y,s) = u(x,y)-u(t,y)+u(t,s)-u(x,s).$$
 Consider the bi-periodic Fourier basis 
 $e_{n,l}(t,s) = e_n(t)e_l(s)$, and let us compute the product between two basis, $e_{n_1,l_1}$ and $e_{n_2,l_2}$.  By permuting the names of the integration variables we have that 
@@ -2455,15 +2528,15 @@ using this we get
 \end{split}
 \end{align*}
 notice that the bi-periodic Fourier functions are orthogonal with this product. Denote by $S_\gamma(n) =\int_{0}^{\pi} \sin(\frac{n}{2} u) ^2
-\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma}du $, hence by \todo{kress 8.8?} we have $S_\gamma(n) \cong (n^2)^\gamma$, thus by the previously showed orthogonality  
+\left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma}du $, hence by \cite[(8.8)]{kress2013linear} we have $S_\gamma(n) \cong (n^2)^\gamma$, thus by the previously showed orthogonality  
 \begin{align}
 \label{eq:smnormeq}
 |\varrho |_{\mathbf{\gamma}}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 S_{\gamma_1}(n) S_{\gamma_2}(l) \cong \sum_{n=-\infty}^\infty \sum_{l=-\infty}^{\infty} |\widetilde{\varrho}_{n,l}|^2 (n^2)^{\gamma_1} (l^2)^{\gamma_2},
 \end{align}
- now we can use the traditional inequality  $(1+n^2)^{\gamma_1}  \leq (n^2)^\gamma_1 +1$ (and analogly for $l$ and $\gamma_2$), so we have 
+ now we can use the traditional inequality  $(1+n^2)^{\gamma_1}  \leq (n^2)^\gamma_1 +1$ (and analogously for $l$ and $\gamma_2$), so we have 
  \begin{align*}
  |\varrho|^2_{\gamma} + \| \varrho\|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])} \geq  \|g\|_{\gamma_1,\gamma_2}^2,
  \end{align*}
- where the left most term is the Sobolev-type norm for orders $\gamma_1,\gamma_2$, defined as in \eqref{eq:sobnormtype}.
+ where the right most term is the Sobolev-type norm for orders $\gamma_1,\gamma_2$, defined as in \eqref{eq:sobnormtype}.
 
 \end{document}
