@@ -470,7 +470,7 @@ for any smooth function $\bu$, where $\bn_p$ denotes the unitary normal vector o
 \label{eq:radcond}
 \text{Condition at Infinity}(\cP). 
 \end{align}
-which is complemented with one of the following boundary conditions:  \todo{use $f_D$ and $f_N$ for the right hand sides}
+which is complemented with one of the following boundary conditions:  
 \begin{align}
 \label{eq:dircond}
 u = f^D,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condition)},\\
@@ -819,7 +819,7 @@ where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$, an
 
 Throughout the rest $m$ will denote a natural number such that $m \geq 1$, and $h$ is any real number in $[0,1]$.
 
-The analysis is done following closely \cite[Chapters 6 and 11]{saranen2013periodic}. In particular we consider periodizations of the three types of integral operators, and then apply \cite[Theorem 6.1.1]{saranen2013periodic} to obtain the mapping properties of the operators. 
+The analysis is done following closely \cite[Chapters 6 and 11]{saranen2013periodic}. In particular we consider periodizations of the three types of integral operators, and then apply \cite[Theorem 6.1.3]{saranen2013periodic} to obtain the mapping properties of the operators. 
 
 We remark that in contrast to \cite[Chapter 6]{saranen2013periodic}  we consider kernels of limited regularity. The following lemma describes how the limited regularity affect the range in which the integral operators could be considered.  
 
@@ -955,68 +955,58 @@ R_f^K u (\theta) &= \frac{1}{2}\int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \sin 
 The following results follows directly from \cite[Theorem 6.1.1]{saranen2013periodic}, and Lemma \ref{lemma:cmdecay2}.
 \begin{lemma}
 \label{lemma:rfper}
-Let $s_1, s_2 \in \IR$ such that $s_1 \leq s_2$, thus if one of the following conditions is satisfied: 
+Let $s \in \IR$ If one of the following conditions is satisfied: 
+if one of the following conditions is satisfied:
 \begin{enumerate}
-\item $|s_1| \leq \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$ and $1 < m+h$.
-\item 
-$|s_1| > \frac{1}{2}$, $|s_2| \leq \frac{1}{2}$, and  $\frac{1}{2}+|s_1| < m+h$.
-%\begin{align*}
-%\frac{1}{2}+ |s_1| < m+h, \text{ for } \{|s_1|\} < \frac{1}{2}, \\ 
-%1+ |s_1| < m+h, \text{ for } \{|s_1|\} \geq \frac{1}{2}
-%\end{align*}
-\item 
-$|s_1| \leq \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $\frac{1}{2}+|s_2| < m+h$.
-%\begin{align*}
-%\frac{1}{2}+ |s_2| < m+h, \text{ for } \{|s_2|\} < \frac{1}{2}, \\ 
-%1+ |s_2| < m+h, \text{ for } \{|s_2|\} \geq \frac{1}{2}
-%\end{align*} 
-\item 
-$|s_1| > \frac{1}{2}$, $|s_2|>\frac{1}{2}$, and $|s_1|+|s_2| < m+h$.
-%\begin{align*}
-%|s_1|+ |s_2| < m+h, \text{ for } \{|s_2|\}+\{|s_1|\} < 1, \\ 
-%[|s_1|]+[|s_2|]+1+ \min\{\{|s_2|\},\{|s_1|\}\} < m+h, \text{ for } \{|s_2|\}+\{|s_1|\} \geq 1
-%\end{align*} 
-\end{enumerate}
-we have that $ R_f^J  \in \mathcal{L}(H^{s_1},H^{s_2})$ and  $R^K_f  \in \mathcal{L}(H^{s_1},H^{s_2})$. Futhermore they are compact operators in the indicated spaces, and we also have the bounds: 
+\item $s> \frac{-1}{2}$, and $s + \frac{3}{2} < m+h$.
+\item $ s \leq \frac{-1}{2}$, and $-s+ \frac{1}{2} <m+h$. 
+\end{enumerate} 
+we have that $ R_f^J  \in \mathcal{L}(H^{s},H^{s+1})$ and  $R^K_f  \in \mathcal{L}(H^{s},H^{s+1})$. Futhermore they are compact operators in the indicated spaces, and we also have the bounds: 
 \begin{align*}
-\| R_f^J\|_{ \mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|\sigma\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},\\
-\| R_f^K\|_{ \mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|\varphi\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
+\| R_f^J\|_{ \mathcal{L}(H^{s},H^{s+1})} \lesssim \|\sigma\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},\\
+\| R_f^K\|_{ \mathcal{L}(H^{s},H^{s+1})} \lesssim \|\varphi\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
 \end{align*}
 where $\sigma, \varphi$ are defined as in Remark \ref{rem:sigmaphi}, and the unspecified constants do not depends of $f$.
 \end{lemma}
 
 \begin{proof}
-From \cite[Theorem 6.1.1]{saranen2013periodic} we get
+Let us focus in the operator $R_f^J$, for $R_f^K$ the proof is the same changing the kernel $\sigma$ with $\varphi$. We can directly see that the kernel has no singularity, hence the integral operator is of arbitrary order, in particular is of order $-1$, thus from \cite[Theorem 6.1.3]{saranen2013periodic} we have 
 \begin{align*}
-\| R^J_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\sigma}_{n,l}|^2,\\
-\| R^K_f\|_{ \mathcal{L}(H^{s_1},H^{s_2})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\varphi}_{n,l}|^2,
+\| R^J_f\|_{ \mathcal{L}(H^{s},H^{s+1})}^2 \lesssim \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{a}(1+l^2)^{b}|\widetilde{\sigma}_{n,l}|^2+\\
+\sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty  (1+n^2)^{c}(1+l^2)^{d}|\widetilde{\sigma}_{n,l}|^2\\
 \end{align*}
-where $a = \max\{|s_2|, \nu\}$, $b = \max\{|s_1|, \nu\} $, and $\nu \in \IR$  is any number such that $\nu > \frac{1}{2}$. The continuity follows by considering the cases in which is possible to select $\nu < |s_1|$ ($\nu < |s_2|$ resp.) and using Lemma \ref{lemma:cmdecay2} to bound the sums. 
-The compactness follows from the fact that in the fourth cases we can slightly increase the value of $s_2$, to $s_2 + \delta$  such that the conditions still holds thus the maps are in $\mathcal{L}(H^{s_1},H^{s_2+\delta})$, and then the result follows from the compact embedding of the periodic spaces spaces. 
+where $a=s+1$, $b = \max\{\nu, |\nu-1|\}$, $c = \nu $, $d= \max \{ |s|,\nu\}$ for $s > \frac{-1}{2}$, and $a=s+1$, $b = \max\{\nu, |\nu-1|\}$, $c = \nu $, $d= \max \{ |s|,\nu\}$ for $s <\frac{-1}{2}$, with the parameter $\nu$ arbitrary close to $\frac{1}{2}$.
+
+For $s=\frac{1}{2}$, we use \cite[Theorem 6.1.1]{saranen2013periodic} so the same bound as before with $a =\max\{ |s+1|,\nu\}$, $b=\max\{|s|,\nu\}$, where $\nu$ as before, and $c,d$ not specified as the corresponding term do no appear in this case.
+
+Hence directly from Lemma \ref{lemma:cmdecay2} if one of the conditions specified in the hypotesis hols we obtain the bound $\| R_f^J\|_{ \mathcal{L}(H^{s},H^{s+1})} \lesssim \|\sigma\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}} < \infty$, thus  
+$R_f^J \in \mathcal{L}(H^{s},H^{s+1})$.
+
+The compactness follows from similar arguments as we can consider that the operator  is of order $-1-\epsilon$, for arbitrary small $\epsilon>0$, and show, by the same arguments as before, that $R_f^J \in \mathcal{L}\left(H^s,H^{s+1+\epsilon}\right)$, and using the compact embedding of the $H^{s}$ spaces we obtain the result.
 \end{proof}
 
 Now using the properties of the lifting operators we get the properties of the operator $R_f$. 
 
 \begin{corollary}
 \label{corollary:rfop}
-Let $s_1, s_2  \in \IR$ such that the hypothesis of Lemma \ref{lemma:rfper} are fulfilled. Then we have that 
-$R_f  \in \mathcal{L}(T^{s_1},W^{s_2})$, and $R_f \in \mathcal{L}(U^{s_1},Y^{s_2})$. Furthermore they are compact operators and we have the bounds:
+Let $s  \in \IR$ such that the hypothesis of Lemma \ref{lemma:rfper} are fulfilled. Then we have that 
+$R_f  \in \mathcal{L}(T^{s},W^{s+1})$, and $R_f \in \mathcal{L}(U^{s},Y^{s+1})$. Furthermore they are compact operators and we have the bounds:
 \begin{align*}
-\| R_f\|_{ \mathcal{L}(T^{s_1},W^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-\| R_f\|_{ \mathcal{L}(U^{s_1},Y^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
+\| R_f\|_{ \mathcal{L}(T^{s},W^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
+\| R_f\|_{ \mathcal{L}(U^{s},Y^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
 with unspecified constants independent of $f$.
 \end{corollary}
 \begin{proof}
 From the lifting properties, and the periodization of $R_f$ we have 
 \begin{align*}
-\| R_f u\|_{T^{s_2}} = \|  J R_f u \|_{H^{s_2}} = \|R_f^J Ju \|_{H^{s_2}} \leq \| R_f^J\|_{\mathcal{L}(H^{s_1},H^{s_2})} \|J u \|_{H^{s_1}}. 
+\| R_f u\|_{T^{s+1}} = \|  J R_f u \|_{H^{s+1}} = \|R_f^J Ju \|_{H^{s+1}} \leq \| R_f^J\|_{\mathcal{L}(H^{s},H^{s+1})} \|J u \|_{H^{s}}. 
 \end{align*}
-We also recall that $\|J u \|_{H^{s_1}} = \|u\|_{T^{s_1}}$, see Section \ref{sec:FunctionalSpaces}. By previous Lemma and Remark \ref{rem:sigmaphi} we get 
+We also recall that $\|J u \|_{H^{s}} = \|u\|_{T^{s}}$, see Section \ref{sec:FunctionalSpaces}. By previous Lemma and Remark \ref{rem:sigmaphi} we get 
 \begin{align*}
-\| R_f^J\|_{\mathcal{L}(H^{s_1},H^{s_2})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
+\| R_f^J\|_{\mathcal{L}(H^{s},H^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
-so we obtain the result for the pair $T^{s_1}, W^{s_2}$, and the proof is analogous for $U^{s_1},Y^{s_2}$.
+so we obtain the result for the pair $T^{s}, W^{s+1}$, and the proof is analogous for $U^{s},Y^{s+1}$.
 \end{proof}
 \subsubsection{Operator $L_f$}
 
@@ -1038,26 +1028,31 @@ We see that these two operators can be characterized as the sum of a regular ope
 
 \begin{corollary}
 \label{corollary:lfop}
-Let $s \in \IR$, if one of the following conditions is satisfied: 
-\begin{enumerate}
-\item $s< \frac{-3}{2}$, and $-2s-1 < m+h$
-\item 
-$\frac{-3}{2} \leq s < \frac{-1}{2}$,and  $ \frac{1}{2}-s < m+h$
-\item 
-$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s < m+h$
-\item 
-$s > \frac{1}{2}$, and $2s + 1 < m+h$.
-\end{enumerate}
-then, we have that $ L_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $L_f  \in \mathcal{L}(U^{s},Y^{s+1})$. Furthermore we also have the bounds: 
+Let $s \in \IR$ if the hypotesis of Lemma \ref{lemma:rfper} holds, then
+%, if one of the following conditions is satisfied:
+%\begin{enumerate}
+%\item $s> \frac{-1}{2}$, and $s + \frac{3}{2} < m+h$.
+%\item $ s \leq \frac{-1}{2}$, and $-s+ \frac{1}{2} <m+h$. 
+%\end{enumerate} 
+%\begin{enumerate}
+%\item $s< \frac{-3}{2}$, and $-2s-1 < m+h$
+%\item 
+%$\frac{-3}{2} \leq s < \frac{-1}{2}$,and  $ \frac{1}{2}-s < m+h$
+%\item 
+%$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s < m+h$
+%\item 
+%$s > \frac{1}{2}$, and $2s + 1 < m+h$.
+%\end{enumerate}
+ we have that $ L_f  \in \mathcal{L}(T^{s},W^{s+1})$ and  $L_f  \in \mathcal{L}(U^{s},Y^{s+1})$. Furthermore we also have the bounds: 
 \begin{align*}
 \| L_f\|_{ \mathcal{L}(T^{s},W^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
 \| L_f\|_{ \mathcal{L}(U^{s},Y^{s+1})} \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},
 \end{align*}
 with unspecified constants independent of $f$.
 \end{corollary}
-\begin{proof}
-The proof is almost the same that for $R_f$, the only difference is that the continuity of the logarithmic part is restricted to $s_2 = s_1+1$, thus we parametrize the sobolev indices as $s_1 = s$, and $s_2 = s+1$ and express the conditions of Lemma \ref{lemma:rfper} in terms of $s$. 
-\end{proof}
+%\begin{proof}
+%The proof is similar to Lemma \ref{lemma:rfper} for $R_f$. The differemces are that the continuity of the logarithmic part is restricted to $s_2 = s_1+1$, and we use Theorem \cite[Theorem 6.1.3]{saranen2013periodic} to obtain the conditions.
+%\end{proof}
 
 \subsubsection{Operator $S_f$}
 
@@ -1076,7 +1071,7 @@ Finally we consider the $S_f$ operator, whose periodic liftings are
 \sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) )\sin \theta \sin \phi \widehat{K}u (\phi) d \phi, 
 \end{split} 
 \end{align*}
-while this operator is of order $-3$, we will only consider it as a compact operator of order $-1$, these can be done by analyzing the mapping proprieties from $T^s$ (resp. $U^s$) to $W^{s+1+\delta}$ (resp. $Y^{s+1+\delta}$). In particular we can select $\delta$ small enough such that the same conditions of Corollary \ref{corollary:lfop} apply, hence we obtain the following result. 
+while this operator is of order $-3$, we will only consider it as a compact operator of order $-1$, these can be done by analyzing the mapping proprieties from $T^s$ (resp. $U^s$) to $W^{s+1+\epsilon}$ (resp. $Y^{s+1+\epsilon}$). In particular we can select $\epsilon$ small enough such that the same conditions of Lemma \ref{lemma:rfper} apply, hence we obtain the following result. 
 
 \begin{corollary}
 \label{corollary:sfop}
@@ -1236,16 +1231,23 @@ hence with the notation of Section \ref{sec:bif}, $V_{\br_i, \br_j} = (V_{\Gamma
 For $m \in \IN$, $h \in [0,1]$, $s \in \IR$, one of the following needs to hold:
 \begin{enumerate}
 \item[i] 
-$s < \frac{-3}{2}$, and $-2s-1<m-1+h$,
+$s > \frac{-1}{2}$, and $s+
+\frac{5}{2}<m+h$,
 \item[ii] 
-$\frac{-3}{2} \leq s < \frac{-1}{2}$, and $\frac{1}{2} -s < m-1+h$.
-\item[iii] 
-$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{3}{2}+s< m-1 +h$
-\item[iv] 
-$s> \frac{1}{2}$, and $2s +1 < m -1 +h $.
+$ s \leq \frac{-1}{2}$, and $\frac{3}{2} -s < m+h$.
 \end{enumerate}
+%\begin{enumerate}
+%\item[i] 
+%$s < \frac{-3}{2}$, and $-2s<m+h$,
+%\item[ii] 
+%$\frac{-3}{2} \leq s < \frac{-1}{2}$, and $\frac{3}{2} -s < m+h$.
+%\item[iii] 
+%$\frac{-1}{2} \leq s \leq \frac{1}{2}$, and $\frac{5}{2}+s< m +h$
+%\item[iv] 
+%$s> \frac{1}{2}$, and $2s +2 < m  +h $.
+%\end{enumerate}
 \end{condition}
-Now we have the holomorphic extension of $V_{\br,\bp}$.
+Notice that these are the same conditions than in Lemma \ref{lemma:rfper} but changing $m$ for $m-1$, sence as we mentioned the kernel loses one order of regularity with respect to the parametrization.  Now we have the holomorphic extension of $V_{\br,\bp}$.
 \begin{lemma}
 \label{lemma:vcomp} 
 Assume that Condition \ref{condition:smh} hols, then
@@ -1289,7 +1291,7 @@ G_{\br}^{S,2}(t,s) &= 2(F_1(d_{\br}^2(t,s))-F_1(d_{\br}^2(t,t)))\log|t-s|,
 \end{align*}
 where we recall that $d^2_{\br}(t,t)=0$ for every $t,\br$. The integral operator with kernel $G_{\br}^{S,1}$ (resp. $G_{\br}^{S,2}$) is denoted by $V^{S,1}_{\br,\br}$ (resp. $V^{S,2}_{\br,\br}$).
 
-The operator $V^{S,1}_{\br,\br}$, is a pure logarithmic operator independent of the parametrization (thus with trivial holomorphic extension), and the mapping properties follows directly from Corollary \ref{corollary:lfop}. Moreover, in the representation of the fundamental solution we assumed that $F_1(0) \neq 0 $, hence $V_{\br,\br}^{S,1}$  is invertible from $T^s$, to $W^{s+1}$, see \cite{JEREZHANCKES2011547} for the details \footnote{This is the only part of the theorem where the conclusion do not follows for the pair $U^s,Y^{s+1}$.}.
+The operator $V^{S,1}_{\br,\br}$, is a pure logarithmic operator independent of the parametrization (thus with trivial holomorphic extension), and the mapping properties follows directly from Corollary \ref{corollary:lfop}. Moreover, in the representation of the fundamental solution we assumed that $F_1(0) \neq 0 $, hence $V_{\br,\br}^{S,1}$  is invertible from $T^s$, to $W^{s+1}$\footnote{In the vector case the conclusion still holds since $\mathbf{F_1}(0)$ was assumed to be invertible.}, see \cite{JEREZHANCKES2011547} for the details \footnote{This is the only part of the theorem where the conclusion do not follows for the pair $U^s,Y^{s+1}$.}.
 
 For $V^{S,2}_{\br,\br}$, we first see by the Taylor formula
 $$
@@ -1315,12 +1317,73 @@ Lastly we have that
 $$
 V_{\br,\br} =V_{\br,\br}^{R}+V_{\br,\br}^{S,1} + V_{\br,\br}^{S,2},
 $$
-hence since the tree operators of the left hand side have holomorpic extension (atleast in $K_\xi$, for $\xi < \delta$), we obtain the holomorphic extension of $V_{\br,\br}$. On the other hand $V_{\br,\br}^{R}, V_{\br,\br}^{S,2}$ are compact operators, and $_{\br,\br}^{S,1}$ is invertible, thus 
+hence since the tree operators of the left hand side have holomorpic extension (atleast in $K_\xi$, for $\xi < \delta$), we obtain the holomorphic extension of $V_{\br,\br}$. On the other hand $V_{\br,\br}^{R}, V_{\br,\br}^{S,2}$ are compact operators, and $V_{\br,\br}^{S,1}$ is invertible, thus 
 $V_{\br,\br}$ is Fredholm of index 0.
 
 The proof of the second part is the same as the one for $V^R_{\br,\br}$ using Lemma \ref{lemma:crosskernel}, instead Lemma \ref{lemma:selfkernel}.
 \end{proof}
 
+We also consider the generic hyper-singular operator interaction. Using the Maue's representation formula \eqref{eq:mauesrep}, this operator can be expressed as:
+\begin{align*}
+W_{\br,\bp} u (t)= \frac{d}{dt}
+ \int_{-1}^1 G(\br(t),\bp(s))\frac{d}{ds}u(s) ds + \int_{-1}^1\widetilde{G}(\br(t),\bp(s))u(s)ds
+ \end{align*}
+we again have $W_{\br_i,\br_j} = (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$, and also the following result.
+\begin{lemma}
+\label{lemma:wcomp} 
+Assume that Condition \ref{condition:smh} hols, then
+\begin{enumerate}
+\item If in addition Condition \ref{condition:Qself} is fulfilled, then for any $\xi$ such that $0<\xi < \delta$, the map
+\begin{align*}
+\br \in K \mapsto W_{\br,\br} \in 
+\mathcal{L}(\IU^s, \IY^{s-1}),
+\end{align*}
+has holomorphic extension in $K_\xi$. Furthermore, for any $\br \in K_\xi$, $W_{\br,\br} \in \mathcal{L}(\IU^s, \IY^{s-1})$, is a Fredholm operator of index 0.
+\item 
+If Condition \ref{condition:dcross} is fulfilled, then for $\xi_1 >0$, $\xi_2 >0$ such that $\xi_1 < \delta_1$, $\xi_2 < \delta_2$ the map,
+ \begin{align*}
+ (\br,\bp) \in K^1 \times K^2 \mapsto W_{\br,\bp} \in 
+\mathcal{L}(\IU^s, \IY^{s-1}),\\
+\end{align*}
+has holomorphic extension in $K^1_{\xi_1} \times K^2_{\xi_2}$. Moreover, for any $(\br,\bp) \in K^1_{\xi_1} \times K^2_{\xi_2}$, the map $W_{\br,\bp}$ is compact. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Most of the proof follows directly from the Maue's representation formula, the mapping properties of the derivative operators \eqref{eq:devprop} (which is also independent of the parametrizations), and the same arguments of Lemma \ref{lemma:vcomp}.
+The sole exception is the Fredholm part. 
+
+To show the Fredholm property we use the decomposition of the hyper-singular  operator $W_{\br,\bp}=W^1_{\br,\bp}+W^2_{\br,\bp}$, with 
+\begin{align*}
+W^1_{\br,\bp}u=\frac{d}{dt}
+ \int_{-1}^1 G(\br(t),\bp(s))\frac{d}{ds}u(s) ds, \\ 
+W^2_{\br,\bp}u= \int_{-1}^1\widetilde{G}(\br(t),\bp(s))u(s)ds,
+\end{align*}
+For $W^1_{\br,\bp}$, we argue as in Lemma \ref{lemma:vcomp} so we decomposes it in three parts, two of them are compact (for the same reasons as in the previous lemma), and the remaining part is 
+$$
+2F_1(0) \frac{d}{dt} \int_{-1}^1 \log|t-s| \frac{d}{ds}u (s)ds,
+$$
+where $u$ is an arbitrary density. We again recover that this operator is invertible as the factor $2F_1(0)$ is assumed to be invertible, and the integral operator is the standard hyper-singular operator for the Laplace equation, hence invertible as a map in $\mathcal{L}(\IU^s,\IY^{s-1})$, we refer again to \cite{JEREZHANCKES2011547} for the details.
+
+The operator $W^2_{\br,\bp}$ could be analyzed as in Lemma \ref{lemma:vcomp}, so we get $W^2_{\br,\bp} \in \mathcal{L}\left( \IU^s,\IY^{s+1}\right)$, and hence by the compact embeding of the corresponding spaces we have that $W^2_{\br,\bp} \in \mathcal{L}\left( \IU^s,\IY^{s-1}\right)$, is a compact operator.
+\end{proof}
+
+\begin{remark}
+In practical cases the term $\widetilde{G}$ of the Maue's representation formula includes factor involving the normal vectors, hence the corresponding functions $F_1,F_2$ have the structure described in Remark \ref{remark:lessregularitykernel}, and as it was pointed out non of the results need to be modified.
+
+We can further generalize the structure of the functions $G_1,G_2$ of Remark \ref{remark:lessregularitykernel} by considering the form:
+$$
+G_j(t,s) = f_j\left((\br'(t),\br''(t),\hdots,\br^{(n)}(t),\bp'(s),\bp''(s),\hdots,\bp^{(n)}(s)\right)F_j(d_{\br,\bp}^2(t-s)),
+$$
+where $f_j$ is entire in each coordinate.If we assume the above representation Condition \ref{condition:smh}, has to be changed with:
+\begin{enumerate}
+\item[i] 
+$s > \frac{-1}{2}$, and $s+
+\frac{3}{2}+n<m+h$,
+\item[ii] 
+$ s \leq \frac{-1}{2}$, and $\frac{1}{2}+n -s < m+h$.
+\end{enumerate}  
+
+\end{remark}
 
 \section{Parametric Holomorphism for Ditichlet and Neumann Problems}
 \begin{enumerate}
@@ -1796,6 +1859,7 @@ The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)
 %\end{corollary}
 
 \subsection{Weakly-Singular and Hyper-Singular Operators Holomorphic Extensions}
+\todo{cambiar conds del lf con teorema 6.1.3, y ver analisis de sf, mirar lo de elasticidad tambien}
 In this section we will show that the operators $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}, \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ defined as in \eqref{eq:bios} have holomorphic extension in the parametrizations $\br_1,\hdots,\br_M$. We will first analyze the weakly-singular operator and then use the Maue's representation for obtain the result for the hyper-singular operator. 
 
 Throughout the rest of this section we consider $m\in \IN$, $h \in [0,1]$, and, $M$ compact disjoint sets $K^1,\hdots,K^M \subset \rgeoh{m}{h}$. and the corresponding positive real numbers $\delta_1, ..,\delta_M$ chosen according to Lemmas \ref{lemma:dwelldef}, and \ref{lemma:dcross}, such that for any pair $j,k \in 1,\hdots,M$ (with $j\neq k$) the conclusion of both lemmas holds for the set $K^j_{\delta_j}$ and $ K^j_{\delta_j}\times K^k_{\delta_k}$, respectively \footnote{this selection of values for the $\delta$ variables is possible by taking the minimum value, such that both lemmas holds for all the combination of $j,k$. }. 
