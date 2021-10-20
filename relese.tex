@@ -1374,7 +1374,7 @@ We can further generalize the structure of the functions $G_1,G_2$ of Remark \re
 $$
 G_j(t,s) = f_j\left((\br'(t),\br''(t),\hdots,\br^{(n)}(t),\bp'(s),\bp''(s),\hdots,\bp^{(n)}(s)\right)F_j(d_{\br,\bp}^2(t-s)),
 $$
-where $f_j$ is entire in each coordinate.If we assume the above representation Condition \ref{condition:smh}, has to be changed with:
+where $f_j$ is entire in each coordinate. With the above representation Condition \ref{condition:smh} has to be changed with:
 \begin{enumerate}
 \item[i] 
 $s > \frac{-1}{2}$, and $s+
@@ -1383,6 +1383,35 @@ $s > \frac{-1}{2}$, and $s+
 $ s \leq \frac{-1}{2}$, and $\frac{1}{2}+n -s < m+h$.
 \end{enumerate}  
 
+Lemmas \ref{lemma:vcomp}, and \ref{lemma:wcomp} ensure that exist a region such that each component of the weakly-singular and hyper-singular operator have holomorphic extension. The extension of the operator has to be done in the intersection of all the regions, now we describe the condition that characterize the intesection of the regions. 
+
+\begin{condition}
+\label{condition:deltaOps}
+Given $\delta_1,\hdots,\delta_M$, $M$ strictly positive real numbers, and $K^1,\hdots,K^M$ disjoint compact subsets of $\rgeoh{m}{h}$ such that: 
+\begin{enumerate}
+\item[i] Each $\delta_j$ is such that Condition \ref{condition:Qself}, is fulfilled in the compact set $K^j$, for $j=1,\hdots,M$.
+\item[ii]
+For a pair $(\delta_i, \delta_j)$ Condition \ref{condition:dcross} is fulfilled in $K^i\times K^j$, for every $i,j \in \{1,\hdots,M\}$, such that $i \neq j$.
+\end{enumerate} 
+\end{condition}
+
+Now we proceed with the proof of Theorem \ref{thrm:biohlmextension}.
+
+\begin{proof}[Theorem \ref{thrm:biohlmextension}]
+We proof only for the weakly-singular operator, the hyper-singular case follows by the same arguments. 
+
+Given the sequence $\{\xi\}_j^M$ of positive real numbers such that $\xi_j < \delta_j$, where $\{\delta_j\}_{j=1}^M$ are the same of Condition \ref{condition:deltaOps} for $j=1,\hdots,M$, by Lemma \ref{lemma:vcomp} the maps  
+\begin{align*}
+\br_j \in K^j &\mapsto V_{\Gamma_1,\hdots,\Gamma_M})_{j,j} \in \mathcal{L}\left( \IT^s,\IW^{s+1}\right), \\
+(\br_i,\br_j) \in K^i \times K^j &\mapsto (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \in \mathcal{L}\left( \IT^s,\IW^{s+1}\right), \quad i \neq j,
+\end{align*}
+have holomorphic extension in $K^j_{\xi_j}$, and $K^i_{\xi_i} \times K^j_{\xi_j}$ respectively. Since each component has holomorphic extensionand using the definition of the norms of $  \prod_{j=1}^M \IT^s$, and  $\prod_{j=1}^M \IW^{s+1}$ as the standard euclidean norm of a Cartesian product, we directly obtain that the map 
+\begin{align*}
+(\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto \mathbf{V}_{\Gamma_1, \hdots,\Gamma_M} \in \mathcal{L} \left(  \prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}
+\right)
+\end{align*}
+has holomorphic extension in $K^1_{\xi_1} \times K^2_{\xi_2} \hdots \times K^M_{\xi_M}$.
+\end{proof}
 \end{remark}
 
 \section{Parametric Holomorphism for Ditichlet and Neumann Problems}
