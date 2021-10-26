@@ -347,6 +347,7 @@
 \newcommand{\la}{\lambda}
 \newcommand{\bvphi}{\boldsymbol \varphi}
 \newcommand{\bla}{\boldsymbol \lambda}
+\newcommand{\bphi}{\boldsymbol \phi}
 \newcommand{\bpsi}{\boldsymbol \psi}
 \newcommand{\btau}{{\boldsymbol \tau}}
 \newcommand{\bxi}{{\boldsymbol \xi}}
@@ -450,7 +451,7 @@ As is standard, for the solution of the Dirichlet and Neumann problem to be in h
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
 \subsection{General Notation}
-\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable, complexification of banach spaces, open sets of delta, $\mathcal{L}$}
+\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable, complexification of banach spaces, open sets of delta, $\mathcal{L}$, $[-1,1]^\IN$}
 
 Throughout we will define open arcs as the image of a continuous derivable, globally invertible in their range, function $\br : [-1,1] \rightarrow \IR^2$.  We further assume that the tangent vector is nowhere null, and fix the normal vector to have the same direction of $(r'_2,-r'_1)$. Rigorously speaking  this definition identifies open arcs with the corresponding parametrization function instead of the set of points that describe the arc in $\IR^2$. 
 \subsection{Boundary Value Problems on Open Arcs}
@@ -628,6 +629,7 @@ $L\bv(\bx)$ (where $\bv$ is independent of the paramatrizations) has holomorphic
 Finally assuming a parametric form of geometry configuration presented in Section \todo{5}, with the corresponding Assumption \todo{ref}, using the abtract result Theorem \ref{theorem:generalbpeholomrfsm} we obtain the following result. 
 
 \begin{theorem}
+\label{thrm:bpeholomr}
 Under the hypothesis of Theorem \ref{thrm:solutionholomrext}, and Assumption \todo{ref}\footnote{The assumption defined the parameter $p$, as well conditions for the perturbations basis $\mathbf{b}_n$.} we have that for $b_n = \|\mathbf{b}_n\|_{\rgeoh{m}{h}}$, the norm of perturbation basis, the map
 \begin{align*}
 \by \in [-1,1]^{\IN} \mapsto \bla \in \prod_{j=1}^M \IT^s,
@@ -786,6 +788,7 @@ u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in Y^
 \end{align*}
 From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see the functions $\{wU_n\}_{n \in \IN}$ are dense in $U^s$, since these are $0$
 on the extremes $\pm 1$, we obtain that the general Maue's representation formula \eqref{eq:mauesrep} is valid for functions in $U^s$.  
+Since the dual space of $H^s$, could be identified with $H^{-s}$, we can identify the dual space of $T^s$ with $W^{-s}$ and the dual of $U^s$ with $Y^{-s}$.In both cases the duality product correspond to an extension of the $L^2$ inner product. \todo{check}.
 
 An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular using the density of the Chebishev basis we can easly see that 
 \begin{align}
@@ -1431,7 +1434,7 @@ V_{\br_M,\br_1} & V_{\br_M,\br_2} &\hdots & 0
 \end{align*}
 according to Lemmas \ref{lemma:vcomp}, and \ref{lemma:wcomp} the pure diagonal part is composed of Fredholm operators of index $0$, and the off diagonal componets are compact. Hence, again by the definition of the norm of the Cartesian product the full operators are Fredholm of index $0$. 
 
-From the Freedholm property  the existence and uniqueness of $\bla, \bmu$ is ensured if show that the kernel of both operators is trivial. As we mentioned previously this is equivalent to the unisolvence of the volume problem presented in Section \ref{sec:bvproblem}, we refer to \cite{JHP20} for the details.
+From the Freedholm property  we obtain that $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L} \left( \prod_{j=1}^M \IT^{s}, \prod_{j=1}^M \IW^{s+1} \right)$ and $\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L} \left( \prod_{j=1}^M \IU^{s}, \prod_{j=1}^M \IY^{s-1} \right)$ are invertible if the kernel of each operators is trivial. As we mentioned previously this is equivalent to the unisolvence of the volume problem presented in Section \ref{sec:bvproblem}, we refer to \cite{JHP20} for the details.
 
 Now we proof Theorem \ref{thrm:solutionholomrext}
 
@@ -1441,6 +1444,7 @@ As we explained before, for every geometric configuration given by $(\br_1,\hdot
 $$
 (\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in \mathcal{L} \left( \prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s \right), \quad (\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in \mathcal{L} \left( \prod_{j=1}^M \IY^{s-1}, \prod_{j=1}^M \IU^s \right).
 $$
+So $\bla$, and $\bmu$ exist and are 
 Let us define $K = K^1\times K^2 \hdots \times K^M$, then by Theorem \ref{thrm:biohlmextension} we can find $\xi>0$\footnote{$\xi$ can be selected as $\xi =\min_{j=1,\hdots,M} \xi_j$ where $\xi_j$ are the ones of Theorem \ref{thrm:biohlmextension}.} such that weakly-singular and hyper-singular have holomrphic extension in $K_\xi = K^1_\xi \times K^2_\xi \hdots \times K^M_\xi$. 
 
 Now we can use Theorem \ref{thrm:abtractinverse} there exist $\eta_1,\eta_2$ such that the the maps 
@@ -1448,14 +1452,15 @@ Now we can use Theorem \ref{thrm:abtractinverse} there exist $\eta_1,\eta_2$ suc
 (\br_1,\hdots,\br_M) \in K &\mapsto (\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in  \mathcal{L} \left( \prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s \right),\\
 (\br_1,\hdots,\br_M) \in K &\mapsto(\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1}\mathcal{L} \left( \prod_{j=1}^M \IY^{s-1}, \prod_{j=1}^M \IU^s \right),
 \end{align*}
-have holomorphic extension in $K_{\eta_1}, K_{\eta_2}$ respectively. Finally we notice that by definition 
+have holomorphic extension in $K_{\eta_1}, K_{\eta_2}$ respectively.
+We recall that the right hand side of the boundary integral formulations are e $({f}^D_{\Gamma_1,\hdots,\Gamma_M})_j = f^D \circ \br_j$, and $({f}^N_{\Gamma_1,\hdots,\Gamma_M})_j = f^N \circ \br_j$, and we assumed that $f^D$, $f^N$ are entire functions. From this representation, arguing as in Lemma \ref{lemma:cmdecay2}, but for univariate functions, we can check that Condition \ref{condition:smh} ensure that 
 \begin{align*}
-\bla =(\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}, \quad \bmu  = (\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M},
+{f}^D_{\Gamma_1,\hdots,\Gamma_M} \in \prod_{j=1}^M \IW^{s+1}, \quad {f}^N_{\Gamma_1,\hdots,\Gamma_M} \in \prod_{j=1}^M \IY^{s+1} \subset \prod_{j=1}^M \IY^{s-1}.
 \end{align*}
-where $({f}^D_{\Gamma_1,\hdots,\Gamma_M})_j = f^D \circ \br_j$, and $({f}^N_{\Gamma_1,\hdots,\Gamma_M})_j = f^N \circ \br_j$. Since the functions $f^D, f^N$ are assumed to be entire, the maps $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}$, and  $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M}$ have holomorphic extension to any region and the final result follows by composition of maps with holomorphic extensions. 
+Furthermore, once again using that $f^D$, $f^N$ are entire functions, is direct that the maps $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}$, and  $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M}$ have holomorphic extension to any region and the final result follows by composition of maps with holomorphic extensions. 
 \end{proof}
 \section{Parametric Holomorphism for Dirichlet and Neumann Problems}
-The main objective of this section is to present the proof of Theorem \ref{thrm:bepholm}. To do so, we need to clearly state which are the perturbation basis $\{\bb_n\}_{n=0}^\infty$.
+The main objective of this section is to present the proof of Theorem \ref{thrm:bpeholomr}. To do so we need to clearly state which are the perturbation basis $\{\bb_n\}_{n=0}^\infty$.
 
 Throughout this section we denote by 
 $\br^0_1,\br^1_2,\hdots, \br^0_M$, $M$ fixed parametrizations in $\prod_{j=1}^M \rgeoh{m}{h}$.  The perturbation basis are elements in the same space, thus we will consider geometric configurations given by parametrizations 
@@ -1484,740 +1489,99 @@ $$
 $$
 \end{enumerate}
 \end{assumption}
-Notice that under Assumption \ref{assump:geoparam} for every $\by$, the solutions $\bla,\bmu$ exist and are unique. 
-\begin{proof}[Theorem \ref{thrm:bepholm}]
+Notice that under Assumption \ref{assump:geoparam} for every $\by$, the solutions $\bla,\bmu$ exist and are unique. This property is the last ingredient needed for the proof of Theorem \ref{thrm:bpeholomr} that we now present. 
+\begin{proof}[Theorem \ref{thrm:bpeholomr}]
 By Assumption \ref{assump:geoparam}, $\bla,\bmu$ exist and are unique for every possible geometric configuration $\br_j(\by)$, $\by \in [-1,1]^\IN$, and $j = 1,\hdots,M$.  Then the result follows from Theorems \ref{thrm:solutionholomrext}, and \ref{theorem:generalbpeholomrfsm}.
 \end{proof}
+
+One rarely known exactly the solutions $\bla$, $\bmu$ for all the geometric configuration determinated by the parameters $\by \in [-1,1]^\IN$, and we had to relay on numerical approximations of $\bla,\bmu$.
+
+Then, for practical applications such as high dimension integration and interpolation, we need the parametric holomorphism of the numerical approximations. 
+
+%In what follows we consider increasing\footnote{Increasing in the sense that $\IT_N \subset \IT_{N+1}$} families of finite dimensional sub-spaces $\{\IT_N\}_{N \in \IN} \subset \IT^S$,  $\{\IU_N\}_{N \in \IN} \subset \IU^s$, $\{\IW_N\}_{N \in \IN} \subset \IW^s$, $\{\IY_N\}_{N \in \IN} \subset \IY^s$. Such that, $\bigcup_{n \in \IN} \IT_N $ is dense in $\IT^s$, and  $\bigcup_{n \in \IN} \IU_N$ is dense in $\IU^s$, for every $s \in \IR$. 
+
+In what follows we consider increasing\footnote{Increasing in the sense that $\IT_N \subset \IT_{N+1}$} families of finite dimensional sub-spaces $\{\IT_N\}_{N \in \IN} \subset \IT^{\frac{-1}{2}}$,  $\{\IU_N\}_{N \in \IN} \subset \IU^{\frac{1}{2}}$. Such that, $\bigcup_{n \in \IN} \IT_N $ is dense in $\IT^{\frac{-1}{2}}$, and  $\bigcup_{n \in \IN} \IU_N$ is dense in $\IU^\frac{1}{2}$. 
+
+ Furthermore, we assume that there are two family of functions $\{\phi^T_n\}_{n\in \IN} \subset \IT^{\frac{-1}{2}}$, and $\{\phi^U_n\}_{n\in \IN} \subset \IU^{\frac{1}{2}}$, such that for every $N \in \IN$ $\{\phi^T_n\}_{n=0}^N$ is a basis for $\IT_N$, and $\{\phi^U_n\}_{n=0}^N$ is a basis for $\IU_N$. We also define 
+ \begin{align*}
+ C^T(N) := \sup_{ \substack{\ba \in \IR^{N+1}: \\
+ 			\phi = \sum_{n=0}^N a_n \phi_n^T}} \frac{\| \ba\|}{\|\phi\|_{\IT^{\frac{-1}{2}}}}, \quad 
+ 			 C^U(N) := \sup_{ \substack{\ba \in \IR^{N+1}: \\
+ 			\phi = \sum_{n=0}^N a_n \phi_n^U}} \frac{\| \ba\|}{\|\phi\|_{\IU^{\frac{-1}{2}}}},
+ \end{align*}
+and the Galerkin projectors: 
+ \begin{align*}
+ P_N^T : \IW^{\frac{1}{2}} &\mapsto \IR^{N+1}    \\
+			u &\rightarrow  (\langle u , \phi^T_0\rangle , \hdots ,\langle u , \phi^T_N\rangle )^t \\
+			P_N^U : \IY^{\frac{-1}{2}} &\mapsto \IR^{N+1}\\
+			u &\rightarrow  (\langle u , \phi^U_0\rangle , \hdots ,\langle u , \phi^U_N\rangle )^t ,
+ \end{align*}
+ where $\langle \cdot, \cdot \rangle$ denotes the duality product between $\IW^{\frac{1}{2}},\IT^{-\frac{-1}{2}}$ and also $\IY^{\frac{-1}{2}},\IU^{\frac{1}{2}}$.  We construct the vector Galerkin projectors $\mathbf{P}_N^T : \prod_{j=1}^M\IW^{\frac{1}{2}} \mapsto \IR^{M(N+1)}$, and   $\mathbf{P}_N^U : \prod_{j=1}^M\IY^{\frac{-1}{2}} \mapsto \IR^{M(N+1)}$ by taking the corresponding Galerkin projector in each coordinate.
  
-\section{Examples}
+  The numerical approximations by $\bla_N \in \prod_{j=1}^M \IT_N$,  $\bmu_N \in \prod_{j=1}^M \IU_N$ of $\bla, \bmu$ respectively are defined as the solution of 
+ \begin{align*}
+  \mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla_N  =   \mathbf{P}_N^T \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M},  \\
+    \mathbf{P}_N^U \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu_N  =  \mathbf{P}_N^U \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M}.
+ \end{align*}
+Since the projectors are linear operators and also independent of the parametrizations, from Theorem \ref{thrm:biohlmextension} we obtain that $\mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}$, $\mathbf{P}_N^U \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ have holomorphic extensions. Hence one would be temped to argue as in Theorem \ref{thrm:abtractinverse} to obtain holomorphic extensions of $\bla_N$ and $\bmu_N$. However, we can not ensure that the projected version of the operators have inverses, in fact since this are Galerkin discretizations of Fredholm operators of index $0$ we only have the asymptotic result (see \cite[Section 4.2.3 ]{Sauter:2011}): 
 
-\section{Future Work}
-\begin{enumerate}
-\item 
-Stokes equation, thermolastic???
-\end{enumerate}
-
-In this section we analyze kennel functions (in the sense of the function $p_k$ of Theorem \ref{thrm:abstractholm}) that are constructed as the composition of a smooth function and one of the functions studied in the previous section. 
-
-The following result is a basic consequence of the composition of holomorphic functions. 
-
-\begin{lemma}
-\label{lemma:Fcircq}
-Let $F :\IC \rightarrow \IC$ holomorphic in $\IC \setminus (-\infty,0]$. Consider $K^1, K^2$ compact subsets of $\cmspace{m}{(-1,1)}{\IR^2}$, for some $m \in \IN$, with their corresponding complex extensions $K^1_{\delta_1}$, $K^2_{\delta_2}$, for a pair $\delta_1 >0$, $\delta_2>0$. We also consider a function $q_{\br,\bp} :(-1,1)\times (-1,1) \rightarrow \IC$ with $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$, such that  
-\begin{enumerate}
-\item 
-The map $(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto q_{\br,\bp} \in \cmspaceh{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$ is holomorphic and uniformly bounded for a $j\in \IN$, such that $j\leq m$. 
-\item we have the uniform bound: 
+For every parameter $\by \in [-1,1]^{\IN}$, there exist $N_0(\by) \in \IN$, such that for every $N> N_0(\by)$ the operators:
 $$
-\inf_{(\br,\bp) \in K_{\delta_1}^1 \times K_{\delta_2}^2} \inf_{(t,s) \in (-1,1)\times(-1,1)} Re( q_{\br,\bp}(t,s))>0.
-$$
-\end{enumerate}
-Then 
-$$(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto  F \circ q_{\br,\bp} \in \cmspace{m-j}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded.
-\end{lemma} 
-From the latter result we obtain two important consequences. 
-
-\begin{corollary}
-\label{cor:smoothcomp}
-Let $F$ as in the previous lemma and $m \in \IN$: 
-\begin{enumerate}
-\item 
-For a compact $K \subset \rgeoh{m}{h}$, with $m \geq 1$, , and $\delta$ as in Lemma \ref{lemma:dwelldef} we have that 
-$$\br \in K_\delta \mapsto F \circ Q_{\br} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded. 
-\item 
-For compact disjoint sets $K_1,K_2 \subset  \rgeoh{m}{h}$ and $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross} we have have that 
-$$(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto F \circ d_{\br,\bp} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorphic and uniformly bounded.
-\end{enumerate}
-\end{corollary}
-\begin{proof}
-The proof is direct from previous Lemma, using Lemmas \ref{lemma:Qfun}, and \ref{lemma:dcross} to verify the hipotesis. The only point that was not not explicitly given is that the real parts of $d_{\br,\bp}$ is strictly positive, but this is a condition for the function to be well defined and was also showed in the proof of Lemma \ref{lemma:dcross}.
-\end{proof}
-Finally we need to analyze the case of smooth functions acting on the function $d_{\br}$ (defined as in Lemma \ref{lemma:dself}). The result is not direct as the distance in this case is only continuous regardless of the regularity of the arcs. To establish the regularity we need special conditions on the kernel function. 
-\begin{lemma}
-\label{lemma:selfkernell}
-Consider $F :\IC \rightarrow \IC$ holomorphic, and assume there is $f : \IC \rightarrow \IC$ also holomorphic such that
-$$F(z) = f(z^2).$$ 
-We consider again a compact set $K \subset \rgeoh{m}{h}$, and $\delta$ as in Lemma \ref{lemma:dwelldef}. Then we have 
-$$\br \in K_\delta \mapsto F\circ d_{\br} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$$
-is holomorhic and uniformly bounded. 
-\end{lemma}
-\begin{proof}
-The results is direct from the equivalence: $$F\circ d_{\br} = f( (\br(t)-\br(s)) \cdot (\br(t)-\br(s)))$$ the smoothness of $f$, and Lemma \ref{lemma:dself}. 
-\end{proof}
-
-
-
-
-
-
-
-
-
-%\begin{lemma}
-%\label{lemma:cmdecay}
-%Let $m \in \IN$, with $m\geq 1$, and $h \in[0,1)$. Consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then 
-%\begin{align*}
-%|\widehat{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),\\
-%|\widecheck{f}_{n,l}| \lesssim \|f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}  \min ( n^{-m}, l^{-m}),
-%\end{align*}
-%for $n>m$ and $l>m$, and the unspecified constant depending of $m$, but not of $f$ For $h=1$ we have one more order in the decay (i.e.the right most term is $ \min ( n^{-m-1}, l^{-m-1})$). Also for any $n \geq 0$, $l \geq 0$ we have the elementary bound 
-%\begin{align*} |\widehat{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}, \\ 
-% |\widecheck{f}_{n,l}| \leq \pi^2 \|f\|_{\cmspace{0}{\iinterv}{\IC}}.
-%\end{align*}
-%\end{lemma}
-%\begin{proof}
-%For $\widehat{f}_{n,l}$ the result is a simple extension from the uni-variate results presented in \todo{ref treffeten chapter 7}. The case of $\widecheck{f}_{n,l}$, is reduced to the previous one using integration by parts since using the derivatives of the Chebishev polynomials we have
-%\begin{align*}
-%\int_{-1}^1 g(t) U_n w(t) dt  = - (n+1) \int_{-1}^1 \left( \int_{-1}^t g(x) dx\right) T_{n+1} w^{-1}(t) dt,
-%\end{align*}
-%for any continuous function $g$, and the result can be extended to more general cases without difficulties.  
-%\end{proof}
-
-%\begin{lemma}
-%\label{lemma:cmdecay2}
-%Let $m \in \IN$, $h \in [0,1]$, and consider $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$, then given $s_1, s_2$, non negative real numbers with integer parts denoted by $[s_1], [s_2]$ and fractionals parts $\{s_1\},\{s_2\}$ respectively, such that at least one of the following conditions are met 
-%\begin{enumerate}
-%\item 
-% $\{s_1\}+\{s_2\}<1$, and $s_1+s_2 < m+h$.
-%\item 
-% $\{s_1\} +\{s_2\} \geq 1$ and $[s_1]+[s_2]+1 +\min\{\{s_1\},\{s_2\}\} < m+h$.
-%\end{enumerate}
-%Then we have 
-%\begin{align*}
-%\sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
-%(1+n^2)^{s_1} (1+l^2)^{s_2} |\widehat{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-%\sum_{n=0}^{\infty}\sum_{l=0}^{\infty}
-%(1+n^2)^{s_1} (1+l^2)^{s_2} |\widecheck{f}_{n,l}|^2 \lesssim \|f\|^2_{\cmspaceh{m}{h}{\iinterv}{\IC}},
-%\end{align*}
-%with unspecified constants independent of $f$. 
-%\end{lemma}
-%\begin{proof}
-%The idea of the proof is to notice that the left hand side correspond to a norm in a sobolev-type space, thus it is equivalent to the $L^2$ norm of the corresponding weak derivatives, and these can be bounded directly using the definition of the $\cmspaceh{m}{h}{\iinterv}{\IC}$ spaces. \todo{For completness the proof is included, also I dint not found the result for bi-variate functions...}
-%
-%First let us consider  the periodic case. For a bi-periodic function $g$, we define 
-%$$\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 = \sum_{\alpha_1 \leq m_1} \sum_{\alpha_2 \leq m_2} \| \partial_t^{\alpha_1} \partial_s^{\alpha_2} g(t,s) \|^2_{L^2([-\pi,\pi]\times [-\pi,\pi])}+  |\partial_t^{m_1} \partial_{s}^{m_2} g(t,s)|_{\mathbf{\gamma}}^2  ,$$
-%where the $\mathbf{\gamma}-$semi-norm is defined as 
-%\begin{align*}
-%|g|_{\mathbf{\gamma}}^2 = \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{| g(x,s)-g(t,s)+g(t,s)-g(x,s)|^2}
-%{\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds.
-%\end{align*}
-%We will denote the Sobolev-type norm as,
-%\begin{align}
-%\label{eq:sobnormtype}
-%\|g\|_{s_1,s_2}^2 = \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty (1+n^2)^{s_1}(1+l^2)^{s_2}| \widetilde{g}_{n,l}|^2
-%\end{align}
-%Now we show how $\|g\|_{s_1,s_2}^2$ can be bounded by $ \|g\|_{\mathbf{m},\mathbf{\gamma}}^2$. Given $s_1, s_2$ positive, and a smooth bi-periodic function $g$ we notice that the Fourier coefficients of $\partial_t^{m_1} \partial_s^{m_2} g$ are in fact $(i n)^{m_1} (i l)^{m_2} \widetilde{g}_{n,l}$, this plus the inequality $(1+n^2)^s \lesssim (n^2)^s+1$ give us 
-%\begin{align}
-%\label{eq:intdevs}
-%\begin{split}
-%\|g\|_{s_1,s_2}^2 \lesssim \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{\partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)}\right)_{n,l}\right\vert^2+ \\
-% \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_2\}} \left\vert\left(\widetilde{g}\right)_{n,l}\right\vert^2
-%.
-%\end{split}
-%\end{align}
-%From the last inequality is immediate that for the case $\{s_1\}= \{s_2\} =0$ we get 
-%$$
-%\|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{([s_1],[s_2]),\mathbf{0}},
-%$$
-%in any other case we define $\varrho = \partial_t^{[s_1]} \partial_s^{[s_2]}g(t,s)$, and from \eqref{eq:intdevs} we see that we only need to show that 
-%\begin{align*}
-% \sum_{n = -\infty}^\infty \sum_{l = -\infty}^\infty (1+n)^{\{s_1\}} (1+l^2)^{\{s_s\}} \left\vert\widetilde{\varrho}_{n,l}\right\vert^2 \lesssim \| \varrho \|^2_{\mathbf{0},(\{s_1\},\{s_2\})},
-%\end{align*}
-%the details of the this part are given in Appendix \ref{appendix:fracbivariate}. Finally  from the last observation we arrive to the bound
-%\begin{align}
-%\label{eq:gbound1}
-%\|g\|^2_{s_1,s_2} \lesssim \|g\|^2_{([s_1],[s_2]),(\{s_1\},\{s_1\})}. 
-%\end{align}
-%Now to finish the proof for periodic functions we need to bound the general norm $\|g\|_{\mathbf{m},\mathbf{\gamma}}^2$, in terms of the $\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}$-norms.
-%
-%First notice that is direct from the definition of the Holder norms that 
-%\begin{align*}
-% \|g\|^2_{\mathbf{m},(0,0)} \lesssim \|g\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}. 
-%\end{align*}
-%for every $m+h \geq m_1 + m_2$. Now let us consider the pure fractional case, here we have that for any $\alpha, \beta >0$ such that $\alpha + \beta = 1$
-%\begin{align*}
-%\begin{split}
-%|g|_{\mathbf{\gamma}}^2 \lesssim \|g\|_{\cmspaceh{0}{h}{[-\pi,\pi]\times [-\pi,\pi]}{\IC}}^2\\ \left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|x-t|^{2\alpha h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_1}} dt dx\right)
-%\left( \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{|y-s|^{2\beta h}}{\sin\left(\frac{|x-t|}{2} \right)^{1+2\gamma_2}} ds dy\right),
-%\end{split}
-%\end{align*}
-%thus the right hand side is finite only if $h > \gamma_1 + \gamma_2$. However this condition could not used whenever $\gamma_1 +\gamma_2 \geq 1$. For this last case we need to use the result \eqref{eq:smnormeq} of the Appendix \ref{appendix:fracbivariate}. In particular if we assume that $\gamma_1 = \max\{\gamma_1,\gamma_2\}$ we have 
-%$$
-%|g|_{\mathbf{\gamma}}^2 \leq \sum_{n=-\infty}^\infty \sum_{l=-\infty}^\infty |\widetilde{g}_{n,l}|^2 n^2 l^{2\gamma_2},
-%$$
-%and we recall that $ |n \widetilde{g}_{n,l}| = \left\vert \left(\widetilde{\partial_t g(t,s)}\right)_{n,l}\right\vert$, thus 
-%$$
-%|g|_{\mathbf{\gamma}}^2 \leq \|\partial_t g(t,s)\|_{L^2([-\pi,\pi]\times[-\pi,\pi])}^2+ |\partial_t g(t,s)|^2_{(0,\gamma_2)} \lesssim \|g\|_{\cmspaceh{1}{h}{([-\pi,\pi]\times[-\pi,\pi]}{\IC}}
-%$$
-%for every $h > \gamma_2$ or in general $h > \min \{\gamma_1,\gamma_2\}$. Hence we conclude that 
-%\begin{align*}
-%\|g\|_{\mathbf{m},\mathbf{\gamma}}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
-% \text{  for $m_1+m_2+\gamma_1 + \gamma_2 < m+h$ if $\gamma_1 + \gamma_2 < 1$},\\
-% \text{ for $m_1+m_2+1+\min\{\gamma_1, \gamma_2 \}< m+h$, if $\gamma_1 + \gamma_2 \geq 1$}.
-%\end{cases}
-%\end{align*}
-%Notice that if $\mathbf{\gamma} = (0,0)$ only the first case apply and we have the tighter bound $m_1 + m_2 \leq m+ h$. Thus from \eqref{eq:gbound1}, and the last bound we obtain
-%\begin{align}
-%\label{eq:gbound2}
-%\|g\|_{s_1,s_2}^2 \lesssim \|g\|^2_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\begin{cases}
-% \text{  for $s_1+s_2 < m+h$, if $\{s_1\} + \{s_2\} < 1$},\\
-% \text{ for $[s_1]+[s_2]+1+\min\{\{s_1\}, \{s_2\} \}< m+h$, if $\{s_1\} + \{s_2\} \geq 1$},
-%\end{cases}
-%\end{align}
-%with the exception that for $\{s_1\} =\{s_2\} = 0$ the bound is reduced to $s_1 +s_2 \leq m+h$.
-%
-%Now we consider the case of a non periodic function $f \in \cmspaceh{m}{h}{\iinterv}{\IC}$. We define two periodic liftings of $f$ as 
-%$$
-%\sigma(\theta,\phi ) = f(\cos \theta, \cos \phi), \quad \text{and,} \quad \varphi(\theta,\phi) = f(\cos \theta, \cos \phi)\sin \theta \sin \phi.
-%$$
-%we can see that the fourier coefficients of these functions are related to the chebyshev coefficients of f, in fact we have
-% \begin{align*}
-%\widetilde{\sigma}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
-%&= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
-%&= 4 \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \cos(|l|\phi) \cos(|n| \theta) d\phi d\theta \\
-%& = 4 \int_{-1}^1 \int_{-1}^1 f(t,s) T_{|n|} w^{-1}(t) T_{|l|} w^{-1}(s) dt ds \\
-%&= 4 \widehat{f}_{|n|,|l|},  
-%\end{align*}
-%and also 
-%\begin{align*}
-%\widetilde{\varphi}_{n,l} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \sin \theta \sin \phi e_{-l}(\phi) e_{-n}(\theta) d\phi d\theta\\
-%&= -\int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)\sin \theta \sin \phi \sin(l\phi) \sin(n \theta) d\phi d\theta \\
-%&= -4 \text{sign}(n) \text{sign}(l) \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \sin \theta \sin \phi \sin(|l|\phi) \sin(|n| \theta) d\phi d\theta \\
-%& = -4\text{sign}(n) \text{sign}(l) \int_{-1}^1 \int_{-1}^1 f(t,s) U_{|n|-1} w(t) U_{|l|-1} w(s) dt ds \\
-%&= -4 \text{sign}(n) \text{sign}(l)\widecheck{f}_{|n|-1,|l|-1},
-%\end{align*}
-%with $\widetilde{\varphi}_{n,l}=0$ if $n=0$ or $l=0$. Moreover, since the cosine function and all its derivatives are trivially bounded we have 
-%\begin{align*}
-%\|f\|_{ \cmspaceh{m}{h}{\iinterv}{\IC}} \cong \|\sigma \|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}}\cong 
-%\|\varphi \|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}},
-%\end{align*} 
-%then the result follows directly by applying the bound \eqref{eq:gbound2} to the functions $\sigma$ and $\varphi$.
-%\end{proof}
-
-%\begin{remark}
-%A similar result to Lemma \ref{lemma:cmdecay2} can be established by noticing that the smoothness of $f$ implies a degree of decay in the Chebishev coefficients. In fact following \todo{treffeten chapter 7}, we can obtain that for a pair of non negative real values $s_1,s_2$ and $f \in \cmspace{m}{\iinterv}{\IC}$ one has the same bound of the previous Lemma, under the more restrictive condition $s_1+s_2+1 < m$.
-%This last condition could be relaxed to the better result $s_1+s_2 < m$ if we consider functions of $\cmspace{m}{\iinterv}{\IC}$ with derivatives of order $m+1$ integrables, which is comparable with the previous lemma with $h=1$, more restrictive condition but the subspaces of $\cmspace{m}{\iinterv}{\IC}$  with $m+1$ integrable derivatives is larger than $\cmspaceh{m}{1}{\iinterv}{\IC}$. 
-%
-%We also notice that for $s_1, s_2 \in \IN$ we require the slightly less restrictive condition $s_1+s_2 \leq m+h$.
-%\end{remark}
-
-%We recall the classical definition of the positive part of a real number defined as $s^+ = \max(0,s)$, for any $s \in \IR$.
-%
-%Now we can establish the mapping properties of $R_f$ directly. 
-%\begin{lemma}
-%\label{lemma:Rfoperator}
-%Let $m \in \IN$, $h \in [0,1]$, $r_1,r_2 \in \IR$, such that $m,h$ satisfy the conditions of Lemma \ref{lemma:cmdecay2} with $s_1 = (-r_1)^+$, and $s_2 = r_2^+$, then the maps
-%\begin{align*}
-%f \in \cmspaceh{m}{h}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(T^{r_1}, W^{r_2}),\\
-%f \in \cmspaceh{m}{h}{\iinterv}{\IC} \mapsto R_f \in \mathcal{L}(U^{r_1}, M^{r_2}),
-%\end{align*}  are \todo{compact}, and we have the bounds 
-%\begin{align*}
-%\| R_f \|_{\mathcal{L}(T^{r_1}, W^{r_2})} \lesssim \| f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}},\\
-%\| R_f \|_{\mathcal{L}(U^{r_1}, M^{r_2})} \lesssim \| f\|_{\cmspaceh{m}{h}{\iinterv}{\IC}}.
-%\end{align*}
-%\end{lemma}
-%\begin{proof}
-%We will only proof for the pair $(T^{r_1},W^{r_2})$, for $(U^{r_1},M^{r_2})$ the exact same proofs works by changing the first kind Chebishev polynomials for the second kinds and the factor $w^{-1}$ for $w$. We can directly compute,
-%\begin{align*}
-%\|R_fu\|_{W^{r_2}}^2  &= \sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert 
-%\int_{-1}^1 \left( \int_{-1}^1 f(t,s) u(s) ds\right) T_n w^{-1}(t) dt\right\vert^2\\
-%& = 
-%\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert  \sum_{p=0}^\infty \sum_{q=0}^\infty \widehat{f}_{p,q} u_q
-%\int_{-1}^1 T_p   T_n w^{-1}(t) dt \right\vert^2
-%\end{align*} 
-%by the orthogonality of the Chebishev polynomials,
-% \begin{align*}
-%\|R_fu\|_{W^{r_2}}^2  &=
-%\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert   \sum_{q=0}^\infty \widehat{f}_{n,q} u_q
-% \right\vert^2 
-% \\
-% &= 
-%\sum_{n=0}^\infty (1+n^2)^{r_2} \left\vert   \sum_{q=0}^\infty (1+q^2)^{-r_1/2}\widehat{f}_{n,q} (1 +q^2)^{r_1/2}u_q
-% \right\vert^2  
-%\end{align*} 
-%by the Cauchy-Schawrz inequality 
-%\begin{align}
-%\label{eq:rfbound}
-%\|R_fu\|_{W^{s_2}}^2  \leq 
-%\sum_{n=0}^\infty \sum_{q=0}^\infty (1+n^2)^{r_2}     (1+q^2)^{-r_1}|\widehat{f}_{n,q}|^2  \| u\|^2_{T^{r_1}},
-%\end{align}
-%the mapping properties of $R_f$ then follows directly from Lemma \ref{lemma:cmdecay2}, and noticing that 
-%$(1+n^2)^{r_2}     (1+q^2)^{-r_1} \leq (1+n^2)^{s_2}     (1+q^2)^{s_1}$. 
-%The compactness is direct as the conditions in Lemma \ref{lemma:cmdecay2} are given in terms of strict inequalities, thus we could sightly increase $r_2$ and and keep the mapping property, then the result follows from the compact embedding of the spaces. 
-%\end{proof}
-%
-%Now we consider the operator $L_f$. This is done by reparametrizing the operator into a periodic integral operator and using standard results, see \todo{saranen capitulo 6} for the details. We consider two periodizations of $L_f$ given by the corresponding lifftings $\widehat{J}$, and $K$, the excat expresion for these are, 
-%\begin{align}
-%\label{eq:Lsplit}
-%\begin{split}
-%(\widehat{J}L_fu)(\theta) &= \frac{log{2}}{2} \int_{-\pi}^{\pi} f(\cos \theta , \cos \phi) Ju(\phi) d\phi \\&+ \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert Ju(\phi) d\phi.
-%\end{split}
-%\end{align}
-%and, 
-%\begin{align}
-%\label{eq:Lsplitodd}
-%\begin{split}
-%(KL_fu)(\theta) &= \frac{log{2}}{2} \int_{-\pi}^{\pi} f(\cos \theta , \cos \phi)\sin \theta \sin \phi \widehat{K}u(\phi) d\phi \\&+ \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi)\sin \theta \sin \phi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \widehat{K}u(\phi) d\phi.
-%\end{split}
-%\end{align}
-%\begin{lemma}
-%\label{lemma:Lfoperator}
-%Let $m \in \IN$, with $m\geq 2$ and $f \in \cmspace{m}{\iinterv}{\IC}$, then  for $s \in \IR$, such that $|s+1| +|s| <m$ we have
-%\begin{align*}
-%\|L_f\|_{\mathcal{L}(T^s,W^{s+1})} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}},\\
-%\|L_f\|_{\mathcal{L}(U^s,M^{s+1})} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}.
-%\end{align*}
-%
-%
-%\end{lemma}
-
-%\begin{proof}
-%We recall that $\log |t-s|  = \sum_{n \geq 0} d_n T_n(t) T_n(s)$, where $d_n \sim n^{-1}$, \todo{add ref}, thus we have  \todo{este cambio de suma con integral no es directo}
-%\begin{align*}
-%\begin{split}
-%L_f u &= \sum_{n=0}^\infty d_n \int_{-1}^1 f(t,s) T_n(t) T_n(s) u(s) ds \\ &=  \sum_{n=0}^\infty \sum_{p=0}^\infty
-%\sum_{q=0}^\infty d_n \widehat{f}_{p,q} \int_{-1}^1 T_nT_p(t) T_nT_q(s) u(s) ds
-%\end{split}
-%\end{align*}
-%Since \todo{esto no se cumple par alos normalizados}$T_n T_m (t)= \frac{1}{2} (T_{n+m}(t) + T_{|n-m|}(t))$, for every pair of integers $n,m$, we get 
-%\begin{align*}
-%L_f u = \sum_{n=0}^\infty \sum_{p=0}^\infty
-%\sum_{q=0}^\infty \frac{d_n}{2} T_nT_p(t) \widehat{f}_{p,q} ( u_{n+q}+u_{|n-q|})
-%\end{align*} 
-%we do the changes of variables $n+q = r$, $n-q= r$ for $n>q$ and $q-n = r$ for $n \leq q$, thus the above expression is reduced to  \todo{faltan pequeños ajustes...}
-%\begin{align}
-%\label{eq:Lfexp}
-%L_f u =\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
-%\frac{d_n}{2} T_nT_p(t)  ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}),
-%\end{align}
-%to obtain the norm of $L_fu$ in $W^{s+1}$ we need to compute its Chebishev coefficients which are given by 
-%\begin{align*}
-%(L_f u)_l = \int_{-1}^1 L_fu T_l w^{-1}(t) dt 
-%\end{align*} 
-%using \eqref{eq:Lfexp}, and the expresion for the product of Chebyshev polynomials we obtain, 
-%\begin{align*}
-%(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty \sum_{p=0}^\infty
-%\frac{d_n}{4} ( \widehat{f}_{p,|r-n|}+\widehat{f}_{p,r+n}) \int_{-1}^1 (T_{n+p}+ T_{|n-p|})T_lw^{-1}(t) dt
-%\end{align*}
-%we can now use the orthogonality of the Chebishev polynomials and after some variable changes in the $p$ variable we get: 
-%\begin{align*}
-%(L_f u)_l = \sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
-%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-%\right) ,
-%\end{align*}
-%using the last expression we get 
-%\begin{align*}
-%&\| L_f u\|_{W^{s+1}}^2 = \sum_{l= 0}^\infty (1+l^2)^{s+1} | (L_f u)_l| ^2 = \\
-%&\sum_{l= 0}^\infty (1+l^2)^{s+1} \left\vert 
-%\sum_{r=0}^\infty u_r  \sum_{n=0}^\infty  \frac{d_n}{4} \left( 
-%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-%\right)
-%\right\vert^2
-%\end{align*} 
-%we use the cauchy-schawrz inequality so we obtain 
-%\begin{align}
-%\label{eq:fourdsum}
-%\begin{split}
-%\| L_f u\|_{W^{s+1}}^2 \leq \| u\|_{T^s}^2  \sum_{l= 0}^\infty \sum_{r=0}^\infty (1+l^2)^{s+1} (1+r^2)^{-s} \\ \left\vert \sum_{n=0}^\infty
-%\frac{d_n}{4} \left( 
-%\widehat{f}_{|l-n|,|r-n|}+\widehat{f}_{|l-n|,r+n}+ \widehat{f}_{l+n,|r-n|}+\widehat{f}_{l+n,r+n}
-%\right)
-%\right\vert^2 
-%\end{split}
-%\end{align}
-%We now estimate the sums on the right hand side of the last equation, since $f \in \cmspace{m}{\iinterv}{\IC}$ we can use Lemma \ref{lemma:cmdecay}, thus for the first sum we get  
-%\begin{align*}
-%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim \|f\|_{\cmspace{m}{\iinterv}{\IC}}
-%\sum_{n=1}^\infty  n^{-1} (|l-n|+1)^{-(m+1)},
-%\end{align*}
-%we then split the sum in three parts \footnote{we assume that $l$ is even, the odd case is similar}
-%\begin{align*}
-%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} \\
-%\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)}+ \sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)} + \sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} ,
-%\end{align*}
-%each of them is estimated using integrals interpolants so we obtain:  \todo{la segunda esta mal!, esta suma no decae asi...decae con orden 1 solamente creo.....}
-%\begin{align*}
-%\sum_{n=1}^{l/2}  n^{-1} (l-n)^{-(m+1)} \lesssim \int_{1}^{l/2} x^{-1} (l-x)^{-m-1} dx  \leq \left(\frac{l}{2}\right)^{-m-1}\log{\frac{l}{2}} \lesssim l^{-m-1}\log l \\
-%\sum_{n> l/2}^{3l/2} n^{-1} (|l-n|+1)^{-(m+1)}  \lesssim \int_{l/2}^{3l/2} x^{-1}(|l-x|+1)^{-m-1} dx\leq \left(\frac{l}{2}\right)^{-m-1} \log 3  \lesssim l^{-m-1}\\
-%\sum_{n >3l/2 }n^{-1} (n-l)^{-(m+1)} \lesssim \int_{3l/2}^\infty x^{-1}(x-l)^{-m-1} \leq \frac{2}{3l} \left( \frac{2}{3l} \right)^{m} \lesssim l^{-m-1},
-%\end{align*}
-%thus we obtain
-%$$
-%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} l^{-m-1} \log l
-%$$ 
-%similarly using Lemma \ref{lemma:cmdecay} to bound the coefficients of $f$ in terms of the $r$ variable we can find the following estimation 
-%$$
-%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-m-1} \log r,
-%$$ 
-%and combining these two bounds we have that for $\alpha, \beta \in \IR$ such that $\alpha + \beta =1 $, 
-%$$
-%\sum_{n=0}^\infty d_n \widehat{f}_{|l-n|,|r-n|} \lesssim\|f\|_{\cmspace{m}{\iinterv}{\IC}} r^{-\beta(m+1)} l^{-\alpha(m+1)} (\log r)^\beta (\log l)^\alpha,
-%$$ 
-%for other three terms in \eqref{eq:fourdsum} we can apply the same ideas so we get, 
-%\begin{align*}
-%\| L_f u\|_{W^{s+1}}^2  \lesssim \| u\|_{T^s}^2 \|f\|_{\cmspace{m}{\iinterv}{\IC}}^2 \sum_{l= 1}^\infty \sum_{r=1}^\infty \\(1+l^2)^{s+1} (1+r^2)^{-s} r^{-2\beta(m+1)} l^{-2\alpha(m+1)} (\log r)^{2\beta} (\log l)^{2\alpha},
-%\end{align*}
-%notice that the terms $r=l=0$ are omitted as they don't play any role in the convergence. Now the proof is finished by noticing that a equivalent condition for the last sum to converge is 
-%$$2(s+1) -2(m+1)\alpha < -1, \quad \text{and,} \quad -2s -2(m+1)\beta < -1. $$
-%we replace $\beta = 1 - \alpha$ sum both inequalities and obtain the condition $1<m$. 
-%\end{proof}
-%\begin{remark}
-%One can conclude that in fact the conditions for the continuity of $L_f$ and $R_f$ are the same, so the inclusion of the extra weakly singular factor makes no difference in this context. The reason for this is based in that $m$ could only take discrete values so the extra logaritmic factor plays no role in the convergence of the series. 
-%\end{remark}
-%\todo{si dejo la demostracion anterior no necesito nada de fourier.}
-%\begin{proof}
-%By the definitions of the functional spaces we have that 
-%\begin{align*}
-%\| \widehat{J} L_f u \|_{H^{s+1}} = \|L_f u  \|_{W^{s+1}},\quad \text{and,} \quad \| KL_f u \|_{H^{s+1}} = \|L_f u \|_{M^{s+1}},
-%\end{align*}
-%The regular parts of $\widehat{J} L_f u$, and $K L_f u$, defined as the first term of the right hand side of \eqref{eq:Lsplit}, and \eqref{eq:Lsplitodd} respectively can be mapped back to $[-1,1]$ by taking the inverse of the corresponding lifting operator and a cosine change of variable, hence we obtain the terms 
-%$$
-%\left\vert \left \vert
-% \int_{-1}^{1} f(t , s) u(s) ds 
-% \right\vert\right\vert_{W^{s+1}}, \quad \text{and,} \quad \left\vert \left \vert
-% \int_{-1}^{1} f(t , s) u(s) ds 
-% \right\vert\right\vert_{M^{s+1}},
-%$$
-%which are operator with regular kernels. Since $m>1$ from Lemma \ref{lemma:Rfoperator} these to are bounded by the norm of $u$ in the corresponding space\footnote{$T^s$ for $W^{s+1}$, and $U^s$ for $M^{s+1}$} for $s \in \IR$, in fact these regular part are compact as proven in the previous Lemma. For the singular part, we first notice that this correspond to a traditional weakly-singular operator (order $-1$), and we  can use Theorem \todo{saranen theorem 6.1.1} so for any $\nu >\frac{1}{2}$,
-%\begin{align}
-%\label{eq:condS}
-%\begin{split}
-%\left\vert \left\vert \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert Ju(\phi) d\phi  \right\vert \right\vert_{H^{s+1}}^2\lesssim  \|J u\|_{H^s}^2\\
-%\sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{f}_{p,q}|^2,
-%\end{split}
-%\end{align}
-%and also,
-%\begin{align}
-%\label{eq:condSodd}
-%\begin{split}
-%\left\vert \left\vert \int_{-\pi}^{\pi} f(\cos \theta, \cos \phi) \sin \theta \sin \phi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \widehat{K}u(\phi) d\phi  \right\vert \right\vert_{H^{s+1}}^2\lesssim  \|\widehat{K} u\|_{H^s}^2\\
-%\sum_{p=-\infty}^{\infty} \sum_{q = -\infty}^\infty (1+p^2)^{\max(|s+1|,\nu)}(1+q^2)^{\max(|s|,\nu)} | \widetilde{\widetilde{f}}_{p,q}|^2,
-%\end{split}
-%\end{align}
-%and since $\|Ju\|_{H^s} = \|u \|_{T^s}$, and also $\|\widehat{K} u \|_{H^s} = \|u\|_{U^s}$ we only need to verify that the sums converge. The coefficients $\widetilde{f}_{p,q}$ are the Fourier coefficients of the bi-variate function $f(\cos \theta, \cos \phi)$, which are related to the Chebishev coefficients of $f$ as, 
-%\begin{align*}
-%\widetilde{f}_{p,q} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)  e_{-q}(\phi) e_{-p}(\theta) d\phi d\theta\\
-%&= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \cos(|q|\phi) \cos(|p| \theta) d\phi d\theta \\
-%&= 4 \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \cos(|q|\phi) \cos(|p| \theta) d\phi d\theta \\
-%& = 4 \int_{-1}^1 \int_{-1}^1 f(t,s) T_{|p|} w^{-1}(t) T_{|q|} w^{-1}(s) dt ds \\
-%&= 4 \widehat{f}_{|p|,|q|}. 
-%\end{align*}
-%On the other hand, the terms $\widetilde{\widetilde{f}}_{p,q}$ correspond to the Fourier coefficients of $f(\cos \theta, \cos \phi) \sin \theta \sin \phi$, and as in the previous case we have
-%\begin{align*}
-%\widetilde{\widetilde{f}}_{p,q} &= \int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi) \sin \theta \sin \phi e_{-q}(\phi) e_{-p}(\theta) d\phi d\theta\\
-%&= -\int_{-\pi}^\pi \int_{-\pi} ^\pi f(\cos \theta, \cos \phi)\sin \theta \sin \phi \sin(q\phi) \sin(p \theta) d\phi d\theta \\
-%&= -4 \text{sign}(p) \text{sign}(q) \int_{0}^\pi \int_{0} ^\pi  f(\cos \theta, \cos \phi) \sin \theta \sin \phi \sin(|q|\phi) \sin(|p| \theta) d\phi d\theta \\
-%& = -4\text{sign}(p) \text{sign}(q) \int_{-1}^1 \int_{-1}^1 f(t,s) U_{|p|-1} w(t) U_{|q|-1} w(s) dt ds \\
-%&= -4 \text{sign}(p) \text{sign}(q)\widecheck{f}_{|p|-1,|q|-1}. 
-%\end{align*}
-%notice that this last expression is not valid for $p=0$ or $q=0$, however one can see from the definition of $\widetilde{\widetilde{f}}_{p,q}$ that this term is null whenever $p=0$ or $q=0$ so we can skip those terms. 
-%
-%By Lemma \ref{lemma:cmdecay} an equivalent condition to the convergences of the sums in \eqref{eq:condS}, and \eqref{eq:condSodd} are
-%\begin{align*}
-%2 \max(|s+1|, \nu ) - 2(m+1) \alpha < -1, \\ 
-%2 \max(|s|, \nu ) - 2(m+1) \beta < -1 ,
-%\end{align*}
-%for any $\alpha, \beta$ such that $\alpha + \beta =1$. We again replace $\beta$ and sum both inequalities and obtain the condition 
-%\begin{align*}
-%\max(|s+1|, \nu ) +\max(|s|, \nu )  < m ,
-%\end{align*}
-%since we can select $\nu$ as close to $\frac{1}{2}$ as we want, and we already have that $m > 1$, we only need that 
-%$$|s+1| + |s| < m. $$
-%The continuity in terms of $f$ follows also from \eqref{eq:condS}, and \eqref{eq:condSodd}; and Lemma   \ref{lemma:cmdecay}. 
-%\end{proof}
-%
-%The final part of this section is dedicated to the analysis of $S_f$. The analysis is similar to the one of $L_f$, in particular we have that the lifting versions of this operator are
-%\begin{align*}
-%\begin{split}
-%(\widehat{J}S_fu)(\theta) = \frac{\log 2}{2}\int_{-\pi}^\pi
-%(cos \theta - \cos \phi)^2 f(\cos \theta, \cos \phi)Ju(\phi) d\phi +\\
-%4 \int_{-\pi}^\pi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \sin\left( \frac{\theta-\phi}{2} \right)^2
-%\sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) Ju (\phi) d \phi, 
-%\end{split} \\
-%\begin{split}
-%(K S_fu)(\theta) = \frac{\log 2}{2}\int_{-\pi}^\pi
-%(cos \theta - \cos \phi)^2 f(\cos \theta, \cos \phi)\sin \theta \sin \phi \widehat{K}u(\phi) d\phi +\\
-%4 \int_{-\pi}^\pi \log \left\vert \sin \frac{\theta-\phi}{2} \right\vert \sin\left( \frac{\theta-\phi}{2} \right)^2
-%\sin\left( \frac{\theta+\phi}{2} \right)^2 f(\cos \theta, \cos \phi) )\sin \theta \sin \phi \widehat{K}u (\phi) d \phi, 
-%\end{split} \\
-%\end{align*}
-%
-%One can see that these are classical periodic operators of order $-3$ \todo{ref saranen capitulo 5..}, so in particular they can be seen as operator of order $-1-\epsilon$ for small $\epsilon >0$. Based on this observation and the compact embeding of the functional spaces, as it was noticed in the proof of Lemma \ref{lemma:Rfoperator}, we obtain the following result. 
-%
-%\begin{corollary}
-%\label{corollary:Soperator}
-%Let $m \in \IN$, with $m\geq 2 $, and $f \in \cmspace{m}{\iinterv}{\IC}$, then for $s \in \IR$ such that $|s+1|+ |s| < m$, we have that $S_f \in \mathcal{L}(T^s,W^{s+1})$ and  also, $\S_f \in \mathcal{L}(U^s,M^{s+1})$. Futhermore in both cases $S_f$ is a compact operator. 
-%\end{corollary}
-																																																						   
- 
-
-
-
-\section{Parametric Holomorphism}
-
-For practical applications one is concerned if the solution map is smooth when considering very particular families of geometries. The class of families that are typically considered are given as a parametric perturbation of a fixed configuration, i.e given a initial configuration given by the parametrizations $\br_1^0,\hdots,\br_M^0$,  the new configuration is parametrized by 
-\begin{align}
-\label{eq:geoY}
-\br_j = \br_j^0 +\sum_{n=0}^\infty y^j_n \bb_n, \quad j =1,\hdots,M,
-\end{align}
-where $y^j_n \in [-1,1]$ are the parameters, and $\bb_n$ are a set of fixed functions that describe the possible perturbations to the initial configuration. The elements $\br_j$ would also be denoted by $\br_j(\by)$ to make the dependence of the parameters $\by$ explicitly.
-
-Under this framework we are interested in the smoothness of the solution map respect to the real parameters $y^j_n$.
-
-In order to keep well-posed problems for every possibility of the parameters $y^j_n$ we will need to make some assumptions on the initial configuration and the perturbation basis $\{\bb_n\}_{n=1}^\infty$. 
-
-\begin{assumption}
-\label{assump:geoparam}
-For $m \in \IN$, with $m\geq 1$, and $h \in [0,1]$ such that $\br^0_j \in \rgeoh{m}{h}$, for $j =1,\hdots,M$ we assume that
-\begin{enumerate}
-\item 
-The sequence $\|\bb_n\|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}$, $n\in \IN$ is $p-$sumable for some $p \in (0,1)$.
-\item 
-$$\sum_{n=0}^\infty \sup_{t \in (-1,1)} \|  \bb_n'(t)\| < \inf_{t \in (-1,1)}\|(\br^0_j)'(t)\|,\quad \forall
-j \in \{1,\hdots,M\}.
-$$
-\item
-There exist a sequence of points $(\bc_j)_{j=1}^M \subset \IR^2$, and a sequence of strictly positive real numbers $(\tau_j)_{j=1}^M $, both depending of $(\br^0)_{j=1}^M$ such that 
-$$\sup_{t\in(-1,1)} \| \br_j(t) - \bc_j \| < 2\tau_j,\ \forall j \in \{1,\hdots,M\},$$
-and also assume that 
-$$
-\sum_{n=0}^\infty \sup_{t \in (-1,1)} \| \bb_n(t)\| <  \tau_j,\ \forall j \in \{1,\hdots,M\}.
-$$
-\end{enumerate}
-\end{assumption}
-\begin{remark}
-The first two points in the previous assumption ensure that 
-$$
-\inf_{t \in (-1,1)} \| \br_j(\by)'(t) \| > 0 \ \forall j \in \{1,\hdots,M\}.
-$$
-and also that not self crossings occurs. The final point ensure that not crosses between different arcs occurs.
-\end{remark}
-Obviously to be able to apply the results presented in Section \todo{ref}, we would need that the families $\{\br_j(\by), \by \in [-1,1]^{\IN} \} \subset \rgeoh{m}{h}$, are a compact subset for every $j \in \{1,\hdots,M\}$. This is consequence of standard results of general topology as is show in what follows. 
-
-\begin{lemma}
-\label{lemma:parcompact}
-For every $j \in  \{1,\hdots,M\}$, the sets $\{\br_j(\by), \by \in [-1,1]^{\IN} \}$  are compact subsets of $\rgeoh{m}{h}$. 
-\end{lemma}
-\begin{proof}
-Since $[-1,1]^{\IN}$ is compact under the product topology \footnote{this is the classical Tychonoff's equivalence to the axiom of choice.} the result is equivalent to show that the map 
-\begin{align}
-\label{eq:mapys}
-\by \in [-1,1]^{\IN} \mapsto \br_j(\by) \in \rgeoh{m}{h},
-\end{align}
-is continuous. We proof this using neighborhoods, let us consider a ball of radius $\epsilon$ with center $\br_j(\bx)$, for a fixed parameter $\bx$. By the assumptions on the perturbation basis $\bb$ we can find $N \in \IN$ such that $\sum_{n>N}\|\bb_n\|_{\rgeoh{m}{h}}< \frac{\epsilon}{2}$. Then consider the set 
-$$
-A_N =\left\lbrace \by \in [-1,1]^{N}:  \sum_{n=0}^N |y_n-x_n| \|\bb_n \|_{\rgeoh{m}{h}} < \frac{\epsilon}{2}\right\rbrace,
-$$
-Notice that $A_N$ is an open subset of $[-1,1]^N$ since the map $ \by \in [-1,1]^N \mapsto  \br_j^0 + \sum_{n=0}^N y_n \bb_n$, is continuous\footnote{This maps can be interpreted as an afin map between two finite dimensional spaces}. Thus, we denote by $\widetilde{A}_N$, the canonical embedding of $A_N$ into $[-1,1]^\IN$ which by definition of product topology is an open set in $[-1,1]^N$, finally we notice that for $\by \in \widetilde{A}_N$ we have 
-\begin{align*}
-\begin{split}
-\|\br_j(\by) - \br_j(\bx)\|_{\rgeoh{m}{h}} 
-\leq 
-\sum_{n=0}^N |y_n-x_n|\|\bb_n \|_{\rgeoh{m}{h}} +\\ \sum_{n >N}\|\bb_n \|_{\rgeoh{m}{h}} < \epsilon
-\end{split}
-\end{align*}
-thus since $\epsilon$ is arbitrary we have that for any neighborhood of $\br_j(\bx)$ there is an open set ($\widetilde{A}_N$) such that the image of the latter under the map \ref{eq:mapys} is contained in the given neighborhood of $\br_j(\bx)$, which is the continuity that we needed.
-\end{proof}
-
-
-Now we recall the the notion of $(b,\epsilon,p)$-holomrphic which was introduced in \todo{add refs...}.
-
- For a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
-\begin{align*}
-\mathcal{T}_n := \left\lbrace z \in \IZ : \text{dist}(z,[-1,1]) \leq \rho_n-1 \right\rbrace.
-\end{align*}
-Notice that for every $n \in \IN$, $\mathcal{T}_n$ is a closed domain, we will make use of the following family of tubes 
-\begin{align*}
-\mathcal{T}_{\rho} = \prod_{n \in \IN} \mathcal{T}_{\rho_n} \supseteq [-1,1]^{\IN}, \quad \text{and,} \quad
-\mathcal{T}^M_{\rho} = \prod_{k=1}^M \mathcal{T}_{\rho}.
-\end{align*}
-
-\begin{definition}
-Given $\epsilon >0$, $p \in (0,1)$, a real $p$-sumable sequence $\{b_n\}_{n \in \IN}$ . We say that $f:\prod_{j=1}^M[-1,1]^\IN\rightarrow B$, where $B$ is a Banach space, is a ($b$,p,$\epsilon$)-holomorphy function if
-\begin{enumerate}
-\item The function $f$ is bounded.
-\item 
-For any real sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n >1$ that satisfy 
-\begin{align*}
-\sum_{n \in \IN} (\rho_n -1) b_n < \epsilon, 
-\end{align*}
-The function $f$ admits a extension to a set of the form $\mathcal{O}^M_\rho = \prod_{j=1}^M \prod_{n \in \IN} \mathcal{O}_{\rho_n} \supset \mathcal{T}^M_\rho$, where each set $\mathcal{O}_{\rho_n}$ is open, and the extension is holomophic in each variable. 
-\item 
-There exist a set $\widetilde{\mathcal{O}}_\rho^M =  \prod_{j=1}^M \prod_{n \in \IN} \widetilde{\mathcal{O}}_{\rho_n}$ such that for every $n \in \IN$, $\widetilde{\mathcal{O}}_{\rho_n} \supset \overline{\mathcal{O}}_{\rho_n}$, and $\widetilde{\mathcal{O}}_{\rho_n}$ is an open subset. Futhermore, $f$ can also be exteded to $\widetilde{\mathcal{O}}_\rho^M$ and the extension is bounded as 
-\begin{align*}
-\sup_{\mathbf{z} \in \widetilde{\mathcal{O}}_\rho^M } \| f(\mathbf{z})\|_B \leq C(\epsilon).
-\end{align*}
-\end{enumerate}
-\end{definition}
-
-Let us denote by $\mathbf{V}(\by^1,\hdots,\by^M)$, and $\mathbf{W}(\by^1,\hdots,\by^M)$ the weakly-singular and hyper-singular operators acting on a geometric configuration of the canonical form \eqref{eq:geoY}. An immediate consequence of the holomorphy dependence of the parametrizations (theorems \ref{thrm:Vop}, and \ref{thrm:Wop}) is the parametric holomorphism of the operators and its inverses. 
-
-\begin{theorem}
-\label{thrm:bepholm}
-Let $m \in \IN$, $h \in [0,1]$, $s \in \IR$, such that the conditions of Lemma \ref{lemma:vcomp} holds. Also denote by $\{b_n\}_{n\in \IN}$ the sequence of positive numbers given by $b_n = \| \bb \|_{\rgeoh{m}{h}}$, then under Assumption \ref{assump:geoparam} we have 
-\begin{enumerate}
-\item 
-If $\epsilon < \xi_j$, for every $j \in \{1,\hdots,M\}$, where $\chi_j$ are given in Theorem \ref{thrm:Vop}, we have that the map 
-\begin{align*}
-(\by^1,\hdots, \by^M ) \mapsto \mathbf{V}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right), 
-\end{align*}
-is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
-\item 
-If $\epsilon < \eta$, where $\eta$ is also given by Theorem \ref{thrm:Vop} then 
-\begin{align*}
-(\by^1,\hdots, \by^M ) \mapsto \mathbf{V}^{-1}(\by^1,\hdots,\by^M)^ \in \mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^{s}\right), 
-\end{align*}
-is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
-\item 
-If $\epsilon < \xi_j$, for every $j \in \{1,\hdots,M\}$, where $\chi_j$ are given in Theorem \ref{thrm:Wop}, we have that the map 
-\begin{align*}
-(\by^1,\hdots, \by^M ) \mapsto \mathbf{W}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IU^s, \prod_{j=1}^M \IM^{s-1}\right), 
-\end{align*}
-is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
-\item 
-If $\epsilon < \eta$, where $\eta$ is also given by Theorem \ref{thrm:Wop} then 
-\begin{align*}
-(\by^1,\hdots, \by^M ) \mapsto \mathbf{W}^{-1}(\by^1,\hdots,\by^M) \in \mathcal{L}\left(\prod_{j=1}^M \IM^{s-1}, \prod_{j=1}^M \IU^{s}\right), 
-\end{align*}
-is $(b,p,\epsilon)-$holomorphic, and continuous in product topology. 
-\end{enumerate}
-The parameter $p$ is the same than in Assumption \ref{assump:geoparam}. 
-\end{theorem} 
-\begin{proof}
-We will only consider the first case, the other three follows with similar arguments.
-
-First notice that the map 
-\begin{align}
-\label{eq:yVmap}
-(\by^1,\hdots, \by^M) \mapsto \mathbf{V}(\by^1,\hdots, \by^M),
-\end{align}
-can be written as the following composition
-$$
-(\by^1,\hdots, \by^M) \mapsto  (\br_1(\by^1),\hdots,\br_M(\by^M))
-\mapsto 
-\mathbf{V}_{\Gamma_1,\hdots,\Gamma_m}, 
-$$
-where the geometry configuration $\Gamma_1,\hdots,\Gamma_M$ is given by the parametrization $\br_1(\by^1),\hdots,\br_M(\by^M)$. From this representation and Lemma \ref{lemma:parcompact} the continuity in the product topology follows. Let us denote by $\mathbf{P}$ the map 
-$$
-\mathbf{P} : (\by^1,\hdots, \by^M) \mapsto  (\br_1(\by^1),\hdots,\br_M(\by^M)),
-$$
-following the same arguments of Lemma \ref{lemma:parcompact} we have that $\mathbf{P}$ is continuous map with respect to the product topology respect to the following spaces 
-\begin{align*}
-\mathbf{P} : \prod_{j=1}^M [-1,1]^{\IN} 
-\mapsto
-\prod_{j=1}^M K^j \subset \prod_{j=1}^M \rgeoh{m}{h},
-\end{align*}
-where $K^j =\{ \br_j(\by): \by \in [-1,1]^{ \IN}\}$ are compact. Now we will consider extensions of $P$, given a sequence of real numbers $\{\rho_n\}_{n \in \IN}$, such that $\rho_n >1$ for every $n \in \IN$, and $\sum_{n=0}^\infty  b_n (\rho_n -1) < \epsilon$, we can construct another real sequence $\{r_n\}_{n \in \IN}$, such that $r_n > \rho_n$ for every $n\in \IN$, and also  $\sum_{n=0}^\infty  b_n (r_n -1) < \epsilon $. Finally we consider the family of open sets $O_n = \left\lbrace z \in \IC: \ \text{dist}([-1,1],z) < r_n-1\right\rbrace$. We see that $\mathcal{T}_{\rho_n} \subset O_n$, and we define a extension of $\mathbf{P}$ over $\prod_{j=1}^\M \prod_{n \in \IN} O_n$ as, 
-$$
-\mathbf{P} : (\bz^1,\hdots,\bz^M) \mapsto \left(r^0_1 + \sum_{n=0}^\infty z^1_n \bb_n , \hdots, r^0_M + \sum_{n=0}^\infty z^M_n \bb_n \right).
-$$
-Now we describe the range of this last operator. Consider $\bz^j \in \prod_{n \in \IN} O_n$, by definition there exist $\by^j \in [-1,1]^{\IN}$ such that $|z^j_n - y^j_n| < r_n-1$ for every $n \in \IN$, hence 
-$$
-\| \br_j(\bz^j) - \br_j(\by^j)\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}} < \sum_{n=0}^\infty b_n (r_n -1) < \epsilon,
-$$
-where the last inequality follows from the construction of $r_n$. This implies that the range of $\mathbf{P}$ is contained in $\prod_{j=1}^M K^j_\epsilon$\footnote{we recall that $K^j$ are defined as $\{\br_j(\by): \by \in [-1,1]^\IN \}$, and $K^j_\epsilon$ is defined acordding to \eqref{eq:openext}.}. Now we consider the extension of \eqref{eq:yVmap} defined by 
-\begin{align*}
-\begin{split}
-(\bz^1,\hdots,\bz^M) \in \prod_{j=1}^\M \prod_{n \in \IN} O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M)) \in \prod_{j=1}^M K^j_\epsilon \\\mapsto
-V_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right) ,
-\end{split}
-\end{align*}
-which is well defined by Theorem \ref{thrm:Vop}. Moreover also from the same theorem we also get that this map is uniformly bounded, since 
-\begin{align*}
-\begin{split}
-\sup_{(\bz^1,\hdots,\bz^M) \in \prod_{j=1}^\M \prod_{n \in \IN} O_n} \| V(\bz^1,\hdots,\bz^M ) \|_{\mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right)}  \leq \\
-\sup_{(\br_1,\hdots,\br_M) \in \prod_{j=1}^\M K^j_\epsilon} \| V_{\Gamma_1,\hdots,\Gamma_M}\|_{\mathcal{L}\left(\prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}\right)} < \infty.
-\end{split}
-\end{align*}
-Also since the map $z^j_n \in O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M))$ is a one dimensional linear map, is holomorphic, thus the map 
-\begin{align*}
-z^j_n \in O_n \mapsto (\br_1(\bz^1),\hdots,\br_M(\bz^M)) \mapsto V_{\Gamma_1,\hdots,\Gamma_M},
-\end{align*}
- is also holomorphic by theorem \ref{thrm:Vop}. Hence since the map is uniformly bounded and holomorphic with respect to each variable we have that the map is $(b,p,\epsilon)-$holomorphic.
-\end{proof}
-
-As in the previous section we can use the properties of the inverse of the associated integral operators to obtain a result on the regularity of the solution map. The following result state exactly that. The proof is omitted as is the same than of the previous theorem. 
-
-\begin{corollary}
-\label{corollary:bepsol}
-Under the hypotesis of Theorem \ref{thrm:bepholm}. If $g$ the right-hand-side of the Dirichlet problem is an entire function then the map 
-\begin{align*}
-(\by^1,\hdots,\by^M) \mapsto \bla \in \prod_{j=1}^M \IT^s,
-\end{align*}
-where $\bla$ denotes the solution of the Dirichlet problem, is $(b,p,\epsilon)-$holomorphic with $\epsilon$ as in the second point of Theorem \ref{thrm:bepholm}, and continuous in product topology. Similarly, if $f$ the right-hand-side of the Neumann problem, is an entire function, then the map 
-\begin{align*}
-(\by^1,\hdots,\by^M) \mapsto \bmu \in \prod_{j=1}^M \IT^s,
-\end{align*}
-where $\bmu$ denotes the solution of the Neumann problem, is $(b,p,\epsilon)-$holomorphic, with $\epsilon$ as in the fourth point of Theorem \ref{thrm:bepholm}, and continuous in product topology.
-\end{corollary}
-
-\begin{remark}
-It is also possible to establish the $(b,p,\epsilon)-$holomorphism for a number of   linear functional acting on $\bla, \bmu$. The results follows by showing first that the linear functional has an holomorphic extension (as in Remark \ref{rem:functionalholorphism}), and then this would implies the $(b,p,\epsilon)-$holomorphism as in Theorem \ref{thrm:bepholm}.
-\end{remark}
-
-The final part of this section is devoted to establish the $(b,p,\epsilon)-$holomorphism for approximations of $\bla$,$\bmu$. We consider approximations, $\bla_N \in \prod_{j=1}^M\IT_N  \subset \prod_{j=1}^M\IT^s$, and $\bmu_N \in \prod_{j=1}^M \IU_N \subset \prod_{j=1}^M \IU^s$ for every $s \in \IR$, where the dimension of $\IT_N$ (resp. $\IU_N$) is $N+1$. Furthermore we assume that the families $\{\IT_N\}_{N \in \IN}$, and $\{\IU_N\}_{N \in \IN}$ are dense in $\IT^s$, and $\IU^s$ respectively (for every $s$ in $\IR$). Under this considerations the approximations are seeks as the solutions of the discrete problems: 
-\begin{align*}
-P_N \mathbf{V}(\by^1,\hdots,\by^M) \bla_N = P_N \bg,\\
-Q_N \mathbf{W}(\by^1,\hdots,\by^M) \bmu_N = Q_N \mathbf{f},
-\end{align*}
-where the operators, $P_N,Q_N$ are linear continuous maps from $\prod_{j=1}^M \IW^{s+1}$ (resp. $\prod_{j=1}^M \IM^{s-1}$) to a subspace of finite dimension $\prod_{j=1}^M \IW_N$ (resp. $\prod_{j=1}^M \IM_N$), and also independent of the geometry.
-
-First let us remark that the operators $ \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IT_N, \prod_{j=1}^M\IW^{s+1}\right)$, and $ \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IU_N, \prod_{j=1}^M\IM^{s-1}\right)$, have holomorphic extensions in the parametrizations, in fact the proof is the same than in Theorems \ref{thrm:Vop}, and \ref{thrm:Wop}, with the difference that domain of the operators are $\prod_{j=1}^M\IT_N$ and $\prod_{j=1}^M\IU_N$ respectively, which are Banach spaces since they are finite dimensional subspaces.
-
-On the other hand, since $P_N,Q_N$ are linear and independent of the geometry we obtain that the maps 
-$P_N\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IT_N, \prod_{j=1}^M\IW_N\right)$ and $Q_N\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(  \prod_{j=1}^M\IU_N, \prod_{j=1}^M\IM_N\right)$ also have holomorphic extensions in the parametrization variables. Hence arguing as in point one of Theorem \ref{thrm:bepholm} we obtain the $(b,p,\epsilon)-$holomorphism of  $P_N\mathbf{V}(\by^1,\hdots,\by^M)$ and $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$.
-
-If the operators $P_N\mathbf{V}(\by^1,\hdots,\by^M)$, $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$ were invertible we would obtain the $(b,p,\epsilon)$-holomorphism of $\bla_N$, $\bmu_N$ arguing as in Theorem \ref{thrm:bepholm}. However one typically only have the following condition 
-\begin{assumption}
-\label{assumption:discinverze}
-For every $(\by^1,\hdots,\by^M) \in \prod_{j=1}^M [-1,1]^\IN$ there exist an integer number $N_0(\by^1,\hdots,\by^M)$, such that for $N>N_0(\by^1,\hdots,\by^M)$ the operators $P_N \mathbf{V}(\by^1,\hdots,\by^M)$ have inverse and also 
-$$\left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right \vert \right \vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s\right)} \leq C(s,\by^1,\hdots,\by^M),$$
-where $C$ do not depend of $N$. The same holds (with potentially different value of $N_0$, and $C$, and the corresponding changes in the functional spaces) for $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$.
-\end{assumption}
-
-The following result ensure that we can select a single value of $N_0$ such that $P_N\mathbf{V}(\by^1,\hdots,\by^M)$ and $Q_N\mathbf{W}(\by^1,\hdots,\by^M)$ have inverse for $N>N_0$, and these inverses are uniformly bounded.
+\mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(\prod_{j=1}^M \IT_N, \IR^{M(n+1)}\right), \quad \mathbf{P}_N^U \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L}\left(\prod_{j=1}^M \IU_N, \IR^{M(n+1)}\right),
+$$ 
+are invertible. The following result ensure that we can select $N_0$ such that the inverses exist for every parameter $\by \in [-1,1]^{\IN}$, and $N > N_0$.
 \begin{lemma}
 \label{lemma:discreteinverse}
-Under Assumption \ref{assumption:discinverze} there exist $N_0 \in \IN$, such that for $N> N_0$ the operator $P_N \mathbf{V}(\by^1,\hdots,\by^M)$ has inverse, and also 
+Let $m \in \IN$, $h \in [0,1]$, and $s \in \IR$ as in Condition \ref{condition:smh}, then there exist $N_0 \in \IN$, such that for $N> N_0$ the operators $\mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M}$, $\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M}$ are invertibles, and also 
 \begin{align*}
-\sup_{(\by^1,\hdots,\by^M)\in \prod_{j=1}^M[-1,1]^\IN}\left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right \vert \right \vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s\right)} \leq C(s),
+\sup_{\by \in [-1,1]^\IN}\left\vert \left\vert (\mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right \vert \right \vert_{\mathcal{L}\left(\IR^{M(N+1)}, \prod_{j=1}^M \IT^{\frac{-1}{2}}\right)} \lesssim C^T(N), \\ 
+\sup_{\by \in [-1,1]^\IN}\left\vert \left\vert (\mathbf{P}_N^U \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right \vert \right \vert_{\mathcal{L}\left(\IR^{M(N+1)}, \prod_{j=1}^M \IU^{\frac{1}{2}}\right)} \lesssim C^U(N). 
 \end{align*}
-where $C$ do not depend of $N$. And the same holds  (with the adequate modifications) for $Q_N \mathbf{W}(\by^1,\hdots,\by^M)$.
 \end{lemma}
-\begin{proof}
-Fix $s \in \IR$ and consider the sets
+\begin{proof}We will consider only the weakly-singular case, as for the hyper-singular operator the proofs follows from the same arguments.
+By \cite[Theorem 4.2.9]{Sauter:2011} For every $\by \in [-1,1]^{\IN}$, there exist $N(\by)$, such that for $N\geq N_0(\by)$, $P_N^T \mathbf{V}_{\Gamma_1, \hdots,\Gamma_M}$ is invertible, and we have the stability estimation: 
+\begin{align*}
+\| \bla \|_{\prod_{j=1}^M \IT^{\frac{-1}{2}}} \lesssim  \sup_{\bphi \in  \prod_{j=1}^M \IT^{\frac{-1}{2}}} \frac{\langle \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla, \bphi \rangle}{\|\bphi\|_{ \prod_{j=1}^M \IT^{\frac{-1}{2}}}} , \quad \forall \bla \in \prod_{j=1}^M \IT_N.
+\end{align*}
+where $\langle \cdot , \cdot \rangle$ denotes the duality between $\prod_{j=1}^M \IW^{\frac{1}{2}}$, and $\prod_{j=1}^M \IT^{\frac{-1}{2}}$, defined as the sum of the dualities of the coordinates. Let us define $\bv = \mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla$, denote by $(v_j)_n$ the duality between the $j$th coordinate of $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla$ with $\phi^T_n$. Hence from the stability estimation and the definition of the norms we get 
+\begin{align*}
+\| \bla \|_{\prod_{j=1}^M \IT^{\frac{-1}{2}}} \lesssim  \sum_{j =1} ^M  \sup_{\substack{\ba \in \IR^{N+1}\\\phi = \sum_{n=0}^N a_n \phi_n^T}} \frac{\sum_{n=0}^N (v_j)_n a_n }{\| \phi\|_{\IT^{\frac{-1}{2}}}}  \lesssim C(N)^T\|\bv\| 
+\end{align*}
+which is equivalent to 
+\begin{align*}
+\left\vert\left\vert (\mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right\vert\right\vert_{\mathcal{L}( \IR^{M(N+1)}, \prod_{j=1}^M \IT^{\frac{-1}{2}})} \lesssim C^T(N).
+\end{align*}
+Now let us consider the following family of sets 
 \begin{align*}
 \begin{split}
-&A_{N,C} = \\ &\left\lbrace 
-(\by^1,\hdots,\by^M) \in \prod_{j=1}^M[-1,1]^{\IN} \ : \ \left\vert \left\vert (P_N V(\by^1,\hdots,\by^M))^{-1} \right\vert \right\vert_{\mathcal{L}\left(\prod_{j=1}^M \IT^s,\prod_{j=1}^M \IW^{s+1}\right)} < C, \text{ for $N>N_0$}
+&A_{N_0,C} =  \\ &\left\lbrace 
+\by \in [-1,1]^{\IN} \ : \left\vert\left\vert (\mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right\vert\right\vert_{\mathcal{L}( \IR^{M(N+1)}, \prod_{j=1}^M \IT^{\frac{-1}{2}})} < C C^T(N)  \text{, for $N > N_0$}
 \right\rbrace.
 \end{split}
 \end{align*}
-Is clear from Assumption \ref{assumption:discinverze} that the family $\{A_{N,C}\}_{N \in \IN, C > 0}$ is a cover of the compact space $\prod_{j=1}^M[-1,1]^{\IN}$, thus if we show that each $A_{N,C}$ is open we can select a finite sub-cover and the results follows directly. Arguing as in the proof of Lemma \ref{lemma:parcompact} the sets $A_{N,C}$ are open if the sets 
-\begin{align*}
-\begin{split}
-&B_{N,C} = \\ &\left\lbrace 
-(\br^1,\hdots,\br^M) \in \prod_{j=1}\rgeoh{m}{h} \ : \ \left\vert \left\vert (P_N V_{\Gamma_1,\hdots,\Gamma_M})^{-1} \right\vert \right\vert_{\mathcal{L}\left(\prod_{j=1}^M \IW^{s+1}\right)} < C, \text{ for $N>N_0$}
-\right\rbrace.
-\end{split}
-\end{align*}
-are open (since $A_{N,C}$ are the pre-image of $B_{N,C}$ by a continuous map). The result then follows  from the fact that the map $\br^1,\hdots \br^M \mapsto P_N V_{\Gamma_1,\hdots,\Gamma_M} $  is continious (in fact has holomorphic extension as proven in Theorem \ref{thrm:Vop}), and using that the inverse map is also a continuous mapping.  
-The result for $Q_N \mathbf{W}(\by^1,\hdots,\by^M)$ follows the same ideas.
+Hence argue as before we have that for every $\by \in [-1,1]^{\IN}$, there exist $C>0$, $N_0 \in \IN$ such that $\by \in A_{N_0,C}$, thus the  $\{A_{N,C}\}_{N \in \IN, C > 0}$ is a cover of $[-1,1]^{\IN}$. Furthermore from the continuity of the inverse map and also of the map $\by \mapsto (\mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})$, we have that $A_{N_0,C}$ is open for every $C >0$, $N_0 \in \IN$, and the result follows by compactness.
 \end{proof}
-
-Now following Theorem \ref{thrm:bepholm} we obtain the result for the approximated solutions.
-
+Now directly from Theorem \ref{thrm:abtractinverse}, we obtain the parametric holomorphism of the approximations. 
 \begin{corollary}
-Under the hypothesis of Theorem \ref{thrm:bepholm}, and assumption \ref{assumption:discinverze}. There exist $\epsilon >0$, and $N_0 \in \IN$ given by Lemma \ref{lemma:discreteinverse}, such that if $\bg, \bf$ the right-hand-sides of the Dirichler and Neumann problems are  entire functions, the maps 
+Under the same hypotesis of Theorem \ref{thrm:bpeholomr}, whith $s = \frac{-1}{2}$, there exist $N_0 \in \IN$ such that for $N>N_0$, the maps 
 \begin{align*}
-(\by^1,\hdots,\by^M) \mapsto \bla_N \in  \prod_{j=1}^M \IT_N ,\\
-(\by^1,\hdots,\by^M) \mapsto \bmu_N \in  \prod_{j=1}^M \IU_N ,
+\by \in [-1,1]^{\IN} \mapsto \bla_N \in \prod_{j=1}^M \IT_N \subset \prod_{j=1}^M \IT^{\frac{-1}{2}},\\
+\by \in [-1,1]^{\IN} \mapsto \bmu_N \in \prod_{j=1}^M \IU_N \subset \prod_{j=1}^M \IU^{\frac{1}{2}},
 \end{align*}
-are $(b,p,\epsilon)-$holomorphic and continuous in product topology for $N > N_0$. 
-\end{corollary} 
+are  $(b,p,\epsilon)-$holomorphic with $b,p,\epsilon$ the same as in Theorem \ref{thrm:bpeholomr}, i.e $\epsilon$ is different for weakly-singular and hyper-singular cases.
+\end{corollary}
+
+\begin{remark}
+In contrast to every other result, the previous corollary is limited to only the spaces $\IT^{\frac{-1}{2}}$ for the Dirichlet problem, and $\IU^{\frac{1}{2}}$ for the Neumann problem. The reason for this is because under this restriction we have that the weakly-singular and hyper-singular maps from one space to its dual, and we can directly invoke \cite[Theorem 4.2.9]{Sauter:2011} to obtain the discrete inverse. Furthermore, for low-order basis there is not grantee that the discrete spaces $\IT_N, \IU_N$ are subspaces of $\IT^s,\IU^s$ for large values of $s$.
+
+It is worth mention that one particular selection of discrete spaces lead to stronger results is choosing as the basis of the finite dimensional spaces the corresponding Chebishev-basis, that is 
+\begin{align*}
+T_N =  \spn_{n =0..N} \frac{T_n(t)}{w(t)}, \quad 
+U_N =  \spn_{n =0..N} w(t)U_n(t),
+\end{align*}
+where $T_n(t), U_n(t)$ are the first and second kind Chebishev polynomials respectively, and $w(t) = \sqrt{1-t^2}$. In this context we can argue as in \cite[Chapter 9.8]{saranen2013periodic} to obtain the inverse of the numerical approximations on higher order spaces. 
+\end{remark}
+
 
 \section{Examples for Particular Integral operators.}
 Now we consider particular cases of the operator $\cP$. In particular we will consider the scalar Helmholtz case ($\cP  = -\Delta - k^2$) and the elastic wave operator 
@@ -2226,12 +1590,12 @@ Now we consider particular cases of the operator $\cP$. In particular we will co
 $), which is a vectorial operator.
 \todo{cite uniqness of volume problems (dirichlet neumann) for each example, also the logaritmic now appears with the square of the distance}
 \subsection{Helmholtz Operators}
-The helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
+The Helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
 $$
 \lim_{\|\bx\| \rightarrow \infty}
 \| \bx \|^{\frac{1}{2}}\left( \frac{\partial u}{\partial \bx}-i k u\right)=0.
 $$
-The corresponding fundamental solution is
+We refer to \cite{stephan1984augmented}, \cite{kress1996} for uniqueness of the boundary value problems. The corresponding fundamental solution is
 $$
 G(\bx,\by) = \frac{i}{4}H^{(1)}_0(k \| \bx-\by\|),
 $$
@@ -2354,6 +1718,9 @@ The second part is direct from Lemma \ref{lemma:dcross} and elementary results o
 We conclude that this function has holomorphic extension, but it also lose one order of regularity (since the components are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$). This implies that the proof of Lemma \ref{lemma:vcomp} the corresponding functions $F_1(d_{\br}(t,s)^2)$, $F_2(d_{\br}(t,s)^2)$ are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$ instead of $\cmspaceh{m}{h}{\iinterv}{\IC}$.  However this do not moddify the condition on $s,m,h$ as it was noticed in Remark \ref{remark:mm1extension}.
 
 For the Neumann problem we need a Maue's representation formula. While we are not aware of a proper formula for this case, a result with the same properties is given in \todo{kress On the numerical solution of a hypersingular integral equation for elastic scattering from a planar crack}. In this paper the authors use the Maue's representation for the kernel of the static case ($\omega = 0$), that was showed in \todo{ref nedelec Integral equations with non integrable kernels}, and then proceed to explicitly find the kernel given by the co-normal traces, in both variables, of the difference of the fundamental solution \eqref{eq:efunsol}  minus the one coming from the static case. The resulting function only has a logarithmic singularity and hence in principle could be considered as part of $\widetilde{\mathbf{G}}$ in the general Maue's representation formula \eqref{eq:mauesrep}. The only difference is that this function includes part related to the second derivative of the parametrizations, hence is only in $\cmspaceh{m-2}{h}{\iinterv}{\IC}$, for $m\geq 2$, but this do not modify the results as it was noticed in Remark \ref{remark:gtildereg}. 
+
+\section{Conslusions and Future Work}
+\todo{El pinto no hace esto }
 
 \bibliography{biblio}
 \bibliographystyle{siam}
