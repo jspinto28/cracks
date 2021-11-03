@@ -434,13 +434,13 @@ todo
 This works is concerned on establishing the smoothness of the solution map from the geometry configuration, composed of multiple disjoint open arcs, to the solutions of the Dirichlet and Neumann problems for a partial differential operators with boundary conditions on the mentioned open arcs. 
 \todo{add paragraph on the applications of the smoothnes of this map...}
 
-We obtain the smoothness of the mentioned map following closely \cite{Henriquez2021}. In the cited work, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
+We obtain the smoothness of the mentioned map following closely \cite{Henriquez2021}, there, the authors extend the solution map to complex geometries (through the identification of the geometries with parametrizations), and show that the corresponding map is holomorphic in the context of the complex-variable\footnote{We refer to holomorphic in the complex variable context to the existence of the Frechet derivative on a open subset}. Hence, by means of classical complex variable theory we conclude that at least locally the solution map is analytic, i.e. derivatives of arbitrary order exist and the Taylor series converge uniformly. 
 
 Our focus is in PDEs defined on domains of the form $\IR^2 \setminus \Gamma$, with boundary conditions on $\Gamma = \left\lbrace \Gamma_1, \hdots, \Gamma_M \right\rbrace$, a set of $M$ disjoint open arcs. In this context boundary integral formulations gives a more  natural framework for defining the problem than classical weak formulations, since Green formulas do not follows directly. We refer to (\cite{stephane,stephan1984augmented,STE86,Stephan1987,sloan1991,JEREZHANCKES2011547,JHP20,Averseng2019,kress1996,kress2000}) for some references on problems posed on open arcs and the equivalent three-dimensional counterpart on surfaces with boundaries.  
 
 In contrast to \cite{Henriquez2021}, were only the Laplace equation was considered, here we consider more general differential operators, including the possibility of vector differential operators. In particular we show explicit results for the scalar Helmholtz equation and the Stoke equation (also refereed as the elastic wave equation). 
 
-The generalization is done by assuming the existence of a fundamental solution with a specific function structure, the latter is very common for  fundamental solutions of second order partial differential operators on two dimensions. We then consider general integral operators whose kernels are given by the assumed structure of the fundamental solution, and obtain the holomorphic extension of these integral operators by  slighly more abstract version of the holomorphic extension theorem for integral operators  from \cite[Theorem 3.12]{Henriquez2021}. We also assume a general Maue's representation formula that enable us to extend the analysis of the weakly singular operator to the hyper-singular operator. 
+The generalization is done by assuming the existence of a fundamental solution with a specific function structure, the latter is very common for  fundamental solutions of second order partial differential operators on two dimensions. We then consider general integral operators whose kernels are given by the assumed structure of the fundamental solution, and obtain the holomorphic extension of these integral operators by  slighly more abstract version of the holomorphic extension theorem for integral operators  \cite[Theorem 3.12]{Henriquez2021}. We also assume a general Maue's representation formula that enable us to extend the analysis of the weakly singular operator to the hyper-singular operator. 
 
 A further difference with \cite{Henriquez2021}, is that in our current work we do not only establish the holomorphism result from the parametrizations sets to the solution in a fixed energy space, but instead we consider the range of the map in a  scale of functional spaces defined over the open arcs. The advantage of this analysis, is that provide a functional  framework for high order methods, such as the one presented in \cite{JHP20}. 
 
@@ -451,20 +451,30 @@ As is standard, for the solution of the Dirichlet and Neumann problem to be in h
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
 \subsection{General Notation}
-\todo{bold notation, dot prod, norm in $\IR^2$,transpose, conjugate, natural numbers including 0?, lesssim , cong, p sumable, complexification of banach spaces, open sets of delta, $\mathcal{L}$, $[-1,1]^\IN$}
+\todo{ p sumable}
+
+We use the convention of the natural numbers includes the $0$, i.e. $\IN = \{ 0,1,2,\hdots\}$. 
+
+Vectors and matrices are indicated by boldface symbols, while for general quantities that could be either vectors or scalars we don't use bold fonts. For a pair of vectors $\bv^1,\bv^2 \in \IC^n$, (with $n \in \IN\setminus \{0\}$) we denote by $ \bv^1 \cdot \bv^2 = \sum_{j=1}^n v^1_j v^2_j$, and the euclidean norm $\|\bv^1\| = \bv^1 \cdot \overline{\bv^1}$, where the conjugate of a vector is the conjugate of each component.
+
+Given real numbers $a,b$, we say that $a \lesssim b $ if there exist a positive $c$, independent of the variables relevant for the corresponding analysis, such that $a \leq c b$. If $a \lesssim b$, and $b \lesssim a$ we write $a \cong b$.
+
+For two Banach spaces $B_1,B_2$, the set of linear bounded functions from $B_1$ to $B_2$ is denoted by $\mathcal{L}(B_1,B_2)$. If the underlying field of $B_1$ is $\IR$, we say that $B_1$ is a real Banach space and its complexification (denoted by $B_1^{\IC}$) is defined as the set of elements of the form $b+id$, with $b,d \in B_1$, and $i$ the imaginary unit. The complexification of $B_1$ is also a Banach space with the norm $\|b+id\|_{B_1^{\IC}} = \sup_{\theta \in [0,2\pi]}\| b \cos \theta + d \sin \theta\|_{B_1}$, and $\IC$ as the underlying field. If $B_1$ is a real Banach space, given an arbitrary subset $K \subset B_1$, and $\delta$ a positive real number, we define 
+\begin{align}
+\label{eq:deltasets}
+K_\delta = \left\lbrace  \left. k \in B_1^{\IC} \right\vert \   \exists b \in K\ : \|b-k\|_{B_1^{\IC}} < \delta \right\rbrace.
+\end{align}
 
 Throughout we will define open arcs as the image of a continuous derivable, globally invertible in their range, function $\br : [-1,1] \rightarrow \IR^2$.  We further assume that the tangent vector is nowhere null, and fix the normal vector to have the same direction of $(r'_2,-r'_1)$. Rigorously speaking  this definition identifies open arcs with the corresponding parametrization function instead of the set of points that describe the arc in $\IR^2$. 
 \subsection{Boundary Value Problems on Open Arcs}
 \label{sec:bvproblem}
-We will denote by $\Gamma$ set of $M$ disjoint open arcs $ \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc characterized by a particular parametrization $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$.
-
-Let us consider a second order partial differential operator 
+We will denote by $\Gamma$ a set of $M$ disjoint open arcs $ \{ \Gamma_1, \hdots, \Gamma_M\}$, where  each arc characterized by a particular parametrization $\br_j :[-1,1] \rightarrow \Gamma_j \subset \IR^2$, we will also call $\Gamma$ the geometric configuration of the associated problem. Let us consider a second order partial differential operator 
 $$\cP = - \sum_{j=1}^2 \sum_{k=1}^2 \partial_{x_j}{A_{j,k}} \partial_k  + {A},$$
-where ${A_{j,k}},{A}$ are constant real numbers, or $2\times 2$ constant complex matrices in which case we impose that $\overline{\mathbf{A_{j,k}}}^t = \mathbf{A_{k,j}}$ and $\overline{\mathbf{A}}^t = \mathbf{A}$ . Associated with $\cP$ the co-normal trace operator\footnote{The simetry conditions on the matrices $\mathbf{A_{j,k}}$, and $\mathbf{A}$, ensures that the co-normal trace is a self-adjoint operator. If we do not assume this we would have to introduce the adjoint co-normal trace but most of the result of this work follows verbatim.} over $\Gamma_p$ is defined as 
+where ${A_{j,k}},{A}$ are constant real numbers, or $2\times 2$ constant complex matrices in which case we impose that $\overline{\mathbf{A_{j,k}}}^t = \mathbf{A_{k,j}}$ and $\overline{\mathbf{A}}^t = \mathbf{A}$ . Associated with $\cP$ the co-normal trace operator\footnote{The simetry conditions on the matrices $\mathbf{A_{j,k}}$, and $\mathbf{A}$, ensures that the co-normal trace is a self-adjoint operator. If we do not assume this we would have to introduce the adjoint co-normal trace but most of the result of this work are replicable.} over $\Gamma_p$ is defined as 
 $$
-\cB_p u =  \sum_{j=1}^2 (\bn_p)_j \sum_{k=1}^2 {A}_{j,k} \partial_k u \vert_{\Gamma_p} 
+\cB_p u =  \sum_{j=1}^2 (\bn_p)_j \sum_{k=1}^2 {A}_{j,k} \partial_k u \vert_{\Gamma_p},
 $$
-for any smooth function $\bu$, where $\bn_p$ denotes the unitary normal vector of $\Gamma_p$. Now let us consider the problem, seek $\bu$ such that 
+for any smooth function $u$, where $\bn_p$ denotes the unitary normal vector of $\Gamma_p$. Now let us consider the problem, seek $u$ such that 
 \begin{align}
 \label{eq:volprob}
 \cP u = 0, \quad \text{on } \IR^2 \setminus \Gamma,\\
@@ -478,7 +488,7 @@ u = f^D,   \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{ (Dirichlet Condit
 \label{eq:neumanncond}
  \cB_p u = f^N,  \quad \text{in } \Gamma_p, \ p =1,\hdots,M,  \text{(Neumann Condition)}.
 \end{align}
-Condition \eqref{eq:radcond} speciffy the behavior of $u$ far away from Gamma is is crucial to have uniqueness. The particular form of the condition depends of $\cP$. The boundary data $f^D,$ and, $f^N$ are the right-hand-side of the Dirichlet and Neumann problems respectively, throughout we will assume that these are entire functions defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
+Condition \eqref{eq:radcond} speciffy the behavior of $u$ far away from Gamma and is crucial to have uniqueness. The particular form of this condition depends of $\cP$. The boundary data $f^D,$ and, $f^N$ are the right-hand-side of the Dirichlet and Neumann problems respectively, throughout we will assume that these are entire functions in each coordinate defined in $\IR^2$ restricted to $\Gamma$, we remark that less restrictive assumptions can be done without modifying the result of this work.
 
 Results for this general problem are hard to come by since a more explicit form of the conditions at infinity is needed. We, however, will assume the uniqueness for both boundary value problems (Dirichlet and Neumann), while the existence will be consequence of the boundary integral formulation presented next. 
 \subsubsection{Boundary Integral Formulations}
@@ -492,23 +502,23 @@ G(\bx,\by )  =
 \end{align}
 where $F_1$, and $F_2$ are assumed to be entire complex functions, that are either scalars or $2 \times 2$ matrices. Furthermore we will also assume that in the scalar case $F_1(0) \neq 0$, and for the vectorial case $\mathbf{F_1}(0)$ is invertible. For an open arc $\gamma$ the layered potential are defined as:
 \begin{align*}
-SL_\gamma \lambda(\bx) = \int_\gamma G(\bx,\by) \lambda(\by) d\by, \quad DL_\gamma \mu(\bx) = \int_\gamma \left(\mathcal{B}_{\bn,\by} G(\bx,\by) \right)^T \mu(\by) d\by,
+\widehat{SL}_\gamma \lambda(\bx) = \int_\gamma G(\bx,\by) \widehat{\lambda}(\by) d\by, \quad \widehat{DL}_\gamma \mu(\bx) = \int_\gamma \left(\mathcal{B}_{\bn,\by} G(\bx,\by) \right)^T \widehat{\mu}(\by) d\by,
 \end{align*} 
-where $\mathcal{B}_{\bn,\by}$\footnote{the general definition of the Double layer involes the adjoint of the co-normal trace operator, under our assumptions on $\cP$ this operator is self-adjoint. } denotes the co-normal trace in the $\by$ variable, and $\lambda, \mu$ are densities defined in $\gamma$ that are scalars if $\cP$ is a scalar operator, or two-dimensional vector otherwise. Standard properties of the fundamental solution ensure that  both potentials solves the PDE \eqref{eq:volprob} in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials also exhibits the behavior at infinity described by the radiation condition \eqref{eq:radcond}. 
+where $\mathcal{B}_{\bn,\by}$\footnote{the general definition of the Double layer involes the adjoint of the co-normal trace operator, under our assumptions on $\cP$ this operator is self-adjoint. } denotes the co-normal trace in the $\by$ variable, and $\widehat{\lambda}, \widehat{\mu}$ are densities defined in $\gamma$ that are scalars if $\cP$ is a scalar operator, or two-dimensional vector otherwise. Standard properties of the fundamental solution ensure that  both potentials solves the PDE \eqref{eq:volprob} in $\IR^2 \setminus \Gamma$. Furthermore we will assume that both potentials exhibits the behavior at infinity described by the radiation condition \eqref{eq:radcond}. 
 
 Denoting by $\br$ the parametrization that defines $\gamma$ we construct the pulled back versions of the potentials. First let us consider the transformed densities 
 \begin{align*}
-\widehat{\lambda} (s) = \lambda \circ \br(s)  \| \br'(s) \|, \quad 
-\widehat{\mu} (s) = \mu \circ \br(s),
+\lambda (s) = \widehat{\lambda} \circ \br(s)  \| \br'(s) \|, \quad 
+\mu (s) = \widehat{\mu} \circ \br(s),
 \end{align*}
 and the pulled back potentials 
 \begin{align*}
-\widehat{SL}_{\gamma} u := \int_{-1}^1 
+{SL}_{\gamma} u := \int_{-1}^1 
  G(\bx,\br(s))  u(s) ds, \quad 
- \widehat{DL}_{\gamma} u := \int_{-1}^1 
+ {DL}_{\gamma} u := \int_{-1}^1 
  \left(\mathcal{B}_{\bn,\by}G(\bx,\br(s))\right)^T  u(s) \|\br'(s)\|ds,
 \end{align*}
-defined for an arbitrary function $u$, thus we have $SL_\gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. In what follows we will omit the hat notations, as we will only use the pulled back potentials. 
+defined for an arbitrary function $u$, thus we have $SL_\gamma \lambda  = \widehat{SL}_\Gamma \widehat{\lambda}$, and $DL_\Gamma \mu  = \widehat{DL}_\Gamma \widehat{\mu}$. 
 
 Now we reformulate boundary value problems presented in the previous section as a set of boundary integral equations. We do so, by imposing the boundary conditions on the indirect representation obtained throug layered potentials. We seek for densities $\bla = (\lambda_1,\hdots,\lambda_M)$, with each $\lambda_i$ defined over $[-1,1]$, and $\bmu = (\mu_1, \hdots, \mu_M)$, with $\mu_i$ defined over $[-1,1]$, for $i = \{1,\hdots,M\}$ such that
 \begin{align*}
@@ -521,7 +531,7 @@ Now we reformulate boundary value problems presented in the previous section as 
 \label{eq:bios}
 \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla = \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}, \quad \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu = \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M},
 \end{align}
-where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(f^D_{\Gamma_1,\hdots,\Gamma_M})_i = f^D \circ \br_i$, $(f^N_{\Gamma_1,\hdots,\Gamma_M})_i = f^N \circ \br_i$. Notice that even is not direct from the notation, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
+where $(V_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (SL_{\Gamma_j}  )\circ \br_i$, $(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} = (\mathcal{B}_{\bn,\bx}DL_{\Gamma_j} )\circ \br_i$, and $(f^D_{\Gamma_1,\hdots,\Gamma_M})_i = f^D \circ \br_i$, $(f^N_{\Gamma_1,\hdots,\Gamma_M})_i = f^N \circ \br_i$. Notice that, while not explicitly written, $\bla$ and $\bmu$ depends of the geometry $\Gamma_1,\hdots,\Gamma_M$. The weakly-singular operators can be represented as a Lebesgue integral defined as 
 \begin{align*}
 (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \int_{-1}^1G(\br_i(t),\br_j(s)) u(s) ds,
 \end{align*}
@@ -534,7 +544,7 @@ for a function $u$. On the other hand the hyper-singular operator could only be 
 where $\widetilde{G}$ is a function with the same structure of the fundamental solution, i.e. as in \eqref{eq:funsolgen}, and $u$ can be exteneded by 0 to a closed curve containing $\Gamma_j$ in a suitable manner. Such expressions for the hyper-singular operators are well known for particular cases of $\mathcal{P}$ on closed boundaries, see for example \cite{Nedelec1982,Maue1949}. There is also a more general result for scalar operators in \cite[Chapter 3.3.4]{Sauter:2011}, however, to the best of our knowledge there is not known result for the general case. The extension  from closed curves to open arcs is carried out using the zero-extension of the density. 
 
 Whenever there is a solution for the boundary integral formulations a solution exist for the boundary value problem. Under the assumptions of the 
-structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \todo{ref}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed to hold in the previous section. 
+structure of the fundamental solution \eqref{eq:funsolgen}, it can be shown (see Section \ref{sec:ophlrmf}) that the existence and uniqueness of the solution for the boundary integral equations are equivalent. Hence, we show existence of the boundary value problems and  existence and uniqueness of the integral formulations by showing only  the latter. Moreover, as it was pointed out in \cite{JHP20}, the uniqueness the boundary integral formulations can be inferred from the uniqueness of the boundary value problems, which was assumed to hold in the previous section. 
 
 \subsection{Shape Holomorphy}
 \label{section:ShapeHolormsGeneral}
@@ -557,7 +567,7 @@ For practical applications one is usually concerned with some particular compact
 \label{eq:Kcompact}
 K =\left\lbrace k(\by) \in B_1 \ : k(\by) = k_0 + \sum_{n=0}^\infty y_n a_n, \ \{y_n\}_{n \in \IN} \subset [-1,1] \right\rbrace,
 \end{align}
-where $k_0 \in B_1$ is a fixed element, and $\{a_n\}_{n\in \IN} \subset B_1$ is  a fixed sequence. One can show that under the assumption that $\sum_{n=0}^\infty \|a_n\|_{B_1} < \infty$, $K$ is in fact compact. 
+where $k_0 \in B_1$ is a fixed element, and $\{a_n\}_{n\in \IN} \subset B_1$ is  a fixed sequence, also called perturbation basis, as we can interpret the elements $k(\by)$ as perturbations of $k_0$. One can show that under the assumption that $\sum_{n=0}^\infty \|a_n\|_{B_1} < \infty$, $K$ is in fact compact. 
 
 In this framework we study the map $F : \by \mapsto f(k(\by)) \in  B_2$. This motivate the introduction of the notion of $(b,p,\epsilon)-$holomorphism, or parametric holomorphism ( see  \todo{ref} for the original introduction of this notion, and \todo{refs} for applications of this notion). First given a sequence $\{\rho_n\}_{n \in \IN}$ of real numbers, such that $\rho_n  >1$ we define a sequence of complex tubes by 
 \begin{align*}
@@ -589,16 +599,16 @@ We will see in Theorem \ref{theorem:generalbpeholomrfsm}, that  if $f$ has holom
 
 In the context of the multiple-open arc problem, we will consider a fixed geometric configuration parametrized by the functions $\br_1^0 ,\hdots, \br_M^0$, and some pertubations basis also given by parametrizations functions. We will show that under some assumptions in the perturbation basis, the map from the parameters to the boundary integral formulations solutions $\bla,\bmu$ are $(b,p,\epsilon)-$holomorphic.
 \subsection{Outline}
-The outline for the rest of the paper is the following. In Section \todo{ref}, we present the main results concerning the holomorphic extension of the solution of BIF with respect to the geometry parametrization, and the corresponding parametric holomorphism. Section \todo{ref} present the main tools to proof the results, in particular in Section \todo{ref} we present abstract result to proof the holomorphic extension of boundary integral operators, and also a result on how we obtain the parametric holomorphism from the general holomorphic extension. Then sections \todo{ref} through \todo{ref} show the tools for using the abtract theorems to our particular problem. 
-In Section \todo{4} we conclude the holomorphic extension of the integral operators and obtain the holomorphic extension of the solution maps. Similarly, in Section \todo{5} we conclude the parametric holomorphism  solution maps. 
-Finally in Section \todo{6} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
+The outline for the rest of the paper is the following. In Section \ref{sec:MainResult}, we present the main results concerning the holomorphic extension of the solution of BIF with respect to the geometry parametrization, and the corresponding parametric holomorphism. Section \ref{sec:mathtools} present the main tools to proof the results, in particular in Section \ref{sec:abstracthlmrf}  we present abstract result to proof the holomorphic extension of boundary integral operators, and also a result on how we obtain the parametric holomorphism from the general holomorphic extension. Then sections \ref{sec:FunctionalSpaces} through \ref{sec:hlrmfsextIKernel} show the tools for using the abtract theorems to our particular problem. 
+In Section \ref{sec:ophlrmf} we conclude the holomorphic extension of the integral operators and obtain the holomorphic extension of the solution maps. Similarly, in Section \ref{sec:parametrichlmrf} we conclude the parametric holomorphism  solution maps. 
+Finally in Section \ref{sec:examples} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
 \section{Main Results}
 \label{sec:MainResult}
-In this section we list our main results related with the boundary integral formulation presented in Section \ref{sec:bif}. We refer to Section \ref{sec:FunctionalSpaces} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \todo{ref}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \todo{ref} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
+In this section we list our main results related with the boundary integral formulation presented in Section \ref{sec:bif}. We refer to Section \ref{sec:FunctionalSpaces} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \ref{condition:deltaOps}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \ref{condition:smh} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
 
 \begin{theorem}
 \label{thrm:biohlmextension}
-Let $s \in \IR$, $m \in \IN$ with $m \geq 1$, and $h \in [0,1]$, such that Condition \todo{ref} holds. Consder $M$ disjoint compact sets of parametrizations $K^1,\hdots,K^M \subset \rgeoh{m}{h}$, and the corresponding real numbers $\delta_j$ given by Condition  \todo{ref}. Then given the real parameters $\{\xi_j\}_{j=1}^M$ such that $0 < \xi_j < \delta_j$, for $j=1,\hdots,M$ we have that the maps 
+Let $s \in \IR$, $m \in \IN$ with $m \geq 1$, and $h \in [0,1]$, such that Condition \ref{condition:smh} holds. Consder $M$ disjoint compact sets of parametrizations $K^1,\hdots,K^M \subset \rgeoh{m}{h}$, and the corresponding real numbers $\delta_j$ given by Condition  \ref{condition:deltaOps}. Then given the real parameters $\{\xi_j\}_{j=1}^M$ such that $0 < \xi_j < \delta_j$, for $j=1,\hdots,M$ we have that the maps 
 \begin{align*}
 (\br_1,\hdots,\br_M) \in K^1 \times \hdots K^M \mapsto \mathbf{V}_{\Gamma_1, \hdots,\Gamma_M} \in \mathcal{L} \left(  \prod_{j=1}^M \IT^s, \prod_{j=1}^M \IW^{s+1}
 \right)
@@ -609,7 +619,7 @@ Let $s \in \IR$, $m \in \IN$ with $m \geq 1$, and $h \in [0,1]$, such that Condi
 \end{align*}
 have holomorphic extensions on the open set $K^1_{\xi_1}\times\hdots K^M_{\xi_M}$.
 \end{theorem}
-Once we show this Theorem using some abstract properties on inverse function, and using that the right hand side of the Dirichlet and Neumann problem are given by entire functions we obtain the holomirphic extension of the solution maps. 
+Once we have this Theorem using some abstract properties on inverse function, and using that the right hand side of the Dirichlet and Neumann problem are given by entire functions we obtain the holomirphic extension of the solution maps. 
 \begin{theorem}
 \label{thrm:solutionholomrext}
 Under the same hypothesis of Theorem \ref{thrm:biohlmextension}, there exist $\eta_1,\eta_2$ real numbers such that
@@ -623,14 +633,14 @@ has holomorphic extension to the open set $K_{\eta_1}^1 \times \hdots K_{\eta_1}
 \end{align*}
 has holomorphic extension to the open set $K_{\eta_2}^1 \times \hdots K_{\eta_2}^M$.
 \end{theorem}
-The previous Theorem enable us to obtain holomorphic extension for some linear functionals. In particular if we consider linear functionals of the form  $$L\bu (\bx) = \int_{-1}^{1} \mathbf{\varphi}(\bx,\br_1(t),\hdots,\br_M(t)) \cdot \bu(t) dt,$$ where $\bu = \bla $ or $\bu = \bmu$, and $\mathbf{\varphi}$ is an entire function, the holomorphic extension of this functional is obtained by noticing that is the composition of $\bu$ which has holomorphic by Theorem \ref{thrm:solutionholomrext}, and using Theorem \ref{thrm:abstractholm} for showing that the integral operator 
+The previous Theorem enable us to obtain holomorphic extension for some linear functionals. In particular if we consider linear functionals of the form  $$L\bu (\bx) = \int_{-1}^{1} \mathbf{\varphi}(\bx,\br_1(t),\hdots,\br_M(t)) \cdot \bu(t) dt,$$ where $\bu = \bla $ or $\bu = \bmu$, and $\mathbf{\varphi}$ is an entire function in each coordinate, the holomorphic extension of this functional is obtained by noticing that is the composition of $\bu$ which has holomorphic by Theorem \ref{thrm:solutionholomrext}, and using Theorem \ref{thrm:abstractholm} for showing that the integral operator 
 $L\bv(\bx)$ (where $\bv$ is independent of the paramatrizations) has holomorphic extensions. 
 
-Finally assuming a parametric form of geometry configuration presented in Section \todo{5}, with the corresponding Assumption \todo{ref}, using the abtract result Theorem \ref{theorem:generalbpeholomrfsm} we obtain the following result. 
+Finally assuming the parametric form of geometry configuration presented in Section \ref{sec:parametrichlmrf}, with the corresponding Assumption \ref{assump:geoparam}, using the abtract  Theorem \ref{theorem:generalbpeholomrfsm} we obtain the following result. 
 
 \begin{theorem}
 \label{thrm:bpeholomr}
-Under the hypothesis of Theorem \ref{thrm:solutionholomrext}, and Assumption \todo{ref}\footnote{The assumption defined the parameter $p$, as well conditions for the perturbations basis $\mathbf{b}_n$.} we have that for $b_n = \|\mathbf{b}_n\|_{\rgeoh{m}{h}}$, the norm of perturbation basis, the map
+Under the hypothesis of Theorem \ref{thrm:solutionholomrext}, and Assumption \ref{assump:geoparam}\footnote{The assumption defined the parameter $p$, as well conditions for the perturbations basis $\mathbf{b}_n$.} we have that for $b_n = \|\mathbf{b}_n\|_{\cmspaceh{m}{h}{(-1,1)}{\IR^2}}$, the norm of perturbation basis, the map
 \begin{align*}
 \by \in [-1,1]^{\IN} \mapsto \bla \in \prod_{j=1}^M \IT^s,
 \end{align*}
@@ -640,19 +650,21 @@ is $(b,p,\epsilon)-$holomorphic for $\epsilon < \eta_1$, where $\eta_1$ is given
 \end{align*}
 with $\epsilon < \eta_2$, where $\eta_2$ is also given in Theorem \ref{thrm:solutionholomrext}.
 \end{theorem}
-As with the holomorphic extension, the previous Theorem enable us to conclude the parametric holomorphism of some linear functionals of $\bla$, and $\bmu$. Futhermore, Section \todo{5} would also show that some Galerkin approximations are also parametric holomorphic. 
+As with the holomorphic extension, the previous Theorem enable us to conclude the parametric holomorphism of some linear functionals of $\bla$, and $\bmu$. Futhermore, in Section \ref{sec:parametrichlmrf} we will  show that some Galerkin approximations are also parametric holomorphic. 
 \section{Mathematical tools}
+\label{sec:mathtools}
 This section present the main tools for the proofs of the Theorems presented in Section \ref{sec:MainResult}. Since some of the results are very technical they are relegated to Appendices \ref{appendix:funext}, and \ref{appendix:fracbivariate}.
 
 \subsection{Abstract Holomorphism Theorems}
+\label{sec:abstracthlmrf}
 
-In this Section we present some theorems that would enable us to establish holomorphic extension of some general integral operators, as well as the connection between holomorphic extension and parametric holomorphism. These results are abstractions (for the most part) of results that appears first in \cite{Henriquez2021}, in general terms the proofs are the same that the corresponding result in the cited reference so we only pointed out to the specif result instead of provided the a proof. 
+In this Section we present some theorems that would enable us to establish holomorphic extension of some general integral operators, as well as the connection between holomorphic extension and parametric holomorphism. These results are abstractions (for the most part) of results that appears first in \cite{Henriquez2021}, in general terms the proofs are the same that the corresponding result in the cited reference so we only pointed out to the specif result instead of provided the full proof. 
 
 As in Section \ref{section:ShapeHolormsGeneral}, we consider a real Banach space $B_1$, with its corresponding complexification $B_1^{\IC}$, a compact set $K \subset B_1$, and $B_2$ a complex Banach space. Let us also consider a general integral operator of the form 
 \begin{align*}
 (P_k u)(t) = \int_{-1}^{1} S(t-s) p_k(t,s) u(s) ds,
 \end{align*}
-defined by the functions $S$, $p_k$, where $k \in K$ denotes an arbitrary parameter. We assume that for every $k \in K$ the integral operator is a bounded linear map between two Hilbert spaces $H_1,H_2$, such that the continuous functions are dense in $H_1$. The following result enable us to construct the holomirphic extension of the map $k  \in K \mapsto P_k \in \mathcal{L}(H_1,H_2)$. 
+defined by the functions $S$, $p_k$, where $k \in K$ denotes an arbitrary parameter. We assume that for every $k \in K$ the integral operator is a bounded linear map between two Hilbert spaces $H_1,H_2$, of scalar functions with fixed domain  $A \subset \IR^2$ an open set, and such that the continuous functions are dense in $H_1$. The following result enable us to construct the holomirphic extension of the map $k  \in K \mapsto P_k \in \mathcal{L}(H_1,H_2)$. 
 
 \begin{theorem}[Theorem 3.12 in \cite{Henriquez2021}] \label{thrm:abstractholm}
 If we have 
@@ -720,7 +732,7 @@ The result then follows directly from the holomorphic extension of $f$, and by t
 
 We now define properly the Banach space in which the parametrizations are considered, as well as the Hilbert spaces that serve as domain and range of the associated boundary integral operators that appears in the Theorems of Section \ref{sec:MainResult}.
 
-Let us begin with the space of parametrizations. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, and such that the derivatives of order $m$ are $h$ holder   also in $[-1,1]$, for any $m\in \IN$ and $h \in [0,1]$. This space has Banach structure when is endowed with the classical norm 
+Let us begin with the space of parametrizations. Given a non-empty open connected set $A$ of a finite dimensional euclidean space (real or complex). We consider the spaces $\cmspaceh{m}{h}{A}{B}$, where $B$ is any euclidean finite dimensional space, as the set of functions from $A$ to $B$ with derivatives up to order $m$ in $A$, each one with continuous extension to $\overline{A}$, and such that the derivatives of order $m$ are $h$-Holder   also in $[-1,1]$, for any $m\in \IN$ and $h \in [0,1]$. This space has Banach structure when is endowed with the classical norm 
 \begin{align*}
 \| f \|_{\cmspaceh{m}{h}{A}{B}} := \sum_{\bk: |\bk| \leq m } \sup_{\bx \in A}  \left\vert\left\vert\partial_{\bx}^{\bk} f(\bx) \right\vert\right\vert+ \sum_{k: |k| =m} \sup_{\bx \in A}  \frac{|\partial_{\bx}^{\bk}f(x)-\partial_{\bx}^{\bk}f(y)|}{\| \bx - \by\|^h},
 \end{align*}
@@ -758,7 +770,7 @@ We will make use of the traditional periodic Sobolev spaces defined as
 $$
 H^s := \left\lbrace u : \| u\|_{H^s}^2 = \sum_{n=-\infty}^\infty (1+n^2)^s |\widetilde{u}_n|^2 < \infty \right\rbrace,
 $$
-for $s\in \IR$. We refer to \cite[Chapter 5]{saranen2013periodic} for a more rigorous definition. We also define the first kind spaces similarly as in \cite{Averseng2019},
+for $s\in \IR$. We refer to \cite[Chapter 5]{saranen2013periodic} for a more rigorous definition. We also define the first kind spaces as in \cite{Averseng2019},
 \begin{align*}
 T^s := \left\lbrace u : \| u\|_{T^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |{u}_n|^2 < \infty \right\rbrace, \\
 W^s := \left\lbrace u : \| u\|_{W^s}^2 = \sum_{n=0}^\infty (1+n^2)^s |\widehat{u}_n|^2 < \infty \right\rbrace,
@@ -786,9 +798,14 @@ where the sign function is defined with the convention $\text{sign}(0)=0$, and w
 \begin{align*}
 u \in U^s \Leftrightarrow \widehat{K}u \in H^s, \quad \text{and,} \quad u \in Y^s \Leftrightarrow Ku \in H^s.
 \end{align*}
+Using the lifting characterizations one can easily check that 
+\begin{align}
+\label{eq:WsYs}
+W^s \subset Y^s, \quad \forall s \in \IR.
+\end{align}
 From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see the functions $\{wU_n\}_{n \in \IN}$ are dense in $U^s$, since these are $0$
 on the extremes $\pm 1$, we obtain that the general Maue's representation formula \eqref{eq:mauesrep} is valid for functions in $U^s$.  
-Since the dual space of $H^s$, could be identified with $H^{-s}$, we can identify the dual space of $T^s$ with $W^{-s}$ and the dual of $U^s$ with $Y^{-s}$.In both cases the duality product correspond to an extension of the $L^2$ inner product. \todo{check}.
+Since the dual space of $H^s$, could be identified with $H^{-s}$, we can identify the dual space of $T^s$ with $W^{-s}$ and the dual of $U^s$ with $Y^{-s}$.In both cases the duality product correspond to an extension of the $L^2$ inner product. 
 
 An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular using the density of the Chebishev basis we can easly see that 
 \begin{align}
@@ -821,7 +838,7 @@ Based on the previously described functional spaces, we study the mapping proper
 (L_fu)(t) &:= \int_{-1}^1 \log|t-s| f(t,s) u(s) ds\\
 (S_f u)(t) &:= \int_{-1}^1 \log|t-s| (t-s)^2 f(t,s)u(s)ds,
 \end{align*}
-where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$, and $h \in [0,1]$. This wold be one of the main ingredients for invoking Theorem \ref{thrm:abstractholm} for the weakly-singular and hyper-singular operators.
+where $f \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}$, for some $m \in \IN$, and $h \in [0,1]$. This would be one of the main ingredients for invoking Theorem \ref{thrm:abstractholm} for the weakly-singular and hyper-singular operators.
 
 Throughout the rest $m$ will denote a natural number such that $m \geq 1$, and $h$ is any real number in $[0,1]$.
 
@@ -962,7 +979,6 @@ The following results follows directly from \cite[Theorem 6.1.1]{saranen2013peri
 \begin{lemma}
 \label{lemma:rfper}
 Let $s \in \IR$ If one of the following conditions is satisfied: 
-if one of the following conditions is satisfied:
 \begin{enumerate}
 \item $s> \frac{-1}{2}$, and $s + \frac{3}{2} < m+h$.
 \item $ s \leq \frac{-1}{2}$, and $-s+ \frac{1}{2} <m+h$. 
@@ -983,7 +999,7 @@ Let us focus in the operator $R_f^J$, for $R_f^K$ the proof is the same changing
 \end{align*}
 where $a=s+1$, $b = \max\{\nu, |\nu-1|\}$, $c = \nu $, $d= \max \{ |s|,\nu\}$ for $s > \frac{-1}{2}$, and $a=s+1$, $b = \max\{\nu, |\nu-1|\}$, $c = \nu $, $d= \max \{ |s|,\nu\}$ for $s <\frac{-1}{2}$, with the parameter $\nu$ arbitrary close to $\frac{1}{2}$.
 
-For $s=\frac{1}{2}$, we use \cite[Theorem 6.1.1]{saranen2013periodic} so the same bound as before with $a =\max\{ |s+1|,\nu\}$, $b=\max\{|s|,\nu\}$, where $\nu$ as before, and $c,d$ not specified as the corresponding term do no appear in this case.
+For $s=\frac{1}{2}$, we use \cite[Theorem 6.1.1]{saranen2013periodic} so get the same bound as before with $a =\max\{ |s+1|,\nu\}$, $b=\max\{|s|,\nu\}$, $\nu$ as before, and $c,d$ not specified as the corresponding term do no appear in this case.
 
 Hence directly from Lemma \ref{lemma:cmdecay2} if one of the conditions specified in the hypotesis hols we obtain the bound $\| R_f^J\|_{ \mathcal{L}(H^{s},H^{s+1})} \lesssim \|\sigma\|_{\cmspaceh{m}{h}{[-\pi,\pi]\times[-\pi,\pi]}{\IC}} < \infty$, thus  
 $R_f^J \in \mathcal{L}(H^{s},H^{s+1})$.
@@ -1016,7 +1032,7 @@ so we obtain the result for the pair $T^{s}, W^{s+1}$, and the proof is analogou
 \end{proof}
 \subsubsection{Operator $L_f$}
 
-As for the operator $R_f$ we consider the two lifting versions of $L_f$, 
+As in the previous case we consider the two lifting versions of $L_f$, 
 \begin{align}
 \label{eq:Lsplit}
 \begin{split}
@@ -1096,7 +1112,7 @@ Now we show that some recurrent functions has holomorphic extensions. The result
 
 We will make use of the square root and logarithmic functions. Both of them have holomorphic extension (through the main branch) in $\IC \setminus (-\infty,0]$.
 
-We will also use the extension of the square of the distance function between two points located in two (not necessarily different) arcs. For real  parametrizations $\br,\bp$ the square of the distance is defined as $d_{\br,\bp}(t,s) = \| \br(t)-\bp(s)\|^2$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
+We will also use the extension of the square of the distance function between two points located in two (not necessarily different) arcs. For real  parametrizations $\br,\bp$ the square of the distance is defined as $d_{\br,\bp}^2(t,s) = \| \br(t)-\bp(s)\|^2$, the extension to complex parametrizations is constructed as in \cite{Henriquez2021}, 
 \begin{align*}
 d^2_{\br,\bp}(t,s) = {(\br(t)-\bp(t))\cdot(\br(s)-\bp(s))},
 \end{align*}
@@ -1163,6 +1179,7 @@ where $I,S$ are defined as:
 Hence Condition \ref{condition:dcross}, ensures that $Re(d_{\br,\bp}(t,s))>0$ for every $(t,s) \in \iinterv$ and $(\br,\bp) \in K^1_{\delta_1} \times K^2_{\delta_2}$. While, Condition \ref{condition:Qself} ensures that $Re(Q_{\br}(t)) >0$, for every $t \in (-1,1)$, and $\br \in K_\delta$. 
 
 \subsection{Holomorphic Extension of Integral Kernels}
+\label{sec:hlrmfsextIKernel}
 In this section we show that the kernels of the integral operators (weakly-singular, and hyper-singular), according to representation \eqref{eq:funsolgen}, have holomorphic extensions. 
 
 This is a direct continuation of the previous section as the extensions of the integral kernels use explictly the functions $d_{\br,\bp}^2$ and $Q_{\br}$, that we have previously considered.
@@ -1222,18 +1239,18 @@ where $f_j$ are entire in both coordinates, and $F_j$ are as before for $j=1,2$.
 
 
 \section{Shape Holomirphism for Dirichlet and Neumann Problems}
-
-In this section we present the proof for Theorems \ref{thrm:biohlmextension}, and \ref{thrm:solutionholomrext}. First let us consider the weakly-singular operator interaction between two generics arcs $\br,\bp \in \rgeoh{m}{h}$, denoted by 
+\label{sec:ophlrmf}
+In this section we present the proof for Theorems \ref{thrm:biohlmextension}, and \ref{thrm:solutionholomrext}. First let us consider the weakly-singular operator interaction between two generics arcs , given by the parametrizations $\br,\bp \in \rgeoh{m}{h}$, denoted by 
 $$V_{\br,\bp}u  = \int_{-1}^1G(\br(t),\bp(s)) u(s) ds,$$
-hence with the notation of Section \ref{sec:bif}, $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution \eqref{eq:funsolgen}, and Lemmas \ref{lemma:crosskernel}, and \ref{lemma:selfkernel}, this operator is a logaritmic operator (of the form $L_f$ in notation of Section \ref{sec:generalbio} ) with a $\cmspaceh{m}{h}{\iinterv}{\IC}$ kernel if $\br ,\bp$ don't cross each other, and $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, if $\br = \bp$. Thus given $s \in \IR$,   by Corrollary \ref{corollary:lfop}, the following condition over $(m,h,s)$ ensures that $V_{\br,\bp} \in \mathcal{L}\left(\IT^s,\IW^{s+1}\right)$ and $V_{\br,\bp} \in \mathcal{L}\left(\IU^s,\IY^{s+1}\right)$\footnote{The condition ensure the property for $\br = \bp$, which is more restricted that the condition for the disjoint arcs.}.
+hence with the notation of Section \ref{sec:bif}, $V_{\br_i, \br_j} = (V_{\Gamma_1,\hdots,\Gamma_M})_{i,j}$. As consequence of the structure of the fundamental solution \eqref{eq:funsolgen}, and Lemmas \ref{lemma:crosskernel}, and \ref{lemma:selfkernel}, this operator is a logaritmic operator (of the form $L_f$ in notation of Section \ref{sec:generalbio} ) with a $\cmspaceh{m}{h}{\iinterv}{\IC}$ kernel if $\br ,\bp$ don't cross each other, and $\cmspaceh{m-1}{h}{\iinterv}{\IC}$, if $\br = \bp$. Thus given $s \in \IR$,   by Corrollary \ref{corollary:lfop}, the following condition over $(m,h,s)$ ensures that $V_{\br,\bp} \in \mathcal{L}\left(\IT^s,\IW^{s+1}\right)$ and $V_{\br,\bp} \in \mathcal{L}\left(\IU^s,\IY^{s+1}\right)$\footnote{The condition ensure the property for $\br = \bp$, which is more restrictive that the condition for the disjoint arcs.}.
 \begin{condition}
 \label{condition:smh}
 For $m \in \IN$, $h \in [0,1]$, $s \in \IR$, one of the following needs to hold:
 \begin{enumerate}
-\item[i] 
+\item[i.] 
 $s > \frac{-1}{2}$, and $s+
 \frac{5}{2}<m+h$,
-\item[ii] 
+\item[ii.] 
 $ s \leq \frac{-1}{2}$, and $\frac{3}{2} -s < m+h$.
 \end{enumerate}
 %\begin{enumerate}
@@ -1252,7 +1269,7 @@ Notice that these are the same conditions than in Lemma \ref{lemma:rfper} but ch
 \label{lemma:vcomp} 
 Assume that Condition \ref{condition:smh} hols, 
 \begin{enumerate}
-\item If in addition Condition \ref{condition:Qself} is fulfilled, then for any $\xi$ such that $0<\xi < \delta$\footnote{$\delta$ as in Condition \ref{condition:Qself}}, the maps 
+\item If in addition Condition \ref{condition:Qself} is fulfilled, then for any $\xi$ such that $0<\xi < \delta$, the maps\footnote{$\delta$ as in Condition \ref{condition:Qself}}
 \begin{align*}
 \br \in K \mapsto V_{\br,\br} \in 
 \mathcal{L}(\IT^s, \IW^{s+1}), \\
@@ -1261,7 +1278,7 @@ Assume that Condition \ref{condition:smh} hols,
 \end{align*}
 have holomorphic extension in $K_\xi$. Furthermore, for any $\br \in K_\xi$, $V_{\br,\br} \in \mathcal{L}(\IT^s, \IW^{s+1})$, is a Fredholm operator of index 0.
 \item 
-If Condition \ref{condition:dcross} is fulfilled, then for $\xi_1 >0$, $\xi_2 >0$ such that $\xi_1 < \delta_1$, $\xi_2 < \delta_2$\footnote{$\delta_1,\delta_2$ as in Condition \ref{condition:dcross}} the maps,
+If Condition \ref{condition:dcross} is fulfilled, then for $\xi_1 >0$, $\xi_2 >0$ such that $\xi_1 < \delta_1$, $\xi_2 < \delta_2$ the maps\footnote{$\delta_1,\delta_2$ as in Condition \ref{condition:dcross}},
  \begin{align*}
  (\br,\bp) \in K^1 \times K^2 \mapsto V_{\br,\bp} \in 
 \mathcal{L}(\IT^s, \IW^{s+1}),\\
@@ -1317,7 +1334,7 @@ Lastly we have that
 $$
 V_{\br,\br} =V_{\br,\br}^{R}+V_{\br,\br}^{S,1} + V_{\br,\br}^{S,2},
 $$
-hence since the tree operators of the left hand side have holomorpic extension (atleast in $K_\xi$, for $\xi < \delta$), we obtain the holomorphic extension of $V_{\br,\br}$. On the other hand $V_{\br,\br}^{R}, V_{\br,\br}^{S,2}$ are compact operators, and $V_{\br,\br}^{S,1}$ is invertible, thus 
+since the tree operators of the right hand side have holomorpic extension (atleast in $K_\xi$, for $\xi < \delta$), we obtain the holomorphic extension of $V_{\br,\br}$. On the other hand $V_{\br,\br}^{R}, V_{\br,\br}^{S,2}$ are compact operators, and $V_{\br,\br}^{S,1}$ is invertible, thus 
 $V_{\br,\br}$ is Fredholm of index 0.
 
 The proof of the second part is the same as the one for $V^R_{\br,\br}$ using Lemma \ref{lemma:crosskernel}, instead Lemma \ref{lemma:selfkernel}.
@@ -1368,6 +1385,7 @@ The operator $W^2_{\br,\bp}$ could be analyzed as in Lemma \ref{lemma:vcomp}, so
 \end{proof}
 
 \begin{remark}
+\label{remark:evenlessreg}
 In practical cases the term $\widetilde{G}$ of the Maue's representation formula includes factor involving the normal vectors, hence the corresponding functions $F_1,F_2$ have the structure described in Remark \ref{remark:lessregularitykernel}, and as it was pointed out non of the results need to be modified.
 
 We can further generalize the structure of the functions $G_1,G_2$ of Remark \ref{remark:lessregularitykernel} by considering the form:
@@ -1413,7 +1431,7 @@ have holomorphic extension in $K^j_{\xi_j}$, and $K^i_{\xi_i} \times K^j_{\xi_j}
 has holomorphic extension in $K^1_{\xi_1} \times K^2_{\xi_2} \hdots \times K^M_{\xi_M}$.
 \end{proof}
 
-For the proof of Theorem \ref{thrm:solutionholomrext} we first need to ensure that $\bla, \bmu$ exist for any geometric configuration given by the parametrizations $\br_1,\hdots,\br_M \in K^1\times \hdots \times K^M$. where as usual $K^1,\hdots ,K^M \subset \rgeoh{m}{h}$ are disjoint compact subsets.
+For the proof of Theorem \ref{thrm:solutionholomrext} we first need to ensure that $\bla, \bmu$ exist for any geometric configuration given by the parametrizations $\br_1,\hdots,\br_M \in K^1\times \hdots \times K^M$, where as usual $K^1,\hdots ,K^M \subset \rgeoh{m}{h}$ are disjoint compact subsets.
 
 To this end, we use the standard decomposition of the weakly-singular and hyper-singular operator into the diagonal and off diagonal components, i.e.
 \begin{align*}
@@ -1432,8 +1450,7 @@ V_{\br_2,\br_1}& 0& \hdots &V_{\br_2,\br_M}\\
 V_{\br_M,\br_1} & V_{\br_M,\br_2} &\hdots & 0
 \end{pmatrix},
 \end{align*}
-according to Lemmas \ref{lemma:vcomp}, and \ref{lemma:wcomp} the pure diagonal part is composed of Fredholm operators of index $0$, and the off diagonal componets are compact. Hence, again by the definition of the norm of the Cartesian product the full operators are Fredholm of index $0$. 
-
+according to Lemmas \ref{lemma:vcomp}, and \ref{lemma:wcomp} the pure diagonal part is composed of Fredholm operators of index $0$, and the off diagonal componets are compact. Hence, again by the definition of the norm of the Cartesian product the full operators are Fredholm of index $0$. \\
 From the Freedholm property  we obtain that $\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L} \left( \prod_{j=1}^M \IT^{s}, \prod_{j=1}^M \IW^{s+1} \right)$ and $\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \in \mathcal{L} \left( \prod_{j=1}^M \IU^{s}, \prod_{j=1}^M \IY^{s-1} \right)$ are invertible if the kernel of each operators is trivial. As we mentioned previously this is equivalent to the unisolvence of the volume problem presented in Section \ref{sec:bvproblem}, we refer to \cite{JHP20} for the details.
 
 Now we proof Theorem \ref{thrm:solutionholomrext}
@@ -1444,10 +1461,10 @@ As we explained before, for every geometric configuration given by $(\br_1,\hdot
 $$
 (\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in \mathcal{L} \left( \prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s \right), \quad (\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in \mathcal{L} \left( \prod_{j=1}^M \IY^{s-1}, \prod_{j=1}^M \IU^s \right).
 $$
-So $\bla$, and $\bmu$ exist and are 
+So $\bla$, and $\bmu$ exist.
 Let us define $K = K^1\times K^2 \hdots \times K^M$, then by Theorem \ref{thrm:biohlmextension} we can find $\xi>0$\footnote{$\xi$ can be selected as $\xi =\min_{j=1,\hdots,M} \xi_j$ where $\xi_j$ are the ones of Theorem \ref{thrm:biohlmextension}.} such that weakly-singular and hyper-singular have holomrphic extension in $K_\xi = K^1_\xi \times K^2_\xi \hdots \times K^M_\xi$. 
 
-Now we can use Theorem \ref{thrm:abtractinverse} there exist $\eta_1,\eta_2$ such that the the maps 
+Now we can use Theorem \ref{thrm:abtractinverse} to find positive numbers $\eta_1,\eta_2$ such that the the maps 
 \begin{align*}
 (\br_1,\hdots,\br_M) \in K &\mapsto (\mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})^{-1} \in  \mathcal{L} \left( \prod_{j=1}^M \IW^{s+1}, \prod_{j=1}^M \IT^s \right),\\
 (\br_1,\hdots,\br_M) \in K &\mapsto(\mathbf{W}_{\Gamma_1,\hdots,\Gamma_M})^{-1}\mathcal{L} \left( \prod_{j=1}^M \IY^{s-1}, \prod_{j=1}^M \IU^s \right),
@@ -1460,14 +1477,15 @@ We recall that the right hand side of the boundary integral formulations are e $
 Furthermore, once again using that $f^D$, $f^N$ are entire functions, is direct that the maps $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M}$, and  $(\br_1,\hdots,\br_M) \mapsto \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M}$ have holomorphic extension to any region and the final result follows by composition of maps with holomorphic extensions. 
 \end{proof}
 \section{Parametric Holomorphism for Dirichlet and Neumann Problems}
-The main objective of this section is to present the proof of Theorem \ref{thrm:bpeholomr}. To do so we need to clearly state which are the perturbation basis $\{\bb_n\}_{n=0}^\infty$.
+\label{sec:parametrichlmrf}
+The main objective of this section is to present the proof of Theorem \ref{thrm:bpeholomr}. To do so, we need to clearly state which are the perturbation basis $\{\bb_n\}_{n=0}^\infty$.
 
 Throughout this section we denote by 
 $\br^0_1,\br^1_2,\hdots, \br^0_M$, $M$ fixed parametrizations in $\prod_{j=1}^M \rgeoh{m}{h}$.  The perturbation basis are elements in the same space, thus we will consider geometric configurations given by parametrizations 
 \begin{align*}
 \br_j(\by) = \br^0_j + \sum_{n=0}^\infty y_n (\bb_n)_j ,
 \end{align*}
-where $(\bb_n)_j$ is the $j$ element of the vector $\bb_n$, which itself if the $n-$th term of the perturbation basis.
+where $(\bb_n)_j \in \rgeoh{m}{h}$ is the $j$ element of the vector $\bb_n$, which itself if the $n$th term of the perturbation basis.
 
 In order to restrict ourselves to valid (geometric configurations), that is that for every $\by \in [-1,1]$, $\br_j(y) \in \rgeoh{n}{h}$ for $j=1,\hdots,M$, and also not cross-crossing occurs, we work under the following Assumptions. 
 \begin{assumption}
@@ -1482,13 +1500,19 @@ j \in \{1,\hdots,M\}.
 $$
 \item
 There exist a sequence of points $(\bc_j)_{j=1}^M \subset \IR^2$, and a sequence of strictly positive real numbers $(\tau_j)_{j=1}^M $, both depending of $(\br_j^0)_{j=1}^M$ such that 
-$$\sup_{t\in(-1,1)} \| \br_j(t) - \bc_j \| < 2\tau_j,\ \forall j \in \{1,\hdots,M\},$$
+$$\sup_{t\in(-1,1)} \| \br^0_j(t) - \bc_j \| < 2\tau_j,\ \forall j \in \{1,\hdots,M\},$$
 and also assume that 
 $$
 \sum_{n=0}^\infty \sup_{t \in (-1,1)} \| (\bb_n)_j(t)\| <  \tau_j,\ \forall j \in \{1,\hdots,M\}.
 $$
 \end{enumerate}
 \end{assumption}
+The first point is needed as hypothesis of Theorem \ref{theorem:generalbpeholomrfsm}, while the second point  ensure that 
+$$
+\inf_{t \in (-1,1)} \| \br_j(\by)'(t) \| > 0 \ \forall j \in \{1,\hdots,M\}.
+$$
+and also that not self crossings occurs. The final point ensure that not crosses between different arcs occurs.
+
 Notice that under Assumption \ref{assump:geoparam} for every $\by$, the solutions $\bla,\bmu$ exist and are unique. This property is the last ingredient needed for the proof of Theorem \ref{thrm:bpeholomr} that we now present. 
 \begin{proof}[Theorem \ref{thrm:bpeholomr}]
 By Assumption \ref{assump:geoparam}, $\bla,\bmu$ exist and are unique for every possible geometric configuration $\br_j(\by)$, $\by \in [-1,1]^\IN$, and $j = 1,\hdots,M$.  Then the result follows from Theorems \ref{thrm:solutionholomrext}, and \ref{theorem:generalbpeholomrfsm}.
@@ -1518,7 +1542,7 @@ and the Galerkin projectors:
  \end{align*}
  where $\langle \cdot, \cdot \rangle$ denotes the duality product between $\IW^{\frac{1}{2}},\IT^{-\frac{-1}{2}}$ and also $\IY^{\frac{-1}{2}},\IU^{\frac{1}{2}}$.  We construct the vector Galerkin projectors $\mathbf{P}_N^T : \prod_{j=1}^M\IW^{\frac{1}{2}} \mapsto \IR^{M(N+1)}$, and   $\mathbf{P}_N^U : \prod_{j=1}^M\IY^{\frac{-1}{2}} \mapsto \IR^{M(N+1)}$ by taking the corresponding Galerkin projector in each coordinate.
  
-  The numerical approximations by $\bla_N \in \prod_{j=1}^M \IT_N$,  $\bmu_N \in \prod_{j=1}^M \IU_N$ of $\bla, \bmu$ respectively are defined as the solution of 
+  The numerical approximations $\bla_N \in \prod_{j=1}^M \IT_N$,  $\bmu_N \in \prod_{j=1}^M \IU_N$ of $\bla, \bmu$ respectively are defined as the solution of 
  \begin{align*}
   \mathbf{P}_N^T \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M} \bla_N  =   \mathbf{P}_N^T \mathbf{f}^D_{\Gamma_1,\hdots,\Gamma_M},  \\
     \mathbf{P}_N^U \mathbf{W}_{\Gamma_1,\hdots,\Gamma_M} \bmu_N  =  \mathbf{P}_N^U \mathbf{f}^N_{\Gamma_1,\hdots,\Gamma_M}.
@@ -1559,8 +1583,9 @@ Now let us consider the following family of sets
 \right\rbrace.
 \end{split}
 \end{align*}
-Hence argue as before we have that for every $\by \in [-1,1]^{\IN}$, there exist $C>0$, $N_0 \in \IN$ such that $\by \in A_{N_0,C}$, thus the  $\{A_{N,C}\}_{N \in \IN, C > 0}$ is a cover of $[-1,1]^{\IN}$. Furthermore from the continuity of the inverse map and also of the map $\by \mapsto (\mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})$, we have that $A_{N_0,C}$ is open for every $C >0$, $N_0 \in \IN$, and the result follows by compactness.
+Arguing as before we have that for every $\by \in [-1,1]^{\IN}$, there exist $C>0$, $N_0 \in \IN$ such that $\by \in A_{N_0,C}$, thus the  $\{A_{N,C}\}_{N \in \IN, C > 0}$ is a cover of $[-1,1]^{\IN}$. Furthermore from the continuity of the inverse map and also of the map $\by \mapsto (\mathbf{P}_N \mathbf{V}_{\Gamma_1,\hdots,\Gamma_M})$, we have that $A_{N_0,C}$ is open for every $C >0$, $N_0 \in \IN$, and the result follows by compactness.
 \end{proof}
+
 Now directly from Theorem \ref{thrm:abtractinverse}, we obtain the parametric holomorphism of the approximations. 
 \begin{corollary}
 Under the same hypotesis of Theorem \ref{thrm:bpeholomr}, whith $s = \frac{-1}{2}$, there exist $N_0 \in \IN$ such that for $N>N_0$, the maps 
@@ -1568,11 +1593,11 @@ Under the same hypotesis of Theorem \ref{thrm:bpeholomr}, whith $s = \frac{-1}{2
 \by \in [-1,1]^{\IN} \mapsto \bla_N \in \prod_{j=1}^M \IT_N \subset \prod_{j=1}^M \IT^{\frac{-1}{2}},\\
 \by \in [-1,1]^{\IN} \mapsto \bmu_N \in \prod_{j=1}^M \IU_N \subset \prod_{j=1}^M \IU^{\frac{1}{2}},
 \end{align*}
-are  $(b,p,\epsilon)-$holomorphic with $b,p,\epsilon$ the same as in Theorem \ref{thrm:bpeholomr}, i.e $\epsilon$ is different for weakly-singular and hyper-singular cases.
+are  $(b,p,\epsilon)-$holomorphic with $b,p,\epsilon$ the same as in Theorem \ref{thrm:bpeholomr} \footnote{ $\epsilon$ is different for weakly-singular and hyper-singular cases.}.
 \end{corollary}
 
 \begin{remark}
-In contrast to every other result, the previous corollary is limited to only the spaces $\IT^{\frac{-1}{2}}$ for the Dirichlet problem, and $\IU^{\frac{1}{2}}$ for the Neumann problem. The reason for this is because under this restriction we have that the weakly-singular and hyper-singular maps from one space to its dual, and we can directly invoke \cite[Theorem 4.2.9]{Sauter:2011} to obtain the discrete inverse. Furthermore, for low-order basis there is not grantee that the discrete spaces $\IT_N, \IU_N$ are subspaces of $\IT^s,\IU^s$ for large values of $s$.
+In contrast to every other result, the previous corollary is limited to the spaces $\IT^{\frac{-1}{2}}$ for the Dirichlet problem, and $\IU^{\frac{1}{2}}$ for the Neumann problem. The reason for this is because under this restriction we have that the weakly-singular and hyper-singular maps from one space to its dual, and we can directly invoke \cite[Theorem 4.2.9]{Sauter:2011} to obtain the discrete inverse. Furthermore, for low-order basis there is not grantee that the discrete spaces $\IT_N, \IU_N$ are subspaces of $\IT^s,\IU^s$ for large values of $s$.
 
 It is worth mention that one particular selection of discrete spaces lead to stronger results is choosing as the basis of the finite dimensional spaces the corresponding Chebishev-basis, that is 
 \begin{align*}
@@ -1584,41 +1609,42 @@ where $T_n(t), U_n(t)$ are the first and second kind Chebishev polynomials respe
 
 
 \section{Examples for Particular Integral operators.}
+\label{sec:examples}
 Now we consider particular cases of the operator $\cP$. In particular we will consider the scalar Helmholtz case ($\cP  = -\Delta - k^2$) and the elastic wave operator 
 ($\cP = 
 \alpha \Delta + (\alpha +\beta) \nabla \nabla \cdot  + \omega^2
 $), which is a vectorial operator.
-\todo{cite uniqness of volume problems (dirichlet neumann) for each example, also the logaritmic now appears with the square of the distance}
+
 \subsection{Helmholtz Operators}
-The Helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the classical Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
+The Helmhotz operator is $\cP = -\Delta -k^2$, with a fixed parameter $k \in \IR$, $k\neq 0$, typically called wavenumber. For this operator the co-normal trace is reduced to the  Neumann trace, $\mathbf{\mathcal{B}}_{\bn}u = \bn \cdot \nabla u  = \partial_{\bn} u$, and the radiation condition is the classical Somerfeld condition, 
 $$
 \lim_{\|\bx\| \rightarrow \infty}
 \| \bx \|^{\frac{1}{2}}\left( \frac{\partial u}{\partial \bx}-i k u\right)=0.
 $$
-We refer to \cite{stephan1984augmented}, \cite{kress1996} for uniqueness of the boundary value problems. The corresponding fundamental solution is
+We refer to \cite{stephan1984augmented,kress1995inverse} for uniqueness of the Dirichlet problem, and to \cite{MONCH1996343} for the Neumann problem. The corresponding fundamental solution is
 $$
 G(\bx,\by) = \frac{i}{4}H^{(1)}_0(k \| \bx-\by\|),
 $$
-where $H^{(1)}_0$ denotes the zero-order Hankel function of first kind, and is defined as $H^{(1)}_0(z) = J_0(z) + i Y_0(z)$, where $J_0, Y_0$ are the zeroth order Bessel function of first and seccond kind respectively. From \todo{ref stegusson, 9.1.12 and 9.1.13} we have that 
+where $H^{(1)}_0$ denotes the zero-order Hankel function of first kind, and is defined as $H^{(1)}_0(z) = J_0(z) + i Y_0(z)$, where $J_0, Y_0$ are the zeroth order Bessel function of first and seccond kind respectively. From \cite[9.1.12 and 9.1.13]{abramowitz1965handbook} we have that 
 $$
-G(\bx,\by) = \log\|\bx-\by\|\left(\frac{J_0(k \|bx -\by\|)}{-2\pi}\right)+ R(k\|bx-by\|^2),
+G(\bx,\by) = \log\|\bx-\by\|^2\left(\frac{J_0(k \|bx -\by\|)}{-4\pi}\right)+ R(k\|bx-by\|^2),
 $$
 where the first kind Bessel function $J_0$, and $R$ are entire functions.
-Furthermore also from \todo{ref steguson 9.1.12} we have that $J_0(0) = 1$, and also $J_0(z) = j_0(z^2)$, with $j_0$ an entire function.  Hence, we have a representation of the form of \eqref{eq:funsolgen}, with $F_1(z) = \frac{j_0(k z)}{-2\pi}$, and $F_2(z) = R(k z)$.
+Furthermore also from \cite[9.1.12]{abramowitz1965handbook} we have that $J_0(0) = 1$, and also $J_0(z) = j_0(z^2)$, with $j_0$ an entire function.  Hence, we have a representation of the form of \eqref{eq:funsolgen}, with $F_1(z) = \frac{j_0(k z)}{-2\pi}$, and $F_2(z) = R(k z)$.
 
-From the last observations the holomorphism results for the Dirichlet problems follows directly. For the Neumann problem we make use of the corresponding Maue's representation formula  formula \todo{ref sauter?},
+From the last observations the holomorphism results for the Dirichlet problems follows directly. For the Neumann problem we make use of the corresponding Maue's representation formula  formula \cite[Corollary 3.3.24]{Sauter:2011},
 \begin{align*}
 \begin{split}
 (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \frac{d}{dt} \int_{-1}^1 G(\br_i(t),\br_j(s)) \frac{d}{ds} u(s) ds \\- k^2\int_{-1}^1 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s))u(s) ds. 
 \end{split}
 \end{align*} 
-thus, following the notation of Section \ref{sec:bif} we have that 
+Thus, following the notation of Section \ref{sec:bif} we have that 
 $$
 \widetilde{G}(\br_i(t),\br_j(s)) = -k^2 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s)).
 $$
-Notice that this function is has almost the same structure that $G(\br_i(t),\br_j(s))$ except for the fact that it lost one degree of smoothness because of the factors $\br_i'$, and $\br_j'$, however, as it was noticed in Remark \ref{remark:mm1extension} this do not have any impact, and we obtain the corresponding results for the Neumann problem.
+Notice that this function is has almost the same structure that $G(\br_i(t),\br_j(s))$ except for the fact that it lost one degree of regularity because of the factors $\br_i'$, and $\br_j'$, however, as it was noticed in Remark \ref{remark:lessregularitykernel} this do not have any impact, and we obtain the corresponding results for the Neumann problem.
 
-Finally let us remark the special case $k=0$, which correspond to the Laplace equation. While most of the result follows directly with fundamental solution $G(\bx,\by) = \frac{-1}{2\pi} \log \| \bx - \by \|$, special care has to be put in the radiation condition of this problem to be well posed. One particular alternative is to impose that the solutions decay at infinity and change the space $T^s$ for the subspace of functions such that $\langle u, 1 \rangle = 0$, see \todo{ref sthephan, paper arcs} for more details on the Laplace case. 
+Finally let us remark the special case $k=0$, which correspond to the Laplace equation. While most of the result follows directly with fundamental solution $G(\bx,\by) = \frac{-1}{4\pi} \log \| \bx - \by \|^2$, special care has to be put in the radiation condition of this problem to be well posed. One particular alternative is to impose that the solutions decay at infinity and change the space $T^s$ for the subspace of functions such that $\langle u, 1 \rangle = 0$, see \cite{stephan1984augmented,JHP20} for more details on the Laplace case. 
 \subsection{Elastic Wave Operators}
 
 Now let us consider the operator $\cP = \alpha \Delta + (\alpha + \beta) \nabla \nabla \cdot + \omega^2$. The parameters $\alpha,\beta$ are called Lame parameters \footnote{Tipically this are denoted $\lambda, \mu = \alpha, \beta$ but we have changed to avoid confusion with the solutions of the Dirichlet and Neumann problems denoted by $\bla, \bmu$.}, and $\omega$ is the frequency parameter. These parameters are  fixed real numbers and we also impose that  $\beta > 0$, $\alpha > - \beta$, $\omega \neq 0$. We also define two associated wavenumbers $$
@@ -1636,8 +1662,8 @@ where the $\mathbf{v}^\perp  = (v_2,-v_1)$. For a vector function $\bu$ we intro
 \mathbf{u}_p := \frac{-1}{k^2_p}\nabla \nabla \cdot \mathbf{u}, \quad
 \mathbf{u}_s := \mathbf{u} - \mathbf{u}_p,
 \end{align*} 
-and the radiations conditions associated with this operator are the Somerfeld condition applied to $\bu_p, \bu_s$. 
-The corresponding fundamental solution given by 
+and the radiations conditions associated with this operator are the Somerfeld condition applied to $\bu_p, \bu_s$. We refer to \cite{kress1996} for uniqueness of the boundary value problems. 
+The corresponding fundamental solution is given by 
 \begin{align}
 \label{eq:efunsol}
 \mathbf{G} (\mathbf{x}, \mathbf{y}) := 
@@ -1646,7 +1672,7 @@ The corresponding fundamental solution given by
 H^{(1)}_0(k_sd ) - H^{(1)}_0(k_p d)
 \right),
 \end{align}
-where $d = \| \bx -\by\|$, and $\mathbf{I}$ denotes the identity matrix. Alternatively following \todo{reff kress} this can be expressed as 
+where $d = \| \bx -\by\|$, and $\mathbf{I}$ denotes the identity matrix. Alternatively following \cite{kress1996} this can be expressed as 
 \begin{align*}
 \mathbf{G}(\mathbf{x},\mathbf{y})  = G^1(d) \mathbf{I} + 
 {G}^2(d)\mathbf{D}(\mathbf{x}-\mathbf{y}),
@@ -1659,24 +1685,24 @@ G^2(d) = \frac{i}{4\omega^2} \left(
 k_p^2H^{(1)}_0(k_p d)- k_s^2H^{(1)}_0(k_s d)  
 \right)
 \end{align*}
-Using the expansion of the Hankel functions \todo{ref abramowish seguson} see that we can express $G^1,G^2$ could be expressed in the form 
+Using the expansion of the Hankel functions \cite[9.1.10 and 9.1.11]{abramowitz1965handbook} we see that we can express $G^1,G^2$ as 
 $$
-G^j(d) = R^j(d) +\log(d)J^j(d), \quad j=1,2.
+G^j(d) = R^j(d) +\log(d^2)J^j(d), \quad j=1,2.
 $$
 where $R^1,R^2$ are entire functions on the variable $d^2$, and 
 \begin{align*}
-J^1(d) = -\frac{J_0(k_s d)}{2\pi\beta}+ \frac{1}{2\pi\omega^2 d}(k_sJ_1(k_s d) - k_p J_1(k_p d)), \\
-J^2(d) = \frac{-1}{2 \pi \omega^2} \left(
+J^1(d) = -\frac{J_0(k_s d)}{4\pi\beta}+ \frac{1}{4\pi\omega^2 d}(k_sJ_1(k_s d) - k_p J_1(k_p d)), \\
+J^2(d) = \frac{-1}{4 \pi \omega^2} \left(
 \frac{2k_s J_1(k_sd)-2k_p J_1(k_p d)}{d} +k_p^2J_0(k_p d) -k_s^2J_0(k_s d)
 \right),
 \end{align*}
 hence from the serie expansion of the Bessel function we have $J^1,J^2$ are entire functions in the $d^2$ variable, and also 
 \begin{align*}
-J^1(0) = \frac{-1}{2\pi\beta} + \frac{-1}{4 \pi\omega^2}(k_p^2-k_s^2), \quad J^2(0) = 0.
+J^1(0) = \frac{-1}{4\pi\beta} + \frac{-1}{8 \pi\omega^2}(k_p^2-k_s^2), \quad J^2(0) = 0.
 \end{align*}
 Hence we can express the fundamental solution as 
 \begin{align*}
-\mathbf{G}(\bx,\by) = \log(d)\mathbf{J}+ \mathbf{R},
+\mathbf{G}(\bx,\by) = \log(d^2)\mathbf{J}+ \mathbf{R},
 \end{align*}
 where $\mathbf{J} = J^1(d) \mathbf{I} +J^2(d)\mathbf{D}(\bx-\by)$, and 
 $\mathbf{R} = R^1(d) \mathbf{I} +R^2(d) \mathbf{D}(\bx-\by)$. The only difference with the canonical expression  \eqref{eq:funsolgen} is the presence of factor $\mathbf{D}(\bx-\by)$. Let us study the properties of this factor. 
@@ -1693,17 +1719,17 @@ Consider two arcs $\br$, and $\bp$ and define the matrix function $\mathbf{D}_{\
 and also two compact sets $K^1,K^2 \subset \rgeoh{m}{h}$ for some $m \in \IN$. 
 \begin{enumerate}
 \item
-If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Lemma \ref{lemma:dwelldef} then 
+If $K^1 = K^2$, and $m \geq 1$, if we select $\delta$ as in Condition \ref{condition:Qself} then 
 \begin{align*}
-\br \in K^1_\delta \mapsto ({D}_{\br,\br})_{j,k} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+\br \in K^1 \mapsto ({D}_{\br,\br})_{j,k} \in \cmspaceh{m-1}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
 \end{align*} 
-is holomorphic and uniformly bounded.
+has holomorphic extension in $K^1_\delta$.
 \item 
-If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Lemma \ref{lemma:dcross}, then 
+If $K^1, K^2$ are disjoint sets and select $\delta_1, \delta_2$ as in Condition  \ref{condition:dcross}, then 
 \begin{align*}
-(\br,\bp)  \in K^1_{\delta_1} \times K^2_{\delta_2} \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
+(\br,\bp)  \in K^1 \times K^2 \mapsto ({D}_{\br,\bp})_{j,k} \in \cmspaceh{m}{h}{(-1,1)\times(-1,1)}{\IC}, \quad j,k =1,2,
 \end{align*} 
-is holomorphic and uniformly bounded.
+has holomorphic extension in $K^1_{\delta_1} \times K^2_{\delta_2}$.
 \end{enumerate}
 \end{lemma} 
 \begin{proof}
@@ -1712,12 +1738,43 @@ For the first part, if $t \neq s$ we have,
 (D_{\br,\br}(t,s))_{j,k} = 1/Q_{\br}(t,s) \left( \frac{r_j(t)-r_j(s)}{t-s} \right) \cdot \left( \frac{r_k(t)-r_k(s)}{t-s} \right)
 \end{align*}
 and the results follows as in the proof of Lemma \ref{lemma:Qfun}.
-The second part is direct from Lemma \ref{lemma:dcross} and elementary results of complex variable. 
+The second part is direct from Lemma \ref{lemma:squaredistance} and elementary results of complex variable. 
 \end{proof}
 
-We conclude that this function has holomorphic extension, but it also lose one order of regularity (since the components are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$). This implies that the proof of Lemma \ref{lemma:vcomp} the corresponding functions $F_1(d_{\br}(t,s)^2)$, $F_2(d_{\br}(t,s)^2)$ are in $\cmspaceh{m-1}{h}{\iinterv}{\IC}$ instead of $\cmspaceh{m}{h}{\iinterv}{\IC}$.  However this do not moddify the condition on $s,m,h$ as it was noticed in Remark \ref{remark:mm1extension}.
+The result for the Dirichlet problem now follows directly by the decomposition of the fundamental solution, and also Remark \ref{remark:lessregularitykernel} for the $D_{\br,\br}$ factor. 
 
-For the Neumann problem we need a Maue's representation formula. While we are not aware of a proper formula for this case, a result with the same properties is given in \todo{kress On the numerical solution of a hypersingular integral equation for elastic scattering from a planar crack}. In this paper the authors use the Maue's representation for the kernel of the static case ($\omega = 0$), that was showed in \todo{ref nedelec Integral equations with non integrable kernels}, and then proceed to explicitly find the kernel given by the co-normal traces, in both variables, of the difference of the fundamental solution \eqref{eq:efunsol}  minus the one coming from the static case. The resulting function only has a logarithmic singularity and hence in principle could be considered as part of $\widetilde{\mathbf{G}}$ in the general Maue's representation formula \eqref{eq:mauesrep}. The only difference is that this function includes part related to the second derivative of the parametrizations, hence is only in $\cmspaceh{m-2}{h}{\iinterv}{\IC}$, for $m\geq 2$, but this do not modify the results as it was noticed in Remark \ref{remark:gtildereg}. 
+For the Neumann problem we use the following formula, \todo{see Tao...}
+\begin{align*}
+(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \bu =  
+\int_{-1}^1 \mathbf{G}_1(\br_i(t),\br_j(s))u_j(s) ds+
+\frac{d}{dt} \int_{-1}^1 \mathbf{G}_2(\br_i(t),\br_j(s)) \frac{d u_j(s)}{ds}ds+\\
+\int_{-1}^{1} \mathbf{G}_3(\br_i(t),\br_j(s)) \frac{d u_j(s)}{ds}ds+ 
+\frac{d}{dt} \int_{-1}^1 \mathbf{G}_2(\br_i(t),\br_j(s)) u_j(s)ds
+\end{align*}
+
+\begin{align*}
+\begin{split}
+&(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \bu = 
+-\frac{i}{4}\int_{-1}^1 \ \left( \rho \omega^2\frac{\br_i'^\perp(t)\br_j'^\perp(s)^t-\br_i'(t) \cdot \br_j'(s) \mathbf{I}}{\| \br'_i(t)\|} H^{(1)}_0(k_s d) \right. \\ 
+&\left.-\beta k_s^s\frac{
+\br_j'^\perp(s)\br_i'^\perp(t)^t 
+-\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_sd) - \rho\omega^2 \frac{\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_p d)\right) \bu(s) ds \\
+&+\|\br_i'(t)\|\frac{d}{dt}\int_{-1}^1  4\beta^2  \mathbf{G}(\br_i(t),\br_j(s))^\perp\frac{d \bu(s)^\perp}{ds}+i\beta H^{(1)}_0(k_s d) \frac{d \bu(s)}{ds}ds\\
+&+\frac{i\beta}{2} \int_{-1}^1
+\frac{\br_i'^\perp(t)}{\| \br_i'(t)\|} \left(
+H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))}{d} -
+ H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))}{d}
+\right)\frac{d \bu(s)^\perp}{ds}ds\\
+&+
+\frac{i\beta \|\br_i'(t)\|}{2}\frac{d}{dt} \int_{-1}^1
+\left(
+H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))^\perp}{d} -
+ H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))^\perp}{d}
+\right) \br_j'^\perp(s)^t \bu(s) ds
+\end{split}
+\end{align*}
+
+For the Neumann problem we need a Maue's representation formula. While we are not aware of a proper formula for this case, a result with the same properties is given in \cite{kress2000}. In this paper the authors use the Maue's representation for the kernel of the static case ($\omega = 0$), that was showed in \cite{Nedelec1982}, and then proceed to explicitly find the kernel given by the co-normal traces, in both variables, of the difference of the fundamental solution \eqref{eq:efunsol}  minus the one coming from the static case. The resulting function only has a logarithmic singularity and hence in principle could be considered as part of $\widetilde{\mathbf{G}}$ in the general Maue's representation formula \eqref{eq:mauesrep}. The only difference is that this function includes part related to the second derivative of the parametrizations, and limits that involve the third derivative, hence we need $m>3$ and replace Condition \ref{condition:smh}, with the one given in Remark \ref{remark:evenlessreg}. \todo{check the last part}
 
 \section{Conslusions and Future Work}
 \todo{El pinto no hace esto }
