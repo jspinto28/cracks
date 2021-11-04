@@ -427,7 +427,7 @@
 \maketitle
 
 \begin{abstract}
-todo
+\todo{to do}
 \end{abstract}
 
 \section{Introduction}
@@ -451,8 +451,6 @@ As is standard, for the solution of the Dirichlet and Neumann problem to be in h
 The rest of the introduction is devoted to properly describe the problem in consideration, as well as establish the precise definition that enable us to write the main results of the paper. 
 
 \subsection{General Notation}
-\todo{ p sumable}
-
 We use the convention of the natural numbers includes the $0$, i.e. $\IN = \{ 0,1,2,\hdots\}$. 
 
 Vectors and matrices are indicated by boldface symbols, while for general quantities that could be either vectors or scalars we don't use bold fonts. For a pair of vectors $\bv^1,\bv^2 \in \IC^n$, (with $n \in \IN\setminus \{0\}$) we denote by $ \bv^1 \cdot \bv^2 = \sum_{j=1}^n v^1_j v^2_j$, and the euclidean norm $\|\bv^1\| = \bv^1 \cdot \overline{\bv^1}$, where the conjugate of a vector is the conjugate of each component.
@@ -803,9 +801,15 @@ Using the lifting characterizations one can easily check that
 \label{eq:WsYs}
 W^s \subset Y^s, \quad \forall s \in \IR.
 \end{align}
+
+The dual space of $H^s$, could be identified with $H^{-s}$, thus using the lifting operators, we can identify the dual space of $T^s$ with $W^{-s}$ and the dual of $U^s$ with $Y^{-s}$. In both cases the duality product correspond to an extension of the $L^2$ inner product. Futhermore, this duality identifications and \eqref{eq:WsYs} implies that 
+\begin{align}
+\label{eq:UsTs}
+U^s \subset T^s, \quad \forall s \in \IR.
+\end{align}
 From the density of the Fourier basis in $H^s$ using the inverse of the lifting operators, is posible to see the functions $\{wU_n\}_{n \in \IN}$ are dense in $U^s$, since these are $0$
 on the extremes $\pm 1$, we obtain that the general Maue's representation formula \eqref{eq:mauesrep} is valid for functions in $U^s$.  
-Since the dual space of $H^s$, could be identified with $H^{-s}$, we can identify the dual space of $T^s$ with $W^{-s}$ and the dual of $U^s$ with $Y^{-s}$.In both cases the duality product correspond to an extension of the $L^2$ inner product. 
+
 
 An important property that will play a mayor role in the analysis of the hyper-singular operator are the mapping properties of the derivative, in particular using the density of the Chebishev basis we can easly see that 
 \begin{align}
@@ -1635,12 +1639,12 @@ Furthermore also from \cite[9.1.12]{abramowitz1965handbook} we have that $J_0(0)
 From the last observations the holomorphism results for the Dirichlet problems follows directly. For the Neumann problem we make use of the corresponding Maue's representation formula  formula \cite[Corollary 3.3.24]{Sauter:2011},
 \begin{align*}
 \begin{split}
-(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \frac{d}{dt} \int_{-1}^1 G(\br_i(t),\br_j(s)) \frac{d}{ds} u(s) ds \\- k^2\int_{-1}^1 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s))u(s) ds. 
+(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j}u = \frac{d}{dt} \int_{-1}^1 G(\br_i(t),\br_j(s)) \frac{d}{ds} u(s) ds \\- k^2\int_{-1}^1 (\br_i'(t)\cdot \br_j'(s)) G(\br_i(t),\br_j(s))u(s) ds. 
 \end{split}
 \end{align*} 
 Thus, following the notation of Section \ref{sec:bif} we have that 
 $$
-\widetilde{G}(\br_i(t),\br_j(s)) = -k^2 \frac{\br_i'(t)\cdot \br_j'(s)}{\|\br_i'(t)\|} G(\br_i(t),\br_j(s)).
+\widetilde{G}(\br_i(t),\br_j(s)) = -k^2 (\br_i'(t)\cdot \br_j'(s)) G(\br_i(t),\br_j(s)).
 $$
 Notice that this function is has almost the same structure that $G(\br_i(t),\br_j(s))$ except for the fact that it lost one degree of regularity because of the factors $\br_i'$, and $\br_j'$, however, as it was noticed in Remark \ref{remark:lessregularitykernel} this do not have any impact, and we obtain the corresponding results for the Neumann problem.
 
@@ -1743,38 +1747,68 @@ The second part is direct from Lemma \ref{lemma:squaredistance} and elementary r
 
 The result for the Dirichlet problem now follows directly by the decomposition of the fundamental solution, and also Remark \ref{remark:lessregularitykernel} for the $D_{\br,\br}$ factor. 
 
-For the Neumann problem we use the following formula, \todo{see Tao...}
-\begin{align*}
+For the Neumann problem we use the following formula (see \cite{tao2021}),
+\begin{align}
+\label{eq:wstokeexp}
 (W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \bu =  
 \int_{-1}^1 \mathbf{G}_1(\br_i(t),\br_j(s))u_j(s) ds+
-\frac{d}{dt} \int_{-1}^1 \mathbf{G}_2(\br_i(t),\br_j(s)) \frac{d u_j(s)}{ds}ds+\\
+ \frac{d}{dt} \int_{-1}^1 \mathbf{G}_2(\br_i(t),\br_j(s)) \frac{d u_j(s)}{ds}ds\\+
 \int_{-1}^{1} \mathbf{G}_3(\br_i(t),\br_j(s)) \frac{d u_j(s)}{ds}ds+ 
 \frac{d}{dt} \int_{-1}^1 \mathbf{G}_2(\br_i(t),\br_j(s)) u_j(s)ds
-\end{align*}
-
+\end{align}
+%\begin{align*}
+%\begin{split}
+%&(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \bu = 
+%-\frac{i}{4}\int_{-1}^1 \ \left( \rho \omega^2\frac{\br_i'^\perp(t)\br_j'^\perp(s)^t-\br_i'(t) \cdot \br_j'(s) \mathbf{I}}{\| \br'_i(t)\|} H^{(1)}_0(k_s d) \right. \\ 
+%&\left.-\beta k_s^s\frac{
+%\br_j'^\perp(s)\br_i'^\perp(t)^t 
+%-\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_sd) - \rho\omega^2 \frac{\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_p d)\right) \bu(s) ds \\
+%&+\|\br_i'(t)\|\frac{d}{dt}\int_{-1}^1  4\beta^2  \mathbf{G}(\br_i(t),\br_j(s))^\perp\frac{d \bu(s)^\perp}{ds}+i\beta H^{(1)}_0(k_s d) \frac{d \bu(s)}{ds}ds\\
+%&+\frac{i\beta}{2} \int_{-1}^1
+%\frac{\br_i'^\perp(t)}{\| \br_i'(t)\|} \left(
+%H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))}{d} -
+% H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))}{d}
+%\right)\frac{d \bu(s)^\perp}{ds}ds\\
+%&+
+%\frac{i\beta \|\br_i'(t)\|}{2}\frac{d}{dt} \int_{-1}^1
+%\left(
+%H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))^\perp}{d} -
+% H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))^\perp}{d}
+%\right) \br_j'^\perp(s)^t \bu(s) ds
+%\end{split}
+%\end{align*}
+where the first kernel function is 
 \begin{align*}
 \begin{split}
-&(W_{\Gamma_1,\hdots,\Gamma_M})_{i,j} \bu = 
--\frac{i}{4}\int_{-1}^1 \ \left( \rho \omega^2\frac{\br_i'^\perp(t)\br_j'^\perp(s)^t-\br_i'(t) \cdot \br_j'(s) \mathbf{I}}{\| \br'_i(t)\|} H^{(1)}_0(k_s d) \right. \\ 
-&\left.-\beta k_s^s\frac{
-\br_j'^\perp(s)\br_i'^\perp(t)^t 
--\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_sd) - \rho\omega^2 \frac{\br_i'^\perp(t)\br_j'^\perp(s)^t}{\| \br'_i(t)\|}H_0^{(1)}(k_p d)\right) \bu(s) ds \\
-&+\|\br_i'(t)\|\frac{d}{dt}\int_{-1}^1  4\beta^2  \mathbf{G}(\br_i(t),\br_j(s))^\perp\frac{d \bu(s)^\perp}{ds}+i\beta H^{(1)}_0(k_s d) \frac{d \bu(s)}{ds}ds\\
-&+\frac{i\beta}{2} \int_{-1}^1
-\frac{\br_i'^\perp(t)}{\| \br_i'(t)\|} \left(
-H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))}{d} -
- H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))}{d}
-\right)\frac{d \bu(s)^\perp}{ds}ds\\
-&+
-\frac{i\beta \|\br_i'(t)\|}{2}\frac{d}{dt} \int_{-1}^1
-\left(
-H^{(1)}_1(k_s d) \frac{k_s(\br_i(t)-\br_j(s))^\perp}{d} -
- H^{(1)}_1(k_p d) \frac{k_p(\br_i(t)-\br_j(s))^\perp}{d}
-\right) \br_j'^\perp(s)^t \bu(s) ds
+&\mathbf{G}_1(\br_i(t),\br_j(s)) = \frac{i}{4}\left( \rho \omega^2(\br_i'^\perp(t)\br_j'^\perp(s)^T-\br_i'(t) \cdot \br_j'(s) \mathbf{I}) H^{(1)}_0(k_s d) \right. \\ 
+&\left.-\beta k_s^s(
+\br_j'^\perp(s)\br_i'^\perp(t)^T 
+-\br_i'^\perp(t)\br_j'^\perp(s)^T)H_0^{(1)}(k_sd) - \rho\omega^2 (\br_i'^\perp(t)\br_j'^\perp(s)^T)H_0^{(1)}(k_p d)\right),
 \end{split}
 \end{align*}
-
-For the Neumann problem we need a Maue's representation formula. While we are not aware of a proper formula for this case, a result with the same properties is given in \cite{kress2000}. In this paper the authors use the Maue's representation for the kernel of the static case ($\omega = 0$), that was showed in \cite{Nedelec1982}, and then proceed to explicitly find the kernel given by the co-normal traces, in both variables, of the difference of the fundamental solution \eqref{eq:efunsol}  minus the one coming from the static case. The resulting function only has a logarithmic singularity and hence in principle could be considered as part of $\widetilde{\mathbf{G}}$ in the general Maue's representation formula \eqref{eq:mauesrep}. The only difference is that this function includes part related to the second derivative of the parametrizations, and limits that involve the third derivative, hence we need $m>3$ and replace Condition \ref{condition:smh}, with the one given in Remark \ref{remark:evenlessreg}. \todo{check the last part}
+which only has  logarithmic singularities as is composed of a combination 0-order Hankel functions, and hence it correspond to the term $\widetilde{G}$ in the Maue's formula \eqref{eq:mauesrep}. The holomorphic extension of the corresponding integral operator is direct since the kernel function is of the form described in Remark \ref{remark:lessregularitykernel}. The second kernel is 
+\begin{align*}
+\mathbf{G}_2(\br_i(t),\br_j(s))=
+4\beta^2 \mathbf{A}\mathbf{G}(\br_i(t),\br_j(s)) \mathbf{A} + i \beta H_0^{(1)}(k_s d)\mathbf{I},
+\end{align*}
+where $\mathbf{A} = \begin{pmatrix}
+0&-1\\1&0
+\end{pmatrix}$. From the analysis of the weakly-singular operator we obtain the holomorphic extension of the corresponding integral operator. The third term is
+\begin{align*}
+\frac{i \beta \br_i'^\perp(t)(\br_i(t)-\br_j(s))}{2d}  \left(
+k_s H^{(1)}_1(k_s d)  -
+ k_p H^{(1)}_1(k_p d) 
+\right)\mathbf{A},
+\end{align*}
+this kernel do not have any singularity\footnote{This can be showed easily since is almost the same term, $G^1$, that we found in the analysis of the weakly-singular operator}, but the structure still is the one described in Remark \ref{remark:lessregularitykernel}, only with $G_1 = 0$. The associated integral operator in \eqref{eq:wstokeexp} can be seen as a map in $\mathcal{L}\left( \IU^s,\IW^s \right)$, where the range is in $\IW^s$ instead of $\IY^s$ as if we start in $\IU^s$ by \eqref{eq:devprop} the derivative would change the argument in the operator to a function in $\IU^{s-1}$, and hence by Corollary \ref{corollary:rfop} we obtain the mentioned mapping property. While operators with the mentioned maping properties were not considered, by \eqref{eq:WsYs} we can still consider that this operator is in $\mathcal{L}\left(\IU^s,\IY^s \right)$, and hence compact in  $\mathcal{L}\left(\IU^s,\IY^{s-1} \right)$. The corresponding holomorphic extension then follows  arguing as in the regular part of Theorem \ref{lemma:vcomp}. The final kernel function is   
+\begin{align*}
+\mathbf{G}_4(\br_i(t),\br_j(s)) = \frac{i\beta (\br_i(t)-\br^\perp(s))\br_j'^\perp(s)^T}{2d}
+\left(
+k_s H^{(1)}_1(k_s d)  -
+k_p H^{(1)}_1(k_p d)
+\right),
+\end{align*}
+which is also a regular kernel, whose structure is described in Remark \ref{remark:lessregularitykernel}, with $G_1 =0$. The mapping properties of the associated operator are not direct to establish, as if $u_j \in \IU^s$ then the evaluation of the integral operator (without considering the derivative) would be in $\IY^{s+1}$, but we do not have any characterization of the derivative map in $\IY^{s+1}$. We solve this by using \eqref{eq:UsTs}, that tell us that if $u_j \in \IU^s$, then $u_j \in \IT^s$, and hence the evaluation of the integral operator is in $\IW^{s+1}$, thus by \eqref{eq:devprop} the full operator is in $\mathcal{L}\left(\IU^s,\IY^s\right)$ and compact in $\mathcal{L}\left(\IU^s,\IY^{s-1}\right)$. Then the holomoprphic extension follows as in the previous case. 
 
 \section{Conslusions and Future Work}
 \todo{El pinto no hace esto }
@@ -1787,7 +1821,7 @@ For the Neumann problem we need a Maue's representation formula. While we are no
 \label{appendix:funext}
 
 \begin{proof}[of Lemma \ref{lemma:squaredistance}]
-Consider two arbitraty functions $\br,\bp \in \cmspace{m}{h}{(-1,1)}{\IC^2}$,  by the definition of the norm of the latter space we have that $$d_{\br,\bp}^2(t,s) \in \cmspaceh{m}{h}{\iinterv}{\IC}.$$
+Consider two arbitraty functions $\br,\bp \in \cmspaceh{m}{h}{(-1,1)}{\IC^2}$,  by the definition of the norm of the latter space we have that $$d_{\br,\bp}^2(t,s) \in \cmspaceh{m}{h}{\iinterv}{\IC}.$$
 For a pair $\bv^1,\bv^2 \in \cmspace{m}{h}{(-1,1)}{\IC^2}$ we define
 $$Dd_{\br,\bp}^2[\bv^1,\bv^2](t,s) = 2(\br(t)-\bp(s))\cdot (\bv^1(t)-\bv^2(s)),$$
 which is linear in the function $\bv^1,\bv^2$, and is also in $\cmspaceh{m}{h}{\iinterv}{\IC}$. Finally we notice that 
@@ -1795,7 +1829,9 @@ $$
 d^2_{\br+\bv^1,\bp+\bv^2}(t,s) -d^2_{\br,\bp}(t,s) -Dd_{\br,\bp}^2[\bv^1,\bv^2](t,s) = d^2_{\bv^1,\bv^2}(t,s)
 $$
 and using the rule for the derivative of a product we conclude that 
-$$\| d^2_{\bv^1,\bv^2}(t,s)\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \lesssim \|\bv^1\|_{\cmspace{m}{h}{(-1,1)}{\IC^2}} \|\bv^2\|_{\cmspace{m}{h}{(-1,1)}{\IC^2}},$$
+\begin{align*}
+d^2_{\bv^1,\bv^2}(t,s)\|_{\cmspaceh{m}{h}{\iinterv}{\IC}} \lesssim 2\|\bv^1\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}} \|\bv^2\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}}+  \\ \|\bv^1\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}}^2+\|\bv^2\|_{\cmspaceh{m}{h}{(-1,1)}{\IC^2}}^2 ,
+\end{align*} 
 hence $Dd_{\br,\bp}^2[\bv^1,\bv^2]$ is in fact the Frechet derivative of $d_{\br,\bp}^2$, and since $\br,\bp$ were arbitrary the distance function is holomorphic in an arbitraty open set of 
 $\cmspaceh{m}{h}{\iinterv}{\IC}$.
 
@@ -1808,7 +1844,7 @@ thus for every $\br,\bp  \in K^1_{\delta_1} \times K^2_{\delta_2}$ we have
 $$
 Re(d_{\br,\bp}^2(t,s)) \geq I^2 -2 S(\delta_1 + \delta_2) - ( \delta_1 + \delta_2)^2,$$
 where $S = \sup_{\br \in K^1_{\delta_1}} \sup_{t \in (-1,1)} \| \br(t)\| +
-\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Hence by selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$
+\sup_{\bp \in K^2_{\delta_2}} \sup_{t \in (-1,1)} \| \bp(t)\|$, which is finite since $K^1_{\delta_1}$, and $K^2_{\delta_2}$ are bounded. Selecting $(\delta_1+\delta_2) < \sqrt{I^2+S^2}-S$ the result follows.
 \end{proof}
 
 \begin{lemma}
@@ -1866,12 +1902,12 @@ thus
 $$
 Q_{\br}(t,s) = \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right) \cdot \left(\int_{0}^1 \br'(t+\delta(s-t))d\delta \right),
 $$
-the result then follows from the mean value theorem and selecting $\delta$ as in Lemma \ref{lemma:dwelldef}. The results for $1/Q_{\br}$  follows using the fact that the function $1/z$ is holomorphic 
+the result then follows from the mean value theorem and selecting $\delta$ as in Lemma \ref{lemma:dwelldef}. The results for $1/Q_{\br}$  follows using the fact that the function $1/z$ is holomorphic away from 0.
 \end{proof}
 
 \section{Fractional norms for periodic functions}
 \label{appendix:fracbivariate}
-This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \cite[Theorem 8.6]{kress2013linear} 
+This Appendix show how we get bounds for the fractional semi-norm of periodic functions. This follow verbatim of the analysis of the uni-variate case presented in \cite[Theorem 8.6]{kress2013linear}. 
 
 In what follows we denote the non-normalized Fourier basis by $e_n(t) = \exp{(i n t) }$
 
@@ -1888,7 +1924,7 @@ $$\langle e_{n_1,l_1} , e_{n_2,l_2} \rangle{\mathbf{\gamma}}  =
 4 \int_{-\pi}^{\pi}  \int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)\Delta e_{-n_2,-l_2} (x,t,y,s) }
 {\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds, 
 $$
-the right most term is decomposed in the sum of forth integrals denoted as
+the right term is decomposed in the sum of four integrals denoted as
 \begin{align*}
 I_1 := \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \frac{e_{n_1,l_1}(x,y)e_{-n_2,-l_2} (x,y) }
 {\left(\sin\left(\frac{|x-t|}{2}\right)\right)^{1+2\gamma_1}\left(\sin\left(\frac{|y-s|}{2}\right)\right)^{1+2\gamma_2}}dx dy dt ds,\\
@@ -1902,24 +1938,24 @@ I_4 := -\int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} \f
 
 We perform the change of variables $u = t-x$, and $v = s-y$ in the four integrals and by the periodicity of the involving factors we get 
 \begin{align*}
-I_1 := \delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi}
+I_1 := \widetilde{\delta}_{n_1,n_2}\widetilde{\delta}_{l_1,l_2}\int_{-\pi}^{\pi}
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
 \int_{-\pi}^{\pi}  
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
-I_2 := -\delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
+I_2 := -\widetilde{\delta}_{n_1,n_2}\widetilde{\delta}_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
 \int_{-\pi}^{\pi}  
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
-I_3 := \delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
+I_3 := \widetilde{\delta}_{n_1,n_2}\widetilde{\delta}_{l_1,l_2}\int_{-\pi}^{\pi} e_{-n_2}(u)
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
 \int_{-\pi}^{\pi}  e_{-l_2}(v)
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,\\
-I_4 := -\delta_{n_1,n_2}\delta_{l_1,l_2}\int_{-\pi}^{\pi} 
+I_4 := -\widetilde{\delta}_{n_1,n_2}\widetilde{\delta}_{l_1,l_2}\int_{-\pi}^{\pi} 
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du
 \int_{-\pi}^{\pi}  e_{-l_2}(v)
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}dv,
 \end{align*}
-where $\delta_{n,m} = 2 \pi $ if $n=m$ and zero otherwise. Since the Fourier basis are $e_n(t) =  (cos(nt) + i \sin (nt)) $, we can use the symmetries of the cosine and sine function, and we get
+where $\widetilde{\delta}_{n,m} = 2 \pi $ if $n=m$ and zero otherwise. Since the Fourier basis are $e_n(t) =  (cos(nt) + i \sin (nt)) $, we can use the symmetries of the cosine and sine function, and we get
 $$
 \int_{-\pi}^{\pi} (1-e_{-n_2}(u))
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du = 
@@ -1930,15 +1966,15 @@ furthermore we use formula for the cosine of double angle and we get
 $$
 \int_{-\pi}^{\pi} (1-e_{-n_2}(u))
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du = 
-4 \int_{0}^{\pi} \sin(\frac{n_2 u}{2}) ^2
+4 \int_{0}^{\pi} \sin\left(\frac{n_2 u}{2}\right) ^2
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du,
 $$
 using this we get
 \begin{align*}
 \begin{split}
-\langle e_{n_1,n_2}, e_{l_1,l_2} \rangle_{\mathbf{\gamma}}= 16 \delta_{n_1,n_2} \delta_{l_1,l_2}\\ \int_{0}^{\pi} \sin(\frac{n_2 u}{2}) ^2
+&\langle e_{n_1,n_2}, e_{l_1,l_2} \rangle_{\mathbf{\gamma}}= 16 \widetilde{\delta}_{n_1,n_2} \widetilde{\delta}_{l_1,l_2}\\ &\int_{0}^{\pi} \sin\left(\frac{n_2 u}{2}\right) ^2
 \left(\sin\left(\frac{|u|}{2}\right)\right)^{-1-2\gamma_1}du 
-\int_{0}^{\pi} \sin(\frac{l_2 v}{2}) ^2
+\int_{0}^{\pi} \sin\left(\frac{l_2 v}{2}\right) ^2
 \left(\sin\left(\frac{|v|}{2}\right)\right)^{-1-2\gamma_2}du,
 \end{split}
 \end{align*}
