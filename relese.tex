@@ -602,7 +602,7 @@ In Section \ref{sec:ophlrmf} we conclude the holomorphic extension of the integr
 Finally in Section \ref{sec:examples} we show that for two particular examples (Helmholtz equation and elastic wave equation) the assumptions on the structure of the operators are fulfilled so the main results applied for these cases. Last Section present the conclusions and possible extensions. 
 \section{Main Results}
 \label{sec:MainResult}
-In this section we list our main results related with the boundary integral formulation presented in Section \ref{sec:bif}. We refer to Section \ref{sec:FunctionalSpaces} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \ref{condition:deltaOps}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \ref{condition:smh} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the Underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows to get all the other conclusions.
+In this section we list our main results related with the boundary integral formulation presented in Section \ref{sec:bif}. We refer to Section \ref{sec:FunctionalSpaces} for the definition of the Banach spaces $\IT^s,\IU^s,\IW^s,\IY^s$, for $s \in \IR$, as well as for the class of holder continious parametrizations $\rgeoh{m}{h}$, with $m \in \IN, \ h\in \IR$. We will also need Condition \ref{condition:deltaOps}, which ensures that we can construct holomorphic extensions of some standard functions, and Condition \ref{condition:smh} which describe the relation of the parameters $s$ (of the regularity of the functional spaces in considerations) and $m,h$ (of the regularity of the underlying geometry), such that the weakly-singular and hyper-singular operators (for the corresponding arcs) are bounded on the appropriate functional spaces. The first result is the building block that allows us to get all the other conclusions.
 
 \begin{theorem}
 \label{thrm:biohlmextension}
@@ -1672,7 +1672,7 @@ The corresponding fundamental solution is given by
 \label{eq:efunsol}
 \mathbf{G} (\mathbf{x}, \mathbf{y}) := 
 \frac{i}{4 \beta} H^{(1)}_0(k_s d)\mathbf{I}+ \frac{i}{4\omega^2} \nabla_\mathbf{x} 
-\nabla_\mathbf{x} \cdot \left( 
+\nabla_\mathbf{x} ^T \left( 
 H^{(1)}_0(k_sd ) - H^{(1)}_0(k_p d)
 \right),
 \end{align}
@@ -1780,8 +1780,8 @@ For the Neumann problem we use the following formula (see \cite{tao2021}),
 where the first kernel function is 
 \begin{align*}
 \begin{split}
-&\mathbf{G}_1(\br_i(t),\br_j(s)) = \frac{i}{4}\left( \rho \omega^2(\br_i'^\perp(t)\br_j'^\perp(s)^T-\br_i'(t) \cdot \br_j'(s) \mathbf{I}) H^{(1)}_0(k_s d) \right. \\ 
-&\left.-\beta k_s^s(
+&\mathbf{G}_1(\br_i(t),\br_j(s)) = \frac{i}{4}\left( \omega^2(\br_i'^\perp(t)\br_j'^\perp(s)^T-\br_i'(t) \cdot \br_j'(s) \mathbf{I}) H^{(1)}_0(k_s d) \right. \\ 
+&\left.-\beta k_s^2(
 \br_j'^\perp(s)\br_i'^\perp(t)^T 
 -\br_i'^\perp(t)\br_j'^\perp(s)^T)H_0^{(1)}(k_sd) - \rho\omega^2 (\br_i'^\perp(t)\br_j'^\perp(s)^T)H_0^{(1)}(k_p d)\right),
 \end{split}
@@ -1795,7 +1795,7 @@ where $\mathbf{A} = \begin{pmatrix}
 0&-1\\1&0
 \end{pmatrix}$. From the analysis of the weakly-singular operator we obtain the holomorphic extension of the corresponding integral operator. The third term is
 \begin{align*}
-\frac{i \beta \br_i'^\perp(t)(\br_i(t)-\br_j(s))}{2d}  \left(
+\mathbf{G}_3(\br_i(t),\br_j(s))=\frac{i \beta \br_i'^\perp(t)(\br_i(t)-\br_j(s))^T}{2d}  \left(
 k_s H^{(1)}_1(k_s d)  -
  k_p H^{(1)}_1(k_p d) 
 \right)\mathbf{A},
